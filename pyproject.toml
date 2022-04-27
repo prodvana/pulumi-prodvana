@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pulumi-prodvana"
+version = "0.0.1"
+description = "Pulumi library for building Prodvana managed infrastructure."
+authors = ["Mike Cugini <mike@prodvana.io>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pulumi-gcp = ">=6.0.0,<7.0.0"
+pulumi-kubernetes = ">=3.17.0,<4.0.0"
+pulumi-random = ">=4.4.0,<5.0.0"
+pulumi = ">=3.0.0,<4.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
