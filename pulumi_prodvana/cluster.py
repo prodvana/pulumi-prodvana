@@ -26,7 +26,7 @@ class Cluster(ComponentResource):
         self.region = region
 
         self.vpc = VPC(
-            f"pvn-net-{name}",
+            f"pnet-{name}",
             project=project,
             region=region,
             opts=ResourceOptions(parent=self),
