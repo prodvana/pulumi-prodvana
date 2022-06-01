@@ -10,6 +10,7 @@ def create_project(
     org_id: Input[str],
     billing_account: Input[str],
     verbatim_id: bool = False,
+    create_default_vpc: bool = True,
     opts: Optional[ResourceOptions] = None,
 ) -> gcp.organizations.Project:
     if verbatim_id:
@@ -24,5 +25,6 @@ def create_project(
         project_id=project_id,
         org_id=org_id,
         billing_account=billing_account,
+        auto_create_network=create_default_vpc,
         opts=opts,
     )
