@@ -256,14 +256,12 @@ class Linkerd(ComponentResource):
                 repository_opts=RepositoryOptsArgs(
                     repo="https://helm.linkerd.io/stable",
                 ),
-                namespace="linkerd-viz",
-                create_namespace=True,
                 version="2.11.1",
                 value_yaml_files=[
                     FileAsset(os.path.join(libdir, "linkerd-viz-values-ha.yaml"))
                 ],
                 values={
-                    "installNamespace": False,
+                    "installNamespace": True,
                 },
             ),
             opts=ResourceOptions(parent=self, depends_on=[linkerd_helm]),
