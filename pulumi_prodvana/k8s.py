@@ -3,7 +3,14 @@ import textwrap
 from typing import Any, Mapping, Optional, Sequence
 
 import pulumi_kubernetes as k8s
-from pulumi import ComponentResource, Input, Output, ResourceOptions
+from pulumi import (
+    ROOT_STACK_RESOURCE,
+    Alias,
+    ComponentResource,
+    Input,
+    Output,
+    ResourceOptions,
+)
 from pulumi_gcp import projects, serviceaccount
 from pulumi_gcp.container import (
     Cluster,
@@ -151,7 +158,11 @@ class GKECluster(ComponentResource):
                 name="prodvana",
                 namespace="default",
             ),
-            opts=ResourceOptions(provider=k8s_provider),
+            opts=ResourceOptions(
+                provider=k8s_provider,
+                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
+                parent=self,
+            ),
         )
         role_binding = k8s.rbac.v1.ClusterRoleBinding(
             "prodvana-mgmt-sa-role-binding",
@@ -170,14 +181,21 @@ class GKECluster(ComponentResource):
                 kind="ClusterRole",
                 name="cluster-admin",
             ),
-            opts=ResourceOptions(provider=k8s_provider),
+            opts=ResourceOptions(
+                provider=k8s_provider,
+                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
+                parent=self,
+            ),
         )
 
         fetched_svc_account = k8s.core.v1.ServiceAccount.get(
             "prodvana-mgmt-sa-fetched",
             id=pvn_svc_account.id,
             opts=ResourceOptions(
-                provider=k8s_provider, depends_on=[pvn_svc_account, role_binding]
+                provider=k8s_provider,
+                depends_on=[pvn_svc_account, role_binding],
+                parent=self,
+                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
             ),
         )
 
@@ -196,6 +214,8 @@ class GKECluster(ComponentResource):
             opts=ResourceOptions(
                 provider=k8s_provider,
                 depends_on=[pvn_svc_account, role_binding, fetched_svc_account],
+                parent=self,
+                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
             ),
         )
 
