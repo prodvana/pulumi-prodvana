@@ -159,7 +159,7 @@ class GKECluster(ComponentResource):
                 namespace="default",
             ),
             opts=ResourceOptions(
-                provider=k8s_provider,
+                providers=[k8s_provider],
                 aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
                 parent=self,
             ),
@@ -182,7 +182,7 @@ class GKECluster(ComponentResource):
                 name="cluster-admin",
             ),
             opts=ResourceOptions(
-                provider=k8s_provider,
+                providers=[k8s_provider],
                 aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
                 parent=self,
             ),
@@ -192,7 +192,7 @@ class GKECluster(ComponentResource):
             "prodvana-mgmt-sa-fetched",
             id=pvn_svc_account.id,
             opts=ResourceOptions(
-                provider=k8s_provider,
+                providers=[k8s_provider],
                 depends_on=[pvn_svc_account, role_binding],
                 parent=self,
                 aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
@@ -212,7 +212,7 @@ class GKECluster(ComponentResource):
             "prodvana-mgmt-sa-token-fetched",
             id=token_secret["name"],
             opts=ResourceOptions(
-                provider=k8s_provider,
+                providers=[k8s_provider],
                 depends_on=[pvn_svc_account, role_binding, fetched_svc_account],
                 parent=self,
                 aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
