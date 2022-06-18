@@ -1,5 +1,6 @@
 from typing import Optional, Sequence
 
+import pulumi_gcp as gcp
 import pulumi_kubernetes as k8s
 from pulumi import ComponentResource, Input, ResourceOptions
 
@@ -17,6 +18,7 @@ class Cluster(ComponentResource):
         nodepool_zones: Input[Sequence[str]],
         node_count_per_zone: Input[int],
         instance_type: Input[str],
+        gcp_credentials: Optional[Input[str]] = None,
         prodvana_managed: bool = True,
         opts: Optional[ResourceOptions] = None,
     ) -> None:
@@ -24,12 +26,17 @@ class Cluster(ComponentResource):
 
         self.project = project
         self.region = region
+        gcp_provider = gcp.Provider(
+            "gcp",
+            project=project,
+            credentials=gcp_credentials,
+        )
 
         self.vpc = VPC(
             f"pnet-{name}",
             project=project,
             region=region,
-            opts=ResourceOptions(parent=self),
+            opts=ResourceOptions(parent=self, providers=[gcp_provider]),
         )
 
         self.k8s_cluster = GKECluster(
@@ -41,7 +48,9 @@ class Cluster(ComponentResource):
             instance_type=instance_type,
             install_prodvana_service_account=prodvana_managed,
             vpc=self.vpc,
-            opts=ResourceOptions(parent=self, depends_on=[self.vpc]),
+            opts=ResourceOptions(
+                parent=self, providers=[gcp_provider], depends_on=[self.vpc]
+            ),
         )
 
         k8s_provider = k8s.Provider(
@@ -53,7 +62,9 @@ class Cluster(ComponentResource):
             "cert-manager",
             self.k8s_cluster,
             opts=ResourceOptions(
-                parent=self, providers=[k8s_provider], depends_on=[self.k8s_cluster]
+                parent=self,
+                providers=[gcp_provider, k8s_provider],
+                depends_on=[self.k8s_cluster],
             ),
         )
 
@@ -63,7 +74,9 @@ class Cluster(ComponentResource):
             self.vpc,
             self.cert_mgr,
             opts=ResourceOptions(
-                parent=self, providers=[k8s_provider], depends_on=[self.k8s_cluster]
+                parent=self,
+                providers=[gcp_provider, k8s_provider],
+                depends_on=[self.k8s_cluster],
             ),
         )
 
@@ -71,7 +84,7 @@ class Cluster(ComponentResource):
             "flagger",
             opts=ResourceOptions(
                 parent=self,
-                providers=[k8s_provider],
+                providers=[gcp_provider, k8s_provider],
                 depends_on=[self.k8s_cluster, self.linkerd],
             ),
         )
