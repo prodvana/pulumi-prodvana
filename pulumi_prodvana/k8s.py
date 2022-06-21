@@ -8,10 +8,11 @@ from pulumi import (
     Alias,
     ComponentResource,
     Input,
+    InvokeOptions,
     Output,
     ResourceOptions,
 )
-from pulumi_gcp import projects, serviceaccount
+from pulumi_gcp import organizations, projects, serviceaccount
 from pulumi_gcp.container import (
     Cluster,
     ClusterIpAllocationPolicyArgs,
@@ -62,6 +63,8 @@ class GKECluster(ComponentResource):
             project=project,
             opts=ResourceOptions(parent=self),
         )
+
+        self.client_config = organizations.get_client_config(InvokeOptions(parent=self))
 
         self.gke_cluster = Cluster(
             f"{name}-gke",
@@ -237,12 +240,16 @@ class GKECluster(ComponentResource):
 
     @property
     def kubeconfig(self) -> Output[str]:
+        # TODO(naphat) the use of access_token here causes the k8s provider to be recreated each time.
+        # We need a way to communicate to pulumi that that token should not be considered part of
+        # the k8s provider object hash, or just stop talking to k8s from pulumi entirely.
         def gen_kubeconfig(
             name: str,
             endpoint: str,
             master_auth: Mapping[str, str],
             region: str,
             project: str,
+            access_token: str,
         ):
             identifier = f"{project}_{region}_{name}"
             return textwrap.dedent(
@@ -264,13 +271,7 @@ class GKECluster(ComponentResource):
             users:
             - name: {identifier}
               user:
-                auth-provider:
-                  config:
-                    cmd-args: config config-helper --format=json
-                    cmd-path: gcloud
-                    expiry-key: '{{.credential.token_expiry}}'
-                    token-key: '{{.credential.access_token}}'
-                  name: gcp
+                token: {access_token}
                 """
             )
 
@@ -280,6 +281,7 @@ class GKECluster(ComponentResource):
             self.gke_cluster.master_auth,
             self.region,
             self.project,
+            self.client_config.access_token,
         )
         kubeconfig = k8s_info.apply(lambda info: gen_kubeconfig(*info))
         return Output.secret(kubeconfig)
