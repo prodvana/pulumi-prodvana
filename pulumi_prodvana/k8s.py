@@ -1,17 +1,8 @@
-import base64
 import textwrap
-from typing import Any, Mapping, Optional, Sequence
+from typing import Mapping, Optional, Sequence
 
 import pulumi_kubernetes as k8s
-from pulumi import (
-    ROOT_STACK_RESOURCE,
-    Alias,
-    ComponentResource,
-    Input,
-    InvokeOptions,
-    Output,
-    ResourceOptions,
-)
+from pulumi import ComponentResource, Input, InvokeOptions, Output, ResourceOptions
 from pulumi_gcp import organizations, projects, serviceaccount
 from pulumi_gcp.container import (
     Cluster,
@@ -22,6 +13,7 @@ from pulumi_gcp.container import (
 )
 
 from pulumi_prodvana.network import VPC
+from pulumi_prodvana.service_accounts import ProdvanaServiceAccounts
 
 # see: https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#use_least_privilege_sa
 NODE_SA_ROLES = [
@@ -147,96 +139,35 @@ class GKECluster(ComponentResource):
         }
 
         if install_prodvana_service_account:
-            addl_outs = self.install_prodvana_service_account()
-            outputs.update(addl_outs)
+            k8s_provider = k8s.Provider("k8s-cluster", kubeconfig=self.kubeconfig)
+            self.svc_accounts = ProdvanaServiceAccounts(
+                "service-accounts",
+                k8s_provider,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[k8s_provider],
+                ),
+            )
+
+            self.prodvana_service_account_name = (
+                self.svc_accounts.prodvana_service_account_name
+            )
+            self.prodvana_service_account_token = (
+                self.svc_accounts.prodvana_service_account_token
+            )
+            self.prodvana_service_account_ca_crt = (
+                self.svc_accounts.prodvana_service_account_ca_crt
+            )
+
+            outputs.update(
+                {
+                    "prodvana_service_account_name": self.prodvana_service_account_name,
+                    "prodvana_service_account_token": self.prodvana_service_account_token,
+                    "prodvana_service_account_ca_crt": self.prodvana_service_account_ca_crt,
+                }
+            )
 
         self.register_outputs(outputs)
-
-    # Install Prodvana management user so managing cluster can connect
-    def install_prodvana_service_account(self) -> Mapping[str, Any]:
-        k8s_provider = k8s.Provider("k8s-cluster", kubeconfig=self.kubeconfig)
-        pvn_svc_account = k8s.core.v1.ServiceAccount(
-            "prodvana-mgmt-sa",
-            metadata=k8s.meta.v1.ObjectMetaArgs(
-                name="prodvana",
-                namespace="default",
-            ),
-            opts=ResourceOptions(
-                providers=[k8s_provider],
-                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
-                parent=self,
-            ),
-        )
-        role_binding = k8s.rbac.v1.ClusterRoleBinding(
-            "prodvana-mgmt-sa-role-binding",
-            metadata=k8s.meta.v1.ObjectMetaArgs(
-                name="prodvana-cluster-access",
-            ),
-            subjects=[
-                k8s.rbac.v1.SubjectArgs(
-                    kind="ServiceAccount",
-                    name=pvn_svc_account.metadata.name,
-                    namespace=pvn_svc_account.metadata.namespace,
-                ),
-            ],
-            role_ref=k8s.rbac.v1.RoleRefArgs(
-                api_group="rbac.authorization.k8s.io",
-                kind="ClusterRole",
-                name="cluster-admin",
-            ),
-            opts=ResourceOptions(
-                providers=[k8s_provider],
-                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
-                parent=self,
-            ),
-        )
-
-        fetched_svc_account = k8s.core.v1.ServiceAccount.get(
-            "prodvana-mgmt-sa-fetched",
-            id=pvn_svc_account.id,
-            opts=ResourceOptions(
-                providers=[k8s_provider],
-                depends_on=[pvn_svc_account, role_binding],
-                parent=self,
-                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
-            ),
-        )
-
-        token_secrets = fetched_svc_account.secrets.apply(
-            lambda secrets: [
-                secret
-                for secret in secrets
-                if secret.name.startswith("prodvana-token-")
-            ]
-        )
-        token_secret = token_secrets[0]
-
-        fetched_secret = k8s.core.v1.Secret.get(
-            "prodvana-mgmt-sa-token-fetched",
-            id=token_secret["name"],
-            opts=ResourceOptions(
-                providers=[k8s_provider],
-                depends_on=[pvn_svc_account, role_binding, fetched_svc_account],
-                parent=self,
-                aliases=[Alias(parent=ROOT_STACK_RESOURCE)],
-            ),
-        )
-
-        self.prodvana_service_account_name = pvn_svc_account.metadata.name
-        token = fetched_secret.data["token"].apply(
-            lambda secret: base64.standard_b64decode(secret).decode("utf-8")
-        )
-        self.prodvana_service_account_token = Output.secret(token)
-        ca_crt = fetched_secret.data["ca.crt"].apply(
-            lambda secret: base64.standard_b64decode(secret).decode("utf-8")
-        )
-        self.prodvana_service_account_ca_crt = Output.secret(ca_crt)
-
-        return {
-            "prodvana_service_account_name": self.prodvana_service_account_name,
-            "prodvana_service_account_token": self.prodvana_service_account_token,
-            "prodvana_service_account_ca_crt": self.prodvana_service_account_ca_crt,
-        }
 
     @property
     def kubeconfig(self) -> Output[str]:

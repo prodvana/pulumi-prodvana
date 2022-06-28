@@ -68,10 +68,33 @@ class Cluster(ComponentResource):
             ),
         )
 
+        # private clusters need some firewall setup so linkerd can function properly.
+        # see: https://linkerd.io/2.11/reference/cluster-configuration/#private-clusters
+        ctrl_plane_cidr = (
+            self.k8s_cluster.gke_cluster.private_cluster_config.master_ipv4_cidr_block
+        )
+
+        cluster_tag = self.k8s_cluster.nodepool.node_config.tags[0]
+
+        gcp.compute.Firewall(
+            "gke-to-linkerd-control-plane",
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    ports=["8443", "8089", "9443"],
+                    protocol="tcp",
+                )
+            ],
+            description="Allow traffic on ports 8443, 8089, 9443 for linkerd control-plane components",
+            network=self.vpc.network.name,
+            project=self.vpc.network.project,
+            source_ranges=[ctrl_plane_cidr],
+            target_tags=[cluster_tag],
+            priority=1000,
+            opts=ResourceOptions(parent=self),
+        )
+
         self.linkerd = Linkerd(
             "linkerd",
-            self.k8s_cluster,
-            self.vpc,
             self.cert_mgr,
             opts=ResourceOptions(
                 parent=self,

@@ -2,7 +2,6 @@ import base64
 import os
 from typing import Optional, Tuple
 
-import pulumi_gcp as gcp
 import pulumi_kubernetes as k8s
 from pulumi import ComponentResource, FileAsset, ResourceOptions
 from pulumi_kubernetes.apiextensions import CustomResource
@@ -18,7 +17,7 @@ class CertManager(ComponentResource):
     def __init__(
         self,
         name: str,
-        cluster: GKECluster,
+        cluster: ComponentResource,
         opts: Optional[ResourceOptions] = None,
     ):
         opts = ResourceOptions.merge(opts, ResourceOptions(depends_on=[cluster]))
@@ -73,40 +72,11 @@ class Linkerd(ComponentResource):
     def __init__(
         self,
         name: str,
-        cluster: GKECluster,
-        vpc: VPC,
         cert_mgr: CertManager,
         opts: Optional[ResourceOptions] = None,
     ):
-        opts = ResourceOptions.merge(
-            opts, ResourceOptions(depends_on=[cluster, cert_mgr])
-        )
+        opts = ResourceOptions.merge(opts, ResourceOptions(depends_on=[cert_mgr]))
         super().__init__("pvn-cluster:services:Linkerd", name, None, opts)
-
-        # private clusters need some firewall setup so linkerd can function properly.
-        # see: https://linkerd.io/2.11/reference/cluster-configuration/#private-clusters
-        ctrl_plane_cidr = (
-            cluster.gke_cluster.private_cluster_config.master_ipv4_cidr_block
-        )
-
-        cluster_tag = cluster.nodepool.node_config.tags[0]
-
-        gcp.compute.Firewall(
-            "gke-to-linkerd-control-plane",
-            allows=[
-                gcp.compute.FirewallAllowArgs(
-                    ports=["8443", "8089", "9443"],
-                    protocol="tcp",
-                )
-            ],
-            description="Allow traffic on ports 8443, 8089, 9443 for linkerd control-plane components",
-            network=vpc.network.name,
-            project=vpc.network.project,
-            source_ranges=[ctrl_plane_cidr],
-            target_tags=[cluster_tag],
-            priority=1000,
-            opts=ResourceOptions(parent=self),
-        )
 
         # create the linkerd namespace
         linkerd_ns = Namespace(
