@@ -10,7 +10,6 @@ from pulumi_kubernetes.helm.v3 import Release, ReleaseArgs, RepositoryOptsArgs
 from pulumi_kubernetes.meta.v1 import ObjectMetaArgs
 
 from pulumi_prodvana.k8s import GKECluster
-from pulumi_prodvana.network import VPC
 
 
 class CertManager(ComponentResource):
@@ -276,7 +275,7 @@ class Flagger(ComponentResource):
 
 
 def install_bootstrap_services(
-    k8s_provider: k8s.Provider, cluster: GKECluster, vpc: VPC
+    k8s_provider: k8s.Provider, cluster: GKECluster
 ) -> Tuple[CertManager, Linkerd]:
     cert_mgr = CertManager(
         "cert-manager",
@@ -285,8 +284,6 @@ def install_bootstrap_services(
     )
     linkerd = Linkerd(
         "linkerd",
-        cluster,
-        vpc,
         cert_mgr,
         opts=ResourceOptions(providers=[k8s_provider]),
     )
