@@ -9,6 +9,8 @@ python = "^3.10"
 pulumi-gcp = ">=6.0.0,<7.0.0"
 pulumi-kubernetes = ">=3.17.0,<4.0.0"
 pulumi-random = ">=4.4.0,<5.0.0"
+# pulumi requires an older version of protobuf, cannot exceed 3.20.X
+protobuf = "^3.20.1"
 pulumi = ">=3.0.0,<4.0.0"
 pulumi-aws = "^5.9.0"
 pulumi-eks = "^0.41.0"
