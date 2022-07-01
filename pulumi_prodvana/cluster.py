@@ -6,7 +6,7 @@ from pulumi import ComponentResource, Input, ResourceOptions
 
 from pulumi_prodvana.k8s import GKECluster
 from pulumi_prodvana.network import VPC
-from pulumi_prodvana.services import CertManager, Flagger, Linkerd
+from pulumi_prodvana.services import Flagger, Istio
 
 
 class Cluster(ComponentResource):
@@ -58,18 +58,9 @@ class Cluster(ComponentResource):
             kubeconfig=self.k8s_cluster.kubeconfig,
             opts=ResourceOptions(parent=self, depends_on=[self.k8s_cluster]),
         )
-        self.cert_mgr = CertManager(
-            "cert-manager",
-            self.k8s_cluster,
-            opts=ResourceOptions(
-                parent=self,
-                providers=[gcp_provider, k8s_provider],
-                depends_on=[self.k8s_cluster],
-            ),
-        )
 
-        # private clusters need some firewall setup so linkerd can function properly.
-        # see: https://linkerd.io/2.11/reference/cluster-configuration/#private-clusters
+        # private clusters need some firewall setup so istio can function properly.
+        # see: https://istio.io/latest/docs/setup/platform-setup/gke/
         ctrl_plane_cidr = (
             self.k8s_cluster.gke_cluster.private_cluster_config.master_ipv4_cidr_block
         )
@@ -77,14 +68,14 @@ class Cluster(ComponentResource):
         cluster_tag = self.k8s_cluster.nodepool.node_config.tags[0]
 
         gcp.compute.Firewall(
-            "gke-to-linkerd-control-plane",
+            "gke-to-istio-control-plane",
             allows=[
                 gcp.compute.FirewallAllowArgs(
-                    ports=["8443", "8089", "9443"],
+                    ports=["15017"],
                     protocol="tcp",
                 )
             ],
-            description="Allow traffic on ports 8443, 8089, 9443 for linkerd control-plane components",
+            description="Allow traffic on ports 15017 for istio control-plane components",
             network=self.vpc.network.name,
             project=self.vpc.network.project,
             source_ranges=[ctrl_plane_cidr],
@@ -92,10 +83,8 @@ class Cluster(ComponentResource):
             priority=1000,
             opts=ResourceOptions(parent=self),
         )
-
-        self.linkerd = Linkerd(
-            "linkerd",
-            self.cert_mgr,
+        self.istio = Istio(
+            "istio",
             opts=ResourceOptions(
                 parent=self,
                 providers=[gcp_provider, k8s_provider],
@@ -108,7 +97,7 @@ class Cluster(ComponentResource):
             opts=ResourceOptions(
                 parent=self,
                 providers=[gcp_provider, k8s_provider],
-                depends_on=[self.k8s_cluster, self.linkerd],
+                depends_on=[self.k8s_cluster, self.istio],
             ),
         )
 
@@ -120,8 +109,7 @@ class Cluster(ComponentResource):
             "vpc": self.vpc,
             "k8s_cluster": self.k8s_cluster,
             "k8s_endpoint": self.k8s_endpoint,
-            "cert_mgr": self.cert_mgr,
-            "linkerd": self.linkerd,
+            "istio": self.istio,
             "flagger": self.flagger,
         }
         if prodvana_managed:

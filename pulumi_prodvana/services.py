@@ -1,6 +1,6 @@
 import base64
 import os
-from typing import Optional, Tuple
+from typing import Optional
 
 import pulumi_kubernetes as k8s
 from pulumi import ComponentResource, FileAsset, ResourceOptions
@@ -8,8 +8,6 @@ from pulumi_kubernetes.apiextensions import CustomResource
 from pulumi_kubernetes.core.v1 import Namespace, Secret
 from pulumi_kubernetes.helm.v3 import Release, ReleaseArgs, RepositoryOptsArgs
 from pulumi_kubernetes.meta.v1 import ObjectMetaArgs
-
-from pulumi_prodvana.k8s import GKECluster
 
 
 class CertManager(ComponentResource):
@@ -237,6 +235,59 @@ class Linkerd(ComponentResource):
         )
 
 
+class Istio(ComponentResource):
+    def __init__(
+        self,
+        name: str,
+        opts: Optional[ResourceOptions] = None,
+    ):
+        super().__init__("pvn-cluster:services:Istio", name, None, opts)
+        # create the istio namespace
+        Namespace(
+            "istio-ns",
+            metadata=ObjectMetaArgs(
+                name="istio-system",
+            ),
+            opts=ResourceOptions(parent=self),
+        )
+
+        repo_opts = k8s.helm.v3.RepositoryOptsArgs(
+            repo="https://istio-release.storage.googleapis.com/charts",
+        )
+        version = "1.14.1"
+
+        # instlal base istio components
+        istio_base = k8s.helm.v3.Release(
+            "helm-istio-base",
+            k8s.helm.v3.ReleaseArgs(
+                chart="base",
+                repository_opts=repo_opts,
+                version=version,
+                namespace="istio-system",
+            ),
+            opts=ResourceOptions(parent=self),
+        )
+
+        # install istio discovery control plane
+        k8s.helm.v3.Release(
+            "helm-istiod",
+            k8s.helm.v3.ReleaseArgs(
+                chart="istiod",
+                repository_opts=repo_opts,
+                version=version,
+                namespace="istio-system",
+                values={
+                    "pilot": {
+                        "env": {
+                            "PILOT_SCOPE_GATEWAY_TO_NAMESPACE": "true",
+                        }
+                    }
+                },
+            ),
+            opts=ResourceOptions(parent=self, depends_on=[istio_base]),
+        )
+
+
 FLAGGER_CHART_VERSION = "1.20.0"
 
 
@@ -263,28 +314,12 @@ class Flagger(ComponentResource):
                     repo="https://flagger.app",
                 ),
                 version=FLAGGER_CHART_VERSION,
-                # flagger docs say to install in the linkerd namespace
-                namespace="linkerd",
+                # flagger docs say to install in the istio-system namespace
+                namespace="istio-system",
                 values={
-                    "meshProvider": "linkerd",
-                    "metricsServer": "http://prometheus.linkerd-viz:9090",
+                    "meshProvider": "istio",
+                    "metricsServer": "http://prometheus.istio-sytem:9090",
                 },
             ),
             opts=ResourceOptions(parent=self, depends_on=[flagger_crd]),
         )
-
-
-def install_bootstrap_services(
-    k8s_provider: k8s.Provider, cluster: GKECluster
-) -> Tuple[CertManager, Linkerd]:
-    cert_mgr = CertManager(
-        "cert-manager",
-        cluster,
-        opts=ResourceOptions(providers=[k8s_provider]),
-    )
-    linkerd = Linkerd(
-        "linkerd",
-        cert_mgr,
-        opts=ResourceOptions(providers=[k8s_provider]),
-    )
-    return cert_mgr, linkerd
