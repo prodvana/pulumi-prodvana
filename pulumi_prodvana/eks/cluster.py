@@ -74,7 +74,7 @@ class EKSCluster(ComponentResource):
             opts=ResourceOptions(
                 parent=self,
                 providers=[aws_provider, k8s_provider],
-                depends_on=[self.k8s_cluster],
+                depends_on=[eks_cluster],
             ),
         )
 
@@ -83,7 +83,7 @@ class EKSCluster(ComponentResource):
             opts=ResourceOptions(
                 parent=self,
                 providers=[aws_provider, k8s_provider],
-                depends_on=[eks_cluster, self.linkerd],
+                depends_on=[eks_cluster, self.istio],
             ),
         )
 
@@ -91,7 +91,6 @@ class EKSCluster(ComponentResource):
 
         outputs = {
             "k8s_endpoint": self.k8s_endpoint,
-            "cert_mgr": self.cert_mgr,
             "istio": self.istio,
             "flagger": self.flagger,
         }
