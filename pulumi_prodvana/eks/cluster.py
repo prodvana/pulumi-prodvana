@@ -7,7 +7,7 @@ import pulumi_kubernetes as k8s
 from pulumi import ComponentResource, Input, ResourceOptions
 
 from pulumi_prodvana.service_accounts import ProdvanaServiceAccounts
-from pulumi_prodvana.services import Flagger, Istio
+from pulumi_prodvana.services import CertManager, Flagger, Istio
 
 
 class EKSCluster(ComponentResource):
@@ -69,6 +69,15 @@ class EKSCluster(ComponentResource):
             opts=ResourceOptions(parent=self, depends_on=[eks_cluster]),
         )
 
+        self.cert_manager = CertManager(
+            "cert-manager",
+            opts=ResourceOptions(
+                parent=self,
+                providers=[aws_provider, k8s_provider],
+                depends_on=[self.k8s_cluster],
+            ),
+        )
+
         self.istio = Istio(
             "istio",
             opts=ResourceOptions(
@@ -92,6 +101,7 @@ class EKSCluster(ComponentResource):
         outputs = {
             "k8s_endpoint": self.k8s_endpoint,
             "istio": self.istio,
+            "cert_manager": self.cert_manager,
             "flagger": self.flagger,
         }
 

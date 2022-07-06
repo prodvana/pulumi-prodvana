@@ -14,10 +14,8 @@ class CertManager(ComponentResource):
     def __init__(
         self,
         name: str,
-        cluster: ComponentResource,
         opts: Optional[ResourceOptions] = None,
     ):
-        opts = ResourceOptions.merge(opts, ResourceOptions(depends_on=[cluster]))
         super().__init__("pvn-cluster:services:CertManager", name, None, opts)
 
         # install base cert-manager to support CA cer issuers etc.

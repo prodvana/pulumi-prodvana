@@ -6,7 +6,7 @@ from pulumi import ComponentResource, Input, ResourceOptions
 
 from pulumi_prodvana.k8s import GKECluster
 from pulumi_prodvana.network import VPC
-from pulumi_prodvana.services import Flagger, Istio
+from pulumi_prodvana.services import CertManager, Flagger, Istio
 
 
 class Cluster(ComponentResource):
@@ -83,6 +83,16 @@ class Cluster(ComponentResource):
             priority=1000,
             opts=ResourceOptions(parent=self),
         )
+
+        self.cert_manager = CertManager(
+            "cert-manager",
+            opts=ResourceOptions(
+                parent=self,
+                providers=[gcp_provider, k8s_provider],
+                depends_on=[self.k8s_cluster],
+            ),
+        )
+
         self.istio = Istio(
             "istio",
             opts=ResourceOptions(
@@ -110,6 +120,7 @@ class Cluster(ComponentResource):
             "k8s_cluster": self.k8s_cluster,
             "k8s_endpoint": self.k8s_endpoint,
             "istio": self.istio,
+            "cert_manager": self.cert_manager,
             "flagger": self.flagger,
         }
         if prodvana_managed:
