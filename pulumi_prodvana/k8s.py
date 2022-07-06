@@ -34,6 +34,7 @@ class GKECluster(ComponentResource):
         node_count_per_zone: Input[int],
         instance_type: Input[str],
         vpc: VPC,
+        gcp_credentials: Optional[Input[str]],
         install_prodvana_service_account: bool = False,
         cluster_id: Optional[str] = None,
         opts: Optional[ResourceOptions] = None,
@@ -41,6 +42,7 @@ class GKECluster(ComponentResource):
         opts = ResourceOptions.merge(opts, ResourceOptions(depends_on=[vpc]))
         super().__init__("pvn-cluster:k8s:GKECluster", name, None, opts)
 
+        self.gcp_credentials = gcp_credentials
         self.project = project
         self.region = region
 
@@ -180,7 +182,7 @@ class GKECluster(ComponentResource):
             master_auth: Mapping[str, str],
             region: str,
             project: str,
-            access_token: str,
+            gcp_credentials: Optional[str],
         ):
             identifier = f"{project}_{region}_{name}"
             return textwrap.dedent(
@@ -202,7 +204,15 @@ class GKECluster(ComponentResource):
             users:
             - name: {identifier}
               user:
-                token: {access_token}
+                exec:
+                  apiVersion: client.authentication.k8s.io/v1beta1
+                  command: gke-gcloud-auth-plugin
+                  installHint: Install gke-gcloud-auth-plugin for use with kubectl by following
+                    go/gke-kubectl-exec-auth
+                  provideClusterInfo: true
+                  env:
+                  - name: GOOGLE_CREDENTIALS
+                    value: {gcp_credentials or ""}
                 """
             )
 
@@ -212,7 +222,7 @@ class GKECluster(ComponentResource):
             self.gke_cluster.master_auth,
             self.region,
             self.project,
-            self.client_config.access_token,
+            self.gcp_credentials,
         )
         kubeconfig = k8s_info.apply(lambda info: gen_kubeconfig(*info))
         return Output.secret(kubeconfig)

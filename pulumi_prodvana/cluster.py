@@ -48,6 +48,7 @@ class Cluster(ComponentResource):
             instance_type=instance_type,
             install_prodvana_service_account=prodvana_managed,
             vpc=self.vpc,
+            gcp_credentials=gcp_credentials,
             opts=ResourceOptions(
                 parent=self, providers=[gcp_provider], depends_on=[self.vpc]
             ),
