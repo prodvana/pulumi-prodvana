@@ -82,7 +82,7 @@ class Cluster(ComponentResource):
             source_ranges=[ctrl_plane_cidr],
             target_tags=[cluster_tag],
             priority=1000,
-            opts=ResourceOptions(parent=self),
+            opts=ResourceOptions(parent=self, providers=[gcp_provider]),
         )
 
         self.cert_manager = CertManager(
