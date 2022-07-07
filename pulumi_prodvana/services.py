@@ -301,7 +301,8 @@ class Flagger(ComponentResource):
         flagger_crd = k8s.yaml.ConfigFile(
             f"{name}-flagger-crd",
             file=f"https://raw.githubusercontent.com/fluxcd/flagger/v{FLAGGER_CHART_VERSION}/charts/flagger/crds/crd.yaml",
-            opts=ResourceOptions(parent=self, providers=opts.providers),
+            # TODO(naphat) fix use of provider here, it should not be needed
+            opts=ResourceOptions(parent=self, providers=opts.providers),  # type: ignore
         )
 
         k8s.helm.v3.Release(

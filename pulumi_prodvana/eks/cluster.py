@@ -74,7 +74,7 @@ class EKSCluster(ComponentResource):
             opts=ResourceOptions(
                 parent=self,
                 providers=[aws_provider, k8s_provider],
-                depends_on=[self.k8s_cluster],
+                depends_on=[eks_cluster],
             ),
         )
 
