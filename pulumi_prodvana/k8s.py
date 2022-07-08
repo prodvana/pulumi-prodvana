@@ -1,5 +1,7 @@
-import textwrap
+import shlex
 from typing import Mapping, Optional, Sequence
+
+import yaml
 
 import pulumi_kubernetes as k8s
 from pulumi import ComponentResource, Input, InvokeOptions, Output, ResourceOptions
@@ -185,35 +187,66 @@ class GKECluster(ComponentResource):
             gcp_credentials: Optional[str],
         ):
             identifier = f"{project}_{region}_{name}"
-            return textwrap.dedent(
-                f"""\
-            apiVersion: v1
-            clusters:
-            - cluster:
-                certificate-authority-data: {master_auth['cluster_ca_certificate']}
-                server: https://{endpoint}
-              name: {identifier}
-            contexts:
-            - context:
-                cluster: {identifier}
-                user: {identifier}
-              name: {identifier}
-            current-context: {identifier}
-            kind: Config
-            preferences: {{}}
-            users:
-            - name: {identifier}
-              user:
-                exec:
-                  apiVersion: client.authentication.k8s.io/v1beta1
-                  command: gke-gcloud-auth-plugin
-                  installHint: Install gke-gcloud-auth-plugin for use with kubectl by following
-                    go/gke-kubectl-exec-auth
-                  provideClusterInfo: true
-                  env:
-                  - name: GOOGLE_CREDENTIALS
-                    value: {gcp_credentials or ""}
-                """
+            if gcp_credentials:
+                # TODO(naphat) this is extremely unpleasant and necessary only because gcloud does not allow
+                # passing a service account key json via env variable.
+                # We should look into writing a small binary that does oauth with service account key json
+                # and returning that token instead.
+                bash_cmd = f"""
+set -eu
+TEMPDIR="$(mktemp -d)"
+trap 'rm -rf $TEMPDIR' EXIT
+mkdir -p "$TEMPDIR"/home
+# overriding HOME here serves two purposes: to avoid leaking gcloud config state to other runs, and to avoid leaking
+# gke kube cache (stored in ~/.kube/) to other runs.
+export HOME="$TEMPDIR"/home
+echo {shlex.quote(gcp_credentials)} > "$TEMPDIR"/cred.json
+gcloud config set auth/credential_file_override "$TEMPDIR"/cred.json
+gke-gcloud-auth-plugin
+"""
+            else:
+                bash_cmd = "gke-gcloud-auth-plugin"
+            return yaml.safe_dump(
+                {
+                    "apiVersion": "v1",
+                    "clusters": [
+                        {
+                            "cluster": {
+                                "certificate-authority-data": master_auth[
+                                    "cluster_ca_certificate"
+                                ],
+                                "server": f"https://{endpoint}",
+                            },
+                            "name": identifier,
+                        },
+                    ],
+                    "contexts": [
+                        {
+                            "context": {
+                                "cluster": identifier,
+                                "user": identifier,
+                            },
+                            "name": identifier,
+                        },
+                    ],
+                    "current-context": identifier,
+                    "kind": "Config",
+                    "preferences": {},
+                    "users": [
+                        {
+                            "name": identifier,
+                            "user": {
+                                "exec": {
+                                    "apiVersion": "client.authentication.k8s.io/v1beta1",
+                                    "command": "/bin/bash",
+                                    "args": ["-c", bash_cmd],
+                                    "installHint": "Install gke-gcloud-auth-plugin for use with kubectl by following go/gke-kubectl-exec-auth",
+                                    "provideClusterInfo": True,
+                                },
+                            },
+                        }
+                    ],
+                }
             )
 
         k8s_info = Output.all(
