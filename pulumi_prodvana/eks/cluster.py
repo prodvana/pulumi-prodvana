@@ -1,13 +1,31 @@
-from typing import Optional, Sequence
+from typing import List, Optional, Sequence
 
 import pulumi_aws as aws
 import pulumi_eks as eks
 
 import pulumi_kubernetes as k8s
-from pulumi import ComponentResource, Input, ResourceOptions
+from pulumi import ComponentResource, Input, Resource, ResourceOptions
 
 from pulumi_prodvana.service_accounts import ProdvanaServiceAccounts
 from pulumi_prodvana.services import CertManager, Flagger, Istio
+
+SUBNET_CIDRS = [
+    "172.30.0.0/20",
+    "172.30.16.0/20",
+    "172.30.32.0/20",
+    "172.30.48.0/20",
+    "172.30.64.0/20",
+    "172.30.80.0/20",
+    "172.30.96.0/20",
+    "172.30.112.0/20",
+    "172.30.128.0/20",
+    "172.30.144.0/20",
+    "172.30.160.0/20",
+    "172.30.176.0/20",
+    "172.30.192.0/20",
+    "172.30.208.0/20",
+    "172.30.224.0/20",
+]
 
 
 class EKSCluster(ComponentResource):
@@ -46,10 +64,151 @@ class EKSCluster(ComponentResource):
             # {cluster_name}-instanceRole-role-XXXXXXX should be at most 64 chars long
             cluster_name = cluster_name[:38]
 
+        vpc = aws.ec2.Vpc(
+            f"pvn-k8s-vpc-{name}",
+            cidr_block="172.30.0.0/16",
+            enable_dns_hostnames=True,
+            opts=ResourceOptions(
+                parent=self,
+                providers=[aws_provider],
+            ),
+        )
+
+        igw = aws.ec2.InternetGateway(
+            f"pvn-igw-{name}",
+            vpc_id=vpc.id,
+            opts=ResourceOptions(
+                parent=self,
+                providers=[aws_provider],
+                depends_on=[vpc],
+            ),
+        )
+
+        private_subnets = []
+        public_subnets = []
+        cluster_deps: List[Input[Resource]] = [vpc]
+        index = 0
+        for zone in nodepool_zones:  # type: ignore
+            public_subnet = aws.ec2.Subnet(
+                f"pvn-k8s-subnet-public-{name}-{zone}",
+                availability_zone=zone,
+                cidr_block=SUBNET_CIDRS[index],
+                vpc_id=vpc.id,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[vpc],
+                ),
+                map_public_ip_on_launch=True,
+            )
+            index += 1
+            public_subnets.append(public_subnet)
+
+            private_subnet = aws.ec2.Subnet(
+                f"pvn-k8s-subnet-private-{name}-{zone}",
+                availability_zone=zone,
+                cidr_block=SUBNET_CIDRS[index],
+                vpc_id=vpc.id,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[vpc],
+                ),
+            )
+            index += 1
+            private_subnets.append(private_subnet)
+
+            eip = aws.ec2.Eip(
+                f"pvn-eip-{name}-{zone}",
+                vpc=True,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                ),
+            )
+
+            nat_gateway = aws.ec2.NatGateway(
+                f"pvn-ngw-{name}-{zone}",
+                allocation_id=eip.id,
+                connectivity_type="public",
+                subnet_id=public_subnet.id,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[public_subnet, eip, igw],
+                    delete_before_replace=True,  # TODO: Remove
+                ),
+            )
+
+            natgw_route_table = aws.ec2.RouteTable(
+                f"pvn-ngw-route-{name}-{zone}",
+                vpc_id=vpc.id,
+                routes=[
+                    aws.ec2.RouteTableRouteArgs(
+                        cidr_block="0.0.0.0/0",
+                        nat_gateway_id=nat_gateway.id,
+                    ),
+                ],
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[nat_gateway],
+                ),
+            )
+
+            natgw_route_assoc = aws.ec2.RouteTableAssociation(
+                f"pvn-ngw-rt-assoc-{name}-{zone}",
+                subnet_id=private_subnet.id,
+                route_table_id=natgw_route_table.id,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[natgw_route_table, private_subnet],
+                ),
+            )
+
+            public_route_table = aws.ec2.RouteTable(
+                f"pvn-igw-route-{name}-{zone}",
+                vpc_id=vpc.id,
+                routes=[
+                    aws.ec2.RouteTableRouteArgs(
+                        cidr_block="0.0.0.0/0",
+                        gateway_id=igw.id,
+                    ),
+                ],
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[igw],
+                ),
+            )
+
+            public_route_table_assoc = aws.ec2.RouteTableAssociation(
+                f"pvn-igw-rt-assoc-{name}-{zone}",
+                subnet_id=public_subnet.id,
+                route_table_id=public_route_table.id,
+                opts=ResourceOptions(
+                    parent=self,
+                    providers=[aws_provider],
+                    depends_on=[public_route_table, public_subnet],
+                ),
+            )
+
+            cluster_deps.append(public_subnet)
+            cluster_deps.append(private_subnet)
+            cluster_deps.append(natgw_route_assoc)
+            cluster_deps.append(public_route_table_assoc)
+
         eks_cluster = eks.Cluster(
             cluster_name,
             instance_type=instance_type,
             desired_capacity=node_count_per_zone,
+            node_associate_public_ip_address=False,
+            endpoint_private_access=False,
+            endpoint_public_access=True,
+            vpc_id=vpc.id,
+            private_subnet_ids=[subnet.id for subnet in private_subnets],
+            public_subnet_ids=[subnet.id for subnet in public_subnets],
             provider_credential_opts=eks.KubeconfigOptionsArgs(
                 role_arn=assume_role_arn,
             )
@@ -58,6 +217,7 @@ class EKSCluster(ComponentResource):
             opts=ResourceOptions(
                 parent=self,
                 providers=[aws_provider],
+                depends_on=cluster_deps,
             ),
         )
 
