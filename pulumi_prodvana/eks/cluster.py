@@ -199,6 +199,19 @@ class EKSCluster(ComponentResource):
             cluster_deps.append(natgw_route_assoc)
             cluster_deps.append(public_route_table_assoc)
 
+        role_mappings: List[eks.RoleMappingArgs] = []
+
+        if account_id:
+            # Give full admin access to anyone who can access this sub-account.
+            # TODO: In the future, we should make this role configurable.
+            role_mappings.append(
+                eks.RoleMappingArgs(
+                    groups=["systems:masters"],
+                    role_arn=f"arn:aws:iam::{account_id}:role/OrganizationAccountAccessRole",
+                    username="root-access",
+                )
+            )
+
         eks_cluster = eks.Cluster(
             cluster_name,
             instance_type=instance_type,
@@ -209,6 +222,7 @@ class EKSCluster(ComponentResource):
             vpc_id=vpc.id,
             private_subnet_ids=[subnet.id for subnet in private_subnets],
             public_subnet_ids=[subnet.id for subnet in public_subnets],
+            role_mappings=role_mappings,
             provider_credential_opts=eks.KubeconfigOptionsArgs(
                 role_arn=assume_role_arn,
             )
