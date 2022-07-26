@@ -206,7 +206,7 @@ class EKSCluster(ComponentResource):
             # TODO: In the future, we should make this role configurable.
             role_mappings.append(
                 eks.RoleMappingArgs(
-                    groups=["systems:masters"],
+                    groups=["system:masters"],
                     role_arn=f"arn:aws:iam::{account_id}:role/OrganizationAccountAccessRole",
                     username="root-access",
                 )
