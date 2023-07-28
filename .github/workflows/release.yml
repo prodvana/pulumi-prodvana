@@ -60,14 +60,14 @@ jobs:
     needs: publish_binary
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.6
+      uses: pulumi/pulumi-package-publisher@v0.0.9
     strategy:
       fail-fast: true
       matrix:
         dotnetversion:
           - 3.1.301
         goversion:
-          - 1.17.x
+          - 1.18.x
         language:
           - nodejs
           - python
