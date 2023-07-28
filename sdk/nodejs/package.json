@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/prodvana",
+    "name": "@prodvana/pulumi-prodvana",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing Prodvana cloud resources.",
     "keywords": [
