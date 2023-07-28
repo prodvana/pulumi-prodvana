@@ -1,0 +1,118 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "prodvana_application": {
+                "current": "prodvana:index/application:Application"
+            },
+            "prodvana_k8s_runtime": {
+                "current": "prodvana:index/k8sRuntime:K8sRuntime"
+            },
+            "prodvana_managed_k8s_runtime": {
+                "current": "prodvana:index/managedK8sRuntime:ManagedK8sRuntime",
+                "fields": {
+                    "config_paths": {
+                        "maxItemsOne": false
+                    },
+                    "exec": {
+                        "elem": {
+                            "fields": {
+                                "args": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "prodvana_release_channel": {
+                "current": "prodvana:index/releaseChannel:ReleaseChannel",
+                "fields": {
+                    "runtimes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "prodvana_runtime_link": {
+                "current": "prodvana:index/runtimeLink:RuntimeLink"
+            }
+        },
+        "datasources": {
+            "prodvana_application": {
+                "current": "prodvana:index/getApplication:getApplication"
+            },
+            "prodvana_k8s_runtime": {
+                "current": "prodvana:index/getK8sRuntime:getK8sRuntime"
+            },
+            "prodvana_release_channel": {
+                "current": "prodvana:index/getReleaseChannel:getReleaseChannel",
+                "fields": {
+                    "runtimes": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "renames": {
+        "resources": {
+            "prodvana:index/application:Application": "prodvana_application",
+            "prodvana:index/k8sRuntime:K8sRuntime": "prodvana_k8s_runtime",
+            "prodvana:index/managedK8sRuntime:ManagedK8sRuntime": "prodvana_managed_k8s_runtime",
+            "prodvana:index/releaseChannel:ReleaseChannel": "prodvana_release_channel",
+            "prodvana:index/runtimeLink:RuntimeLink": "prodvana_runtime_link"
+        },
+        "functions": {
+            "prodvana:index/getApplication:getApplication": "prodvana_application",
+            "prodvana:index/getK8sRuntime:getK8sRuntime": "prodvana_k8s_runtime",
+            "prodvana:index/getReleaseChannel:getReleaseChannel": "prodvana_release_channel"
+        },
+        "renamedProperties": {
+            "prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec": {
+                "apiVersion": "api_version"
+            },
+            "prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy": {
+                "defaultEnv": "default_env"
+            },
+            "prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime": {
+                "ecsPrefix": "ecs_prefix",
+                "k8sNamespace": "k8s_namespace"
+            },
+            "prodvana:index/getK8sRuntime:getK8sRuntime": {
+                "agentApiToken": "agent_api_token"
+            },
+            "prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy": {
+                "defaultEnv": "default_env"
+            },
+            "prodvana:index/getReleaseChannelRuntime:getReleaseChannelRuntime": {
+                "ecsPrefix": "ecs_prefix",
+                "k8sNamespace": "k8s_namespace"
+            },
+            "prodvana:index/k8sRuntime:K8sRuntime": {
+                "agentApiToken": "agent_api_token"
+            },
+            "prodvana:index/managedK8sRuntime:ManagedK8sRuntime": {
+                "agentEnv": "agent_env",
+                "agentNamespace": "agent_namespace",
+                "agentRuntimeId": "agent_runtime_id",
+                "clientCertificate": "client_certificate",
+                "clientKey": "client_key",
+                "clusterCaCertificate": "cluster_ca_certificate",
+                "configContext": "config_context",
+                "configContextAuthInfo": "config_context_auth_info",
+                "configContextCluster": "config_context_cluster",
+                "configPath": "config_path",
+                "configPaths": "config_paths",
+                "proxyUrl": "proxy_url",
+                "tlsServerName": "tls_server_name"
+            },
+            "prodvana:index:Provider": {
+                "apiToken": "api_token",
+                "orgSlug": "org_slug"
+            }
+        },
+        "renamedConfigProperties": {
+            "apiToken": "api_token",
+            "orgSlug": "org_slug"
+        }
+    }
+}
