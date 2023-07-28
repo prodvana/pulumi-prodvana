@@ -23,7 +23,7 @@ env:
   # PUBLISH_NUGET: false
   PYPI_PASSWORD: ${{ secrets.PYPI_PUBLISHING_TOKEN }}
   PUBLISH_PYPI: true
-  PYPI_USERNAME: ""
+  PYPI_USERNAME: "__token__"
   # PYPI_REPOSITORY_URL: ""
 jobs:
   publish_binary:
