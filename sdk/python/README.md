@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/prodvana
+npm install @prodvana/pulumi-prodvana
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/prodvana
+yarn add @prodvana/pulumi-prodvana
 ```
 
 ### Python

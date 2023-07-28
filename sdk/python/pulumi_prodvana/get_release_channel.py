@@ -23,22 +23,40 @@ class GetReleaseChannelResult:
     """
     A collection of values returned by getReleaseChannel.
     """
-    def __init__(__self__, application=None, id=None, name=None, policy=None, runtimes=None, version=None):
+    def __init__(__self__, application=None, constants=None, convergence_protections=None, id=None, manual_approval_preconditions=None, name=None, policy=None, protections=None, release_channel_stable_preconditions=None, runtimes=None, service_instance_protections=None, version=None):
         if application and not isinstance(application, str):
             raise TypeError("Expected argument 'application' to be a str")
         pulumi.set(__self__, "application", application)
+        if constants and not isinstance(constants, list):
+            raise TypeError("Expected argument 'constants' to be a list")
+        pulumi.set(__self__, "constants", constants)
+        if convergence_protections and not isinstance(convergence_protections, list):
+            raise TypeError("Expected argument 'convergence_protections' to be a list")
+        pulumi.set(__self__, "convergence_protections", convergence_protections)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if manual_approval_preconditions and not isinstance(manual_approval_preconditions, list):
+            raise TypeError("Expected argument 'manual_approval_preconditions' to be a list")
+        pulumi.set(__self__, "manual_approval_preconditions", manual_approval_preconditions)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if policy and not isinstance(policy, dict):
             raise TypeError("Expected argument 'policy' to be a dict")
         pulumi.set(__self__, "policy", policy)
+        if protections and not isinstance(protections, list):
+            raise TypeError("Expected argument 'protections' to be a list")
+        pulumi.set(__self__, "protections", protections)
+        if release_channel_stable_preconditions and not isinstance(release_channel_stable_preconditions, list):
+            raise TypeError("Expected argument 'release_channel_stable_preconditions' to be a list")
+        pulumi.set(__self__, "release_channel_stable_preconditions", release_channel_stable_preconditions)
         if runtimes and not isinstance(runtimes, list):
             raise TypeError("Expected argument 'runtimes' to be a list")
         pulumi.set(__self__, "runtimes", runtimes)
+        if service_instance_protections and not isinstance(service_instance_protections, list):
+            raise TypeError("Expected argument 'service_instance_protections' to be a list")
+        pulumi.set(__self__, "service_instance_protections", service_instance_protections)
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
@@ -53,11 +71,35 @@ class GetReleaseChannelResult:
 
     @property
     @pulumi.getter
+    def constants(self) -> Optional[Sequence['outputs.GetReleaseChannelConstantResult']]:
+        """
+        Constant values for this release channel
+        """
+        return pulumi.get(self, "constants")
+
+    @property
+    @pulumi.getter(name="convergenceProtections")
+    def convergence_protections(self) -> Optional[Sequence['outputs.GetReleaseChannelConvergenceProtectionResult']]:
+        """
+        Feature Coming Soon
+        """
+        return pulumi.get(self, "convergence_protections")
+
+    @property
+    @pulumi.getter
     def id(self) -> str:
         """
         Release channel identifier
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="manualApprovalPreconditions")
+    def manual_approval_preconditions(self) -> Optional[Sequence['outputs.GetReleaseChannelManualApprovalPreconditionResult']]:
+        """
+        Preconditions requiring manual approval before this release channel can be deployed
+        """
+        return pulumi.get(self, "manual_approval_preconditions")
 
     @property
     @pulumi.getter
@@ -77,11 +119,35 @@ class GetReleaseChannelResult:
 
     @property
     @pulumi.getter
+    def protections(self) -> Optional[Sequence['outputs.GetReleaseChannelProtectionResult']]:
+        """
+        Protections applied this release channel
+        """
+        return pulumi.get(self, "protections")
+
+    @property
+    @pulumi.getter(name="releaseChannelStablePreconditions")
+    def release_channel_stable_preconditions(self) -> Optional[Sequence['outputs.GetReleaseChannelReleaseChannelStablePreconditionResult']]:
+        """
+        Preconditions requiring other release channels to be stable before this release channel can be deployed
+        """
+        return pulumi.get(self, "release_channel_stable_preconditions")
+
+    @property
+    @pulumi.getter
     def runtimes(self) -> Sequence['outputs.GetReleaseChannelRuntimeResult']:
         """
         Release Channel policy applied to all services
         """
         return pulumi.get(self, "runtimes")
+
+    @property
+    @pulumi.getter(name="serviceInstanceProtections")
+    def service_instance_protections(self) -> Optional[Sequence['outputs.GetReleaseChannelServiceInstanceProtectionResult']]:
+        """
+        Protections applied to service instances in this release channel
+        """
+        return pulumi.get(self, "service_instance_protections")
 
     @property
     @pulumi.getter
@@ -99,16 +165,28 @@ class AwaitableGetReleaseChannelResult(GetReleaseChannelResult):
             yield self
         return GetReleaseChannelResult(
             application=self.application,
+            constants=self.constants,
+            convergence_protections=self.convergence_protections,
             id=self.id,
+            manual_approval_preconditions=self.manual_approval_preconditions,
             name=self.name,
             policy=self.policy,
+            protections=self.protections,
+            release_channel_stable_preconditions=self.release_channel_stable_preconditions,
             runtimes=self.runtimes,
+            service_instance_protections=self.service_instance_protections,
             version=self.version)
 
 
 def get_release_channel(application: Optional[str] = None,
+                        constants: Optional[Sequence[pulumi.InputType['GetReleaseChannelConstantArgs']]] = None,
+                        convergence_protections: Optional[Sequence[pulumi.InputType['GetReleaseChannelConvergenceProtectionArgs']]] = None,
+                        manual_approval_preconditions: Optional[Sequence[pulumi.InputType['GetReleaseChannelManualApprovalPreconditionArgs']]] = None,
                         name: Optional[str] = None,
                         policy: Optional[pulumi.InputType['GetReleaseChannelPolicyArgs']] = None,
+                        protections: Optional[Sequence[pulumi.InputType['GetReleaseChannelProtectionArgs']]] = None,
+                        release_channel_stable_preconditions: Optional[Sequence[pulumi.InputType['GetReleaseChannelReleaseChannelStablePreconditionArgs']]] = None,
+                        service_instance_protections: Optional[Sequence[pulumi.InputType['GetReleaseChannelServiceInstanceProtectionArgs']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReleaseChannelResult:
     """
     Prodvana Release Channel
@@ -125,29 +203,53 @@ def get_release_channel(application: Optional[str] = None,
 
 
     :param str application: Name of the Application this Release Channel belongs to
+    :param Sequence[pulumi.InputType['GetReleaseChannelConstantArgs']] constants: Constant values for this release channel
+    :param Sequence[pulumi.InputType['GetReleaseChannelConvergenceProtectionArgs']] convergence_protections: Feature Coming Soon
+    :param Sequence[pulumi.InputType['GetReleaseChannelManualApprovalPreconditionArgs']] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
     :param str name: Release Channel name
     :param pulumi.InputType['GetReleaseChannelPolicyArgs'] policy: Release Channel policy applied to all services
+    :param Sequence[pulumi.InputType['GetReleaseChannelProtectionArgs']] protections: Protections applied this release channel
+    :param Sequence[pulumi.InputType['GetReleaseChannelReleaseChannelStablePreconditionArgs']] release_channel_stable_preconditions: Preconditions requiring other release channels to be stable before this release channel can be deployed
+    :param Sequence[pulumi.InputType['GetReleaseChannelServiceInstanceProtectionArgs']] service_instance_protections: Protections applied to service instances in this release channel
     """
     __args__ = dict()
     __args__['application'] = application
+    __args__['constants'] = constants
+    __args__['convergenceProtections'] = convergence_protections
+    __args__['manualApprovalPreconditions'] = manual_approval_preconditions
     __args__['name'] = name
     __args__['policy'] = policy
+    __args__['protections'] = protections
+    __args__['releaseChannelStablePreconditions'] = release_channel_stable_preconditions
+    __args__['serviceInstanceProtections'] = service_instance_protections
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('prodvana:index/getReleaseChannel:getReleaseChannel', __args__, opts=opts, typ=GetReleaseChannelResult).value
 
     return AwaitableGetReleaseChannelResult(
         application=pulumi.get(__ret__, 'application'),
+        constants=pulumi.get(__ret__, 'constants'),
+        convergence_protections=pulumi.get(__ret__, 'convergence_protections'),
         id=pulumi.get(__ret__, 'id'),
+        manual_approval_preconditions=pulumi.get(__ret__, 'manual_approval_preconditions'),
         name=pulumi.get(__ret__, 'name'),
         policy=pulumi.get(__ret__, 'policy'),
+        protections=pulumi.get(__ret__, 'protections'),
+        release_channel_stable_preconditions=pulumi.get(__ret__, 'release_channel_stable_preconditions'),
         runtimes=pulumi.get(__ret__, 'runtimes'),
+        service_instance_protections=pulumi.get(__ret__, 'service_instance_protections'),
         version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_release_channel)
 def get_release_channel_output(application: Optional[pulumi.Input[str]] = None,
+                               constants: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetReleaseChannelConstantArgs']]]]] = None,
+                               convergence_protections: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetReleaseChannelConvergenceProtectionArgs']]]]] = None,
+                               manual_approval_preconditions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetReleaseChannelManualApprovalPreconditionArgs']]]]] = None,
                                name: Optional[pulumi.Input[str]] = None,
                                policy: Optional[pulumi.Input[Optional[pulumi.InputType['GetReleaseChannelPolicyArgs']]]] = None,
+                               protections: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetReleaseChannelProtectionArgs']]]]] = None,
+                               release_channel_stable_preconditions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetReleaseChannelReleaseChannelStablePreconditionArgs']]]]] = None,
+                               service_instance_protections: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetReleaseChannelServiceInstanceProtectionArgs']]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReleaseChannelResult]:
     """
     Prodvana Release Channel
@@ -164,7 +266,13 @@ def get_release_channel_output(application: Optional[pulumi.Input[str]] = None,
 
 
     :param str application: Name of the Application this Release Channel belongs to
+    :param Sequence[pulumi.InputType['GetReleaseChannelConstantArgs']] constants: Constant values for this release channel
+    :param Sequence[pulumi.InputType['GetReleaseChannelConvergenceProtectionArgs']] convergence_protections: Feature Coming Soon
+    :param Sequence[pulumi.InputType['GetReleaseChannelManualApprovalPreconditionArgs']] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
     :param str name: Release Channel name
     :param pulumi.InputType['GetReleaseChannelPolicyArgs'] policy: Release Channel policy applied to all services
+    :param Sequence[pulumi.InputType['GetReleaseChannelProtectionArgs']] protections: Protections applied this release channel
+    :param Sequence[pulumi.InputType['GetReleaseChannelReleaseChannelStablePreconditionArgs']] release_channel_stable_preconditions: Preconditions requiring other release channels to be stable before this release channel can be deployed
+    :param Sequence[pulumi.InputType['GetReleaseChannelServiceInstanceProtectionArgs']] service_instance_protections: Protections applied to service instances in this release channel
     """
     ...

@@ -27,8 +27,71 @@
             "prodvana_release_channel": {
                 "current": "prodvana:index/releaseChannel:ReleaseChannel",
                 "fields": {
+                    "constants": {
+                        "maxItemsOne": false
+                    },
+                    "convergence_protections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "ref": {
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "manual_approval_preconditions": {
+                        "maxItemsOne": false
+                    },
+                    "protections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "ref": {
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "release_channel_stable_preconditions": {
+                        "maxItemsOne": false
+                    },
                     "runtimes": {
                         "maxItemsOne": false
+                    },
+                    "service_instance_protections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "ref": {
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -46,8 +109,71 @@
             "prodvana_release_channel": {
                 "current": "prodvana:index/getReleaseChannel:getReleaseChannel",
                 "fields": {
+                    "constants": {
+                        "maxItemsOne": false
+                    },
+                    "convergence_protections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "ref": {
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "manual_approval_preconditions": {
+                        "maxItemsOne": false
+                    },
+                    "protections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "ref": {
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "release_channel_stable_preconditions": {
+                        "maxItemsOne": false
+                    },
                     "runtimes": {
                         "maxItemsOne": false
+                    },
+                    "service_instance_protections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "elem": {
+                                "fields": {
+                                    "ref": {
+                                        "elem": {
+                                            "fields": {
+                                                "parameters": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -70,22 +196,136 @@
             "prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec": {
                 "apiVersion": "api_version"
             },
+            "prodvana:index/ReleaseChannelConstant:ReleaseChannelConstant": {
+                "stringValue": "string_value"
+            },
+            "prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection": {
+                "postApproval": "post_approval",
+                "postDeployment": "post_deployment",
+                "preApproval": "pre_approval"
+            },
+            "prodvana:index/ReleaseChannelConvergenceProtectionPostDeployment:ReleaseChannelConvergenceProtectionPostDeployment": {
+                "checkDuration": "check_duration",
+                "delayCheckDuration": "delay_check_duration"
+            },
+            "prodvana:index/ReleaseChannelConvergenceProtectionRefParameter:ReleaseChannelConvergenceProtectionRefParameter": {
+                "dockerImageTagValue": "docker_image_tag_value",
+                "intValue": "int_value",
+                "secretValue": "secret_value",
+                "stringValue": "string_value"
+            },
+            "prodvana:index/ReleaseChannelManualApprovalPrecondition:ReleaseChannelManualApprovalPrecondition": {
+                "everyAction": "every_action"
+            },
             "prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy": {
                 "defaultEnv": "default_env"
+            },
+            "prodvana:index/ReleaseChannelProtection:ReleaseChannelProtection": {
+                "postApproval": "post_approval",
+                "postDeployment": "post_deployment",
+                "preApproval": "pre_approval"
+            },
+            "prodvana:index/ReleaseChannelProtectionPostDeployment:ReleaseChannelProtectionPostDeployment": {
+                "checkDuration": "check_duration",
+                "delayCheckDuration": "delay_check_duration"
+            },
+            "prodvana:index/ReleaseChannelProtectionRefParameter:ReleaseChannelProtectionRefParameter": {
+                "dockerImageTagValue": "docker_image_tag_value",
+                "intValue": "int_value",
+                "secretValue": "secret_value",
+                "stringValue": "string_value"
+            },
+            "prodvana:index/ReleaseChannelReleaseChannelStablePrecondition:ReleaseChannelReleaseChannelStablePrecondition": {
+                "releaseChannel": "release_channel"
             },
             "prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime": {
                 "ecsPrefix": "ecs_prefix",
                 "k8sNamespace": "k8s_namespace"
             },
+            "prodvana:index/ReleaseChannelServiceInstanceProtection:ReleaseChannelServiceInstanceProtection": {
+                "postApproval": "post_approval",
+                "postDeployment": "post_deployment",
+                "preApproval": "pre_approval"
+            },
+            "prodvana:index/ReleaseChannelServiceInstanceProtectionPostDeployment:ReleaseChannelServiceInstanceProtectionPostDeployment": {
+                "checkDuration": "check_duration",
+                "delayCheckDuration": "delay_check_duration"
+            },
+            "prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameter:ReleaseChannelServiceInstanceProtectionRefParameter": {
+                "dockerImageTagValue": "docker_image_tag_value",
+                "intValue": "int_value",
+                "secretValue": "secret_value",
+                "stringValue": "string_value"
+            },
             "prodvana:index/getK8sRuntime:getK8sRuntime": {
                 "agentApiToken": "agent_api_token"
+            },
+            "prodvana:index/getReleaseChannel:getReleaseChannel": {
+                "convergenceProtections": "convergence_protections",
+                "manualApprovalPreconditions": "manual_approval_preconditions",
+                "releaseChannelStablePreconditions": "release_channel_stable_preconditions",
+                "serviceInstanceProtections": "service_instance_protections"
+            },
+            "prodvana:index/getReleaseChannelConstant:getReleaseChannelConstant": {
+                "stringValue": "string_value"
+            },
+            "prodvana:index/getReleaseChannelConvergenceProtection:getReleaseChannelConvergenceProtection": {
+                "postApproval": "post_approval",
+                "postDeployment": "post_deployment",
+                "preApproval": "pre_approval"
+            },
+            "prodvana:index/getReleaseChannelConvergenceProtectionPostDeployment:getReleaseChannelConvergenceProtectionPostDeployment": {
+                "checkDuration": "check_duration",
+                "delayCheckDuration": "delay_check_duration"
+            },
+            "prodvana:index/getReleaseChannelConvergenceProtectionRefParameter:getReleaseChannelConvergenceProtectionRefParameter": {
+                "dockerImageTagValue": "docker_image_tag_value",
+                "intValue": "int_value",
+                "secretValue": "secret_value",
+                "stringValue": "string_value"
+            },
+            "prodvana:index/getReleaseChannelManualApprovalPrecondition:getReleaseChannelManualApprovalPrecondition": {
+                "everyAction": "every_action"
             },
             "prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy": {
                 "defaultEnv": "default_env"
             },
+            "prodvana:index/getReleaseChannelProtection:getReleaseChannelProtection": {
+                "postApproval": "post_approval",
+                "postDeployment": "post_deployment",
+                "preApproval": "pre_approval"
+            },
+            "prodvana:index/getReleaseChannelProtectionPostDeployment:getReleaseChannelProtectionPostDeployment": {
+                "checkDuration": "check_duration",
+                "delayCheckDuration": "delay_check_duration"
+            },
+            "prodvana:index/getReleaseChannelProtectionRefParameter:getReleaseChannelProtectionRefParameter": {
+                "dockerImageTagValue": "docker_image_tag_value",
+                "intValue": "int_value",
+                "secretValue": "secret_value",
+                "stringValue": "string_value"
+            },
+            "prodvana:index/getReleaseChannelReleaseChannelStablePrecondition:getReleaseChannelReleaseChannelStablePrecondition": {
+                "releaseChannel": "release_channel"
+            },
             "prodvana:index/getReleaseChannelRuntime:getReleaseChannelRuntime": {
                 "ecsPrefix": "ecs_prefix",
                 "k8sNamespace": "k8s_namespace"
+            },
+            "prodvana:index/getReleaseChannelServiceInstanceProtection:getReleaseChannelServiceInstanceProtection": {
+                "postApproval": "post_approval",
+                "postDeployment": "post_deployment",
+                "preApproval": "pre_approval"
+            },
+            "prodvana:index/getReleaseChannelServiceInstanceProtectionPostDeployment:getReleaseChannelServiceInstanceProtectionPostDeployment": {
+                "checkDuration": "check_duration",
+                "delayCheckDuration": "delay_check_duration"
+            },
+            "prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameter:getReleaseChannelServiceInstanceProtectionRefParameter": {
+                "dockerImageTagValue": "docker_image_tag_value",
+                "intValue": "int_value",
+                "secretValue": "secret_value",
+                "stringValue": "string_value"
             },
             "prodvana:index/k8sRuntime:K8sRuntime": {
                 "agentApiToken": "agent_api_token"
@@ -104,6 +344,12 @@
                 "configPaths": "config_paths",
                 "proxyUrl": "proxy_url",
                 "tlsServerName": "tls_server_name"
+            },
+            "prodvana:index/releaseChannel:ReleaseChannel": {
+                "convergenceProtections": "convergence_protections",
+                "manualApprovalPreconditions": "manual_approval_preconditions",
+                "releaseChannelStablePreconditions": "release_channel_stable_preconditions",
+                "serviceInstanceProtections": "service_instance_protections"
             },
             "prodvana:index:Provider": {
                 "apiToken": "api_token",

@@ -48,6 +48,18 @@ export class ReleaseChannel extends pulumi.CustomResource {
      */
     public readonly application!: pulumi.Output<string>;
     /**
+     * Constant values for this release channel
+     */
+    public readonly constants!: pulumi.Output<outputs.ReleaseChannelConstant[] | undefined>;
+    /**
+     * Feature Coming Soon
+     */
+    public readonly convergenceProtections!: pulumi.Output<outputs.ReleaseChannelConvergenceProtection[] | undefined>;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed
+     */
+    public readonly manualApprovalPreconditions!: pulumi.Output<outputs.ReleaseChannelManualApprovalPrecondition[] | undefined>;
+    /**
      * Release Channel name
      */
     public readonly name!: pulumi.Output<string>;
@@ -56,9 +68,21 @@ export class ReleaseChannel extends pulumi.CustomResource {
      */
     public readonly policy!: pulumi.Output<outputs.ReleaseChannelPolicy | undefined>;
     /**
+     * Protections applied this release channel
+     */
+    public readonly protections!: pulumi.Output<outputs.ReleaseChannelProtection[] | undefined>;
+    /**
+     * Preconditions requiring other release channels to be stable before this release channel can be deployed
+     */
+    public readonly releaseChannelStablePreconditions!: pulumi.Output<outputs.ReleaseChannelReleaseChannelStablePrecondition[] | undefined>;
+    /**
      * Release Channel policy applied to all services
      */
     public readonly runtimes!: pulumi.Output<outputs.ReleaseChannelRuntime[]>;
+    /**
+     * Protections applied to service instances in this release channel
+     */
+    public readonly serviceInstanceProtections!: pulumi.Output<outputs.ReleaseChannelServiceInstanceProtection[] | undefined>;
     /**
      * Current application version
      */
@@ -78,9 +102,15 @@ export class ReleaseChannel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReleaseChannelState | undefined;
             resourceInputs["application"] = state ? state.application : undefined;
+            resourceInputs["constants"] = state ? state.constants : undefined;
+            resourceInputs["convergenceProtections"] = state ? state.convergenceProtections : undefined;
+            resourceInputs["manualApprovalPreconditions"] = state ? state.manualApprovalPreconditions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["protections"] = state ? state.protections : undefined;
+            resourceInputs["releaseChannelStablePreconditions"] = state ? state.releaseChannelStablePreconditions : undefined;
             resourceInputs["runtimes"] = state ? state.runtimes : undefined;
+            resourceInputs["serviceInstanceProtections"] = state ? state.serviceInstanceProtections : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ReleaseChannelArgs | undefined;
@@ -91,9 +121,15 @@ export class ReleaseChannel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'runtimes'");
             }
             resourceInputs["application"] = args ? args.application : undefined;
+            resourceInputs["constants"] = args ? args.constants : undefined;
+            resourceInputs["convergenceProtections"] = args ? args.convergenceProtections : undefined;
+            resourceInputs["manualApprovalPreconditions"] = args ? args.manualApprovalPreconditions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["protections"] = args ? args.protections : undefined;
+            resourceInputs["releaseChannelStablePreconditions"] = args ? args.releaseChannelStablePreconditions : undefined;
             resourceInputs["runtimes"] = args ? args.runtimes : undefined;
+            resourceInputs["serviceInstanceProtections"] = args ? args.serviceInstanceProtections : undefined;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -110,6 +146,18 @@ export interface ReleaseChannelState {
      */
     application?: pulumi.Input<string>;
     /**
+     * Constant values for this release channel
+     */
+    constants?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConstant>[]>;
+    /**
+     * Feature Coming Soon
+     */
+    convergenceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConvergenceProtection>[]>;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed
+     */
+    manualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelManualApprovalPrecondition>[]>;
+    /**
      * Release Channel name
      */
     name?: pulumi.Input<string>;
@@ -118,9 +166,21 @@ export interface ReleaseChannelState {
      */
     policy?: pulumi.Input<inputs.ReleaseChannelPolicy>;
     /**
+     * Protections applied this release channel
+     */
+    protections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelProtection>[]>;
+    /**
+     * Preconditions requiring other release channels to be stable before this release channel can be deployed
+     */
+    releaseChannelStablePreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelReleaseChannelStablePrecondition>[]>;
+    /**
      * Release Channel policy applied to all services
      */
     runtimes?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelRuntime>[]>;
+    /**
+     * Protections applied to service instances in this release channel
+     */
+    serviceInstanceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelServiceInstanceProtection>[]>;
     /**
      * Current application version
      */
@@ -136,6 +196,18 @@ export interface ReleaseChannelArgs {
      */
     application: pulumi.Input<string>;
     /**
+     * Constant values for this release channel
+     */
+    constants?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConstant>[]>;
+    /**
+     * Feature Coming Soon
+     */
+    convergenceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConvergenceProtection>[]>;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed
+     */
+    manualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelManualApprovalPrecondition>[]>;
+    /**
      * Release Channel name
      */
     name?: pulumi.Input<string>;
@@ -144,7 +216,19 @@ export interface ReleaseChannelArgs {
      */
     policy?: pulumi.Input<inputs.ReleaseChannelPolicy>;
     /**
+     * Protections applied this release channel
+     */
+    protections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelProtection>[]>;
+    /**
+     * Preconditions requiring other release channels to be stable before this release channel can be deployed
+     */
+    releaseChannelStablePreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelReleaseChannelStablePrecondition>[]>;
+    /**
      * Release Channel policy applied to all services
      */
     runtimes: pulumi.Input<pulumi.Input<inputs.ReleaseChannelRuntime>[]>;
+    /**
+     * Protections applied to service instances in this release channel
+     */
+    serviceInstanceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelServiceInstanceProtection>[]>;
 }

@@ -207,6 +207,1274 @@ func (o ManagedK8sRuntimeExecPtrOutput) Env() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ReleaseChannelConstant struct {
+	// name of the constant
+	Name string `pulumi:"name"`
+	// string value of the constant
+	StringValue string `pulumi:"stringValue"`
+}
+
+// ReleaseChannelConstantInput is an input type that accepts ReleaseChannelConstantArgs and ReleaseChannelConstantOutput values.
+// You can construct a concrete instance of `ReleaseChannelConstantInput` via:
+//
+//	ReleaseChannelConstantArgs{...}
+type ReleaseChannelConstantInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConstantOutput() ReleaseChannelConstantOutput
+	ToReleaseChannelConstantOutputWithContext(context.Context) ReleaseChannelConstantOutput
+}
+
+type ReleaseChannelConstantArgs struct {
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// string value of the constant
+	StringValue pulumi.StringInput `pulumi:"stringValue"`
+}
+
+func (ReleaseChannelConstantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConstant)(nil)).Elem()
+}
+
+func (i ReleaseChannelConstantArgs) ToReleaseChannelConstantOutput() ReleaseChannelConstantOutput {
+	return i.ToReleaseChannelConstantOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConstantArgs) ToReleaseChannelConstantOutputWithContext(ctx context.Context) ReleaseChannelConstantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConstantOutput)
+}
+
+// ReleaseChannelConstantArrayInput is an input type that accepts ReleaseChannelConstantArray and ReleaseChannelConstantArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelConstantArrayInput` via:
+//
+//	ReleaseChannelConstantArray{ ReleaseChannelConstantArgs{...} }
+type ReleaseChannelConstantArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConstantArrayOutput() ReleaseChannelConstantArrayOutput
+	ToReleaseChannelConstantArrayOutputWithContext(context.Context) ReleaseChannelConstantArrayOutput
+}
+
+type ReleaseChannelConstantArray []ReleaseChannelConstantInput
+
+func (ReleaseChannelConstantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConstant)(nil)).Elem()
+}
+
+func (i ReleaseChannelConstantArray) ToReleaseChannelConstantArrayOutput() ReleaseChannelConstantArrayOutput {
+	return i.ToReleaseChannelConstantArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConstantArray) ToReleaseChannelConstantArrayOutputWithContext(ctx context.Context) ReleaseChannelConstantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConstantArrayOutput)
+}
+
+type ReleaseChannelConstantOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConstantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConstant)(nil)).Elem()
+}
+
+func (o ReleaseChannelConstantOutput) ToReleaseChannelConstantOutput() ReleaseChannelConstantOutput {
+	return o
+}
+
+func (o ReleaseChannelConstantOutput) ToReleaseChannelConstantOutputWithContext(ctx context.Context) ReleaseChannelConstantOutput {
+	return o
+}
+
+// name of the constant
+func (o ReleaseChannelConstantOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConstant) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// string value of the constant
+func (o ReleaseChannelConstantOutput) StringValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConstant) string { return v.StringValue }).(pulumi.StringOutput)
+}
+
+type ReleaseChannelConstantArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConstantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConstant)(nil)).Elem()
+}
+
+func (o ReleaseChannelConstantArrayOutput) ToReleaseChannelConstantArrayOutput() ReleaseChannelConstantArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConstantArrayOutput) ToReleaseChannelConstantArrayOutputWithContext(ctx context.Context) ReleaseChannelConstantArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConstantArrayOutput) Index(i pulumi.IntInput) ReleaseChannelConstantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelConstant {
+		return vs[0].([]ReleaseChannelConstant)[vs[1].(int)]
+	}).(ReleaseChannelConstantOutput)
+}
+
+type ReleaseChannelConvergenceProtection struct {
+	// deployment lifecycle options
+	Deployment *ReleaseChannelConvergenceProtectionDeployment `pulumi:"deployment"`
+	// name of the protection
+	Name *string `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval *ReleaseChannelConvergenceProtectionPostApproval `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment *ReleaseChannelConvergenceProtectionPostDeployment `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval *ReleaseChannelConvergenceProtectionPreApproval `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref ReleaseChannelConvergenceProtectionRef `pulumi:"ref"`
+}
+
+// ReleaseChannelConvergenceProtectionInput is an input type that accepts ReleaseChannelConvergenceProtectionArgs and ReleaseChannelConvergenceProtectionOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionInput` via:
+//
+//	ReleaseChannelConvergenceProtectionArgs{...}
+type ReleaseChannelConvergenceProtectionInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionOutput() ReleaseChannelConvergenceProtectionOutput
+	ToReleaseChannelConvergenceProtectionOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionOutput
+}
+
+type ReleaseChannelConvergenceProtectionArgs struct {
+	// deployment lifecycle options
+	Deployment ReleaseChannelConvergenceProtectionDeploymentPtrInput `pulumi:"deployment"`
+	// name of the protection
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval ReleaseChannelConvergenceProtectionPostApprovalPtrInput `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment ReleaseChannelConvergenceProtectionPostDeploymentPtrInput `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval ReleaseChannelConvergenceProtectionPreApprovalPtrInput `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref ReleaseChannelConvergenceProtectionRefInput `pulumi:"ref"`
+}
+
+func (ReleaseChannelConvergenceProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionArgs) ToReleaseChannelConvergenceProtectionOutput() ReleaseChannelConvergenceProtectionOutput {
+	return i.ToReleaseChannelConvergenceProtectionOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionArgs) ToReleaseChannelConvergenceProtectionOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionOutput)
+}
+
+// ReleaseChannelConvergenceProtectionArrayInput is an input type that accepts ReleaseChannelConvergenceProtectionArray and ReleaseChannelConvergenceProtectionArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionArrayInput` via:
+//
+//	ReleaseChannelConvergenceProtectionArray{ ReleaseChannelConvergenceProtectionArgs{...} }
+type ReleaseChannelConvergenceProtectionArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionArrayOutput() ReleaseChannelConvergenceProtectionArrayOutput
+	ToReleaseChannelConvergenceProtectionArrayOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionArrayOutput
+}
+
+type ReleaseChannelConvergenceProtectionArray []ReleaseChannelConvergenceProtectionInput
+
+func (ReleaseChannelConvergenceProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionArray) ToReleaseChannelConvergenceProtectionArrayOutput() ReleaseChannelConvergenceProtectionArrayOutput {
+	return i.ToReleaseChannelConvergenceProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionArray) ToReleaseChannelConvergenceProtectionArrayOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionArrayOutput)
+}
+
+type ReleaseChannelConvergenceProtectionOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionOutput) ToReleaseChannelConvergenceProtectionOutput() ReleaseChannelConvergenceProtectionOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionOutput) ToReleaseChannelConvergenceProtectionOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionOutput {
+	return o
+}
+
+// deployment lifecycle options
+func (o ReleaseChannelConvergenceProtectionOutput) Deployment() ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtection) *ReleaseChannelConvergenceProtectionDeployment {
+		return v.Deployment
+	}).(ReleaseChannelConvergenceProtectionDeploymentPtrOutput)
+}
+
+// name of the protection
+func (o ReleaseChannelConvergenceProtectionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtection) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// post-approval lifecycle options
+func (o ReleaseChannelConvergenceProtectionOutput) PostApproval() ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtection) *ReleaseChannelConvergenceProtectionPostApproval {
+		return v.PostApproval
+	}).(ReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
+}
+
+// post-deployment lifecycle options
+func (o ReleaseChannelConvergenceProtectionOutput) PostDeployment() ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtection) *ReleaseChannelConvergenceProtectionPostDeployment {
+		return v.PostDeployment
+	}).(ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
+}
+
+// pre-approval lifecycle options
+func (o ReleaseChannelConvergenceProtectionOutput) PreApproval() ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtection) *ReleaseChannelConvergenceProtectionPreApproval {
+		return v.PreApproval
+	}).(ReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
+}
+
+// reference to a protection stored in Prodvana
+func (o ReleaseChannelConvergenceProtectionOutput) Ref() ReleaseChannelConvergenceProtectionRefOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtection) ReleaseChannelConvergenceProtectionRef { return v.Ref }).(ReleaseChannelConvergenceProtectionRefOutput)
+}
+
+type ReleaseChannelConvergenceProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionArrayOutput) ToReleaseChannelConvergenceProtectionArrayOutput() ReleaseChannelConvergenceProtectionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionArrayOutput) ToReleaseChannelConvergenceProtectionArrayOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionArrayOutput) Index(i pulumi.IntInput) ReleaseChannelConvergenceProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelConvergenceProtection {
+		return vs[0].([]ReleaseChannelConvergenceProtection)[vs[1].(int)]
+	}).(ReleaseChannelConvergenceProtectionOutput)
+}
+
+type ReleaseChannelConvergenceProtectionDeployment struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelConvergenceProtectionDeploymentInput is an input type that accepts ReleaseChannelConvergenceProtectionDeploymentArgs and ReleaseChannelConvergenceProtectionDeploymentOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionDeploymentInput` via:
+//
+//	ReleaseChannelConvergenceProtectionDeploymentArgs{...}
+type ReleaseChannelConvergenceProtectionDeploymentInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionDeploymentOutput() ReleaseChannelConvergenceProtectionDeploymentOutput
+	ToReleaseChannelConvergenceProtectionDeploymentOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionDeploymentOutput
+}
+
+type ReleaseChannelConvergenceProtectionDeploymentArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelConvergenceProtectionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionDeploymentArgs) ToReleaseChannelConvergenceProtectionDeploymentOutput() ReleaseChannelConvergenceProtectionDeploymentOutput {
+	return i.ToReleaseChannelConvergenceProtectionDeploymentOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionDeploymentArgs) ToReleaseChannelConvergenceProtectionDeploymentOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionDeploymentOutput)
+}
+
+func (i ReleaseChannelConvergenceProtectionDeploymentArgs) ToReleaseChannelConvergenceProtectionDeploymentPtrOutput() ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionDeploymentArgs) ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionDeploymentOutput).ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelConvergenceProtectionDeploymentPtrInput is an input type that accepts ReleaseChannelConvergenceProtectionDeploymentArgs, ReleaseChannelConvergenceProtectionDeploymentPtr and ReleaseChannelConvergenceProtectionDeploymentPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionDeploymentPtrInput` via:
+//
+//	        ReleaseChannelConvergenceProtectionDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelConvergenceProtectionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionDeploymentPtrOutput() ReleaseChannelConvergenceProtectionDeploymentPtrOutput
+	ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionDeploymentPtrOutput
+}
+
+type releaseChannelConvergenceProtectionDeploymentPtrType ReleaseChannelConvergenceProtectionDeploymentArgs
+
+func ReleaseChannelConvergenceProtectionDeploymentPtr(v *ReleaseChannelConvergenceProtectionDeploymentArgs) ReleaseChannelConvergenceProtectionDeploymentPtrInput {
+	return (*releaseChannelConvergenceProtectionDeploymentPtrType)(v)
+}
+
+func (*releaseChannelConvergenceProtectionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (i *releaseChannelConvergenceProtectionDeploymentPtrType) ToReleaseChannelConvergenceProtectionDeploymentPtrOutput() ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelConvergenceProtectionDeploymentPtrType) ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionDeploymentPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentOutput) ToReleaseChannelConvergenceProtectionDeploymentOutput() ReleaseChannelConvergenceProtectionDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentOutput) ToReleaseChannelConvergenceProtectionDeploymentOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentOutput) ToReleaseChannelConvergenceProtectionDeploymentPtrOutput() ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o.ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentOutput) ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelConvergenceProtectionDeployment) *ReleaseChannelConvergenceProtectionDeployment {
+		return &v
+	}).(ReleaseChannelConvergenceProtectionDeploymentPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) ToReleaseChannelConvergenceProtectionDeploymentPtrOutput() ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) ToReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) Elem() ReleaseChannelConvergenceProtectionDeploymentOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionDeployment) ReleaseChannelConvergenceProtectionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelConvergenceProtectionDeployment
+		return ret
+	}).(ReleaseChannelConvergenceProtectionDeploymentOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPostApproval struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelConvergenceProtectionPostApprovalInput is an input type that accepts ReleaseChannelConvergenceProtectionPostApprovalArgs and ReleaseChannelConvergenceProtectionPostApprovalOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionPostApprovalInput` via:
+//
+//	ReleaseChannelConvergenceProtectionPostApprovalArgs{...}
+type ReleaseChannelConvergenceProtectionPostApprovalInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionPostApprovalOutput() ReleaseChannelConvergenceProtectionPostApprovalOutput
+	ToReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionPostApprovalOutput
+}
+
+type ReleaseChannelConvergenceProtectionPostApprovalArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelConvergenceProtectionPostApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionPostApprovalArgs) ToReleaseChannelConvergenceProtectionPostApprovalOutput() ReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return i.ToReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionPostApprovalArgs) ToReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPostApprovalOutput)
+}
+
+func (i ReleaseChannelConvergenceProtectionPostApprovalArgs) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutput() ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionPostApprovalArgs) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPostApprovalOutput).ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelConvergenceProtectionPostApprovalPtrInput is an input type that accepts ReleaseChannelConvergenceProtectionPostApprovalArgs, ReleaseChannelConvergenceProtectionPostApprovalPtr and ReleaseChannelConvergenceProtectionPostApprovalPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionPostApprovalPtrInput` via:
+//
+//	        ReleaseChannelConvergenceProtectionPostApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelConvergenceProtectionPostApprovalPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionPostApprovalPtrOutput() ReleaseChannelConvergenceProtectionPostApprovalPtrOutput
+	ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionPostApprovalPtrOutput
+}
+
+type releaseChannelConvergenceProtectionPostApprovalPtrType ReleaseChannelConvergenceProtectionPostApprovalArgs
+
+func ReleaseChannelConvergenceProtectionPostApprovalPtr(v *ReleaseChannelConvergenceProtectionPostApprovalArgs) ReleaseChannelConvergenceProtectionPostApprovalPtrInput {
+	return (*releaseChannelConvergenceProtectionPostApprovalPtrType)(v)
+}
+
+func (*releaseChannelConvergenceProtectionPostApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i *releaseChannelConvergenceProtectionPostApprovalPtrType) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutput() ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelConvergenceProtectionPostApprovalPtrType) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPostApprovalOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionPostApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) ToReleaseChannelConvergenceProtectionPostApprovalOutput() ReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) ToReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutput() ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o.ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelConvergenceProtectionPostApproval) *ReleaseChannelConvergenceProtectionPostApproval {
+		return &v
+	}).(ReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPostApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutput() ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) ToReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Elem() ReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostApproval) ReleaseChannelConvergenceProtectionPostApproval {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelConvergenceProtectionPostApproval
+		return ret
+	}).(ReleaseChannelConvergenceProtectionPostApprovalOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPostDeployment struct {
+	CheckDuration      *string `pulumi:"checkDuration"`
+	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
+	Enabled            *bool   `pulumi:"enabled"`
+}
+
+// ReleaseChannelConvergenceProtectionPostDeploymentInput is an input type that accepts ReleaseChannelConvergenceProtectionPostDeploymentArgs and ReleaseChannelConvergenceProtectionPostDeploymentOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionPostDeploymentInput` via:
+//
+//	ReleaseChannelConvergenceProtectionPostDeploymentArgs{...}
+type ReleaseChannelConvergenceProtectionPostDeploymentInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionPostDeploymentOutput() ReleaseChannelConvergenceProtectionPostDeploymentOutput
+	ToReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionPostDeploymentOutput
+}
+
+type ReleaseChannelConvergenceProtectionPostDeploymentArgs struct {
+	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
+	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+}
+
+func (ReleaseChannelConvergenceProtectionPostDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionPostDeploymentArgs) ToReleaseChannelConvergenceProtectionPostDeploymentOutput() ReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return i.ToReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionPostDeploymentArgs) ToReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPostDeploymentOutput)
+}
+
+func (i ReleaseChannelConvergenceProtectionPostDeploymentArgs) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionPostDeploymentArgs) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPostDeploymentOutput).ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelConvergenceProtectionPostDeploymentPtrInput is an input type that accepts ReleaseChannelConvergenceProtectionPostDeploymentArgs, ReleaseChannelConvergenceProtectionPostDeploymentPtr and ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionPostDeploymentPtrInput` via:
+//
+//	        ReleaseChannelConvergenceProtectionPostDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelConvergenceProtectionPostDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput
+	ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput
+}
+
+type releaseChannelConvergenceProtectionPostDeploymentPtrType ReleaseChannelConvergenceProtectionPostDeploymentArgs
+
+func ReleaseChannelConvergenceProtectionPostDeploymentPtr(v *ReleaseChannelConvergenceProtectionPostDeploymentArgs) ReleaseChannelConvergenceProtectionPostDeploymentPtrInput {
+	return (*releaseChannelConvergenceProtectionPostDeploymentPtrType)(v)
+}
+
+func (*releaseChannelConvergenceProtectionPostDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i *releaseChannelConvergenceProtectionPostDeploymentPtrType) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelConvergenceProtectionPostDeploymentPtrType) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPostDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionPostDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) ToReleaseChannelConvergenceProtectionPostDeploymentOutput() ReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) ToReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o.ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelConvergenceProtectionPostDeployment) *ReleaseChannelConvergenceProtectionPostDeployment {
+		return &v
+	}).(ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) ToReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Elem() ReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) ReleaseChannelConvergenceProtectionPostDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelConvergenceProtectionPostDeployment
+		return ret
+	}).(ReleaseChannelConvergenceProtectionPostDeploymentOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelayCheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPreApproval struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelConvergenceProtectionPreApprovalInput is an input type that accepts ReleaseChannelConvergenceProtectionPreApprovalArgs and ReleaseChannelConvergenceProtectionPreApprovalOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionPreApprovalInput` via:
+//
+//	ReleaseChannelConvergenceProtectionPreApprovalArgs{...}
+type ReleaseChannelConvergenceProtectionPreApprovalInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionPreApprovalOutput() ReleaseChannelConvergenceProtectionPreApprovalOutput
+	ToReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionPreApprovalOutput
+}
+
+type ReleaseChannelConvergenceProtectionPreApprovalArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelConvergenceProtectionPreApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionPreApprovalArgs) ToReleaseChannelConvergenceProtectionPreApprovalOutput() ReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return i.ToReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionPreApprovalArgs) ToReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPreApprovalOutput)
+}
+
+func (i ReleaseChannelConvergenceProtectionPreApprovalArgs) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutput() ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionPreApprovalArgs) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPreApprovalOutput).ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelConvergenceProtectionPreApprovalPtrInput is an input type that accepts ReleaseChannelConvergenceProtectionPreApprovalArgs, ReleaseChannelConvergenceProtectionPreApprovalPtr and ReleaseChannelConvergenceProtectionPreApprovalPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionPreApprovalPtrInput` via:
+//
+//	        ReleaseChannelConvergenceProtectionPreApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelConvergenceProtectionPreApprovalPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionPreApprovalPtrOutput() ReleaseChannelConvergenceProtectionPreApprovalPtrOutput
+	ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionPreApprovalPtrOutput
+}
+
+type releaseChannelConvergenceProtectionPreApprovalPtrType ReleaseChannelConvergenceProtectionPreApprovalArgs
+
+func ReleaseChannelConvergenceProtectionPreApprovalPtr(v *ReleaseChannelConvergenceProtectionPreApprovalArgs) ReleaseChannelConvergenceProtectionPreApprovalPtrInput {
+	return (*releaseChannelConvergenceProtectionPreApprovalPtrType)(v)
+}
+
+func (*releaseChannelConvergenceProtectionPreApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i *releaseChannelConvergenceProtectionPreApprovalPtrType) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutput() ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelConvergenceProtectionPreApprovalPtrType) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPreApprovalOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionPreApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) ToReleaseChannelConvergenceProtectionPreApprovalOutput() ReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) ToReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutput() ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o.ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelConvergenceProtectionPreApproval) *ReleaseChannelConvergenceProtectionPreApproval {
+		return &v
+	}).(ReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPreApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionPreApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutput() ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) ToReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Elem() ReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPreApproval) ReleaseChannelConvergenceProtectionPreApproval {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelConvergenceProtectionPreApproval
+		return ret
+	}).(ReleaseChannelConvergenceProtectionPreApprovalOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPreApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRef struct {
+	// Release Channel name
+	Name       string                                            `pulumi:"name"`
+	Parameters []ReleaseChannelConvergenceProtectionRefParameter `pulumi:"parameters"`
+}
+
+// ReleaseChannelConvergenceProtectionRefInput is an input type that accepts ReleaseChannelConvergenceProtectionRefArgs and ReleaseChannelConvergenceProtectionRefOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionRefInput` via:
+//
+//	ReleaseChannelConvergenceProtectionRefArgs{...}
+type ReleaseChannelConvergenceProtectionRefInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionRefOutput() ReleaseChannelConvergenceProtectionRefOutput
+	ToReleaseChannelConvergenceProtectionRefOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionRefOutput
+}
+
+type ReleaseChannelConvergenceProtectionRefArgs struct {
+	// Release Channel name
+	Name       pulumi.StringInput                                        `pulumi:"name"`
+	Parameters ReleaseChannelConvergenceProtectionRefParameterArrayInput `pulumi:"parameters"`
+}
+
+func (ReleaseChannelConvergenceProtectionRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionRef)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionRefArgs) ToReleaseChannelConvergenceProtectionRefOutput() ReleaseChannelConvergenceProtectionRefOutput {
+	return i.ToReleaseChannelConvergenceProtectionRefOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionRefArgs) ToReleaseChannelConvergenceProtectionRefOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionRefOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionRef)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionRefOutput) ToReleaseChannelConvergenceProtectionRefOutput() ReleaseChannelConvergenceProtectionRefOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefOutput) ToReleaseChannelConvergenceProtectionRefOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefOutput {
+	return o
+}
+
+// Release Channel name
+func (o ReleaseChannelConvergenceProtectionRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionRefOutput) Parameters() ReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRef) []ReleaseChannelConvergenceProtectionRefParameter {
+		return v.Parameters
+	}).(ReleaseChannelConvergenceProtectionRefParameterArrayOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefParameter struct {
+	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
+	IntValue            *int    `pulumi:"intValue"`
+	// Release Channel name
+	Name        string                                                      `pulumi:"name"`
+	SecretValue *ReleaseChannelConvergenceProtectionRefParameterSecretValue `pulumi:"secretValue"`
+	StringValue *string                                                     `pulumi:"stringValue"`
+}
+
+// ReleaseChannelConvergenceProtectionRefParameterInput is an input type that accepts ReleaseChannelConvergenceProtectionRefParameterArgs and ReleaseChannelConvergenceProtectionRefParameterOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionRefParameterInput` via:
+//
+//	ReleaseChannelConvergenceProtectionRefParameterArgs{...}
+type ReleaseChannelConvergenceProtectionRefParameterInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionRefParameterOutput() ReleaseChannelConvergenceProtectionRefParameterOutput
+	ToReleaseChannelConvergenceProtectionRefParameterOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionRefParameterOutput
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterArgs struct {
+	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
+	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
+	// Release Channel name
+	Name        pulumi.StringInput                                                 `pulumi:"name"`
+	SecretValue ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
+	StringValue pulumi.StringPtrInput                                              `pulumi:"stringValue"`
+}
+
+func (ReleaseChannelConvergenceProtectionRefParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterArgs) ToReleaseChannelConvergenceProtectionRefParameterOutput() ReleaseChannelConvergenceProtectionRefParameterOutput {
+	return i.ToReleaseChannelConvergenceProtectionRefParameterOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterArgs) ToReleaseChannelConvergenceProtectionRefParameterOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionRefParameterOutput)
+}
+
+// ReleaseChannelConvergenceProtectionRefParameterArrayInput is an input type that accepts ReleaseChannelConvergenceProtectionRefParameterArray and ReleaseChannelConvergenceProtectionRefParameterArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionRefParameterArrayInput` via:
+//
+//	ReleaseChannelConvergenceProtectionRefParameterArray{ ReleaseChannelConvergenceProtectionRefParameterArgs{...} }
+type ReleaseChannelConvergenceProtectionRefParameterArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionRefParameterArrayOutput() ReleaseChannelConvergenceProtectionRefParameterArrayOutput
+	ToReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionRefParameterArrayOutput
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterArray []ReleaseChannelConvergenceProtectionRefParameterInput
+
+func (ReleaseChannelConvergenceProtectionRefParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterArray) ToReleaseChannelConvergenceProtectionRefParameterArrayOutput() ReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return i.ToReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterArray) ToReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionRefParameterArrayOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionRefParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) ToReleaseChannelConvergenceProtectionRefParameterOutput() ReleaseChannelConvergenceProtectionRefParameterOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) ToReleaseChannelConvergenceProtectionRefParameterOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
+}
+
+// Release Channel name
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) SecretValue() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *ReleaseChannelConvergenceProtectionRefParameterSecretValue {
+		return v.SecretValue
+	}).(ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionRefParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterArrayOutput) ToReleaseChannelConvergenceProtectionRefParameterArrayOutput() ReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterArrayOutput) ToReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterArrayOutput) Index(i pulumi.IntInput) ReleaseChannelConvergenceProtectionRefParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelConvergenceProtectionRefParameter {
+		return vs[0].([]ReleaseChannelConvergenceProtectionRefParameter)[vs[1].(int)]
+	}).(ReleaseChannelConvergenceProtectionRefParameterOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterSecretValue struct {
+	Key string `pulumi:"key"`
+	// Current application version
+	Version string `pulumi:"version"`
+}
+
+// ReleaseChannelConvergenceProtectionRefParameterSecretValueInput is an input type that accepts ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs and ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionRefParameterSecretValueInput` via:
+//
+//	ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{...}
+type ReleaseChannelConvergenceProtectionRefParameterSecretValueInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput
+	ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Current application version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return i.ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput)
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput).ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput is an input type that accepts ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs, ReleaseChannelConvergenceProtectionRefParameterSecretValuePtr and ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput` via:
+//
+//	        ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput
+	ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput
+}
+
+type releaseChannelConvergenceProtectionRefParameterSecretValuePtrType ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs
+
+func ReleaseChannelConvergenceProtectionRefParameterSecretValuePtr(v *ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput {
+	return (*releaseChannelConvergenceProtectionRefParameterSecretValuePtrType)(v)
+}
+
+func (*releaseChannelConvergenceProtectionRefParameterSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i *releaseChannelConvergenceProtectionRefParameterSecretValuePtrType) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelConvergenceProtectionRefParameterSecretValuePtrType) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o.ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelConvergenceProtectionRefParameterSecretValue) *ReleaseChannelConvergenceProtectionRefParameterSecretValue {
+		return &v
+	}).(ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Current application version
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) ToReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Elem() ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionRefParameterSecretValue) ReleaseChannelConvergenceProtectionRefParameterSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelConvergenceProtectionRefParameterSecretValue
+		return ret
+	}).(ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput)
+}
+
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current application version
+func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelManualApprovalPrecondition struct {
+	// description of the manual approval
+	Description *string `pulumi:"description"`
+	// whether this approval is required for every convergence action, or just the first
+	EveryAction *bool `pulumi:"everyAction"`
+	// name of the manual approval
+	Name string `pulumi:"name"`
+}
+
+// ReleaseChannelManualApprovalPreconditionInput is an input type that accepts ReleaseChannelManualApprovalPreconditionArgs and ReleaseChannelManualApprovalPreconditionOutput values.
+// You can construct a concrete instance of `ReleaseChannelManualApprovalPreconditionInput` via:
+//
+//	ReleaseChannelManualApprovalPreconditionArgs{...}
+type ReleaseChannelManualApprovalPreconditionInput interface {
+	pulumi.Input
+
+	ToReleaseChannelManualApprovalPreconditionOutput() ReleaseChannelManualApprovalPreconditionOutput
+	ToReleaseChannelManualApprovalPreconditionOutputWithContext(context.Context) ReleaseChannelManualApprovalPreconditionOutput
+}
+
+type ReleaseChannelManualApprovalPreconditionArgs struct {
+	// description of the manual approval
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// whether this approval is required for every convergence action, or just the first
+	EveryAction pulumi.BoolPtrInput `pulumi:"everyAction"`
+	// name of the manual approval
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ReleaseChannelManualApprovalPreconditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i ReleaseChannelManualApprovalPreconditionArgs) ToReleaseChannelManualApprovalPreconditionOutput() ReleaseChannelManualApprovalPreconditionOutput {
+	return i.ToReleaseChannelManualApprovalPreconditionOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelManualApprovalPreconditionArgs) ToReleaseChannelManualApprovalPreconditionOutputWithContext(ctx context.Context) ReleaseChannelManualApprovalPreconditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelManualApprovalPreconditionOutput)
+}
+
+// ReleaseChannelManualApprovalPreconditionArrayInput is an input type that accepts ReleaseChannelManualApprovalPreconditionArray and ReleaseChannelManualApprovalPreconditionArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelManualApprovalPreconditionArrayInput` via:
+//
+//	ReleaseChannelManualApprovalPreconditionArray{ ReleaseChannelManualApprovalPreconditionArgs{...} }
+type ReleaseChannelManualApprovalPreconditionArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelManualApprovalPreconditionArrayOutput() ReleaseChannelManualApprovalPreconditionArrayOutput
+	ToReleaseChannelManualApprovalPreconditionArrayOutputWithContext(context.Context) ReleaseChannelManualApprovalPreconditionArrayOutput
+}
+
+type ReleaseChannelManualApprovalPreconditionArray []ReleaseChannelManualApprovalPreconditionInput
+
+func (ReleaseChannelManualApprovalPreconditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i ReleaseChannelManualApprovalPreconditionArray) ToReleaseChannelManualApprovalPreconditionArrayOutput() ReleaseChannelManualApprovalPreconditionArrayOutput {
+	return i.ToReleaseChannelManualApprovalPreconditionArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelManualApprovalPreconditionArray) ToReleaseChannelManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) ReleaseChannelManualApprovalPreconditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelManualApprovalPreconditionArrayOutput)
+}
+
+type ReleaseChannelManualApprovalPreconditionOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelManualApprovalPreconditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o ReleaseChannelManualApprovalPreconditionOutput) ToReleaseChannelManualApprovalPreconditionOutput() ReleaseChannelManualApprovalPreconditionOutput {
+	return o
+}
+
+func (o ReleaseChannelManualApprovalPreconditionOutput) ToReleaseChannelManualApprovalPreconditionOutputWithContext(ctx context.Context) ReleaseChannelManualApprovalPreconditionOutput {
+	return o
+}
+
+// description of the manual approval
+func (o ReleaseChannelManualApprovalPreconditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// whether this approval is required for every convergence action, or just the first
+func (o ReleaseChannelManualApprovalPreconditionOutput) EveryAction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) *bool { return v.EveryAction }).(pulumi.BoolPtrOutput)
+}
+
+// name of the manual approval
+func (o ReleaseChannelManualApprovalPreconditionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ReleaseChannelManualApprovalPreconditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelManualApprovalPreconditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o ReleaseChannelManualApprovalPreconditionArrayOutput) ToReleaseChannelManualApprovalPreconditionArrayOutput() ReleaseChannelManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelManualApprovalPreconditionArrayOutput) ToReleaseChannelManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) ReleaseChannelManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelManualApprovalPreconditionArrayOutput) Index(i pulumi.IntInput) ReleaseChannelManualApprovalPreconditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelManualApprovalPrecondition {
+		return vs[0].([]ReleaseChannelManualApprovalPrecondition)[vs[1].(int)]
+	}).(ReleaseChannelManualApprovalPreconditionOutput)
+}
+
 type ReleaseChannelPolicy struct {
 	// default environment variables for services in this Release Channel
 	DefaultEnv map[string]ReleaseChannelPolicyDefaultEnv `pulumi:"defaultEnv"`
@@ -596,6 +1864,1149 @@ func (o ReleaseChannelPolicyDefaultEnvSecretPtrOutput) Version() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type ReleaseChannelProtection struct {
+	// deployment lifecycle options
+	Deployment *ReleaseChannelProtectionDeployment `pulumi:"deployment"`
+	// name of the protection
+	Name *string `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval *ReleaseChannelProtectionPostApproval `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment *ReleaseChannelProtectionPostDeployment `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval *ReleaseChannelProtectionPreApproval `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref ReleaseChannelProtectionRef `pulumi:"ref"`
+}
+
+// ReleaseChannelProtectionInput is an input type that accepts ReleaseChannelProtectionArgs and ReleaseChannelProtectionOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionInput` via:
+//
+//	ReleaseChannelProtectionArgs{...}
+type ReleaseChannelProtectionInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionOutput() ReleaseChannelProtectionOutput
+	ToReleaseChannelProtectionOutputWithContext(context.Context) ReleaseChannelProtectionOutput
+}
+
+type ReleaseChannelProtectionArgs struct {
+	// deployment lifecycle options
+	Deployment ReleaseChannelProtectionDeploymentPtrInput `pulumi:"deployment"`
+	// name of the protection
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval ReleaseChannelProtectionPostApprovalPtrInput `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment ReleaseChannelProtectionPostDeploymentPtrInput `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval ReleaseChannelProtectionPreApprovalPtrInput `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref ReleaseChannelProtectionRefInput `pulumi:"ref"`
+}
+
+func (ReleaseChannelProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtection)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionArgs) ToReleaseChannelProtectionOutput() ReleaseChannelProtectionOutput {
+	return i.ToReleaseChannelProtectionOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionArgs) ToReleaseChannelProtectionOutputWithContext(ctx context.Context) ReleaseChannelProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionOutput)
+}
+
+// ReleaseChannelProtectionArrayInput is an input type that accepts ReleaseChannelProtectionArray and ReleaseChannelProtectionArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionArrayInput` via:
+//
+//	ReleaseChannelProtectionArray{ ReleaseChannelProtectionArgs{...} }
+type ReleaseChannelProtectionArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionArrayOutput() ReleaseChannelProtectionArrayOutput
+	ToReleaseChannelProtectionArrayOutputWithContext(context.Context) ReleaseChannelProtectionArrayOutput
+}
+
+type ReleaseChannelProtectionArray []ReleaseChannelProtectionInput
+
+func (ReleaseChannelProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelProtection)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionArray) ToReleaseChannelProtectionArrayOutput() ReleaseChannelProtectionArrayOutput {
+	return i.ToReleaseChannelProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionArray) ToReleaseChannelProtectionArrayOutputWithContext(ctx context.Context) ReleaseChannelProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionArrayOutput)
+}
+
+type ReleaseChannelProtectionOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtection)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionOutput) ToReleaseChannelProtectionOutput() ReleaseChannelProtectionOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionOutput) ToReleaseChannelProtectionOutputWithContext(ctx context.Context) ReleaseChannelProtectionOutput {
+	return o
+}
+
+// deployment lifecycle options
+func (o ReleaseChannelProtectionOutput) Deployment() ReleaseChannelProtectionDeploymentPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtection) *ReleaseChannelProtectionDeployment { return v.Deployment }).(ReleaseChannelProtectionDeploymentPtrOutput)
+}
+
+// name of the protection
+func (o ReleaseChannelProtectionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtection) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// post-approval lifecycle options
+func (o ReleaseChannelProtectionOutput) PostApproval() ReleaseChannelProtectionPostApprovalPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtection) *ReleaseChannelProtectionPostApproval { return v.PostApproval }).(ReleaseChannelProtectionPostApprovalPtrOutput)
+}
+
+// post-deployment lifecycle options
+func (o ReleaseChannelProtectionOutput) PostDeployment() ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtection) *ReleaseChannelProtectionPostDeployment { return v.PostDeployment }).(ReleaseChannelProtectionPostDeploymentPtrOutput)
+}
+
+// pre-approval lifecycle options
+func (o ReleaseChannelProtectionOutput) PreApproval() ReleaseChannelProtectionPreApprovalPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtection) *ReleaseChannelProtectionPreApproval { return v.PreApproval }).(ReleaseChannelProtectionPreApprovalPtrOutput)
+}
+
+// reference to a protection stored in Prodvana
+func (o ReleaseChannelProtectionOutput) Ref() ReleaseChannelProtectionRefOutput {
+	return o.ApplyT(func(v ReleaseChannelProtection) ReleaseChannelProtectionRef { return v.Ref }).(ReleaseChannelProtectionRefOutput)
+}
+
+type ReleaseChannelProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelProtection)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionArrayOutput) ToReleaseChannelProtectionArrayOutput() ReleaseChannelProtectionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionArrayOutput) ToReleaseChannelProtectionArrayOutputWithContext(ctx context.Context) ReleaseChannelProtectionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionArrayOutput) Index(i pulumi.IntInput) ReleaseChannelProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelProtection {
+		return vs[0].([]ReleaseChannelProtection)[vs[1].(int)]
+	}).(ReleaseChannelProtectionOutput)
+}
+
+type ReleaseChannelProtectionDeployment struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelProtectionDeploymentInput is an input type that accepts ReleaseChannelProtectionDeploymentArgs and ReleaseChannelProtectionDeploymentOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionDeploymentInput` via:
+//
+//	ReleaseChannelProtectionDeploymentArgs{...}
+type ReleaseChannelProtectionDeploymentInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionDeploymentOutput() ReleaseChannelProtectionDeploymentOutput
+	ToReleaseChannelProtectionDeploymentOutputWithContext(context.Context) ReleaseChannelProtectionDeploymentOutput
+}
+
+type ReleaseChannelProtectionDeploymentArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelProtectionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionDeploymentArgs) ToReleaseChannelProtectionDeploymentOutput() ReleaseChannelProtectionDeploymentOutput {
+	return i.ToReleaseChannelProtectionDeploymentOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionDeploymentArgs) ToReleaseChannelProtectionDeploymentOutputWithContext(ctx context.Context) ReleaseChannelProtectionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionDeploymentOutput)
+}
+
+func (i ReleaseChannelProtectionDeploymentArgs) ToReleaseChannelProtectionDeploymentPtrOutput() ReleaseChannelProtectionDeploymentPtrOutput {
+	return i.ToReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionDeploymentArgs) ToReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionDeploymentOutput).ToReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelProtectionDeploymentPtrInput is an input type that accepts ReleaseChannelProtectionDeploymentArgs, ReleaseChannelProtectionDeploymentPtr and ReleaseChannelProtectionDeploymentPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionDeploymentPtrInput` via:
+//
+//	        ReleaseChannelProtectionDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelProtectionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionDeploymentPtrOutput() ReleaseChannelProtectionDeploymentPtrOutput
+	ToReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Context) ReleaseChannelProtectionDeploymentPtrOutput
+}
+
+type releaseChannelProtectionDeploymentPtrType ReleaseChannelProtectionDeploymentArgs
+
+func ReleaseChannelProtectionDeploymentPtr(v *ReleaseChannelProtectionDeploymentArgs) ReleaseChannelProtectionDeploymentPtrInput {
+	return (*releaseChannelProtectionDeploymentPtrType)(v)
+}
+
+func (*releaseChannelProtectionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (i *releaseChannelProtectionDeploymentPtrType) ToReleaseChannelProtectionDeploymentPtrOutput() ReleaseChannelProtectionDeploymentPtrOutput {
+	return i.ToReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelProtectionDeploymentPtrType) ToReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionDeploymentPtrOutput)
+}
+
+type ReleaseChannelProtectionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionDeploymentOutput) ToReleaseChannelProtectionDeploymentOutput() ReleaseChannelProtectionDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionDeploymentOutput) ToReleaseChannelProtectionDeploymentOutputWithContext(ctx context.Context) ReleaseChannelProtectionDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionDeploymentOutput) ToReleaseChannelProtectionDeploymentPtrOutput() ReleaseChannelProtectionDeploymentPtrOutput {
+	return o.ToReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelProtectionDeploymentOutput) ToReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelProtectionDeployment) *ReleaseChannelProtectionDeployment {
+		return &v
+	}).(ReleaseChannelProtectionDeploymentPtrOutput)
+}
+
+func (o ReleaseChannelProtectionDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionDeploymentPtrOutput) ToReleaseChannelProtectionDeploymentPtrOutput() ReleaseChannelProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionDeploymentPtrOutput) ToReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionDeploymentPtrOutput) Elem() ReleaseChannelProtectionDeploymentOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionDeployment) ReleaseChannelProtectionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelProtectionDeployment
+		return ret
+	}).(ReleaseChannelProtectionDeploymentOutput)
+}
+
+func (o ReleaseChannelProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionPostApproval struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelProtectionPostApprovalInput is an input type that accepts ReleaseChannelProtectionPostApprovalArgs and ReleaseChannelProtectionPostApprovalOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionPostApprovalInput` via:
+//
+//	ReleaseChannelProtectionPostApprovalArgs{...}
+type ReleaseChannelProtectionPostApprovalInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionPostApprovalOutput() ReleaseChannelProtectionPostApprovalOutput
+	ToReleaseChannelProtectionPostApprovalOutputWithContext(context.Context) ReleaseChannelProtectionPostApprovalOutput
+}
+
+type ReleaseChannelProtectionPostApprovalArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelProtectionPostApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionPostApprovalArgs) ToReleaseChannelProtectionPostApprovalOutput() ReleaseChannelProtectionPostApprovalOutput {
+	return i.ToReleaseChannelProtectionPostApprovalOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionPostApprovalArgs) ToReleaseChannelProtectionPostApprovalOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPostApprovalOutput)
+}
+
+func (i ReleaseChannelProtectionPostApprovalArgs) ToReleaseChannelProtectionPostApprovalPtrOutput() ReleaseChannelProtectionPostApprovalPtrOutput {
+	return i.ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionPostApprovalArgs) ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPostApprovalOutput).ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelProtectionPostApprovalPtrInput is an input type that accepts ReleaseChannelProtectionPostApprovalArgs, ReleaseChannelProtectionPostApprovalPtr and ReleaseChannelProtectionPostApprovalPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionPostApprovalPtrInput` via:
+//
+//	        ReleaseChannelProtectionPostApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelProtectionPostApprovalPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionPostApprovalPtrOutput() ReleaseChannelProtectionPostApprovalPtrOutput
+	ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Context) ReleaseChannelProtectionPostApprovalPtrOutput
+}
+
+type releaseChannelProtectionPostApprovalPtrType ReleaseChannelProtectionPostApprovalArgs
+
+func ReleaseChannelProtectionPostApprovalPtr(v *ReleaseChannelProtectionPostApprovalArgs) ReleaseChannelProtectionPostApprovalPtrInput {
+	return (*releaseChannelProtectionPostApprovalPtrType)(v)
+}
+
+func (*releaseChannelProtectionPostApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (i *releaseChannelProtectionPostApprovalPtrType) ToReleaseChannelProtectionPostApprovalPtrOutput() ReleaseChannelProtectionPostApprovalPtrOutput {
+	return i.ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelProtectionPostApprovalPtrType) ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPostApprovalPtrOutput)
+}
+
+type ReleaseChannelProtectionPostApprovalOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionPostApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionPostApprovalOutput) ToReleaseChannelProtectionPostApprovalOutput() ReleaseChannelProtectionPostApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostApprovalOutput) ToReleaseChannelProtectionPostApprovalOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostApprovalOutput) ToReleaseChannelProtectionPostApprovalPtrOutput() ReleaseChannelProtectionPostApprovalPtrOutput {
+	return o.ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelProtectionPostApprovalOutput) ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelProtectionPostApproval) *ReleaseChannelProtectionPostApproval {
+		return &v
+	}).(ReleaseChannelProtectionPostApprovalPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPostApprovalOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionPostApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionPostApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionPostApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionPostApprovalPtrOutput) ToReleaseChannelProtectionPostApprovalPtrOutput() ReleaseChannelProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostApprovalPtrOutput) ToReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostApprovalPtrOutput) Elem() ReleaseChannelProtectionPostApprovalOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPostApproval) ReleaseChannelProtectionPostApproval {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelProtectionPostApproval
+		return ret
+	}).(ReleaseChannelProtectionPostApprovalOutput)
+}
+
+func (o ReleaseChannelProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPostApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionPostDeployment struct {
+	CheckDuration      *string `pulumi:"checkDuration"`
+	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
+	Enabled            *bool   `pulumi:"enabled"`
+}
+
+// ReleaseChannelProtectionPostDeploymentInput is an input type that accepts ReleaseChannelProtectionPostDeploymentArgs and ReleaseChannelProtectionPostDeploymentOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionPostDeploymentInput` via:
+//
+//	ReleaseChannelProtectionPostDeploymentArgs{...}
+type ReleaseChannelProtectionPostDeploymentInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionPostDeploymentOutput() ReleaseChannelProtectionPostDeploymentOutput
+	ToReleaseChannelProtectionPostDeploymentOutputWithContext(context.Context) ReleaseChannelProtectionPostDeploymentOutput
+}
+
+type ReleaseChannelProtectionPostDeploymentArgs struct {
+	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
+	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+}
+
+func (ReleaseChannelProtectionPostDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionPostDeploymentArgs) ToReleaseChannelProtectionPostDeploymentOutput() ReleaseChannelProtectionPostDeploymentOutput {
+	return i.ToReleaseChannelProtectionPostDeploymentOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionPostDeploymentArgs) ToReleaseChannelProtectionPostDeploymentOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPostDeploymentOutput)
+}
+
+func (i ReleaseChannelProtectionPostDeploymentArgs) ToReleaseChannelProtectionPostDeploymentPtrOutput() ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return i.ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionPostDeploymentArgs) ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPostDeploymentOutput).ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelProtectionPostDeploymentPtrInput is an input type that accepts ReleaseChannelProtectionPostDeploymentArgs, ReleaseChannelProtectionPostDeploymentPtr and ReleaseChannelProtectionPostDeploymentPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionPostDeploymentPtrInput` via:
+//
+//	        ReleaseChannelProtectionPostDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelProtectionPostDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionPostDeploymentPtrOutput() ReleaseChannelProtectionPostDeploymentPtrOutput
+	ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Context) ReleaseChannelProtectionPostDeploymentPtrOutput
+}
+
+type releaseChannelProtectionPostDeploymentPtrType ReleaseChannelProtectionPostDeploymentArgs
+
+func ReleaseChannelProtectionPostDeploymentPtr(v *ReleaseChannelProtectionPostDeploymentArgs) ReleaseChannelProtectionPostDeploymentPtrInput {
+	return (*releaseChannelProtectionPostDeploymentPtrType)(v)
+}
+
+func (*releaseChannelProtectionPostDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i *releaseChannelProtectionPostDeploymentPtrType) ToReleaseChannelProtectionPostDeploymentPtrOutput() ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return i.ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelProtectionPostDeploymentPtrType) ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPostDeploymentPtrOutput)
+}
+
+type ReleaseChannelProtectionPostDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionPostDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) ToReleaseChannelProtectionPostDeploymentOutput() ReleaseChannelProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) ToReleaseChannelProtectionPostDeploymentOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) ToReleaseChannelProtectionPostDeploymentPtrOutput() ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o.ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelProtectionPostDeployment) *ReleaseChannelProtectionPostDeployment {
+		return &v
+	}).(ReleaseChannelProtectionPostDeploymentPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPostDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionPostDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionPostDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionPostDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionPostDeploymentPtrOutput) ToReleaseChannelProtectionPostDeploymentPtrOutput() ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostDeploymentPtrOutput) ToReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPostDeploymentPtrOutput) Elem() ReleaseChannelProtectionPostDeploymentOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) ReleaseChannelProtectionPostDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelProtectionPostDeployment
+		return ret
+	}).(ReleaseChannelProtectionPostDeploymentOutput)
+}
+
+func (o ReleaseChannelProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelayCheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionPreApproval struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelProtectionPreApprovalInput is an input type that accepts ReleaseChannelProtectionPreApprovalArgs and ReleaseChannelProtectionPreApprovalOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionPreApprovalInput` via:
+//
+//	ReleaseChannelProtectionPreApprovalArgs{...}
+type ReleaseChannelProtectionPreApprovalInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionPreApprovalOutput() ReleaseChannelProtectionPreApprovalOutput
+	ToReleaseChannelProtectionPreApprovalOutputWithContext(context.Context) ReleaseChannelProtectionPreApprovalOutput
+}
+
+type ReleaseChannelProtectionPreApprovalArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelProtectionPreApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionPreApprovalArgs) ToReleaseChannelProtectionPreApprovalOutput() ReleaseChannelProtectionPreApprovalOutput {
+	return i.ToReleaseChannelProtectionPreApprovalOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionPreApprovalArgs) ToReleaseChannelProtectionPreApprovalOutputWithContext(ctx context.Context) ReleaseChannelProtectionPreApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPreApprovalOutput)
+}
+
+func (i ReleaseChannelProtectionPreApprovalArgs) ToReleaseChannelProtectionPreApprovalPtrOutput() ReleaseChannelProtectionPreApprovalPtrOutput {
+	return i.ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionPreApprovalArgs) ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPreApprovalOutput).ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelProtectionPreApprovalPtrInput is an input type that accepts ReleaseChannelProtectionPreApprovalArgs, ReleaseChannelProtectionPreApprovalPtr and ReleaseChannelProtectionPreApprovalPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionPreApprovalPtrInput` via:
+//
+//	        ReleaseChannelProtectionPreApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelProtectionPreApprovalPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionPreApprovalPtrOutput() ReleaseChannelProtectionPreApprovalPtrOutput
+	ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Context) ReleaseChannelProtectionPreApprovalPtrOutput
+}
+
+type releaseChannelProtectionPreApprovalPtrType ReleaseChannelProtectionPreApprovalArgs
+
+func ReleaseChannelProtectionPreApprovalPtr(v *ReleaseChannelProtectionPreApprovalArgs) ReleaseChannelProtectionPreApprovalPtrInput {
+	return (*releaseChannelProtectionPreApprovalPtrType)(v)
+}
+
+func (*releaseChannelProtectionPreApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (i *releaseChannelProtectionPreApprovalPtrType) ToReleaseChannelProtectionPreApprovalPtrOutput() ReleaseChannelProtectionPreApprovalPtrOutput {
+	return i.ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelProtectionPreApprovalPtrType) ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionPreApprovalPtrOutput)
+}
+
+type ReleaseChannelProtectionPreApprovalOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionPreApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionPreApprovalOutput) ToReleaseChannelProtectionPreApprovalOutput() ReleaseChannelProtectionPreApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPreApprovalOutput) ToReleaseChannelProtectionPreApprovalOutputWithContext(ctx context.Context) ReleaseChannelProtectionPreApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPreApprovalOutput) ToReleaseChannelProtectionPreApprovalPtrOutput() ReleaseChannelProtectionPreApprovalPtrOutput {
+	return o.ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelProtectionPreApprovalOutput) ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPreApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelProtectionPreApproval) *ReleaseChannelProtectionPreApproval {
+		return &v
+	}).(ReleaseChannelProtectionPreApprovalPtrOutput)
+}
+
+func (o ReleaseChannelProtectionPreApprovalOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionPreApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionPreApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionPreApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionPreApprovalPtrOutput) ToReleaseChannelProtectionPreApprovalPtrOutput() ReleaseChannelProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPreApprovalPtrOutput) ToReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionPreApprovalPtrOutput) Elem() ReleaseChannelProtectionPreApprovalOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPreApproval) ReleaseChannelProtectionPreApproval {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelProtectionPreApproval
+		return ret
+	}).(ReleaseChannelProtectionPreApprovalOutput)
+}
+
+func (o ReleaseChannelProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionPreApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelProtectionRef struct {
+	// Release Channel name
+	Name       string                                 `pulumi:"name"`
+	Parameters []ReleaseChannelProtectionRefParameter `pulumi:"parameters"`
+}
+
+// ReleaseChannelProtectionRefInput is an input type that accepts ReleaseChannelProtectionRefArgs and ReleaseChannelProtectionRefOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionRefInput` via:
+//
+//	ReleaseChannelProtectionRefArgs{...}
+type ReleaseChannelProtectionRefInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionRefOutput() ReleaseChannelProtectionRefOutput
+	ToReleaseChannelProtectionRefOutputWithContext(context.Context) ReleaseChannelProtectionRefOutput
+}
+
+type ReleaseChannelProtectionRefArgs struct {
+	// Release Channel name
+	Name       pulumi.StringInput                             `pulumi:"name"`
+	Parameters ReleaseChannelProtectionRefParameterArrayInput `pulumi:"parameters"`
+}
+
+func (ReleaseChannelProtectionRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionRef)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionRefArgs) ToReleaseChannelProtectionRefOutput() ReleaseChannelProtectionRefOutput {
+	return i.ToReleaseChannelProtectionRefOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionRefArgs) ToReleaseChannelProtectionRefOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionRefOutput)
+}
+
+type ReleaseChannelProtectionRefOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionRef)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionRefOutput) ToReleaseChannelProtectionRefOutput() ReleaseChannelProtectionRefOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefOutput) ToReleaseChannelProtectionRefOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefOutput {
+	return o
+}
+
+// Release Channel name
+func (o ReleaseChannelProtectionRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseChannelProtectionRefOutput) Parameters() ReleaseChannelProtectionRefParameterArrayOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRef) []ReleaseChannelProtectionRefParameter { return v.Parameters }).(ReleaseChannelProtectionRefParameterArrayOutput)
+}
+
+type ReleaseChannelProtectionRefParameter struct {
+	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
+	IntValue            *int    `pulumi:"intValue"`
+	// Release Channel name
+	Name        string                                           `pulumi:"name"`
+	SecretValue *ReleaseChannelProtectionRefParameterSecretValue `pulumi:"secretValue"`
+	StringValue *string                                          `pulumi:"stringValue"`
+}
+
+// ReleaseChannelProtectionRefParameterInput is an input type that accepts ReleaseChannelProtectionRefParameterArgs and ReleaseChannelProtectionRefParameterOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionRefParameterInput` via:
+//
+//	ReleaseChannelProtectionRefParameterArgs{...}
+type ReleaseChannelProtectionRefParameterInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionRefParameterOutput() ReleaseChannelProtectionRefParameterOutput
+	ToReleaseChannelProtectionRefParameterOutputWithContext(context.Context) ReleaseChannelProtectionRefParameterOutput
+}
+
+type ReleaseChannelProtectionRefParameterArgs struct {
+	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
+	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
+	// Release Channel name
+	Name        pulumi.StringInput                                      `pulumi:"name"`
+	SecretValue ReleaseChannelProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
+	StringValue pulumi.StringPtrInput                                   `pulumi:"stringValue"`
+}
+
+func (ReleaseChannelProtectionRefParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionRefParameterArgs) ToReleaseChannelProtectionRefParameterOutput() ReleaseChannelProtectionRefParameterOutput {
+	return i.ToReleaseChannelProtectionRefParameterOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionRefParameterArgs) ToReleaseChannelProtectionRefParameterOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionRefParameterOutput)
+}
+
+// ReleaseChannelProtectionRefParameterArrayInput is an input type that accepts ReleaseChannelProtectionRefParameterArray and ReleaseChannelProtectionRefParameterArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionRefParameterArrayInput` via:
+//
+//	ReleaseChannelProtectionRefParameterArray{ ReleaseChannelProtectionRefParameterArgs{...} }
+type ReleaseChannelProtectionRefParameterArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionRefParameterArrayOutput() ReleaseChannelProtectionRefParameterArrayOutput
+	ToReleaseChannelProtectionRefParameterArrayOutputWithContext(context.Context) ReleaseChannelProtectionRefParameterArrayOutput
+}
+
+type ReleaseChannelProtectionRefParameterArray []ReleaseChannelProtectionRefParameterInput
+
+func (ReleaseChannelProtectionRefParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionRefParameterArray) ToReleaseChannelProtectionRefParameterArrayOutput() ReleaseChannelProtectionRefParameterArrayOutput {
+	return i.ToReleaseChannelProtectionRefParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionRefParameterArray) ToReleaseChannelProtectionRefParameterArrayOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionRefParameterArrayOutput)
+}
+
+type ReleaseChannelProtectionRefParameterOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionRefParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionRefParameterOutput) ToReleaseChannelProtectionRefParameterOutput() ReleaseChannelProtectionRefParameterOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterOutput) ToReleaseChannelProtectionRefParameterOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
+}
+
+// Release Channel name
+func (o ReleaseChannelProtectionRefParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseChannelProtectionRefParameterOutput) SecretValue() ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *ReleaseChannelProtectionRefParameterSecretValue {
+		return v.SecretValue
+	}).(ReleaseChannelProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o ReleaseChannelProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelProtectionRefParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionRefParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionRefParameterArrayOutput) ToReleaseChannelProtectionRefParameterArrayOutput() ReleaseChannelProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterArrayOutput) ToReleaseChannelProtectionRefParameterArrayOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterArrayOutput) Index(i pulumi.IntInput) ReleaseChannelProtectionRefParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelProtectionRefParameter {
+		return vs[0].([]ReleaseChannelProtectionRefParameter)[vs[1].(int)]
+	}).(ReleaseChannelProtectionRefParameterOutput)
+}
+
+type ReleaseChannelProtectionRefParameterSecretValue struct {
+	Key string `pulumi:"key"`
+	// Current application version
+	Version string `pulumi:"version"`
+}
+
+// ReleaseChannelProtectionRefParameterSecretValueInput is an input type that accepts ReleaseChannelProtectionRefParameterSecretValueArgs and ReleaseChannelProtectionRefParameterSecretValueOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionRefParameterSecretValueInput` via:
+//
+//	ReleaseChannelProtectionRefParameterSecretValueArgs{...}
+type ReleaseChannelProtectionRefParameterSecretValueInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionRefParameterSecretValueOutput() ReleaseChannelProtectionRefParameterSecretValueOutput
+	ToReleaseChannelProtectionRefParameterSecretValueOutputWithContext(context.Context) ReleaseChannelProtectionRefParameterSecretValueOutput
+}
+
+type ReleaseChannelProtectionRefParameterSecretValueArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Current application version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ReleaseChannelProtectionRefParameterSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i ReleaseChannelProtectionRefParameterSecretValueArgs) ToReleaseChannelProtectionRefParameterSecretValueOutput() ReleaseChannelProtectionRefParameterSecretValueOutput {
+	return i.ToReleaseChannelProtectionRefParameterSecretValueOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionRefParameterSecretValueArgs) ToReleaseChannelProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionRefParameterSecretValueOutput)
+}
+
+func (i ReleaseChannelProtectionRefParameterSecretValueArgs) ToReleaseChannelProtectionRefParameterSecretValuePtrOutput() ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return i.ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelProtectionRefParameterSecretValueArgs) ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionRefParameterSecretValueOutput).ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelProtectionRefParameterSecretValuePtrInput is an input type that accepts ReleaseChannelProtectionRefParameterSecretValueArgs, ReleaseChannelProtectionRefParameterSecretValuePtr and ReleaseChannelProtectionRefParameterSecretValuePtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelProtectionRefParameterSecretValuePtrInput` via:
+//
+//	        ReleaseChannelProtectionRefParameterSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelProtectionRefParameterSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelProtectionRefParameterSecretValuePtrOutput() ReleaseChannelProtectionRefParameterSecretValuePtrOutput
+	ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Context) ReleaseChannelProtectionRefParameterSecretValuePtrOutput
+}
+
+type releaseChannelProtectionRefParameterSecretValuePtrType ReleaseChannelProtectionRefParameterSecretValueArgs
+
+func ReleaseChannelProtectionRefParameterSecretValuePtr(v *ReleaseChannelProtectionRefParameterSecretValueArgs) ReleaseChannelProtectionRefParameterSecretValuePtrInput {
+	return (*releaseChannelProtectionRefParameterSecretValuePtrType)(v)
+}
+
+func (*releaseChannelProtectionRefParameterSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i *releaseChannelProtectionRefParameterSecretValuePtrType) ToReleaseChannelProtectionRefParameterSecretValuePtrOutput() ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return i.ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelProtectionRefParameterSecretValuePtrType) ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelProtectionRefParameterSecretValuePtrOutput)
+}
+
+type ReleaseChannelProtectionRefParameterSecretValueOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionRefParameterSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValueOutput) ToReleaseChannelProtectionRefParameterSecretValueOutput() ReleaseChannelProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValueOutput) ToReleaseChannelProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValueOutput) ToReleaseChannelProtectionRefParameterSecretValuePtrOutput() ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o.ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValueOutput) ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelProtectionRefParameterSecretValue) *ReleaseChannelProtectionRefParameterSecretValue {
+		return &v
+	}).(ReleaseChannelProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Current application version
+func (o ReleaseChannelProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ReleaseChannelProtectionRefParameterSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelProtectionRefParameterSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) ToReleaseChannelProtectionRefParameterSecretValuePtrOutput() ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) ToReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Elem() ReleaseChannelProtectionRefParameterSecretValueOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionRefParameterSecretValue) ReleaseChannelProtectionRefParameterSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelProtectionRefParameterSecretValue
+		return ret
+	}).(ReleaseChannelProtectionRefParameterSecretValueOutput)
+}
+
+func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current application version
+func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelReleaseChannelStablePrecondition struct {
+	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	Duration string `pulumi:"duration"`
+	// name of a release channel that must be in a stable deployment state
+	ReleaseChannel string `pulumi:"releaseChannel"`
+}
+
+// ReleaseChannelReleaseChannelStablePreconditionInput is an input type that accepts ReleaseChannelReleaseChannelStablePreconditionArgs and ReleaseChannelReleaseChannelStablePreconditionOutput values.
+// You can construct a concrete instance of `ReleaseChannelReleaseChannelStablePreconditionInput` via:
+//
+//	ReleaseChannelReleaseChannelStablePreconditionArgs{...}
+type ReleaseChannelReleaseChannelStablePreconditionInput interface {
+	pulumi.Input
+
+	ToReleaseChannelReleaseChannelStablePreconditionOutput() ReleaseChannelReleaseChannelStablePreconditionOutput
+	ToReleaseChannelReleaseChannelStablePreconditionOutputWithContext(context.Context) ReleaseChannelReleaseChannelStablePreconditionOutput
+}
+
+type ReleaseChannelReleaseChannelStablePreconditionArgs struct {
+	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// name of a release channel that must be in a stable deployment state
+	ReleaseChannel pulumi.StringInput `pulumi:"releaseChannel"`
+}
+
+func (ReleaseChannelReleaseChannelStablePreconditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (i ReleaseChannelReleaseChannelStablePreconditionArgs) ToReleaseChannelReleaseChannelStablePreconditionOutput() ReleaseChannelReleaseChannelStablePreconditionOutput {
+	return i.ToReleaseChannelReleaseChannelStablePreconditionOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelReleaseChannelStablePreconditionArgs) ToReleaseChannelReleaseChannelStablePreconditionOutputWithContext(ctx context.Context) ReleaseChannelReleaseChannelStablePreconditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelReleaseChannelStablePreconditionOutput)
+}
+
+// ReleaseChannelReleaseChannelStablePreconditionArrayInput is an input type that accepts ReleaseChannelReleaseChannelStablePreconditionArray and ReleaseChannelReleaseChannelStablePreconditionArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelReleaseChannelStablePreconditionArrayInput` via:
+//
+//	ReleaseChannelReleaseChannelStablePreconditionArray{ ReleaseChannelReleaseChannelStablePreconditionArgs{...} }
+type ReleaseChannelReleaseChannelStablePreconditionArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelReleaseChannelStablePreconditionArrayOutput() ReleaseChannelReleaseChannelStablePreconditionArrayOutput
+	ToReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(context.Context) ReleaseChannelReleaseChannelStablePreconditionArrayOutput
+}
+
+type ReleaseChannelReleaseChannelStablePreconditionArray []ReleaseChannelReleaseChannelStablePreconditionInput
+
+func (ReleaseChannelReleaseChannelStablePreconditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (i ReleaseChannelReleaseChannelStablePreconditionArray) ToReleaseChannelReleaseChannelStablePreconditionArrayOutput() ReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return i.ToReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelReleaseChannelStablePreconditionArray) ToReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(ctx context.Context) ReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelReleaseChannelStablePreconditionArrayOutput)
+}
+
+type ReleaseChannelReleaseChannelStablePreconditionOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelReleaseChannelStablePreconditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (o ReleaseChannelReleaseChannelStablePreconditionOutput) ToReleaseChannelReleaseChannelStablePreconditionOutput() ReleaseChannelReleaseChannelStablePreconditionOutput {
+	return o
+}
+
+func (o ReleaseChannelReleaseChannelStablePreconditionOutput) ToReleaseChannelReleaseChannelStablePreconditionOutputWithContext(ctx context.Context) ReleaseChannelReleaseChannelStablePreconditionOutput {
+	return o
+}
+
+// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+func (o ReleaseChannelReleaseChannelStablePreconditionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelReleaseChannelStablePrecondition) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// name of a release channel that must be in a stable deployment state
+func (o ReleaseChannelReleaseChannelStablePreconditionOutput) ReleaseChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelReleaseChannelStablePrecondition) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+type ReleaseChannelReleaseChannelStablePreconditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelReleaseChannelStablePreconditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (o ReleaseChannelReleaseChannelStablePreconditionArrayOutput) ToReleaseChannelReleaseChannelStablePreconditionArrayOutput() ReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelReleaseChannelStablePreconditionArrayOutput) ToReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(ctx context.Context) ReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelReleaseChannelStablePreconditionArrayOutput) Index(i pulumi.IntInput) ReleaseChannelReleaseChannelStablePreconditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelReleaseChannelStablePrecondition {
+		return vs[0].([]ReleaseChannelReleaseChannelStablePrecondition)[vs[1].(int)]
+	}).(ReleaseChannelReleaseChannelStablePreconditionOutput)
+}
+
 type ReleaseChannelRuntime struct {
 	// Prefix used when naming ECS resources. Can only be set on an ECS Runtime.
 	EcsPrefix *string `pulumi:"ecsPrefix"`
@@ -727,6 +3138,2323 @@ func (o ReleaseChannelRuntimeArrayOutput) Index(i pulumi.IntInput) ReleaseChanne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelRuntime {
 		return vs[0].([]ReleaseChannelRuntime)[vs[1].(int)]
 	}).(ReleaseChannelRuntimeOutput)
+}
+
+type ReleaseChannelServiceInstanceProtection struct {
+	// deployment lifecycle options
+	Deployment *ReleaseChannelServiceInstanceProtectionDeployment `pulumi:"deployment"`
+	// name of the protection
+	Name *string `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval *ReleaseChannelServiceInstanceProtectionPostApproval `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment *ReleaseChannelServiceInstanceProtectionPostDeployment `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval *ReleaseChannelServiceInstanceProtectionPreApproval `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref ReleaseChannelServiceInstanceProtectionRef `pulumi:"ref"`
+}
+
+// ReleaseChannelServiceInstanceProtectionInput is an input type that accepts ReleaseChannelServiceInstanceProtectionArgs and ReleaseChannelServiceInstanceProtectionOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionArgs{...}
+type ReleaseChannelServiceInstanceProtectionInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionOutput() ReleaseChannelServiceInstanceProtectionOutput
+	ToReleaseChannelServiceInstanceProtectionOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionArgs struct {
+	// deployment lifecycle options
+	Deployment ReleaseChannelServiceInstanceProtectionDeploymentPtrInput `pulumi:"deployment"`
+	// name of the protection
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval ReleaseChannelServiceInstanceProtectionPostApprovalPtrInput `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment ReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval ReleaseChannelServiceInstanceProtectionPreApprovalPtrInput `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref ReleaseChannelServiceInstanceProtectionRefInput `pulumi:"ref"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionArgs) ToReleaseChannelServiceInstanceProtectionOutput() ReleaseChannelServiceInstanceProtectionOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionArgs) ToReleaseChannelServiceInstanceProtectionOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionOutput)
+}
+
+// ReleaseChannelServiceInstanceProtectionArrayInput is an input type that accepts ReleaseChannelServiceInstanceProtectionArray and ReleaseChannelServiceInstanceProtectionArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionArrayInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionArray{ ReleaseChannelServiceInstanceProtectionArgs{...} }
+type ReleaseChannelServiceInstanceProtectionArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionArrayOutput() ReleaseChannelServiceInstanceProtectionArrayOutput
+	ToReleaseChannelServiceInstanceProtectionArrayOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionArrayOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionArray []ReleaseChannelServiceInstanceProtectionInput
+
+func (ReleaseChannelServiceInstanceProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionArray) ToReleaseChannelServiceInstanceProtectionArrayOutput() ReleaseChannelServiceInstanceProtectionArrayOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionArray) ToReleaseChannelServiceInstanceProtectionArrayOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionArrayOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionOutput) ToReleaseChannelServiceInstanceProtectionOutput() ReleaseChannelServiceInstanceProtectionOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionOutput) ToReleaseChannelServiceInstanceProtectionOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionOutput {
+	return o
+}
+
+// deployment lifecycle options
+func (o ReleaseChannelServiceInstanceProtectionOutput) Deployment() ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtection) *ReleaseChannelServiceInstanceProtectionDeployment {
+		return v.Deployment
+	}).(ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
+}
+
+// name of the protection
+func (o ReleaseChannelServiceInstanceProtectionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtection) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// post-approval lifecycle options
+func (o ReleaseChannelServiceInstanceProtectionOutput) PostApproval() ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtection) *ReleaseChannelServiceInstanceProtectionPostApproval {
+		return v.PostApproval
+	}).(ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
+}
+
+// post-deployment lifecycle options
+func (o ReleaseChannelServiceInstanceProtectionOutput) PostDeployment() ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtection) *ReleaseChannelServiceInstanceProtectionPostDeployment {
+		return v.PostDeployment
+	}).(ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
+}
+
+// pre-approval lifecycle options
+func (o ReleaseChannelServiceInstanceProtectionOutput) PreApproval() ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtection) *ReleaseChannelServiceInstanceProtectionPreApproval {
+		return v.PreApproval
+	}).(ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
+}
+
+// reference to a protection stored in Prodvana
+func (o ReleaseChannelServiceInstanceProtectionOutput) Ref() ReleaseChannelServiceInstanceProtectionRefOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtection) ReleaseChannelServiceInstanceProtectionRef {
+		return v.Ref
+	}).(ReleaseChannelServiceInstanceProtectionRefOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionArrayOutput) ToReleaseChannelServiceInstanceProtectionArrayOutput() ReleaseChannelServiceInstanceProtectionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionArrayOutput) ToReleaseChannelServiceInstanceProtectionArrayOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionArrayOutput) Index(i pulumi.IntInput) ReleaseChannelServiceInstanceProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelServiceInstanceProtection {
+		return vs[0].([]ReleaseChannelServiceInstanceProtection)[vs[1].(int)]
+	}).(ReleaseChannelServiceInstanceProtectionOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionDeployment struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelServiceInstanceProtectionDeploymentInput is an input type that accepts ReleaseChannelServiceInstanceProtectionDeploymentArgs and ReleaseChannelServiceInstanceProtectionDeploymentOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionDeploymentInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionDeploymentArgs{...}
+type ReleaseChannelServiceInstanceProtectionDeploymentInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionDeploymentOutput() ReleaseChannelServiceInstanceProtectionDeploymentOutput
+	ToReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionDeploymentOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionDeploymentArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionDeploymentArgs) ToReleaseChannelServiceInstanceProtectionDeploymentOutput() ReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionDeploymentArgs) ToReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionDeploymentOutput)
+}
+
+func (i ReleaseChannelServiceInstanceProtectionDeploymentArgs) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionDeploymentArgs) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionDeploymentOutput).ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelServiceInstanceProtectionDeploymentPtrInput is an input type that accepts ReleaseChannelServiceInstanceProtectionDeploymentArgs, ReleaseChannelServiceInstanceProtectionDeploymentPtr and ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionDeploymentPtrInput` via:
+//
+//	        ReleaseChannelServiceInstanceProtectionDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelServiceInstanceProtectionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput
+	ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput
+}
+
+type releaseChannelServiceInstanceProtectionDeploymentPtrType ReleaseChannelServiceInstanceProtectionDeploymentArgs
+
+func ReleaseChannelServiceInstanceProtectionDeploymentPtr(v *ReleaseChannelServiceInstanceProtectionDeploymentArgs) ReleaseChannelServiceInstanceProtectionDeploymentPtrInput {
+	return (*releaseChannelServiceInstanceProtectionDeploymentPtrType)(v)
+}
+
+func (*releaseChannelServiceInstanceProtectionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (i *releaseChannelServiceInstanceProtectionDeploymentPtrType) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelServiceInstanceProtectionDeploymentPtrType) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) ToReleaseChannelServiceInstanceProtectionDeploymentOutput() ReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) ToReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o.ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelServiceInstanceProtectionDeployment) *ReleaseChannelServiceInstanceProtectionDeployment {
+		return &v
+	}).(ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) ToReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Elem() ReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionDeployment) ReleaseChannelServiceInstanceProtectionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelServiceInstanceProtectionDeployment
+		return ret
+	}).(ReleaseChannelServiceInstanceProtectionDeploymentOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPostApproval struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelServiceInstanceProtectionPostApprovalInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPostApprovalArgs and ReleaseChannelServiceInstanceProtectionPostApprovalOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionPostApprovalInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionPostApprovalArgs{...}
+type ReleaseChannelServiceInstanceProtectionPostApprovalInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionPostApprovalOutput() ReleaseChannelServiceInstanceProtectionPostApprovalOutput
+	ToReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionPostApprovalArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionPostApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToReleaseChannelServiceInstanceProtectionPostApprovalOutput() ReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPostApprovalOutput)
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPostApprovalOutput).ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelServiceInstanceProtectionPostApprovalPtrInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPostApprovalArgs, ReleaseChannelServiceInstanceProtectionPostApprovalPtr and ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionPostApprovalPtrInput` via:
+//
+//	        ReleaseChannelServiceInstanceProtectionPostApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelServiceInstanceProtectionPostApprovalPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput
+	ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput
+}
+
+type releaseChannelServiceInstanceProtectionPostApprovalPtrType ReleaseChannelServiceInstanceProtectionPostApprovalArgs
+
+func ReleaseChannelServiceInstanceProtectionPostApprovalPtr(v *ReleaseChannelServiceInstanceProtectionPostApprovalArgs) ReleaseChannelServiceInstanceProtectionPostApprovalPtrInput {
+	return (*releaseChannelServiceInstanceProtectionPostApprovalPtrType)(v)
+}
+
+func (*releaseChannelServiceInstanceProtectionPostApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i *releaseChannelServiceInstanceProtectionPostApprovalPtrType) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelServiceInstanceProtectionPostApprovalPtrType) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPostApprovalOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionPostApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToReleaseChannelServiceInstanceProtectionPostApprovalOutput() ReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o.ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelServiceInstanceProtectionPostApproval) *ReleaseChannelServiceInstanceProtectionPostApproval {
+		return &v
+	}).(ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) ToReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Elem() ReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostApproval) ReleaseChannelServiceInstanceProtectionPostApproval {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelServiceInstanceProtectionPostApproval
+		return ret
+	}).(ReleaseChannelServiceInstanceProtectionPostApprovalOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPostDeployment struct {
+	CheckDuration      *string `pulumi:"checkDuration"`
+	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
+	Enabled            *bool   `pulumi:"enabled"`
+}
+
+// ReleaseChannelServiceInstanceProtectionPostDeploymentInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPostDeploymentArgs and ReleaseChannelServiceInstanceProtectionPostDeploymentOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionPostDeploymentInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionPostDeploymentArgs{...}
+type ReleaseChannelServiceInstanceProtectionPostDeploymentInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionPostDeploymentOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentOutput
+	ToReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionPostDeploymentArgs struct {
+	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
+	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToReleaseChannelServiceInstanceProtectionPostDeploymentOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPostDeploymentOutput)
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPostDeploymentOutput).ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPostDeploymentArgs, ReleaseChannelServiceInstanceProtectionPostDeploymentPtr and ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput` via:
+//
+//	        ReleaseChannelServiceInstanceProtectionPostDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput
+	ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput
+}
+
+type releaseChannelServiceInstanceProtectionPostDeploymentPtrType ReleaseChannelServiceInstanceProtectionPostDeploymentArgs
+
+func ReleaseChannelServiceInstanceProtectionPostDeploymentPtr(v *ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput {
+	return (*releaseChannelServiceInstanceProtectionPostDeploymentPtrType)(v)
+}
+
+func (*releaseChannelServiceInstanceProtectionPostDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i *releaseChannelServiceInstanceProtectionPostDeploymentPtrType) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelServiceInstanceProtectionPostDeploymentPtrType) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPostDeploymentOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToReleaseChannelServiceInstanceProtectionPostDeploymentOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o.ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelServiceInstanceProtectionPostDeployment) *ReleaseChannelServiceInstanceProtectionPostDeployment {
+		return &v
+	}).(ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) ToReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Elem() ReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) ReleaseChannelServiceInstanceProtectionPostDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelServiceInstanceProtectionPostDeployment
+		return ret
+	}).(ReleaseChannelServiceInstanceProtectionPostDeploymentOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelayCheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPreApproval struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ReleaseChannelServiceInstanceProtectionPreApprovalInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPreApprovalArgs and ReleaseChannelServiceInstanceProtectionPreApprovalOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionPreApprovalInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionPreApprovalArgs{...}
+type ReleaseChannelServiceInstanceProtectionPreApprovalInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionPreApprovalOutput() ReleaseChannelServiceInstanceProtectionPreApprovalOutput
+	ToReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionPreApprovalArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionPreApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToReleaseChannelServiceInstanceProtectionPreApprovalOutput() ReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPreApprovalOutput)
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPreApprovalOutput).ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelServiceInstanceProtectionPreApprovalPtrInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPreApprovalArgs, ReleaseChannelServiceInstanceProtectionPreApprovalPtr and ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionPreApprovalPtrInput` via:
+//
+//	        ReleaseChannelServiceInstanceProtectionPreApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelServiceInstanceProtectionPreApprovalPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput
+	ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput
+}
+
+type releaseChannelServiceInstanceProtectionPreApprovalPtrType ReleaseChannelServiceInstanceProtectionPreApprovalArgs
+
+func ReleaseChannelServiceInstanceProtectionPreApprovalPtr(v *ReleaseChannelServiceInstanceProtectionPreApprovalArgs) ReleaseChannelServiceInstanceProtectionPreApprovalPtrInput {
+	return (*releaseChannelServiceInstanceProtectionPreApprovalPtrType)(v)
+}
+
+func (*releaseChannelServiceInstanceProtectionPreApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i *releaseChannelServiceInstanceProtectionPreApprovalPtrType) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelServiceInstanceProtectionPreApprovalPtrType) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPreApprovalOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionPreApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToReleaseChannelServiceInstanceProtectionPreApprovalOutput() ReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o.ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelServiceInstanceProtectionPreApproval) *ReleaseChannelServiceInstanceProtectionPreApproval {
+		return &v
+	}).(ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPreApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) ToReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Elem() ReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPreApproval) ReleaseChannelServiceInstanceProtectionPreApproval {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelServiceInstanceProtectionPreApproval
+		return ret
+	}).(ReleaseChannelServiceInstanceProtectionPreApprovalOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPreApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRef struct {
+	// Release Channel name
+	Name       string                                                `pulumi:"name"`
+	Parameters []ReleaseChannelServiceInstanceProtectionRefParameter `pulumi:"parameters"`
+}
+
+// ReleaseChannelServiceInstanceProtectionRefInput is an input type that accepts ReleaseChannelServiceInstanceProtectionRefArgs and ReleaseChannelServiceInstanceProtectionRefOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionRefInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionRefArgs{...}
+type ReleaseChannelServiceInstanceProtectionRefInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionRefOutput() ReleaseChannelServiceInstanceProtectionRefOutput
+	ToReleaseChannelServiceInstanceProtectionRefOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionRefOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionRefArgs struct {
+	// Release Channel name
+	Name       pulumi.StringInput                                            `pulumi:"name"`
+	Parameters ReleaseChannelServiceInstanceProtectionRefParameterArrayInput `pulumi:"parameters"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRef)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefArgs) ToReleaseChannelServiceInstanceProtectionRefOutput() ReleaseChannelServiceInstanceProtectionRefOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionRefOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefArgs) ToReleaseChannelServiceInstanceProtectionRefOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionRefOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRef)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefOutput) ToReleaseChannelServiceInstanceProtectionRefOutput() ReleaseChannelServiceInstanceProtectionRefOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefOutput) ToReleaseChannelServiceInstanceProtectionRefOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefOutput {
+	return o
+}
+
+// Release Channel name
+func (o ReleaseChannelServiceInstanceProtectionRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefOutput) Parameters() ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRef) []ReleaseChannelServiceInstanceProtectionRefParameter {
+		return v.Parameters
+	}).(ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameter struct {
+	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
+	IntValue            *int    `pulumi:"intValue"`
+	// Release Channel name
+	Name        string                                                          `pulumi:"name"`
+	SecretValue *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue `pulumi:"secretValue"`
+	StringValue *string                                                         `pulumi:"stringValue"`
+}
+
+// ReleaseChannelServiceInstanceProtectionRefParameterInput is an input type that accepts ReleaseChannelServiceInstanceProtectionRefParameterArgs and ReleaseChannelServiceInstanceProtectionRefParameterOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionRefParameterInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionRefParameterArgs{...}
+type ReleaseChannelServiceInstanceProtectionRefParameterInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionRefParameterOutput() ReleaseChannelServiceInstanceProtectionRefParameterOutput
+	ToReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionRefParameterOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterArgs struct {
+	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
+	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
+	// Release Channel name
+	Name        pulumi.StringInput                                                     `pulumi:"name"`
+	SecretValue ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
+	StringValue pulumi.StringPtrInput                                                  `pulumi:"stringValue"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterArgs) ToReleaseChannelServiceInstanceProtectionRefParameterOutput() ReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterArgs) ToReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionRefParameterOutput)
+}
+
+// ReleaseChannelServiceInstanceProtectionRefParameterArrayInput is an input type that accepts ReleaseChannelServiceInstanceProtectionRefParameterArray and ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionRefParameterArrayInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionRefParameterArray{ ReleaseChannelServiceInstanceProtectionRefParameterArgs{...} }
+type ReleaseChannelServiceInstanceProtectionRefParameterArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutput() ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput
+	ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterArray []ReleaseChannelServiceInstanceProtectionRefParameterInput
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterArray) ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutput() ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterArray) ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) ToReleaseChannelServiceInstanceProtectionRefParameterOutput() ReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) ToReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
+}
+
+// Release Channel name
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) SecretValue() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+		return v.SecretValue
+	}).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutput() ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) ToReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) Index(i pulumi.IntInput) ReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelServiceInstanceProtectionRefParameter {
+		return vs[0].([]ReleaseChannelServiceInstanceProtectionRefParameter)[vs[1].(int)]
+	}).(ReleaseChannelServiceInstanceProtectionRefParameterOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterSecretValue struct {
+	Key string `pulumi:"key"`
+	// Current application version
+	Version string `pulumi:"version"`
+}
+
+// ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput is an input type that accepts ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs and ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput` via:
+//
+//	ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{...}
+type ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput
+	ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Current application version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput).ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput is an input type that accepts ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs, ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtr and ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput` via:
+//
+//	        ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput
+	ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput
+}
+
+type releaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs
+
+func ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtr(v *ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput {
+	return (*releaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType)(v)
+}
+
+func (*releaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i *releaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o.ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+		return &v
+	}).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Current application version
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) ToReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Elem() ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelServiceInstanceProtectionRefParameterSecretValue
+		return ret
+	}).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
+}
+
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current application version
+func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelConstant struct {
+	// name of the constant
+	Name string `pulumi:"name"`
+	// string value of the constant
+	StringValue string `pulumi:"stringValue"`
+}
+
+// GetReleaseChannelConstantInput is an input type that accepts GetReleaseChannelConstantArgs and GetReleaseChannelConstantOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConstantInput` via:
+//
+//	GetReleaseChannelConstantArgs{...}
+type GetReleaseChannelConstantInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConstantOutput() GetReleaseChannelConstantOutput
+	ToGetReleaseChannelConstantOutputWithContext(context.Context) GetReleaseChannelConstantOutput
+}
+
+type GetReleaseChannelConstantArgs struct {
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// string value of the constant
+	StringValue pulumi.StringInput `pulumi:"stringValue"`
+}
+
+func (GetReleaseChannelConstantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConstant)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConstantArgs) ToGetReleaseChannelConstantOutput() GetReleaseChannelConstantOutput {
+	return i.ToGetReleaseChannelConstantOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConstantArgs) ToGetReleaseChannelConstantOutputWithContext(ctx context.Context) GetReleaseChannelConstantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConstantOutput)
+}
+
+// GetReleaseChannelConstantArrayInput is an input type that accepts GetReleaseChannelConstantArray and GetReleaseChannelConstantArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConstantArrayInput` via:
+//
+//	GetReleaseChannelConstantArray{ GetReleaseChannelConstantArgs{...} }
+type GetReleaseChannelConstantArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConstantArrayOutput() GetReleaseChannelConstantArrayOutput
+	ToGetReleaseChannelConstantArrayOutputWithContext(context.Context) GetReleaseChannelConstantArrayOutput
+}
+
+type GetReleaseChannelConstantArray []GetReleaseChannelConstantInput
+
+func (GetReleaseChannelConstantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelConstant)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConstantArray) ToGetReleaseChannelConstantArrayOutput() GetReleaseChannelConstantArrayOutput {
+	return i.ToGetReleaseChannelConstantArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConstantArray) ToGetReleaseChannelConstantArrayOutputWithContext(ctx context.Context) GetReleaseChannelConstantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConstantArrayOutput)
+}
+
+type GetReleaseChannelConstantOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConstantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConstant)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConstantOutput) ToGetReleaseChannelConstantOutput() GetReleaseChannelConstantOutput {
+	return o
+}
+
+func (o GetReleaseChannelConstantOutput) ToGetReleaseChannelConstantOutputWithContext(ctx context.Context) GetReleaseChannelConstantOutput {
+	return o
+}
+
+// name of the constant
+func (o GetReleaseChannelConstantOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConstant) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// string value of the constant
+func (o GetReleaseChannelConstantOutput) StringValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConstant) string { return v.StringValue }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelConstantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConstantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelConstant)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConstantArrayOutput) ToGetReleaseChannelConstantArrayOutput() GetReleaseChannelConstantArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelConstantArrayOutput) ToGetReleaseChannelConstantArrayOutputWithContext(ctx context.Context) GetReleaseChannelConstantArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelConstantArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelConstantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelConstant {
+		return vs[0].([]GetReleaseChannelConstant)[vs[1].(int)]
+	}).(GetReleaseChannelConstantOutput)
+}
+
+type GetReleaseChannelConvergenceProtection struct {
+	// deployment lifecycle options
+	Deployment *GetReleaseChannelConvergenceProtectionDeployment `pulumi:"deployment"`
+	// name of the protection
+	Name string `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval *GetReleaseChannelConvergenceProtectionPostApproval `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment *GetReleaseChannelConvergenceProtectionPostDeployment `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval *GetReleaseChannelConvergenceProtectionPreApproval `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref GetReleaseChannelConvergenceProtectionRef `pulumi:"ref"`
+}
+
+// GetReleaseChannelConvergenceProtectionInput is an input type that accepts GetReleaseChannelConvergenceProtectionArgs and GetReleaseChannelConvergenceProtectionOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionArgs{...}
+type GetReleaseChannelConvergenceProtectionInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionOutput() GetReleaseChannelConvergenceProtectionOutput
+	ToGetReleaseChannelConvergenceProtectionOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionOutput
+}
+
+type GetReleaseChannelConvergenceProtectionArgs struct {
+	// deployment lifecycle options
+	Deployment GetReleaseChannelConvergenceProtectionDeploymentPtrInput `pulumi:"deployment"`
+	// name of the protection
+	Name pulumi.StringInput `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval GetReleaseChannelConvergenceProtectionPostApprovalPtrInput `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment GetReleaseChannelConvergenceProtectionPostDeploymentPtrInput `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval GetReleaseChannelConvergenceProtectionPreApprovalPtrInput `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref GetReleaseChannelConvergenceProtectionRefInput `pulumi:"ref"`
+}
+
+func (GetReleaseChannelConvergenceProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionArgs) ToGetReleaseChannelConvergenceProtectionOutput() GetReleaseChannelConvergenceProtectionOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionArgs) ToGetReleaseChannelConvergenceProtectionOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionOutput)
+}
+
+// GetReleaseChannelConvergenceProtectionArrayInput is an input type that accepts GetReleaseChannelConvergenceProtectionArray and GetReleaseChannelConvergenceProtectionArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionArrayInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionArray{ GetReleaseChannelConvergenceProtectionArgs{...} }
+type GetReleaseChannelConvergenceProtectionArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionArrayOutput() GetReleaseChannelConvergenceProtectionArrayOutput
+	ToGetReleaseChannelConvergenceProtectionArrayOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionArrayOutput
+}
+
+type GetReleaseChannelConvergenceProtectionArray []GetReleaseChannelConvergenceProtectionInput
+
+func (GetReleaseChannelConvergenceProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionArray) ToGetReleaseChannelConvergenceProtectionArrayOutput() GetReleaseChannelConvergenceProtectionArrayOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionArray) ToGetReleaseChannelConvergenceProtectionArrayOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionArrayOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionOutput) ToGetReleaseChannelConvergenceProtectionOutput() GetReleaseChannelConvergenceProtectionOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionOutput) ToGetReleaseChannelConvergenceProtectionOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionOutput {
+	return o
+}
+
+// deployment lifecycle options
+func (o GetReleaseChannelConvergenceProtectionOutput) Deployment() GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtection) *GetReleaseChannelConvergenceProtectionDeployment {
+		return v.Deployment
+	}).(GetReleaseChannelConvergenceProtectionDeploymentPtrOutput)
+}
+
+// name of the protection
+func (o GetReleaseChannelConvergenceProtectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtection) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// post-approval lifecycle options
+func (o GetReleaseChannelConvergenceProtectionOutput) PostApproval() GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtection) *GetReleaseChannelConvergenceProtectionPostApproval {
+		return v.PostApproval
+	}).(GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
+}
+
+// post-deployment lifecycle options
+func (o GetReleaseChannelConvergenceProtectionOutput) PostDeployment() GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtection) *GetReleaseChannelConvergenceProtectionPostDeployment {
+		return v.PostDeployment
+	}).(GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
+}
+
+// pre-approval lifecycle options
+func (o GetReleaseChannelConvergenceProtectionOutput) PreApproval() GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtection) *GetReleaseChannelConvergenceProtectionPreApproval {
+		return v.PreApproval
+	}).(GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
+}
+
+// reference to a protection stored in Prodvana
+func (o GetReleaseChannelConvergenceProtectionOutput) Ref() GetReleaseChannelConvergenceProtectionRefOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtection) GetReleaseChannelConvergenceProtectionRef { return v.Ref }).(GetReleaseChannelConvergenceProtectionRefOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelConvergenceProtection)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionArrayOutput) ToGetReleaseChannelConvergenceProtectionArrayOutput() GetReleaseChannelConvergenceProtectionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionArrayOutput) ToGetReleaseChannelConvergenceProtectionArrayOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelConvergenceProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelConvergenceProtection {
+		return vs[0].([]GetReleaseChannelConvergenceProtection)[vs[1].(int)]
+	}).(GetReleaseChannelConvergenceProtectionOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionDeployment struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelConvergenceProtectionDeploymentInput is an input type that accepts GetReleaseChannelConvergenceProtectionDeploymentArgs and GetReleaseChannelConvergenceProtectionDeploymentOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionDeploymentInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionDeploymentArgs{...}
+type GetReleaseChannelConvergenceProtectionDeploymentInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionDeploymentOutput() GetReleaseChannelConvergenceProtectionDeploymentOutput
+	ToGetReleaseChannelConvergenceProtectionDeploymentOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionDeploymentOutput
+}
+
+type GetReleaseChannelConvergenceProtectionDeploymentArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelConvergenceProtectionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionDeploymentArgs) ToGetReleaseChannelConvergenceProtectionDeploymentOutput() GetReleaseChannelConvergenceProtectionDeploymentOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionDeploymentArgs) ToGetReleaseChannelConvergenceProtectionDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionDeploymentOutput)
+}
+
+func (i GetReleaseChannelConvergenceProtectionDeploymentArgs) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionDeploymentArgs) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionDeploymentOutput).ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelConvergenceProtectionDeploymentPtrInput is an input type that accepts GetReleaseChannelConvergenceProtectionDeploymentArgs, GetReleaseChannelConvergenceProtectionDeploymentPtr and GetReleaseChannelConvergenceProtectionDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionDeploymentPtrInput` via:
+//
+//	        GetReleaseChannelConvergenceProtectionDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelConvergenceProtectionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionDeploymentPtrOutput
+	ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionDeploymentPtrOutput
+}
+
+type getReleaseChannelConvergenceProtectionDeploymentPtrType GetReleaseChannelConvergenceProtectionDeploymentArgs
+
+func GetReleaseChannelConvergenceProtectionDeploymentPtr(v *GetReleaseChannelConvergenceProtectionDeploymentArgs) GetReleaseChannelConvergenceProtectionDeploymentPtrInput {
+	return (*getReleaseChannelConvergenceProtectionDeploymentPtrType)(v)
+}
+
+func (*getReleaseChannelConvergenceProtectionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (i *getReleaseChannelConvergenceProtectionDeploymentPtrType) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelConvergenceProtectionDeploymentPtrType) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionDeploymentPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) ToGetReleaseChannelConvergenceProtectionDeploymentOutput() GetReleaseChannelConvergenceProtectionDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) ToGetReleaseChannelConvergenceProtectionDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o.ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelConvergenceProtectionDeployment) *GetReleaseChannelConvergenceProtectionDeployment {
+		return &v
+	}).(GetReleaseChannelConvergenceProtectionDeploymentPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) ToGetReleaseChannelConvergenceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) Elem() GetReleaseChannelConvergenceProtectionDeploymentOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionDeployment) GetReleaseChannelConvergenceProtectionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelConvergenceProtectionDeployment
+		return ret
+	}).(GetReleaseChannelConvergenceProtectionDeploymentOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPostApproval struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelConvergenceProtectionPostApprovalInput is an input type that accepts GetReleaseChannelConvergenceProtectionPostApprovalArgs and GetReleaseChannelConvergenceProtectionPostApprovalOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionPostApprovalInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionPostApprovalArgs{...}
+type GetReleaseChannelConvergenceProtectionPostApprovalInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionPostApprovalOutput() GetReleaseChannelConvergenceProtectionPostApprovalOutput
+	ToGetReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionPostApprovalOutput
+}
+
+type GetReleaseChannelConvergenceProtectionPostApprovalArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelConvergenceProtectionPostApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostApprovalArgs) ToGetReleaseChannelConvergenceProtectionPostApprovalOutput() GetReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostApprovalArgs) ToGetReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPostApprovalOutput)
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostApprovalArgs) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostApprovalArgs) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPostApprovalOutput).ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelConvergenceProtectionPostApprovalPtrInput is an input type that accepts GetReleaseChannelConvergenceProtectionPostApprovalArgs, GetReleaseChannelConvergenceProtectionPostApprovalPtr and GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionPostApprovalPtrInput` via:
+//
+//	        GetReleaseChannelConvergenceProtectionPostApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelConvergenceProtectionPostApprovalPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput
+	ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput
+}
+
+type getReleaseChannelConvergenceProtectionPostApprovalPtrType GetReleaseChannelConvergenceProtectionPostApprovalArgs
+
+func GetReleaseChannelConvergenceProtectionPostApprovalPtr(v *GetReleaseChannelConvergenceProtectionPostApprovalArgs) GetReleaseChannelConvergenceProtectionPostApprovalPtrInput {
+	return (*getReleaseChannelConvergenceProtectionPostApprovalPtrType)(v)
+}
+
+func (*getReleaseChannelConvergenceProtectionPostApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i *getReleaseChannelConvergenceProtectionPostApprovalPtrType) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelConvergenceProtectionPostApprovalPtrType) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPostApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionPostApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) ToGetReleaseChannelConvergenceProtectionPostApprovalOutput() GetReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) ToGetReleaseChannelConvergenceProtectionPostApprovalOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o.ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelConvergenceProtectionPostApproval) *GetReleaseChannelConvergenceProtectionPostApproval {
+		return &v
+	}).(GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) ToGetReleaseChannelConvergenceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Elem() GetReleaseChannelConvergenceProtectionPostApprovalOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostApproval) GetReleaseChannelConvergenceProtectionPostApproval {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelConvergenceProtectionPostApproval
+		return ret
+	}).(GetReleaseChannelConvergenceProtectionPostApprovalOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPostDeployment struct {
+	CheckDuration      *string `pulumi:"checkDuration"`
+	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
+	Enabled            bool    `pulumi:"enabled"`
+}
+
+// GetReleaseChannelConvergenceProtectionPostDeploymentInput is an input type that accepts GetReleaseChannelConvergenceProtectionPostDeploymentArgs and GetReleaseChannelConvergenceProtectionPostDeploymentOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionPostDeploymentInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionPostDeploymentArgs{...}
+type GetReleaseChannelConvergenceProtectionPostDeploymentInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionPostDeploymentOutput() GetReleaseChannelConvergenceProtectionPostDeploymentOutput
+	ToGetReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentOutput
+}
+
+type GetReleaseChannelConvergenceProtectionPostDeploymentArgs struct {
+	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
+	Enabled            pulumi.BoolInput      `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelConvergenceProtectionPostDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostDeploymentArgs) ToGetReleaseChannelConvergenceProtectionPostDeploymentOutput() GetReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostDeploymentArgs) ToGetReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPostDeploymentOutput)
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostDeploymentArgs) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionPostDeploymentArgs) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPostDeploymentOutput).ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelConvergenceProtectionPostDeploymentPtrInput is an input type that accepts GetReleaseChannelConvergenceProtectionPostDeploymentArgs, GetReleaseChannelConvergenceProtectionPostDeploymentPtr and GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionPostDeploymentPtrInput` via:
+//
+//	        GetReleaseChannelConvergenceProtectionPostDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelConvergenceProtectionPostDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput
+	ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput
+}
+
+type getReleaseChannelConvergenceProtectionPostDeploymentPtrType GetReleaseChannelConvergenceProtectionPostDeploymentArgs
+
+func GetReleaseChannelConvergenceProtectionPostDeploymentPtr(v *GetReleaseChannelConvergenceProtectionPostDeploymentArgs) GetReleaseChannelConvergenceProtectionPostDeploymentPtrInput {
+	return (*getReleaseChannelConvergenceProtectionPostDeploymentPtrType)(v)
+}
+
+func (*getReleaseChannelConvergenceProtectionPostDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i *getReleaseChannelConvergenceProtectionPostDeploymentPtrType) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelConvergenceProtectionPostDeploymentPtrType) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPostDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionPostDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) ToGetReleaseChannelConvergenceProtectionPostDeploymentOutput() GetReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) ToGetReleaseChannelConvergenceProtectionPostDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o.ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelConvergenceProtectionPostDeployment) *GetReleaseChannelConvergenceProtectionPostDeployment {
+		return &v
+	}).(GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput() GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) ToGetReleaseChannelConvergenceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Elem() GetReleaseChannelConvergenceProtectionPostDeploymentOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) GetReleaseChannelConvergenceProtectionPostDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelConvergenceProtectionPostDeployment
+		return ret
+	}).(GetReleaseChannelConvergenceProtectionPostDeploymentOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelayCheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPreApproval struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelConvergenceProtectionPreApprovalInput is an input type that accepts GetReleaseChannelConvergenceProtectionPreApprovalArgs and GetReleaseChannelConvergenceProtectionPreApprovalOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionPreApprovalInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionPreApprovalArgs{...}
+type GetReleaseChannelConvergenceProtectionPreApprovalInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionPreApprovalOutput() GetReleaseChannelConvergenceProtectionPreApprovalOutput
+	ToGetReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionPreApprovalOutput
+}
+
+type GetReleaseChannelConvergenceProtectionPreApprovalArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelConvergenceProtectionPreApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionPreApprovalArgs) ToGetReleaseChannelConvergenceProtectionPreApprovalOutput() GetReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionPreApprovalArgs) ToGetReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPreApprovalOutput)
+}
+
+func (i GetReleaseChannelConvergenceProtectionPreApprovalArgs) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionPreApprovalArgs) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPreApprovalOutput).ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelConvergenceProtectionPreApprovalPtrInput is an input type that accepts GetReleaseChannelConvergenceProtectionPreApprovalArgs, GetReleaseChannelConvergenceProtectionPreApprovalPtr and GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionPreApprovalPtrInput` via:
+//
+//	        GetReleaseChannelConvergenceProtectionPreApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelConvergenceProtectionPreApprovalPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput
+	ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput
+}
+
+type getReleaseChannelConvergenceProtectionPreApprovalPtrType GetReleaseChannelConvergenceProtectionPreApprovalArgs
+
+func GetReleaseChannelConvergenceProtectionPreApprovalPtr(v *GetReleaseChannelConvergenceProtectionPreApprovalArgs) GetReleaseChannelConvergenceProtectionPreApprovalPtrInput {
+	return (*getReleaseChannelConvergenceProtectionPreApprovalPtrType)(v)
+}
+
+func (*getReleaseChannelConvergenceProtectionPreApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i *getReleaseChannelConvergenceProtectionPreApprovalPtrType) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelConvergenceProtectionPreApprovalPtrType) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPreApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionPreApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) ToGetReleaseChannelConvergenceProtectionPreApprovalOutput() GetReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) ToGetReleaseChannelConvergenceProtectionPreApprovalOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o.ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelConvergenceProtectionPreApproval) *GetReleaseChannelConvergenceProtectionPreApproval {
+		return &v
+	}).(GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPreApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutput() GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) ToGetReleaseChannelConvergenceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Elem() GetReleaseChannelConvergenceProtectionPreApprovalOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPreApproval) GetReleaseChannelConvergenceProtectionPreApproval {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelConvergenceProtectionPreApproval
+		return ret
+	}).(GetReleaseChannelConvergenceProtectionPreApprovalOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPreApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRef struct {
+	// Release Channel name
+	Name       string                                               `pulumi:"name"`
+	Parameters []GetReleaseChannelConvergenceProtectionRefParameter `pulumi:"parameters"`
+}
+
+// GetReleaseChannelConvergenceProtectionRefInput is an input type that accepts GetReleaseChannelConvergenceProtectionRefArgs and GetReleaseChannelConvergenceProtectionRefOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionRefInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionRefArgs{...}
+type GetReleaseChannelConvergenceProtectionRefInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionRefOutput() GetReleaseChannelConvergenceProtectionRefOutput
+	ToGetReleaseChannelConvergenceProtectionRefOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionRefOutput
+}
+
+type GetReleaseChannelConvergenceProtectionRefArgs struct {
+	// Release Channel name
+	Name       pulumi.StringInput                                           `pulumi:"name"`
+	Parameters GetReleaseChannelConvergenceProtectionRefParameterArrayInput `pulumi:"parameters"`
+}
+
+func (GetReleaseChannelConvergenceProtectionRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRef)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefArgs) ToGetReleaseChannelConvergenceProtectionRefOutput() GetReleaseChannelConvergenceProtectionRefOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionRefOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefArgs) ToGetReleaseChannelConvergenceProtectionRefOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionRefOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRef)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefOutput) ToGetReleaseChannelConvergenceProtectionRefOutput() GetReleaseChannelConvergenceProtectionRefOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefOutput) ToGetReleaseChannelConvergenceProtectionRefOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefOutput {
+	return o
+}
+
+// Release Channel name
+func (o GetReleaseChannelConvergenceProtectionRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefOutput) Parameters() GetReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRef) []GetReleaseChannelConvergenceProtectionRefParameter {
+		return v.Parameters
+	}).(GetReleaseChannelConvergenceProtectionRefParameterArrayOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameter struct {
+	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
+	IntValue            *int    `pulumi:"intValue"`
+	// Release Channel name
+	Name        string                                                         `pulumi:"name"`
+	SecretValue *GetReleaseChannelConvergenceProtectionRefParameterSecretValue `pulumi:"secretValue"`
+	StringValue *string                                                        `pulumi:"stringValue"`
+}
+
+// GetReleaseChannelConvergenceProtectionRefParameterInput is an input type that accepts GetReleaseChannelConvergenceProtectionRefParameterArgs and GetReleaseChannelConvergenceProtectionRefParameterOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionRefParameterInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionRefParameterArgs{...}
+type GetReleaseChannelConvergenceProtectionRefParameterInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionRefParameterOutput() GetReleaseChannelConvergenceProtectionRefParameterOutput
+	ToGetReleaseChannelConvergenceProtectionRefParameterOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionRefParameterOutput
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterArgs struct {
+	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
+	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
+	// Release Channel name
+	Name        pulumi.StringInput                                                    `pulumi:"name"`
+	SecretValue GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
+	StringValue pulumi.StringPtrInput                                                 `pulumi:"stringValue"`
+}
+
+func (GetReleaseChannelConvergenceProtectionRefParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterArgs) ToGetReleaseChannelConvergenceProtectionRefParameterOutput() GetReleaseChannelConvergenceProtectionRefParameterOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionRefParameterOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterArgs) ToGetReleaseChannelConvergenceProtectionRefParameterOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionRefParameterOutput)
+}
+
+// GetReleaseChannelConvergenceProtectionRefParameterArrayInput is an input type that accepts GetReleaseChannelConvergenceProtectionRefParameterArray and GetReleaseChannelConvergenceProtectionRefParameterArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionRefParameterArrayInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionRefParameterArray{ GetReleaseChannelConvergenceProtectionRefParameterArgs{...} }
+type GetReleaseChannelConvergenceProtectionRefParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutput() GetReleaseChannelConvergenceProtectionRefParameterArrayOutput
+	ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionRefParameterArrayOutput
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterArray []GetReleaseChannelConvergenceProtectionRefParameterInput
+
+func (GetReleaseChannelConvergenceProtectionRefParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterArray) ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutput() GetReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterArray) ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionRefParameterArrayOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionRefParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) ToGetReleaseChannelConvergenceProtectionRefParameterOutput() GetReleaseChannelConvergenceProtectionRefParameterOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) ToGetReleaseChannelConvergenceProtectionRefParameterOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
+}
+
+// Release Channel name
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) SecretValue() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
+		return v.SecretValue
+	}).(GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionRefParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelConvergenceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterArrayOutput) ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutput() GetReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterArrayOutput) ToGetReleaseChannelConvergenceProtectionRefParameterArrayOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelConvergenceProtectionRefParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelConvergenceProtectionRefParameter {
+		return vs[0].([]GetReleaseChannelConvergenceProtectionRefParameter)[vs[1].(int)]
+	}).(GetReleaseChannelConvergenceProtectionRefParameterOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterSecretValue struct {
+	Key string `pulumi:"key"`
+	// Current application version
+	Version string `pulumi:"version"`
+}
+
+// GetReleaseChannelConvergenceProtectionRefParameterSecretValueInput is an input type that accepts GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs and GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionRefParameterSecretValueInput` via:
+//
+//	GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{...}
+type GetReleaseChannelConvergenceProtectionRefParameterSecretValueInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput
+	ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Current application version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput)
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput).ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput is an input type that accepts GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs, GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtr and GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput` via:
+//
+//	        GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput
+	ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput
+}
+
+type getReleaseChannelConvergenceProtectionRefParameterSecretValuePtrType GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs
+
+func GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtr(v *GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs) GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput {
+	return (*getReleaseChannelConvergenceProtectionRefParameterSecretValuePtrType)(v)
+}
+
+func (*getReleaseChannelConvergenceProtectionRefParameterSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i *getReleaseChannelConvergenceProtectionRefParameterSecretValuePtrType) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelConvergenceProtectionRefParameterSecretValuePtrType) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o.ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelConvergenceProtectionRefParameterSecretValue) *GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
+		return &v
+	}).(GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Current application version
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelConvergenceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) ToGetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Elem() GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionRefParameterSecretValue) GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelConvergenceProtectionRefParameterSecretValue
+		return ret
+	}).(GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput)
+}
+
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current application version
+func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelManualApprovalPrecondition struct {
+	// description of the manual approval
+	Description *string `pulumi:"description"`
+	// whether to require manual approval for every action, or just the first
+	EveryAction *bool `pulumi:"everyAction"`
+	// name of the manual approval
+	Name string `pulumi:"name"`
+}
+
+// GetReleaseChannelManualApprovalPreconditionInput is an input type that accepts GetReleaseChannelManualApprovalPreconditionArgs and GetReleaseChannelManualApprovalPreconditionOutput values.
+// You can construct a concrete instance of `GetReleaseChannelManualApprovalPreconditionInput` via:
+//
+//	GetReleaseChannelManualApprovalPreconditionArgs{...}
+type GetReleaseChannelManualApprovalPreconditionInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelManualApprovalPreconditionOutput() GetReleaseChannelManualApprovalPreconditionOutput
+	ToGetReleaseChannelManualApprovalPreconditionOutputWithContext(context.Context) GetReleaseChannelManualApprovalPreconditionOutput
+}
+
+type GetReleaseChannelManualApprovalPreconditionArgs struct {
+	// description of the manual approval
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// whether to require manual approval for every action, or just the first
+	EveryAction pulumi.BoolPtrInput `pulumi:"everyAction"`
+	// name of the manual approval
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetReleaseChannelManualApprovalPreconditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i GetReleaseChannelManualApprovalPreconditionArgs) ToGetReleaseChannelManualApprovalPreconditionOutput() GetReleaseChannelManualApprovalPreconditionOutput {
+	return i.ToGetReleaseChannelManualApprovalPreconditionOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelManualApprovalPreconditionArgs) ToGetReleaseChannelManualApprovalPreconditionOutputWithContext(ctx context.Context) GetReleaseChannelManualApprovalPreconditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelManualApprovalPreconditionOutput)
+}
+
+// GetReleaseChannelManualApprovalPreconditionArrayInput is an input type that accepts GetReleaseChannelManualApprovalPreconditionArray and GetReleaseChannelManualApprovalPreconditionArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelManualApprovalPreconditionArrayInput` via:
+//
+//	GetReleaseChannelManualApprovalPreconditionArray{ GetReleaseChannelManualApprovalPreconditionArgs{...} }
+type GetReleaseChannelManualApprovalPreconditionArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelManualApprovalPreconditionArrayOutput() GetReleaseChannelManualApprovalPreconditionArrayOutput
+	ToGetReleaseChannelManualApprovalPreconditionArrayOutputWithContext(context.Context) GetReleaseChannelManualApprovalPreconditionArrayOutput
+}
+
+type GetReleaseChannelManualApprovalPreconditionArray []GetReleaseChannelManualApprovalPreconditionInput
+
+func (GetReleaseChannelManualApprovalPreconditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i GetReleaseChannelManualApprovalPreconditionArray) ToGetReleaseChannelManualApprovalPreconditionArrayOutput() GetReleaseChannelManualApprovalPreconditionArrayOutput {
+	return i.ToGetReleaseChannelManualApprovalPreconditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelManualApprovalPreconditionArray) ToGetReleaseChannelManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) GetReleaseChannelManualApprovalPreconditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelManualApprovalPreconditionArrayOutput)
+}
+
+type GetReleaseChannelManualApprovalPreconditionOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelManualApprovalPreconditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o GetReleaseChannelManualApprovalPreconditionOutput) ToGetReleaseChannelManualApprovalPreconditionOutput() GetReleaseChannelManualApprovalPreconditionOutput {
+	return o
+}
+
+func (o GetReleaseChannelManualApprovalPreconditionOutput) ToGetReleaseChannelManualApprovalPreconditionOutputWithContext(ctx context.Context) GetReleaseChannelManualApprovalPreconditionOutput {
+	return o
+}
+
+// description of the manual approval
+func (o GetReleaseChannelManualApprovalPreconditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelManualApprovalPrecondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// whether to require manual approval for every action, or just the first
+func (o GetReleaseChannelManualApprovalPreconditionOutput) EveryAction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelManualApprovalPrecondition) *bool { return v.EveryAction }).(pulumi.BoolPtrOutput)
+}
+
+// name of the manual approval
+func (o GetReleaseChannelManualApprovalPreconditionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelManualApprovalPrecondition) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelManualApprovalPreconditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelManualApprovalPreconditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o GetReleaseChannelManualApprovalPreconditionArrayOutput) ToGetReleaseChannelManualApprovalPreconditionArrayOutput() GetReleaseChannelManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelManualApprovalPreconditionArrayOutput) ToGetReleaseChannelManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) GetReleaseChannelManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelManualApprovalPreconditionArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelManualApprovalPreconditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelManualApprovalPrecondition {
+		return vs[0].([]GetReleaseChannelManualApprovalPrecondition)[vs[1].(int)]
+	}).(GetReleaseChannelManualApprovalPreconditionOutput)
 }
 
 type GetReleaseChannelPolicy struct {
@@ -1118,6 +5846,1151 @@ func (o GetReleaseChannelPolicyDefaultEnvSecretPtrOutput) Version() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetReleaseChannelProtection struct {
+	// deployment lifecycle options
+	Deployment *GetReleaseChannelProtectionDeployment `pulumi:"deployment"`
+	// name of the protection
+	Name string `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval *GetReleaseChannelProtectionPostApproval `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment *GetReleaseChannelProtectionPostDeployment `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval *GetReleaseChannelProtectionPreApproval `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref GetReleaseChannelProtectionRef `pulumi:"ref"`
+}
+
+// GetReleaseChannelProtectionInput is an input type that accepts GetReleaseChannelProtectionArgs and GetReleaseChannelProtectionOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionInput` via:
+//
+//	GetReleaseChannelProtectionArgs{...}
+type GetReleaseChannelProtectionInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionOutput() GetReleaseChannelProtectionOutput
+	ToGetReleaseChannelProtectionOutputWithContext(context.Context) GetReleaseChannelProtectionOutput
+}
+
+type GetReleaseChannelProtectionArgs struct {
+	// deployment lifecycle options
+	Deployment GetReleaseChannelProtectionDeploymentPtrInput `pulumi:"deployment"`
+	// name of the protection
+	Name pulumi.StringInput `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval GetReleaseChannelProtectionPostApprovalPtrInput `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment GetReleaseChannelProtectionPostDeploymentPtrInput `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval GetReleaseChannelProtectionPreApprovalPtrInput `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref GetReleaseChannelProtectionRefInput `pulumi:"ref"`
+}
+
+func (GetReleaseChannelProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtection)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionArgs) ToGetReleaseChannelProtectionOutput() GetReleaseChannelProtectionOutput {
+	return i.ToGetReleaseChannelProtectionOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionArgs) ToGetReleaseChannelProtectionOutputWithContext(ctx context.Context) GetReleaseChannelProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionOutput)
+}
+
+// GetReleaseChannelProtectionArrayInput is an input type that accepts GetReleaseChannelProtectionArray and GetReleaseChannelProtectionArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionArrayInput` via:
+//
+//	GetReleaseChannelProtectionArray{ GetReleaseChannelProtectionArgs{...} }
+type GetReleaseChannelProtectionArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionArrayOutput() GetReleaseChannelProtectionArrayOutput
+	ToGetReleaseChannelProtectionArrayOutputWithContext(context.Context) GetReleaseChannelProtectionArrayOutput
+}
+
+type GetReleaseChannelProtectionArray []GetReleaseChannelProtectionInput
+
+func (GetReleaseChannelProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelProtection)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionArray) ToGetReleaseChannelProtectionArrayOutput() GetReleaseChannelProtectionArrayOutput {
+	return i.ToGetReleaseChannelProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionArray) ToGetReleaseChannelProtectionArrayOutputWithContext(ctx context.Context) GetReleaseChannelProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionArrayOutput)
+}
+
+type GetReleaseChannelProtectionOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtection)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionOutput) ToGetReleaseChannelProtectionOutput() GetReleaseChannelProtectionOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionOutput) ToGetReleaseChannelProtectionOutputWithContext(ctx context.Context) GetReleaseChannelProtectionOutput {
+	return o
+}
+
+// deployment lifecycle options
+func (o GetReleaseChannelProtectionOutput) Deployment() GetReleaseChannelProtectionDeploymentPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtection) *GetReleaseChannelProtectionDeployment { return v.Deployment }).(GetReleaseChannelProtectionDeploymentPtrOutput)
+}
+
+// name of the protection
+func (o GetReleaseChannelProtectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtection) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// post-approval lifecycle options
+func (o GetReleaseChannelProtectionOutput) PostApproval() GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtection) *GetReleaseChannelProtectionPostApproval { return v.PostApproval }).(GetReleaseChannelProtectionPostApprovalPtrOutput)
+}
+
+// post-deployment lifecycle options
+func (o GetReleaseChannelProtectionOutput) PostDeployment() GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtection) *GetReleaseChannelProtectionPostDeployment {
+		return v.PostDeployment
+	}).(GetReleaseChannelProtectionPostDeploymentPtrOutput)
+}
+
+// pre-approval lifecycle options
+func (o GetReleaseChannelProtectionOutput) PreApproval() GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtection) *GetReleaseChannelProtectionPreApproval { return v.PreApproval }).(GetReleaseChannelProtectionPreApprovalPtrOutput)
+}
+
+// reference to a protection stored in Prodvana
+func (o GetReleaseChannelProtectionOutput) Ref() GetReleaseChannelProtectionRefOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtection) GetReleaseChannelProtectionRef { return v.Ref }).(GetReleaseChannelProtectionRefOutput)
+}
+
+type GetReleaseChannelProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelProtection)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionArrayOutput) ToGetReleaseChannelProtectionArrayOutput() GetReleaseChannelProtectionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionArrayOutput) ToGetReleaseChannelProtectionArrayOutputWithContext(ctx context.Context) GetReleaseChannelProtectionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelProtection {
+		return vs[0].([]GetReleaseChannelProtection)[vs[1].(int)]
+	}).(GetReleaseChannelProtectionOutput)
+}
+
+type GetReleaseChannelProtectionDeployment struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelProtectionDeploymentInput is an input type that accepts GetReleaseChannelProtectionDeploymentArgs and GetReleaseChannelProtectionDeploymentOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionDeploymentInput` via:
+//
+//	GetReleaseChannelProtectionDeploymentArgs{...}
+type GetReleaseChannelProtectionDeploymentInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionDeploymentOutput() GetReleaseChannelProtectionDeploymentOutput
+	ToGetReleaseChannelProtectionDeploymentOutputWithContext(context.Context) GetReleaseChannelProtectionDeploymentOutput
+}
+
+type GetReleaseChannelProtectionDeploymentArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelProtectionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionDeploymentArgs) ToGetReleaseChannelProtectionDeploymentOutput() GetReleaseChannelProtectionDeploymentOutput {
+	return i.ToGetReleaseChannelProtectionDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionDeploymentArgs) ToGetReleaseChannelProtectionDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelProtectionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionDeploymentOutput)
+}
+
+func (i GetReleaseChannelProtectionDeploymentArgs) ToGetReleaseChannelProtectionDeploymentPtrOutput() GetReleaseChannelProtectionDeploymentPtrOutput {
+	return i.ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionDeploymentArgs) ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionDeploymentOutput).ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelProtectionDeploymentPtrInput is an input type that accepts GetReleaseChannelProtectionDeploymentArgs, GetReleaseChannelProtectionDeploymentPtr and GetReleaseChannelProtectionDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionDeploymentPtrInput` via:
+//
+//	        GetReleaseChannelProtectionDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelProtectionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionDeploymentPtrOutput() GetReleaseChannelProtectionDeploymentPtrOutput
+	ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Context) GetReleaseChannelProtectionDeploymentPtrOutput
+}
+
+type getReleaseChannelProtectionDeploymentPtrType GetReleaseChannelProtectionDeploymentArgs
+
+func GetReleaseChannelProtectionDeploymentPtr(v *GetReleaseChannelProtectionDeploymentArgs) GetReleaseChannelProtectionDeploymentPtrInput {
+	return (*getReleaseChannelProtectionDeploymentPtrType)(v)
+}
+
+func (*getReleaseChannelProtectionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (i *getReleaseChannelProtectionDeploymentPtrType) ToGetReleaseChannelProtectionDeploymentPtrOutput() GetReleaseChannelProtectionDeploymentPtrOutput {
+	return i.ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelProtectionDeploymentPtrType) ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionDeploymentPtrOutput)
+}
+
+type GetReleaseChannelProtectionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionDeploymentOutput) ToGetReleaseChannelProtectionDeploymentOutput() GetReleaseChannelProtectionDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionDeploymentOutput) ToGetReleaseChannelProtectionDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelProtectionDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionDeploymentOutput) ToGetReleaseChannelProtectionDeploymentPtrOutput() GetReleaseChannelProtectionDeploymentPtrOutput {
+	return o.ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelProtectionDeploymentOutput) ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelProtectionDeployment) *GetReleaseChannelProtectionDeployment {
+		return &v
+	}).(GetReleaseChannelProtectionDeploymentPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionDeploymentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelProtectionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionDeploymentPtrOutput) ToGetReleaseChannelProtectionDeploymentPtrOutput() GetReleaseChannelProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionDeploymentPtrOutput) ToGetReleaseChannelProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionDeploymentPtrOutput) Elem() GetReleaseChannelProtectionDeploymentOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionDeployment) GetReleaseChannelProtectionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelProtectionDeployment
+		return ret
+	}).(GetReleaseChannelProtectionDeploymentOutput)
+}
+
+func (o GetReleaseChannelProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelProtectionPostApproval struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelProtectionPostApprovalInput is an input type that accepts GetReleaseChannelProtectionPostApprovalArgs and GetReleaseChannelProtectionPostApprovalOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionPostApprovalInput` via:
+//
+//	GetReleaseChannelProtectionPostApprovalArgs{...}
+type GetReleaseChannelProtectionPostApprovalInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionPostApprovalOutput() GetReleaseChannelProtectionPostApprovalOutput
+	ToGetReleaseChannelProtectionPostApprovalOutputWithContext(context.Context) GetReleaseChannelProtectionPostApprovalOutput
+}
+
+type GetReleaseChannelProtectionPostApprovalArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelProtectionPostApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionPostApprovalArgs) ToGetReleaseChannelProtectionPostApprovalOutput() GetReleaseChannelProtectionPostApprovalOutput {
+	return i.ToGetReleaseChannelProtectionPostApprovalOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionPostApprovalArgs) ToGetReleaseChannelProtectionPostApprovalOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPostApprovalOutput)
+}
+
+func (i GetReleaseChannelProtectionPostApprovalArgs) ToGetReleaseChannelProtectionPostApprovalPtrOutput() GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return i.ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionPostApprovalArgs) ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPostApprovalOutput).ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelProtectionPostApprovalPtrInput is an input type that accepts GetReleaseChannelProtectionPostApprovalArgs, GetReleaseChannelProtectionPostApprovalPtr and GetReleaseChannelProtectionPostApprovalPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionPostApprovalPtrInput` via:
+//
+//	        GetReleaseChannelProtectionPostApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelProtectionPostApprovalPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionPostApprovalPtrOutput() GetReleaseChannelProtectionPostApprovalPtrOutput
+	ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Context) GetReleaseChannelProtectionPostApprovalPtrOutput
+}
+
+type getReleaseChannelProtectionPostApprovalPtrType GetReleaseChannelProtectionPostApprovalArgs
+
+func GetReleaseChannelProtectionPostApprovalPtr(v *GetReleaseChannelProtectionPostApprovalArgs) GetReleaseChannelProtectionPostApprovalPtrInput {
+	return (*getReleaseChannelProtectionPostApprovalPtrType)(v)
+}
+
+func (*getReleaseChannelProtectionPostApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (i *getReleaseChannelProtectionPostApprovalPtrType) ToGetReleaseChannelProtectionPostApprovalPtrOutput() GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return i.ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelProtectionPostApprovalPtrType) ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPostApprovalPtrOutput)
+}
+
+type GetReleaseChannelProtectionPostApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionPostApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionPostApprovalOutput) ToGetReleaseChannelProtectionPostApprovalOutput() GetReleaseChannelProtectionPostApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostApprovalOutput) ToGetReleaseChannelProtectionPostApprovalOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostApprovalOutput) ToGetReleaseChannelProtectionPostApprovalPtrOutput() GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return o.ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelProtectionPostApprovalOutput) ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelProtectionPostApproval) *GetReleaseChannelProtectionPostApproval {
+		return &v
+	}).(GetReleaseChannelProtectionPostApprovalPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPostApprovalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionPostApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelProtectionPostApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionPostApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionPostApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionPostApprovalPtrOutput) ToGetReleaseChannelProtectionPostApprovalPtrOutput() GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostApprovalPtrOutput) ToGetReleaseChannelProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostApprovalPtrOutput) Elem() GetReleaseChannelProtectionPostApprovalOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPostApproval) GetReleaseChannelProtectionPostApproval {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelProtectionPostApproval
+		return ret
+	}).(GetReleaseChannelProtectionPostApprovalOutput)
+}
+
+func (o GetReleaseChannelProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPostApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelProtectionPostDeployment struct {
+	CheckDuration      *string `pulumi:"checkDuration"`
+	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
+	Enabled            bool    `pulumi:"enabled"`
+}
+
+// GetReleaseChannelProtectionPostDeploymentInput is an input type that accepts GetReleaseChannelProtectionPostDeploymentArgs and GetReleaseChannelProtectionPostDeploymentOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionPostDeploymentInput` via:
+//
+//	GetReleaseChannelProtectionPostDeploymentArgs{...}
+type GetReleaseChannelProtectionPostDeploymentInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionPostDeploymentOutput() GetReleaseChannelProtectionPostDeploymentOutput
+	ToGetReleaseChannelProtectionPostDeploymentOutputWithContext(context.Context) GetReleaseChannelProtectionPostDeploymentOutput
+}
+
+type GetReleaseChannelProtectionPostDeploymentArgs struct {
+	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
+	Enabled            pulumi.BoolInput      `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelProtectionPostDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionPostDeploymentArgs) ToGetReleaseChannelProtectionPostDeploymentOutput() GetReleaseChannelProtectionPostDeploymentOutput {
+	return i.ToGetReleaseChannelProtectionPostDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionPostDeploymentArgs) ToGetReleaseChannelProtectionPostDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPostDeploymentOutput)
+}
+
+func (i GetReleaseChannelProtectionPostDeploymentArgs) ToGetReleaseChannelProtectionPostDeploymentPtrOutput() GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return i.ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionPostDeploymentArgs) ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPostDeploymentOutput).ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelProtectionPostDeploymentPtrInput is an input type that accepts GetReleaseChannelProtectionPostDeploymentArgs, GetReleaseChannelProtectionPostDeploymentPtr and GetReleaseChannelProtectionPostDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionPostDeploymentPtrInput` via:
+//
+//	        GetReleaseChannelProtectionPostDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelProtectionPostDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionPostDeploymentPtrOutput() GetReleaseChannelProtectionPostDeploymentPtrOutput
+	ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Context) GetReleaseChannelProtectionPostDeploymentPtrOutput
+}
+
+type getReleaseChannelProtectionPostDeploymentPtrType GetReleaseChannelProtectionPostDeploymentArgs
+
+func GetReleaseChannelProtectionPostDeploymentPtr(v *GetReleaseChannelProtectionPostDeploymentArgs) GetReleaseChannelProtectionPostDeploymentPtrInput {
+	return (*getReleaseChannelProtectionPostDeploymentPtrType)(v)
+}
+
+func (*getReleaseChannelProtectionPostDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i *getReleaseChannelProtectionPostDeploymentPtrType) ToGetReleaseChannelProtectionPostDeploymentPtrOutput() GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return i.ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelProtectionPostDeploymentPtrType) ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPostDeploymentPtrOutput)
+}
+
+type GetReleaseChannelProtectionPostDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionPostDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) ToGetReleaseChannelProtectionPostDeploymentOutput() GetReleaseChannelProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) ToGetReleaseChannelProtectionPostDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) ToGetReleaseChannelProtectionPostDeploymentPtrOutput() GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o.ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelProtectionPostDeployment) *GetReleaseChannelProtectionPostDeployment {
+		return &v
+	}).(GetReleaseChannelProtectionPostDeploymentPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionPostDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelProtectionPostDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionPostDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) ToGetReleaseChannelProtectionPostDeploymentPtrOutput() GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) ToGetReleaseChannelProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) Elem() GetReleaseChannelProtectionPostDeploymentOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) GetReleaseChannelProtectionPostDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelProtectionPostDeployment
+		return ret
+	}).(GetReleaseChannelProtectionPostDeploymentOutput)
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelayCheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelProtectionPreApproval struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelProtectionPreApprovalInput is an input type that accepts GetReleaseChannelProtectionPreApprovalArgs and GetReleaseChannelProtectionPreApprovalOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionPreApprovalInput` via:
+//
+//	GetReleaseChannelProtectionPreApprovalArgs{...}
+type GetReleaseChannelProtectionPreApprovalInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionPreApprovalOutput() GetReleaseChannelProtectionPreApprovalOutput
+	ToGetReleaseChannelProtectionPreApprovalOutputWithContext(context.Context) GetReleaseChannelProtectionPreApprovalOutput
+}
+
+type GetReleaseChannelProtectionPreApprovalArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelProtectionPreApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionPreApprovalArgs) ToGetReleaseChannelProtectionPreApprovalOutput() GetReleaseChannelProtectionPreApprovalOutput {
+	return i.ToGetReleaseChannelProtectionPreApprovalOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionPreApprovalArgs) ToGetReleaseChannelProtectionPreApprovalOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPreApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPreApprovalOutput)
+}
+
+func (i GetReleaseChannelProtectionPreApprovalArgs) ToGetReleaseChannelProtectionPreApprovalPtrOutput() GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return i.ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionPreApprovalArgs) ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPreApprovalOutput).ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelProtectionPreApprovalPtrInput is an input type that accepts GetReleaseChannelProtectionPreApprovalArgs, GetReleaseChannelProtectionPreApprovalPtr and GetReleaseChannelProtectionPreApprovalPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionPreApprovalPtrInput` via:
+//
+//	        GetReleaseChannelProtectionPreApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelProtectionPreApprovalPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionPreApprovalPtrOutput() GetReleaseChannelProtectionPreApprovalPtrOutput
+	ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Context) GetReleaseChannelProtectionPreApprovalPtrOutput
+}
+
+type getReleaseChannelProtectionPreApprovalPtrType GetReleaseChannelProtectionPreApprovalArgs
+
+func GetReleaseChannelProtectionPreApprovalPtr(v *GetReleaseChannelProtectionPreApprovalArgs) GetReleaseChannelProtectionPreApprovalPtrInput {
+	return (*getReleaseChannelProtectionPreApprovalPtrType)(v)
+}
+
+func (*getReleaseChannelProtectionPreApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (i *getReleaseChannelProtectionPreApprovalPtrType) ToGetReleaseChannelProtectionPreApprovalPtrOutput() GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return i.ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelProtectionPreApprovalPtrType) ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionPreApprovalPtrOutput)
+}
+
+type GetReleaseChannelProtectionPreApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionPreApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionPreApprovalOutput) ToGetReleaseChannelProtectionPreApprovalOutput() GetReleaseChannelProtectionPreApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPreApprovalOutput) ToGetReleaseChannelProtectionPreApprovalOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPreApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPreApprovalOutput) ToGetReleaseChannelProtectionPreApprovalPtrOutput() GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return o.ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelProtectionPreApprovalOutput) ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelProtectionPreApproval) *GetReleaseChannelProtectionPreApproval {
+		return &v
+	}).(GetReleaseChannelProtectionPreApprovalPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionPreApprovalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionPreApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelProtectionPreApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionPreApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionPreApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionPreApprovalPtrOutput) ToGetReleaseChannelProtectionPreApprovalPtrOutput() GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPreApprovalPtrOutput) ToGetReleaseChannelProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionPreApprovalPtrOutput) Elem() GetReleaseChannelProtectionPreApprovalOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPreApproval) GetReleaseChannelProtectionPreApproval {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelProtectionPreApproval
+		return ret
+	}).(GetReleaseChannelProtectionPreApprovalOutput)
+}
+
+func (o GetReleaseChannelProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionPreApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelProtectionRef struct {
+	// Release Channel name
+	Name       string                                    `pulumi:"name"`
+	Parameters []GetReleaseChannelProtectionRefParameter `pulumi:"parameters"`
+}
+
+// GetReleaseChannelProtectionRefInput is an input type that accepts GetReleaseChannelProtectionRefArgs and GetReleaseChannelProtectionRefOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionRefInput` via:
+//
+//	GetReleaseChannelProtectionRefArgs{...}
+type GetReleaseChannelProtectionRefInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionRefOutput() GetReleaseChannelProtectionRefOutput
+	ToGetReleaseChannelProtectionRefOutputWithContext(context.Context) GetReleaseChannelProtectionRefOutput
+}
+
+type GetReleaseChannelProtectionRefArgs struct {
+	// Release Channel name
+	Name       pulumi.StringInput                                `pulumi:"name"`
+	Parameters GetReleaseChannelProtectionRefParameterArrayInput `pulumi:"parameters"`
+}
+
+func (GetReleaseChannelProtectionRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionRef)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionRefArgs) ToGetReleaseChannelProtectionRefOutput() GetReleaseChannelProtectionRefOutput {
+	return i.ToGetReleaseChannelProtectionRefOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionRefArgs) ToGetReleaseChannelProtectionRefOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionRefOutput)
+}
+
+type GetReleaseChannelProtectionRefOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionRef)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionRefOutput) ToGetReleaseChannelProtectionRefOutput() GetReleaseChannelProtectionRefOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefOutput) ToGetReleaseChannelProtectionRefOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefOutput {
+	return o
+}
+
+// Release Channel name
+func (o GetReleaseChannelProtectionRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetReleaseChannelProtectionRefOutput) Parameters() GetReleaseChannelProtectionRefParameterArrayOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRef) []GetReleaseChannelProtectionRefParameter { return v.Parameters }).(GetReleaseChannelProtectionRefParameterArrayOutput)
+}
+
+type GetReleaseChannelProtectionRefParameter struct {
+	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
+	IntValue            *int    `pulumi:"intValue"`
+	// Release Channel name
+	Name        string                                              `pulumi:"name"`
+	SecretValue *GetReleaseChannelProtectionRefParameterSecretValue `pulumi:"secretValue"`
+	StringValue *string                                             `pulumi:"stringValue"`
+}
+
+// GetReleaseChannelProtectionRefParameterInput is an input type that accepts GetReleaseChannelProtectionRefParameterArgs and GetReleaseChannelProtectionRefParameterOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionRefParameterInput` via:
+//
+//	GetReleaseChannelProtectionRefParameterArgs{...}
+type GetReleaseChannelProtectionRefParameterInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionRefParameterOutput() GetReleaseChannelProtectionRefParameterOutput
+	ToGetReleaseChannelProtectionRefParameterOutputWithContext(context.Context) GetReleaseChannelProtectionRefParameterOutput
+}
+
+type GetReleaseChannelProtectionRefParameterArgs struct {
+	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
+	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
+	// Release Channel name
+	Name        pulumi.StringInput                                         `pulumi:"name"`
+	SecretValue GetReleaseChannelProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
+	StringValue pulumi.StringPtrInput                                      `pulumi:"stringValue"`
+}
+
+func (GetReleaseChannelProtectionRefParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionRefParameterArgs) ToGetReleaseChannelProtectionRefParameterOutput() GetReleaseChannelProtectionRefParameterOutput {
+	return i.ToGetReleaseChannelProtectionRefParameterOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionRefParameterArgs) ToGetReleaseChannelProtectionRefParameterOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionRefParameterOutput)
+}
+
+// GetReleaseChannelProtectionRefParameterArrayInput is an input type that accepts GetReleaseChannelProtectionRefParameterArray and GetReleaseChannelProtectionRefParameterArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionRefParameterArrayInput` via:
+//
+//	GetReleaseChannelProtectionRefParameterArray{ GetReleaseChannelProtectionRefParameterArgs{...} }
+type GetReleaseChannelProtectionRefParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionRefParameterArrayOutput() GetReleaseChannelProtectionRefParameterArrayOutput
+	ToGetReleaseChannelProtectionRefParameterArrayOutputWithContext(context.Context) GetReleaseChannelProtectionRefParameterArrayOutput
+}
+
+type GetReleaseChannelProtectionRefParameterArray []GetReleaseChannelProtectionRefParameterInput
+
+func (GetReleaseChannelProtectionRefParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionRefParameterArray) ToGetReleaseChannelProtectionRefParameterArrayOutput() GetReleaseChannelProtectionRefParameterArrayOutput {
+	return i.ToGetReleaseChannelProtectionRefParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionRefParameterArray) ToGetReleaseChannelProtectionRefParameterArrayOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionRefParameterArrayOutput)
+}
+
+type GetReleaseChannelProtectionRefParameterOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionRefParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionRefParameterOutput) ToGetReleaseChannelProtectionRefParameterOutput() GetReleaseChannelProtectionRefParameterOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterOutput) ToGetReleaseChannelProtectionRefParameterOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
+}
+
+// Release Channel name
+func (o GetReleaseChannelProtectionRefParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetReleaseChannelProtectionRefParameterOutput) SecretValue() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *GetReleaseChannelProtectionRefParameterSecretValue {
+		return v.SecretValue
+	}).(GetReleaseChannelProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o GetReleaseChannelProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelProtectionRefParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionRefParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelProtectionRefParameter)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionRefParameterArrayOutput) ToGetReleaseChannelProtectionRefParameterArrayOutput() GetReleaseChannelProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterArrayOutput) ToGetReleaseChannelProtectionRefParameterArrayOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelProtectionRefParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelProtectionRefParameter {
+		return vs[0].([]GetReleaseChannelProtectionRefParameter)[vs[1].(int)]
+	}).(GetReleaseChannelProtectionRefParameterOutput)
+}
+
+type GetReleaseChannelProtectionRefParameterSecretValue struct {
+	Key string `pulumi:"key"`
+	// Current application version
+	Version string `pulumi:"version"`
+}
+
+// GetReleaseChannelProtectionRefParameterSecretValueInput is an input type that accepts GetReleaseChannelProtectionRefParameterSecretValueArgs and GetReleaseChannelProtectionRefParameterSecretValueOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionRefParameterSecretValueInput` via:
+//
+//	GetReleaseChannelProtectionRefParameterSecretValueArgs{...}
+type GetReleaseChannelProtectionRefParameterSecretValueInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionRefParameterSecretValueOutput() GetReleaseChannelProtectionRefParameterSecretValueOutput
+	ToGetReleaseChannelProtectionRefParameterSecretValueOutputWithContext(context.Context) GetReleaseChannelProtectionRefParameterSecretValueOutput
+}
+
+type GetReleaseChannelProtectionRefParameterSecretValueArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Current application version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetReleaseChannelProtectionRefParameterSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i GetReleaseChannelProtectionRefParameterSecretValueArgs) ToGetReleaseChannelProtectionRefParameterSecretValueOutput() GetReleaseChannelProtectionRefParameterSecretValueOutput {
+	return i.ToGetReleaseChannelProtectionRefParameterSecretValueOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionRefParameterSecretValueArgs) ToGetReleaseChannelProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionRefParameterSecretValueOutput)
+}
+
+func (i GetReleaseChannelProtectionRefParameterSecretValueArgs) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return i.ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelProtectionRefParameterSecretValueArgs) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionRefParameterSecretValueOutput).ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelProtectionRefParameterSecretValuePtrInput is an input type that accepts GetReleaseChannelProtectionRefParameterSecretValueArgs, GetReleaseChannelProtectionRefParameterSecretValuePtr and GetReleaseChannelProtectionRefParameterSecretValuePtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelProtectionRefParameterSecretValuePtrInput` via:
+//
+//	        GetReleaseChannelProtectionRefParameterSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelProtectionRefParameterSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput
+	ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Context) GetReleaseChannelProtectionRefParameterSecretValuePtrOutput
+}
+
+type getReleaseChannelProtectionRefParameterSecretValuePtrType GetReleaseChannelProtectionRefParameterSecretValueArgs
+
+func GetReleaseChannelProtectionRefParameterSecretValuePtr(v *GetReleaseChannelProtectionRefParameterSecretValueArgs) GetReleaseChannelProtectionRefParameterSecretValuePtrInput {
+	return (*getReleaseChannelProtectionRefParameterSecretValuePtrType)(v)
+}
+
+func (*getReleaseChannelProtectionRefParameterSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i *getReleaseChannelProtectionRefParameterSecretValuePtrType) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return i.ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelProtectionRefParameterSecretValuePtrType) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelProtectionRefParameterSecretValuePtrOutput)
+}
+
+type GetReleaseChannelProtectionRefParameterSecretValueOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionRefParameterSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) ToGetReleaseChannelProtectionRefParameterSecretValueOutput() GetReleaseChannelProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) ToGetReleaseChannelProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o.ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelProtectionRefParameterSecretValue) *GetReleaseChannelProtectionRefParameterSecretValue {
+		return &v
+	}).(GetReleaseChannelProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Current application version
+func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelProtectionRefParameterSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) ToGetReleaseChannelProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Elem() GetReleaseChannelProtectionRefParameterSecretValueOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionRefParameterSecretValue) GetReleaseChannelProtectionRefParameterSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelProtectionRefParameterSecretValue
+		return ret
+	}).(GetReleaseChannelProtectionRefParameterSecretValueOutput)
+}
+
+func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current application version
+func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelReleaseChannelStablePrecondition struct {
+	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	Duration string `pulumi:"duration"`
+	// name of a release channel that must be in a stable deployment state
+	ReleaseChannel string `pulumi:"releaseChannel"`
+}
+
+// GetReleaseChannelReleaseChannelStablePreconditionInput is an input type that accepts GetReleaseChannelReleaseChannelStablePreconditionArgs and GetReleaseChannelReleaseChannelStablePreconditionOutput values.
+// You can construct a concrete instance of `GetReleaseChannelReleaseChannelStablePreconditionInput` via:
+//
+//	GetReleaseChannelReleaseChannelStablePreconditionArgs{...}
+type GetReleaseChannelReleaseChannelStablePreconditionInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelReleaseChannelStablePreconditionOutput() GetReleaseChannelReleaseChannelStablePreconditionOutput
+	ToGetReleaseChannelReleaseChannelStablePreconditionOutputWithContext(context.Context) GetReleaseChannelReleaseChannelStablePreconditionOutput
+}
+
+type GetReleaseChannelReleaseChannelStablePreconditionArgs struct {
+	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// name of a release channel that must be in a stable deployment state
+	ReleaseChannel pulumi.StringInput `pulumi:"releaseChannel"`
+}
+
+func (GetReleaseChannelReleaseChannelStablePreconditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (i GetReleaseChannelReleaseChannelStablePreconditionArgs) ToGetReleaseChannelReleaseChannelStablePreconditionOutput() GetReleaseChannelReleaseChannelStablePreconditionOutput {
+	return i.ToGetReleaseChannelReleaseChannelStablePreconditionOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelReleaseChannelStablePreconditionArgs) ToGetReleaseChannelReleaseChannelStablePreconditionOutputWithContext(ctx context.Context) GetReleaseChannelReleaseChannelStablePreconditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelReleaseChannelStablePreconditionOutput)
+}
+
+// GetReleaseChannelReleaseChannelStablePreconditionArrayInput is an input type that accepts GetReleaseChannelReleaseChannelStablePreconditionArray and GetReleaseChannelReleaseChannelStablePreconditionArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelReleaseChannelStablePreconditionArrayInput` via:
+//
+//	GetReleaseChannelReleaseChannelStablePreconditionArray{ GetReleaseChannelReleaseChannelStablePreconditionArgs{...} }
+type GetReleaseChannelReleaseChannelStablePreconditionArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutput() GetReleaseChannelReleaseChannelStablePreconditionArrayOutput
+	ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(context.Context) GetReleaseChannelReleaseChannelStablePreconditionArrayOutput
+}
+
+type GetReleaseChannelReleaseChannelStablePreconditionArray []GetReleaseChannelReleaseChannelStablePreconditionInput
+
+func (GetReleaseChannelReleaseChannelStablePreconditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (i GetReleaseChannelReleaseChannelStablePreconditionArray) ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutput() GetReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return i.ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelReleaseChannelStablePreconditionArray) ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(ctx context.Context) GetReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelReleaseChannelStablePreconditionArrayOutput)
+}
+
+type GetReleaseChannelReleaseChannelStablePreconditionOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelReleaseChannelStablePreconditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) ToGetReleaseChannelReleaseChannelStablePreconditionOutput() GetReleaseChannelReleaseChannelStablePreconditionOutput {
+	return o
+}
+
+func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) ToGetReleaseChannelReleaseChannelStablePreconditionOutputWithContext(ctx context.Context) GetReleaseChannelReleaseChannelStablePreconditionOutput {
+	return o
+}
+
+// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelReleaseChannelStablePrecondition) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// name of a release channel that must be in a stable deployment state
+func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) ReleaseChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelReleaseChannelStablePrecondition) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelReleaseChannelStablePreconditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelReleaseChannelStablePreconditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelReleaseChannelStablePrecondition)(nil)).Elem()
+}
+
+func (o GetReleaseChannelReleaseChannelStablePreconditionArrayOutput) ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutput() GetReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelReleaseChannelStablePreconditionArrayOutput) ToGetReleaseChannelReleaseChannelStablePreconditionArrayOutputWithContext(ctx context.Context) GetReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelReleaseChannelStablePreconditionArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelReleaseChannelStablePreconditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelReleaseChannelStablePrecondition {
+		return vs[0].([]GetReleaseChannelReleaseChannelStablePrecondition)[vs[1].(int)]
+	}).(GetReleaseChannelReleaseChannelStablePreconditionOutput)
+}
+
 type GetReleaseChannelRuntime struct {
 	// ECS prefix
 	EcsPrefix string `pulumi:"ecsPrefix"`
@@ -1251,41 +7124,1294 @@ func (o GetReleaseChannelRuntimeArrayOutput) Index(i pulumi.IntInput) GetRelease
 	}).(GetReleaseChannelRuntimeOutput)
 }
 
+type GetReleaseChannelServiceInstanceProtection struct {
+	// deployment lifecycle options
+	Deployment *GetReleaseChannelServiceInstanceProtectionDeployment `pulumi:"deployment"`
+	// name of the protection
+	Name string `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval *GetReleaseChannelServiceInstanceProtectionPostApproval `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment *GetReleaseChannelServiceInstanceProtectionPostDeployment `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval *GetReleaseChannelServiceInstanceProtectionPreApproval `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref GetReleaseChannelServiceInstanceProtectionRef `pulumi:"ref"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionArgs and GetReleaseChannelServiceInstanceProtectionOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionArgs{...}
+type GetReleaseChannelServiceInstanceProtectionInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionOutput() GetReleaseChannelServiceInstanceProtectionOutput
+	ToGetReleaseChannelServiceInstanceProtectionOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionArgs struct {
+	// deployment lifecycle options
+	Deployment GetReleaseChannelServiceInstanceProtectionDeploymentPtrInput `pulumi:"deployment"`
+	// name of the protection
+	Name pulumi.StringInput `pulumi:"name"`
+	// post-approval lifecycle options
+	PostApproval GetReleaseChannelServiceInstanceProtectionPostApprovalPtrInput `pulumi:"postApproval"`
+	// post-deployment lifecycle options
+	PostDeployment GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput `pulumi:"postDeployment"`
+	// pre-approval lifecycle options
+	PreApproval GetReleaseChannelServiceInstanceProtectionPreApprovalPtrInput `pulumi:"preApproval"`
+	// reference to a protection stored in Prodvana
+	Ref GetReleaseChannelServiceInstanceProtectionRefInput `pulumi:"ref"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionArgs) ToGetReleaseChannelServiceInstanceProtectionOutput() GetReleaseChannelServiceInstanceProtectionOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionArgs) ToGetReleaseChannelServiceInstanceProtectionOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionOutput)
+}
+
+// GetReleaseChannelServiceInstanceProtectionArrayInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionArray and GetReleaseChannelServiceInstanceProtectionArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionArrayInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionArray{ GetReleaseChannelServiceInstanceProtectionArgs{...} }
+type GetReleaseChannelServiceInstanceProtectionArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionArrayOutput() GetReleaseChannelServiceInstanceProtectionArrayOutput
+	ToGetReleaseChannelServiceInstanceProtectionArrayOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionArrayOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionArray []GetReleaseChannelServiceInstanceProtectionInput
+
+func (GetReleaseChannelServiceInstanceProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionArray) ToGetReleaseChannelServiceInstanceProtectionArrayOutput() GetReleaseChannelServiceInstanceProtectionArrayOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionArray) ToGetReleaseChannelServiceInstanceProtectionArrayOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionArrayOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionOutput) ToGetReleaseChannelServiceInstanceProtectionOutput() GetReleaseChannelServiceInstanceProtectionOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionOutput) ToGetReleaseChannelServiceInstanceProtectionOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionOutput {
+	return o
+}
+
+// deployment lifecycle options
+func (o GetReleaseChannelServiceInstanceProtectionOutput) Deployment() GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtection) *GetReleaseChannelServiceInstanceProtectionDeployment {
+		return v.Deployment
+	}).(GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
+}
+
+// name of the protection
+func (o GetReleaseChannelServiceInstanceProtectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtection) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// post-approval lifecycle options
+func (o GetReleaseChannelServiceInstanceProtectionOutput) PostApproval() GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtection) *GetReleaseChannelServiceInstanceProtectionPostApproval {
+		return v.PostApproval
+	}).(GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
+}
+
+// post-deployment lifecycle options
+func (o GetReleaseChannelServiceInstanceProtectionOutput) PostDeployment() GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtection) *GetReleaseChannelServiceInstanceProtectionPostDeployment {
+		return v.PostDeployment
+	}).(GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
+}
+
+// pre-approval lifecycle options
+func (o GetReleaseChannelServiceInstanceProtectionOutput) PreApproval() GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtection) *GetReleaseChannelServiceInstanceProtectionPreApproval {
+		return v.PreApproval
+	}).(GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
+}
+
+// reference to a protection stored in Prodvana
+func (o GetReleaseChannelServiceInstanceProtectionOutput) Ref() GetReleaseChannelServiceInstanceProtectionRefOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtection) GetReleaseChannelServiceInstanceProtectionRef {
+		return v.Ref
+	}).(GetReleaseChannelServiceInstanceProtectionRefOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelServiceInstanceProtection)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionArrayOutput) ToGetReleaseChannelServiceInstanceProtectionArrayOutput() GetReleaseChannelServiceInstanceProtectionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionArrayOutput) ToGetReleaseChannelServiceInstanceProtectionArrayOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelServiceInstanceProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelServiceInstanceProtection {
+		return vs[0].([]GetReleaseChannelServiceInstanceProtection)[vs[1].(int)]
+	}).(GetReleaseChannelServiceInstanceProtectionOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionDeployment struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionDeploymentInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionDeploymentArgs and GetReleaseChannelServiceInstanceProtectionDeploymentOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionDeploymentInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionDeploymentArgs{...}
+type GetReleaseChannelServiceInstanceProtectionDeploymentInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionDeploymentOutput() GetReleaseChannelServiceInstanceProtectionDeploymentOutput
+	ToGetReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionDeploymentArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionDeploymentOutput() GetReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionDeploymentOutput)
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionDeploymentOutput).ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelServiceInstanceProtectionDeploymentPtrInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionDeploymentArgs, GetReleaseChannelServiceInstanceProtectionDeploymentPtr and GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionDeploymentPtrInput` via:
+//
+//	        GetReleaseChannelServiceInstanceProtectionDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelServiceInstanceProtectionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput
+	ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput
+}
+
+type getReleaseChannelServiceInstanceProtectionDeploymentPtrType GetReleaseChannelServiceInstanceProtectionDeploymentArgs
+
+func GetReleaseChannelServiceInstanceProtectionDeploymentPtr(v *GetReleaseChannelServiceInstanceProtectionDeploymentArgs) GetReleaseChannelServiceInstanceProtectionDeploymentPtrInput {
+	return (*getReleaseChannelServiceInstanceProtectionDeploymentPtrType)(v)
+}
+
+func (*getReleaseChannelServiceInstanceProtectionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionDeploymentPtrType) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionDeploymentPtrType) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionDeploymentOutput() GetReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o.ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelServiceInstanceProtectionDeployment) *GetReleaseChannelServiceInstanceProtectionDeployment {
+		return &v
+	}).(GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) ToGetReleaseChannelServiceInstanceProtectionDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Elem() GetReleaseChannelServiceInstanceProtectionDeploymentOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionDeployment) GetReleaseChannelServiceInstanceProtectionDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelServiceInstanceProtectionDeployment
+		return ret
+	}).(GetReleaseChannelServiceInstanceProtectionDeploymentOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostApproval struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionPostApprovalInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPostApprovalArgs and GetReleaseChannelServiceInstanceProtectionPostApprovalOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionPostApprovalInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionPostApprovalArgs{...}
+type GetReleaseChannelServiceInstanceProtectionPostApprovalInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalOutput
+	ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostApprovalArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionPostApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPostApprovalOutput)
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPostApprovalOutput).ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelServiceInstanceProtectionPostApprovalPtrInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPostApprovalArgs, GetReleaseChannelServiceInstanceProtectionPostApprovalPtr and GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionPostApprovalPtrInput` via:
+//
+//	        GetReleaseChannelServiceInstanceProtectionPostApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelServiceInstanceProtectionPostApprovalPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput
+	ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput
+}
+
+type getReleaseChannelServiceInstanceProtectionPostApprovalPtrType GetReleaseChannelServiceInstanceProtectionPostApprovalArgs
+
+func GetReleaseChannelServiceInstanceProtectionPostApprovalPtr(v *GetReleaseChannelServiceInstanceProtectionPostApprovalArgs) GetReleaseChannelServiceInstanceProtectionPostApprovalPtrInput {
+	return (*getReleaseChannelServiceInstanceProtectionPostApprovalPtrType)(v)
+}
+
+func (*getReleaseChannelServiceInstanceProtectionPostApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionPostApprovalPtrType) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionPostApprovalPtrType) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPostApprovalOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o.ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelServiceInstanceProtectionPostApproval) *GetReleaseChannelServiceInstanceProtectionPostApproval {
+		return &v
+	}).(GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionPostApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) ToGetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Elem() GetReleaseChannelServiceInstanceProtectionPostApprovalOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostApproval) GetReleaseChannelServiceInstanceProtectionPostApproval {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelServiceInstanceProtectionPostApproval
+		return ret
+	}).(GetReleaseChannelServiceInstanceProtectionPostApprovalOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostDeployment struct {
+	CheckDuration      *string `pulumi:"checkDuration"`
+	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
+	Enabled            bool    `pulumi:"enabled"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionPostDeploymentInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs and GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionPostDeploymentInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs{...}
+type GetReleaseChannelServiceInstanceProtectionPostDeploymentInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput
+	ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs struct {
+	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
+	Enabled            pulumi.BoolInput      `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput)
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput).ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs, GetReleaseChannelServiceInstanceProtectionPostDeploymentPtr and GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput` via:
+//
+//	        GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput
+	ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput
+}
+
+type getReleaseChannelServiceInstanceProtectionPostDeploymentPtrType GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs
+
+func GetReleaseChannelServiceInstanceProtectionPostDeploymentPtr(v *GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput {
+	return (*getReleaseChannelServiceInstanceProtectionPostDeploymentPtrType)(v)
+}
+
+func (*getReleaseChannelServiceInstanceProtectionPostDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionPostDeploymentPtrType) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionPostDeploymentPtrType) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o.ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelServiceInstanceProtectionPostDeployment) *GetReleaseChannelServiceInstanceProtectionPostDeployment {
+		return &v
+	}).(GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionPostDeployment)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput() GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) ToGetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Elem() GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) GetReleaseChannelServiceInstanceProtectionPostDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelServiceInstanceProtectionPostDeployment
+		return ret
+	}).(GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelayCheckDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPreApproval struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionPreApprovalInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPreApprovalArgs and GetReleaseChannelServiceInstanceProtectionPreApprovalOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionPreApprovalInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionPreApprovalArgs{...}
+type GetReleaseChannelServiceInstanceProtectionPreApprovalInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalOutput
+	ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionPreApprovalArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionPreApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPreApprovalOutput)
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionPreApprovalArgs) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPreApprovalOutput).ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelServiceInstanceProtectionPreApprovalPtrInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPreApprovalArgs, GetReleaseChannelServiceInstanceProtectionPreApprovalPtr and GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionPreApprovalPtrInput` via:
+//
+//	        GetReleaseChannelServiceInstanceProtectionPreApprovalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelServiceInstanceProtectionPreApprovalPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput
+	ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput
+}
+
+type getReleaseChannelServiceInstanceProtectionPreApprovalPtrType GetReleaseChannelServiceInstanceProtectionPreApprovalArgs
+
+func GetReleaseChannelServiceInstanceProtectionPreApprovalPtr(v *GetReleaseChannelServiceInstanceProtectionPreApprovalArgs) GetReleaseChannelServiceInstanceProtectionPreApprovalPtrInput {
+	return (*getReleaseChannelServiceInstanceProtectionPreApprovalPtrType)(v)
+}
+
+func (*getReleaseChannelServiceInstanceProtectionPreApprovalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionPreApprovalPtrType) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionPreApprovalPtrType) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPreApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPreApprovalOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o.ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelServiceInstanceProtectionPreApproval) *GetReleaseChannelServiceInstanceProtectionPreApproval {
+		return &v
+	}).(GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPreApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionPreApproval)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput() GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) ToGetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Elem() GetReleaseChannelServiceInstanceProtectionPreApprovalOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPreApproval) GetReleaseChannelServiceInstanceProtectionPreApproval {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelServiceInstanceProtectionPreApproval
+		return ret
+	}).(GetReleaseChannelServiceInstanceProtectionPreApprovalOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPreApproval) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRef struct {
+	// Release Channel name
+	Name       string                                                   `pulumi:"name"`
+	Parameters []GetReleaseChannelServiceInstanceProtectionRefParameter `pulumi:"parameters"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionRefInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionRefArgs and GetReleaseChannelServiceInstanceProtectionRefOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionRefInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionRefArgs{...}
+type GetReleaseChannelServiceInstanceProtectionRefInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionRefOutput() GetReleaseChannelServiceInstanceProtectionRefOutput
+	ToGetReleaseChannelServiceInstanceProtectionRefOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionRefOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefArgs struct {
+	// Release Channel name
+	Name       pulumi.StringInput                                               `pulumi:"name"`
+	Parameters GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput `pulumi:"parameters"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRef)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefArgs) ToGetReleaseChannelServiceInstanceProtectionRefOutput() GetReleaseChannelServiceInstanceProtectionRefOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionRefOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefArgs) ToGetReleaseChannelServiceInstanceProtectionRefOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionRefOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRef)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefOutput) ToGetReleaseChannelServiceInstanceProtectionRefOutput() GetReleaseChannelServiceInstanceProtectionRefOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefOutput) ToGetReleaseChannelServiceInstanceProtectionRefOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefOutput {
+	return o
+}
+
+// Release Channel name
+func (o GetReleaseChannelServiceInstanceProtectionRefOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefOutput) Parameters() GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRef) []GetReleaseChannelServiceInstanceProtectionRefParameter {
+		return v.Parameters
+	}).(GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameter struct {
+	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
+	IntValue            *int    `pulumi:"intValue"`
+	// Release Channel name
+	Name        string                                                             `pulumi:"name"`
+	SecretValue *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue `pulumi:"secretValue"`
+	StringValue *string                                                            `pulumi:"stringValue"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionRefParameterInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionRefParameterArgs and GetReleaseChannelServiceInstanceProtectionRefParameterOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionRefParameterInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionRefParameterArgs{...}
+type GetReleaseChannelServiceInstanceProtectionRefParameterInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterOutput() GetReleaseChannelServiceInstanceProtectionRefParameterOutput
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterArgs struct {
+	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
+	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
+	// Release Channel name
+	Name        pulumi.StringInput                                                        `pulumi:"name"`
+	SecretValue GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
+	StringValue pulumi.StringPtrInput                                                     `pulumi:"stringValue"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterArgs) ToGetReleaseChannelServiceInstanceProtectionRefParameterOutput() GetReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterArgs) ToGetReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionRefParameterOutput)
+}
+
+// GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionRefParameterArray and GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionRefParameterArray{ GetReleaseChannelServiceInstanceProtectionRefParameterArgs{...} }
+type GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput() GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterArray []GetReleaseChannelServiceInstanceProtectionRefParameterInput
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterArray) ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput() GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterArray) ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterOutput() GetReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
+}
+
+// Release Channel name
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) SecretValue() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+		return v.SecretValue
+	}).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelServiceInstanceProtectionRefParameter)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput() GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterArrayOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelServiceInstanceProtectionRefParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelServiceInstanceProtectionRefParameter {
+		return vs[0].([]GetReleaseChannelServiceInstanceProtectionRefParameter)[vs[1].(int)]
+	}).(GetReleaseChannelServiceInstanceProtectionRefParameterOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue struct {
+	Key string `pulumi:"key"`
+	// Current application version
+	Version string `pulumi:"version"`
+}
+
+// GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs and GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput` via:
+//
+//	GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{...}
+type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// Current application version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput).ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs, GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtr and GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput` via:
+//
+//	        GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput
+	ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput
+}
+
+type getReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs
+
+func GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtr(v *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput {
+	return (*getReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType)(v)
+}
+
+func (*getReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return i.ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrType) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o.ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+		return &v
+	}).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Current application version
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue)(nil)).Elem()
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) ToGetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutputWithContext(ctx context.Context) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Elem() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue
+		return ret
+	}).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
+}
+
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current application version
+func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeExecInput)(nil)).Elem(), ManagedK8sRuntimeExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeExecPtrInput)(nil)).Elem(), ManagedK8sRuntimeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConstantInput)(nil)).Elem(), ReleaseChannelConstantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConstantArrayInput)(nil)).Elem(), ReleaseChannelConstantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionArrayInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionDeploymentInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionDeploymentPtrInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostApprovalInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostApprovalPtrInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostDeploymentInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionPostDeploymentPtrInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionPreApprovalInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionPreApprovalPtrInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameterInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionRefParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameterArrayInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionRefParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameterSecretValueInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelManualApprovalPreconditionInput)(nil)).Elem(), ReleaseChannelManualApprovalPreconditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelManualApprovalPreconditionArrayInput)(nil)).Elem(), ReleaseChannelManualApprovalPreconditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyInput)(nil)).Elem(), ReleaseChannelPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyPtrInput)(nil)).Elem(), ReleaseChannelPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvMapInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvSecretInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvSecretPtrInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionInput)(nil)).Elem(), ReleaseChannelProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionArrayInput)(nil)).Elem(), ReleaseChannelProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionDeploymentInput)(nil)).Elem(), ReleaseChannelProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionDeploymentPtrInput)(nil)).Elem(), ReleaseChannelProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionPostApprovalInput)(nil)).Elem(), ReleaseChannelProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionPostApprovalPtrInput)(nil)).Elem(), ReleaseChannelProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionPostDeploymentInput)(nil)).Elem(), ReleaseChannelProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionPostDeploymentPtrInput)(nil)).Elem(), ReleaseChannelProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionPreApprovalInput)(nil)).Elem(), ReleaseChannelProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionPreApprovalPtrInput)(nil)).Elem(), ReleaseChannelProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionRefInput)(nil)).Elem(), ReleaseChannelProtectionRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionRefParameterInput)(nil)).Elem(), ReleaseChannelProtectionRefParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionRefParameterArrayInput)(nil)).Elem(), ReleaseChannelProtectionRefParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionRefParameterSecretValueInput)(nil)).Elem(), ReleaseChannelProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), ReleaseChannelProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelReleaseChannelStablePreconditionInput)(nil)).Elem(), ReleaseChannelReleaseChannelStablePreconditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelReleaseChannelStablePreconditionArrayInput)(nil)).Elem(), ReleaseChannelReleaseChannelStablePreconditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelRuntimeInput)(nil)).Elem(), ReleaseChannelRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelRuntimeArrayInput)(nil)).Elem(), ReleaseChannelRuntimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionArrayInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionDeploymentInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionDeploymentPtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostApprovalInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostApprovalPtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostDeploymentInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPreApprovalInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionPreApprovalPtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConstantInput)(nil)).Elem(), GetReleaseChannelConstantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConstantArrayInput)(nil)).Elem(), GetReleaseChannelConstantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionArrayInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionDeploymentInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionDeploymentPtrInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostApprovalInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostApprovalPtrInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostDeploymentInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPostDeploymentPtrInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPreApprovalInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionPreApprovalPtrInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameterInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionRefParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameterArrayInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionRefParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameterSecretValueInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelManualApprovalPreconditionInput)(nil)).Elem(), GetReleaseChannelManualApprovalPreconditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelManualApprovalPreconditionArrayInput)(nil)).Elem(), GetReleaseChannelManualApprovalPreconditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyInput)(nil)).Elem(), GetReleaseChannelPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyPtrInput)(nil)).Elem(), GetReleaseChannelPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvMapInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvSecretInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvSecretPtrInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionInput)(nil)).Elem(), GetReleaseChannelProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionArrayInput)(nil)).Elem(), GetReleaseChannelProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionDeploymentInput)(nil)).Elem(), GetReleaseChannelProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionDeploymentPtrInput)(nil)).Elem(), GetReleaseChannelProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionPostApprovalInput)(nil)).Elem(), GetReleaseChannelProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionPostApprovalPtrInput)(nil)).Elem(), GetReleaseChannelProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionPostDeploymentInput)(nil)).Elem(), GetReleaseChannelProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionPostDeploymentPtrInput)(nil)).Elem(), GetReleaseChannelProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionPreApprovalInput)(nil)).Elem(), GetReleaseChannelProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionPreApprovalPtrInput)(nil)).Elem(), GetReleaseChannelProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionRefInput)(nil)).Elem(), GetReleaseChannelProtectionRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionRefParameterInput)(nil)).Elem(), GetReleaseChannelProtectionRefParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionRefParameterArrayInput)(nil)).Elem(), GetReleaseChannelProtectionRefParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionRefParameterSecretValueInput)(nil)).Elem(), GetReleaseChannelProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), GetReleaseChannelProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelReleaseChannelStablePreconditionInput)(nil)).Elem(), GetReleaseChannelReleaseChannelStablePreconditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelReleaseChannelStablePreconditionArrayInput)(nil)).Elem(), GetReleaseChannelReleaseChannelStablePreconditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelRuntimeInput)(nil)).Elem(), GetReleaseChannelRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelRuntimeArrayInput)(nil)).Elem(), GetReleaseChannelRuntimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionArrayInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionDeploymentInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionDeploymentPtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostApprovalInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostApprovalPtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionPostApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostDeploymentInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPreApprovalInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionPreApprovalPtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionPreApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecOutput{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConstantOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConstantArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionDeploymentOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionPostApprovalOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionPostApprovalPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionPostDeploymentOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionPreApprovalOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionPreApprovalPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionRefOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionRefParameterOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionRefParameterArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelManualApprovalPreconditionOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelManualApprovalPreconditionArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvMapOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvSecretOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvSecretPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionDeploymentOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionPostApprovalOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionPostApprovalPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionPostDeploymentOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionPostDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionPreApprovalOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionPreApprovalPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionRefOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionRefParameterOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionRefParameterArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionRefParameterSecretValueOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelReleaseChannelStablePreconditionOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelReleaseChannelStablePreconditionArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelRuntimeOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelRuntimeArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionDeploymentOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionPostApprovalOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionPostDeploymentOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionPreApprovalOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConstantOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConstantArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionDeploymentOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionPostApprovalOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionPostDeploymentOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionPreApprovalOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionRefOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionRefParameterOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionRefParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelManualApprovalPreconditionOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelManualApprovalPreconditionArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvMapOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvSecretOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvSecretPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionDeploymentOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionPostApprovalOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionPostApprovalPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionPostDeploymentOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionPostDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionPreApprovalOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionPreApprovalPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionRefOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionRefParameterOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionRefParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionRefParameterSecretValueOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelReleaseChannelStablePreconditionOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelReleaseChannelStablePreconditionArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelRuntimeOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelRuntimeArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionDeploymentOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionPostApprovalOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionPreApprovalOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput{})
 }

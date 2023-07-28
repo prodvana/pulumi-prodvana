@@ -109,6 +109,216 @@
                 "command"
             ]
         },
+        "prodvana:index/ReleaseChannelConstant:ReleaseChannelConstant": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the constant\n"
+                },
+                "stringValue": {
+                    "type": "string",
+                    "description": "string value of the constant\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "stringValue"
+            ]
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection": {
+            "properties": {
+                "deployment": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionDeployment:ReleaseChannelConvergenceProtectionDeployment",
+                    "description": "deployment lifecycle options\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the protection\n"
+                },
+                "postApproval": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionPostApproval:ReleaseChannelConvergenceProtectionPostApproval",
+                    "description": "post-approval lifecycle options\n"
+                },
+                "postDeployment": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionPostDeployment:ReleaseChannelConvergenceProtectionPostDeployment",
+                    "description": "post-deployment lifecycle options\n"
+                },
+                "preApproval": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionPreApproval:ReleaseChannelConvergenceProtectionPreApproval",
+                    "description": "pre-approval lifecycle options\n"
+                },
+                "ref": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionRef:ReleaseChannelConvergenceProtectionRef",
+                    "description": "reference to a protection stored in Prodvana\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "ref"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionDeployment:ReleaseChannelConvergenceProtectionDeployment": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionPostApproval:ReleaseChannelConvergenceProtectionPostApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionPostDeployment:ReleaseChannelConvergenceProtectionPostDeployment": {
+            "properties": {
+                "checkDuration": {
+                    "type": "string"
+                },
+                "delayCheckDuration": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionPreApproval:ReleaseChannelConvergenceProtectionPreApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionRef:ReleaseChannelConvergenceProtectionRef": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionRefParameter:ReleaseChannelConvergenceProtectionRefParameter"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionRefParameter:ReleaseChannelConvergenceProtectionRefParameter": {
+            "properties": {
+                "dockerImageTagValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "secretValue": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionRefParameterSecretValue:ReleaseChannelConvergenceProtectionRefParameterSecretValue"
+                },
+                "stringValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/ReleaseChannelConvergenceProtectionRefParameterSecretValue:ReleaseChannelConvergenceProtectionRefParameterSecretValue": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "version"
+            ]
+        },
+        "prodvana:index/ReleaseChannelManualApprovalPrecondition:ReleaseChannelManualApprovalPrecondition": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the manual approval\n"
+                },
+                "everyAction": {
+                    "type": "boolean",
+                    "description": "whether this approval is required for every convergence action, or just the first\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the manual approval\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "everyAction",
+                        "name"
+                    ]
+                }
+            }
+        },
         "prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy": {
             "properties": {
                 "defaultEnv": {
@@ -144,6 +354,187 @@
             },
             "type": "object"
         },
+        "prodvana:index/ReleaseChannelProtection:ReleaseChannelProtection": {
+            "properties": {
+                "deployment": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionDeployment:ReleaseChannelProtectionDeployment",
+                    "description": "deployment lifecycle options\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the protection\n"
+                },
+                "postApproval": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionPostApproval:ReleaseChannelProtectionPostApproval",
+                    "description": "post-approval lifecycle options\n"
+                },
+                "postDeployment": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionPostDeployment:ReleaseChannelProtectionPostDeployment",
+                    "description": "post-deployment lifecycle options\n"
+                },
+                "preApproval": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionPreApproval:ReleaseChannelProtectionPreApproval",
+                    "description": "pre-approval lifecycle options\n"
+                },
+                "ref": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionRef:ReleaseChannelProtectionRef",
+                    "description": "reference to a protection stored in Prodvana\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "ref"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelProtectionDeployment:ReleaseChannelProtectionDeployment": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelProtectionPostApproval:ReleaseChannelProtectionPostApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelProtectionPostDeployment:ReleaseChannelProtectionPostDeployment": {
+            "properties": {
+                "checkDuration": {
+                    "type": "string"
+                },
+                "delayCheckDuration": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelProtectionPreApproval:ReleaseChannelProtectionPreApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelProtectionRef:ReleaseChannelProtectionRef": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelProtectionRefParameter:ReleaseChannelProtectionRefParameter"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/ReleaseChannelProtectionRefParameter:ReleaseChannelProtectionRefParameter": {
+            "properties": {
+                "dockerImageTagValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "secretValue": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionRefParameterSecretValue:ReleaseChannelProtectionRefParameterSecretValue"
+                },
+                "stringValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/ReleaseChannelProtectionRefParameterSecretValue:ReleaseChannelProtectionRefParameterSecretValue": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "version"
+            ]
+        },
+        "prodvana:index/ReleaseChannelReleaseChannelStablePrecondition:ReleaseChannelReleaseChannelStablePrecondition": {
+            "properties": {
+                "duration": {
+                    "type": "string",
+                    "description": "duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                },
+                "releaseChannel": {
+                    "type": "string",
+                    "description": "name of a release channel that must be in a stable deployment state\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "releaseChannel"
+            ]
+        },
         "prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime": {
             "properties": {
                 "ecsPrefix": {
@@ -178,6 +569,375 @@
                     ]
                 }
             }
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtection:ReleaseChannelServiceInstanceProtection": {
+            "properties": {
+                "deployment": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionDeployment:ReleaseChannelServiceInstanceProtectionDeployment",
+                    "description": "deployment lifecycle options\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the protection\n"
+                },
+                "postApproval": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionPostApproval:ReleaseChannelServiceInstanceProtectionPostApproval",
+                    "description": "post-approval lifecycle options\n"
+                },
+                "postDeployment": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionPostDeployment:ReleaseChannelServiceInstanceProtectionPostDeployment",
+                    "description": "post-deployment lifecycle options\n"
+                },
+                "preApproval": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionPreApproval:ReleaseChannelServiceInstanceProtectionPreApproval",
+                    "description": "pre-approval lifecycle options\n"
+                },
+                "ref": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionRef:ReleaseChannelServiceInstanceProtectionRef",
+                    "description": "reference to a protection stored in Prodvana\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "ref"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionDeployment:ReleaseChannelServiceInstanceProtectionDeployment": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionPostApproval:ReleaseChannelServiceInstanceProtectionPostApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionPostDeployment:ReleaseChannelServiceInstanceProtectionPostDeployment": {
+            "properties": {
+                "checkDuration": {
+                    "type": "string"
+                },
+                "delayCheckDuration": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionPreApproval:ReleaseChannelServiceInstanceProtectionPreApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionRef:ReleaseChannelServiceInstanceProtectionRef": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameter:ReleaseChannelServiceInstanceProtectionRefParameter"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameter:ReleaseChannelServiceInstanceProtectionRefParameter": {
+            "properties": {
+                "dockerImageTagValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "secretValue": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameterSecretValue:ReleaseChannelServiceInstanceProtectionRefParameterSecretValue"
+                },
+                "stringValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameterSecretValue:ReleaseChannelServiceInstanceProtectionRefParameterSecretValue": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "version"
+            ]
+        },
+        "prodvana:index/getReleaseChannelConstant:getReleaseChannelConstant": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the constant\n"
+                },
+                "stringValue": {
+                    "type": "string",
+                    "description": "string value of the constant\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "stringValue"
+            ]
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtection:getReleaseChannelConvergenceProtection": {
+            "properties": {
+                "deployment": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionDeployment:getReleaseChannelConvergenceProtectionDeployment",
+                    "description": "deployment lifecycle options\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the protection\n"
+                },
+                "postApproval": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionPostApproval:getReleaseChannelConvergenceProtectionPostApproval",
+                    "description": "post-approval lifecycle options\n"
+                },
+                "postDeployment": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionPostDeployment:getReleaseChannelConvergenceProtectionPostDeployment",
+                    "description": "post-deployment lifecycle options\n"
+                },
+                "preApproval": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionPreApproval:getReleaseChannelConvergenceProtectionPreApproval",
+                    "description": "pre-approval lifecycle options\n"
+                },
+                "ref": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionRef:getReleaseChannelConvergenceProtectionRef",
+                    "description": "reference to a protection stored in Prodvana\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "ref"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionDeployment:getReleaseChannelConvergenceProtectionDeployment": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionPostApproval:getReleaseChannelConvergenceProtectionPostApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionPostDeployment:getReleaseChannelConvergenceProtectionPostDeployment": {
+            "properties": {
+                "checkDuration": {
+                    "type": "string"
+                },
+                "delayCheckDuration": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionPreApproval:getReleaseChannelConvergenceProtectionPreApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionRef:getReleaseChannelConvergenceProtectionRef": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionRefParameter:getReleaseChannelConvergenceProtectionRefParameter"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionRefParameter:getReleaseChannelConvergenceProtectionRefParameter": {
+            "properties": {
+                "dockerImageTagValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "secretValue": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionRefParameterSecretValue:getReleaseChannelConvergenceProtectionRefParameterSecretValue"
+                },
+                "stringValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/getReleaseChannelConvergenceProtectionRefParameterSecretValue:getReleaseChannelConvergenceProtectionRefParameterSecretValue": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "version"
+            ]
+        },
+        "prodvana:index/getReleaseChannelManualApprovalPrecondition:getReleaseChannelManualApprovalPrecondition": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "description of the manual approval\n"
+                },
+                "everyAction": {
+                    "type": "boolean",
+                    "description": "whether to require manual approval for every action, or just the first\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the manual approval\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy": {
             "properties": {
@@ -222,6 +982,191 @@
             },
             "type": "object"
         },
+        "prodvana:index/getReleaseChannelProtection:getReleaseChannelProtection": {
+            "properties": {
+                "deployment": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionDeployment:getReleaseChannelProtectionDeployment",
+                    "description": "deployment lifecycle options\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the protection\n"
+                },
+                "postApproval": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionPostApproval:getReleaseChannelProtectionPostApproval",
+                    "description": "post-approval lifecycle options\n"
+                },
+                "postDeployment": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionPostDeployment:getReleaseChannelProtectionPostDeployment",
+                    "description": "post-deployment lifecycle options\n"
+                },
+                "preApproval": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionPreApproval:getReleaseChannelProtectionPreApproval",
+                    "description": "pre-approval lifecycle options\n"
+                },
+                "ref": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionRef:getReleaseChannelProtectionRef",
+                    "description": "reference to a protection stored in Prodvana\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "ref"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelProtectionDeployment:getReleaseChannelProtectionDeployment": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelProtectionPostApproval:getReleaseChannelProtectionPostApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelProtectionPostDeployment:getReleaseChannelProtectionPostDeployment": {
+            "properties": {
+                "checkDuration": {
+                    "type": "string"
+                },
+                "delayCheckDuration": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelProtectionPreApproval:getReleaseChannelProtectionPreApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelProtectionRef:getReleaseChannelProtectionRef": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/getReleaseChannelProtectionRefParameter:getReleaseChannelProtectionRefParameter"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/getReleaseChannelProtectionRefParameter:getReleaseChannelProtectionRefParameter": {
+            "properties": {
+                "dockerImageTagValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "secretValue": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionRefParameterSecretValue:getReleaseChannelProtectionRefParameterSecretValue"
+                },
+                "stringValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/getReleaseChannelProtectionRefParameterSecretValue:getReleaseChannelProtectionRefParameterSecretValue": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "version"
+            ]
+        },
+        "prodvana:index/getReleaseChannelReleaseChannelStablePrecondition:getReleaseChannelReleaseChannelStablePrecondition": {
+            "properties": {
+                "duration": {
+                    "type": "string",
+                    "description": "duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                },
+                "releaseChannel": {
+                    "type": "string",
+                    "description": "name of a release channel that must be in a stable deployment state\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "releaseChannel"
+            ]
+        },
         "prodvana:index/getReleaseChannelRuntime:getReleaseChannelRuntime": {
             "properties": {
                 "ecsPrefix": {
@@ -257,6 +1202,174 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtection:getReleaseChannelServiceInstanceProtection": {
+            "properties": {
+                "deployment": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionDeployment:getReleaseChannelServiceInstanceProtectionDeployment",
+                    "description": "deployment lifecycle options\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the protection\n"
+                },
+                "postApproval": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionPostApproval:getReleaseChannelServiceInstanceProtectionPostApproval",
+                    "description": "post-approval lifecycle options\n"
+                },
+                "postDeployment": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionPostDeployment:getReleaseChannelServiceInstanceProtectionPostDeployment",
+                    "description": "post-deployment lifecycle options\n"
+                },
+                "preApproval": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionPreApproval:getReleaseChannelServiceInstanceProtectionPreApproval",
+                    "description": "pre-approval lifecycle options\n"
+                },
+                "ref": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionRef:getReleaseChannelServiceInstanceProtectionRef",
+                    "description": "reference to a protection stored in Prodvana\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "ref"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "ref"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionDeployment:getReleaseChannelServiceInstanceProtectionDeployment": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionPostApproval:getReleaseChannelServiceInstanceProtectionPostApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionPostDeployment:getReleaseChannelServiceInstanceProtectionPostDeployment": {
+            "properties": {
+                "checkDuration": {
+                    "type": "string"
+                },
+                "delayCheckDuration": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionPreApproval:getReleaseChannelServiceInstanceProtectionPreApproval": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionRef:getReleaseChannelServiceInstanceProtectionRef": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameter:getReleaseChannelServiceInstanceProtectionRefParameter"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameter:getReleaseChannelServiceInstanceProtectionRefParameter": {
+            "properties": {
+                "dockerImageTagValue": {
+                    "type": "string"
+                },
+                "intValue": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "secretValue": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameterSecretValue:getReleaseChannelServiceInstanceProtectionRefParameterSecretValue"
+                },
+                "stringValue": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameterSecretValue:getReleaseChannelServiceInstanceProtectionRefParameterSecretValue": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "version"
+            ]
         }
     },
     "provider": {
@@ -674,6 +1787,27 @@
                     "type": "string",
                     "description": "Name of the Application this Release Channel belongs to\n"
                 },
+                "constants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelConstant:ReleaseChannelConstant"
+                    },
+                    "description": "Constant values for this release channel\n"
+                },
+                "convergenceProtections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection"
+                    },
+                    "description": "Feature Coming Soon\n"
+                },
+                "manualApprovalPreconditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelManualApprovalPrecondition:ReleaseChannelManualApprovalPrecondition"
+                    },
+                    "description": "Preconditions requiring manual approval before this release channel can be deployed\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Release Channel name\n"
@@ -682,12 +1816,33 @@
                     "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
                     "description": "Release Channel policy applied to all services\n"
                 },
+                "protections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelProtection:ReleaseChannelProtection"
+                    },
+                    "description": "Protections applied this release channel\n"
+                },
+                "releaseChannelStablePreconditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelReleaseChannelStablePrecondition:ReleaseChannelReleaseChannelStablePrecondition"
+                    },
+                    "description": "Preconditions requiring other release channels to be stable before this release channel can be deployed\n"
+                },
                 "runtimes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime"
                     },
                     "description": "Release Channel policy applied to all services\n"
+                },
+                "serviceInstanceProtections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtection:ReleaseChannelServiceInstanceProtection"
+                    },
+                    "description": "Protections applied to service instances in this release channel\n"
                 },
                 "version": {
                     "type": "string",
@@ -705,6 +1860,27 @@
                     "type": "string",
                     "description": "Name of the Application this Release Channel belongs to\n"
                 },
+                "constants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelConstant:ReleaseChannelConstant"
+                    },
+                    "description": "Constant values for this release channel\n"
+                },
+                "convergenceProtections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection"
+                    },
+                    "description": "Feature Coming Soon\n"
+                },
+                "manualApprovalPreconditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelManualApprovalPrecondition:ReleaseChannelManualApprovalPrecondition"
+                    },
+                    "description": "Preconditions requiring manual approval before this release channel can be deployed\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Release Channel name\n"
@@ -713,12 +1889,33 @@
                     "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
                     "description": "Release Channel policy applied to all services\n"
                 },
+                "protections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelProtection:ReleaseChannelProtection"
+                    },
+                    "description": "Protections applied this release channel\n"
+                },
+                "releaseChannelStablePreconditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelReleaseChannelStablePrecondition:ReleaseChannelReleaseChannelStablePrecondition"
+                    },
+                    "description": "Preconditions requiring other release channels to be stable before this release channel can be deployed\n"
+                },
                 "runtimes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime"
                     },
                     "description": "Release Channel policy applied to all services\n"
+                },
+                "serviceInstanceProtections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtection:ReleaseChannelServiceInstanceProtection"
+                    },
+                    "description": "Protections applied to service instances in this release channel\n"
                 }
             },
             "requiredInputs": [
@@ -732,6 +1929,27 @@
                         "type": "string",
                         "description": "Name of the Application this Release Channel belongs to\n"
                     },
+                    "constants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelConstant:ReleaseChannelConstant"
+                        },
+                        "description": "Constant values for this release channel\n"
+                    },
+                    "convergenceProtections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection"
+                        },
+                        "description": "Feature Coming Soon\n"
+                    },
+                    "manualApprovalPreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelManualApprovalPrecondition:ReleaseChannelManualApprovalPrecondition"
+                        },
+                        "description": "Preconditions requiring manual approval before this release channel can be deployed\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Release Channel name\n"
@@ -740,12 +1958,33 @@
                         "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
                         "description": "Release Channel policy applied to all services\n"
                     },
+                    "protections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelProtection:ReleaseChannelProtection"
+                        },
+                        "description": "Protections applied this release channel\n"
+                    },
+                    "releaseChannelStablePreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelReleaseChannelStablePrecondition:ReleaseChannelReleaseChannelStablePrecondition"
+                        },
+                        "description": "Preconditions requiring other release channels to be stable before this release channel can be deployed\n"
+                    },
                     "runtimes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime"
                         },
                         "description": "Release Channel policy applied to all services\n"
+                    },
+                    "serviceInstanceProtections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtection:ReleaseChannelServiceInstanceProtection"
+                        },
+                        "description": "Protections applied to service instances in this release channel\n"
                     },
                     "version": {
                         "type": "string",
@@ -756,7 +1995,7 @@
             }
         },
         "prodvana:index/runtimeLink:RuntimeLink": {
-            "description": "(Alpha! This feature is still in progress.) \nA `runtime_link` resource represents a successfully linked runtime.\nThis is most useful for Kubernetes runtimes -- the agent must be installed and registered with the Prodvana service before the runtime can be used.\nPair this with an explicit `depends_on` block ensures that the runtime is ready before attempting to use it. See the example below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.kubernetes.kubernetes_deployment_v1;\nimport com.pulumi.kubernetes.Kubernetes_deployment_v1Args;\nimport com.pulumi.prodvana.RuntimeLink;\nimport com.pulumi.prodvana.RuntimeLinkArgs;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleK8sRuntime = new K8sRuntime(\"exampleK8sRuntime\");\n\n        var agent = new Kubernetes_deployment_v1(\"agent\", Kubernetes_deployment_v1Args.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .spec(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var exampleRuntimeLink = new RuntimeLink(\"exampleRuntimeLink\", RuntimeLinkArgs.builder()        \n            .id(prodvana_runtime.example().id())\n            .build());\n\n        var exampleReleaseChannel = new ReleaseChannel(\"exampleReleaseChannel\", ReleaseChannelArgs.builder()        \n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(exampleRuntimeLink.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # create the runtime placeholder in Prodvana\n  exampleK8sRuntime: # \u003c...Full Kubernetes setup elided...\u003e\n    type: prodvana:K8sRuntime\n  # deploy the Prodvana agent to the Kubernetes cluster\n  # NOTE: this is an example and may not be complete, see\n  # https://docs.prodvana.io for the latest agent configuration details\n  agent:\n    type: kubernetes:kubernetes_deployment_v1\n    properties:\n      metadata:\n        - name: agent\n          namespace: prodvana\n      spec:\n        - replicas: 1\n          template:\n            - spec:\n                - container:\n                    - name: prodvana-agent\n                      image: prodvana/agent:v0.1.0\n                      args:\n                        - /agent\n                        - --clusterid\n                        - ${prodvana_runtime.example.id}\n                        - --auth\n                        - ${prodvana_runtime.agent_api_token}\n                        - --server-addr\n                        - api.\u003corg_slug\u003e.prodvana.io\n  # this resource will complete only after the agent\n  # registers itself with the Prodvana API\n  exampleRuntimeLink:\n    type: prodvana:RuntimeLink\n    properties:\n      id: ${prodvana_runtime.example.id}\n  exampleReleaseChannel:\n    type: prodvana:ReleaseChannel\n    properties:\n      runtimes:\n        - runtime: ${exampleRuntimeLink.name}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "(Alpha! This feature is still in progress.) \nA `runtime_link` resource represents a successfully linked runtime.\nThis is most useful for Kubernetes runtimes -- the agent must be installed and registered with the Prodvana service before the runtime can be used.\nPair this with an explicit `depends_on` block ensures that the runtime is ready before attempting to use it. See the example below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.kubernetes.kubernetes_deployment_v1;\nimport com.pulumi.kubernetes.Kubernetes_deployment_v1Args;\nimport com.pulumi.prodvana.RuntimeLink;\nimport com.pulumi.prodvana.RuntimeLinkArgs;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleK8sRuntime = new K8sRuntime(\"exampleK8sRuntime\");\n\n        var agent = new Kubernetes_deployment_v1(\"agent\", Kubernetes_deployment_v1Args.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .spec(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var exampleRuntimeLink = new RuntimeLink(\"exampleRuntimeLink\", RuntimeLinkArgs.builder()        \n            .id(exampleK8sRuntime.id())\n            .build());\n\n        var exampleReleaseChannel = new ReleaseChannel(\"exampleReleaseChannel\", ReleaseChannelArgs.builder()        \n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(exampleRuntimeLink.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # create the runtime placeholder in Prodvana\n  exampleK8sRuntime: # \u003c...Full Kubernetes setup elided...\u003e\n    type: prodvana:K8sRuntime\n  # deploy the Prodvana agent to the Kubernetes cluster\n  # NOTE: this is an example and may not be complete, see\n  # https://docs.prodvana.io for the latest agent configuration details\n  agent:\n    type: kubernetes:kubernetes_deployment_v1\n    properties:\n      metadata:\n        - name: agent\n          namespace: prodvana\n      spec:\n        - replicas: 1\n          template:\n            - spec:\n                - container:\n                    - name: prodvana-agent\n                      image: prodvana/agent:v0.1.0\n                      args:\n                        - /agent\n                        - --clusterid\n                        - ${exampleK8sRuntime.id}\n                        - --auth\n                        - ${prodvana_k8_runtime.agent_api_token}\n                        - --server-addr\n                        - api.\u003corg_slug\u003e.prodvana.io\n  # this resource will complete only after the agent\n  # registers itself with the Prodvana API\n  exampleRuntimeLink:\n    type: prodvana:RuntimeLink\n    properties:\n      id: ${exampleK8sRuntime.id}\n  exampleReleaseChannel:\n    type: prodvana:ReleaseChannel\n    properties:\n      runtimes:\n        - runtime: ${exampleRuntimeLink.name}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "name": {
                     "type": "string",
@@ -886,6 +2125,27 @@
                         "type": "string",
                         "description": "Name of the Application this Release Channel belongs to\n"
                     },
+                    "constants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelConstant:getReleaseChannelConstant"
+                        },
+                        "description": "Constant values for this release channel\n"
+                    },
+                    "convergenceProtections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtection:getReleaseChannelConvergenceProtection"
+                        },
+                        "description": "Feature Coming Soon\n"
+                    },
+                    "manualApprovalPreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelManualApprovalPrecondition:getReleaseChannelManualApprovalPrecondition"
+                        },
+                        "description": "Preconditions requiring manual approval before this release channel can be deployed\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Release Channel name\n"
@@ -893,6 +2153,27 @@
                     "policy": {
                         "$ref": "#/types/prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy",
                         "description": "Release Channel policy applied to all services\n"
+                    },
+                    "protections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelProtection:getReleaseChannelProtection"
+                        },
+                        "description": "Protections applied this release channel\n"
+                    },
+                    "releaseChannelStablePreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelReleaseChannelStablePrecondition:getReleaseChannelReleaseChannelStablePrecondition"
+                        },
+                        "description": "Preconditions requiring other release channels to be stable before this release channel can be deployed\n"
+                    },
+                    "serviceInstanceProtections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtection:getReleaseChannelServiceInstanceProtection"
+                        },
+                        "description": "Protections applied to service instances in this release channel\n"
                     }
                 },
                 "type": "object",
@@ -908,9 +2189,30 @@
                         "type": "string",
                         "description": "Name of the Application this Release Channel belongs to\n"
                     },
+                    "constants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelConstant:getReleaseChannelConstant"
+                        },
+                        "description": "Constant values for this release channel\n"
+                    },
+                    "convergenceProtections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtection:getReleaseChannelConvergenceProtection"
+                        },
+                        "description": "Feature Coming Soon\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "Release channel identifier\n"
+                    },
+                    "manualApprovalPreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelManualApprovalPrecondition:getReleaseChannelManualApprovalPrecondition"
+                        },
+                        "description": "Preconditions requiring manual approval before this release channel can be deployed\n"
                     },
                     "name": {
                         "type": "string",
@@ -920,12 +2222,33 @@
                         "$ref": "#/types/prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy",
                         "description": "Release Channel policy applied to all services\n"
                     },
+                    "protections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelProtection:getReleaseChannelProtection"
+                        },
+                        "description": "Protections applied this release channel\n"
+                    },
+                    "releaseChannelStablePreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelReleaseChannelStablePrecondition:getReleaseChannelReleaseChannelStablePrecondition"
+                        },
+                        "description": "Preconditions requiring other release channels to be stable before this release channel can be deployed\n"
+                    },
                     "runtimes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/prodvana:index/getReleaseChannelRuntime:getReleaseChannelRuntime"
                         },
                         "description": "Release Channel policy applied to all services\n"
+                    },
+                    "serviceInstanceProtections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtection:getReleaseChannelServiceInstanceProtection"
+                        },
+                        "description": "Protections applied to service instances in this release channel\n"
                     },
                     "version": {
                         "type": "string",
