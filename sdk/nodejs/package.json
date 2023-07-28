@@ -25,6 +25,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "prodvana"
+        "name": "prodvana",
+        "server": "https://github.com/prodvana/pulumi-prodvana/releases"
     }
 }
