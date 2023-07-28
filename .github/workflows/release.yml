@@ -25,6 +25,9 @@ env:
   PUBLISH_PYPI: true
   PYPI_USERNAME: "__token__"
   # PYPI_REPOSITORY_URL: ""
+  DOTNETVERSION: |
+      6.0.x
+      3.1.301
 jobs:
   publish_binary:
     name: publish
@@ -81,7 +84,7 @@ jobs:
       - name: Setup DotNet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{matrix.dotnetversion}}
+          dotnet-version: ${{ env.DOTNETVERSION }}
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
@@ -118,8 +121,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        dotnetversion:
-          - 3.1.301
         goversion:
           - 1.20.x
         language:
