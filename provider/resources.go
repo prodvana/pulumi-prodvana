@@ -118,6 +118,7 @@ func Provider() tfbridge.ProviderInfo {
 			// "prodvana_release_channel": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getReleaseChannel")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@prodvana/pulumi-prodvana",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
