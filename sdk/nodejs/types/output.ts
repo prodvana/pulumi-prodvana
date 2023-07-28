@@ -5,6 +5,104 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetReleaseChannelConstant {
+    /**
+     * name of the constant
+     */
+    name: string;
+    /**
+     * string value of the constant
+     */
+    stringValue: string;
+}
+
+export interface GetReleaseChannelConvergenceProtection {
+    /**
+     * deployment lifecycle options
+     */
+    deployment?: outputs.GetReleaseChannelConvergenceProtectionDeployment;
+    /**
+     * name of the protection
+     */
+    name: string;
+    /**
+     * post-approval lifecycle options
+     */
+    postApproval?: outputs.GetReleaseChannelConvergenceProtectionPostApproval;
+    /**
+     * post-deployment lifecycle options
+     */
+    postDeployment?: outputs.GetReleaseChannelConvergenceProtectionPostDeployment;
+    /**
+     * pre-approval lifecycle options
+     */
+    preApproval?: outputs.GetReleaseChannelConvergenceProtectionPreApproval;
+    /**
+     * reference to a protection stored in Prodvana
+     */
+    ref: outputs.GetReleaseChannelConvergenceProtectionRef;
+}
+
+export interface GetReleaseChannelConvergenceProtectionDeployment {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelConvergenceProtectionPostApproval {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelConvergenceProtectionPostDeployment {
+    checkDuration?: string;
+    delayCheckDuration?: string;
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelConvergenceProtectionPreApproval {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelConvergenceProtectionRef {
+    /**
+     * Release Channel name
+     */
+    name: string;
+    parameters?: outputs.GetReleaseChannelConvergenceProtectionRefParameter[];
+}
+
+export interface GetReleaseChannelConvergenceProtectionRefParameter {
+    dockerImageTagValue?: string;
+    intValue?: number;
+    /**
+     * Release Channel name
+     */
+    name: string;
+    secretValue?: outputs.GetReleaseChannelConvergenceProtectionRefParameterSecretValue;
+    stringValue?: string;
+}
+
+export interface GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
+    key: string;
+    /**
+     * Current application version
+     */
+    version: string;
+}
+
+export interface GetReleaseChannelManualApprovalPrecondition {
+    /**
+     * description of the manual approval
+     */
+    description?: string;
+    /**
+     * whether to require manual approval for every action, or just the first
+     */
+    everyAction?: boolean;
+    /**
+     * name of the manual approval
+     */
+    name: string;
+}
+
 export interface GetReleaseChannelPolicy {
     /**
      * default environment variables for services in this Release Channel
@@ -23,6 +121,89 @@ export interface GetReleaseChannelPolicyDefaultEnvSecret {
      * Current application version
      */
     version?: string;
+}
+
+export interface GetReleaseChannelProtection {
+    /**
+     * deployment lifecycle options
+     */
+    deployment?: outputs.GetReleaseChannelProtectionDeployment;
+    /**
+     * name of the protection
+     */
+    name: string;
+    /**
+     * post-approval lifecycle options
+     */
+    postApproval?: outputs.GetReleaseChannelProtectionPostApproval;
+    /**
+     * post-deployment lifecycle options
+     */
+    postDeployment?: outputs.GetReleaseChannelProtectionPostDeployment;
+    /**
+     * pre-approval lifecycle options
+     */
+    preApproval?: outputs.GetReleaseChannelProtectionPreApproval;
+    /**
+     * reference to a protection stored in Prodvana
+     */
+    ref: outputs.GetReleaseChannelProtectionRef;
+}
+
+export interface GetReleaseChannelProtectionDeployment {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelProtectionPostApproval {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelProtectionPostDeployment {
+    checkDuration?: string;
+    delayCheckDuration?: string;
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelProtectionPreApproval {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelProtectionRef {
+    /**
+     * Release Channel name
+     */
+    name: string;
+    parameters?: outputs.GetReleaseChannelProtectionRefParameter[];
+}
+
+export interface GetReleaseChannelProtectionRefParameter {
+    dockerImageTagValue?: string;
+    intValue?: number;
+    /**
+     * Release Channel name
+     */
+    name: string;
+    secretValue?: outputs.GetReleaseChannelProtectionRefParameterSecretValue;
+    stringValue?: string;
+}
+
+export interface GetReleaseChannelProtectionRefParameterSecretValue {
+    key: string;
+    /**
+     * Current application version
+     */
+    version: string;
+}
+
+export interface GetReleaseChannelReleaseChannelStablePrecondition {
+    /**
+     * duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
+    duration: string;
+    /**
+     * name of a release channel that must be in a stable deployment state
+     */
+    releaseChannel: string;
 }
 
 export interface GetReleaseChannelRuntime {
@@ -48,6 +229,78 @@ export interface GetReleaseChannelRuntime {
     type: string;
 }
 
+export interface GetReleaseChannelServiceInstanceProtection {
+    /**
+     * deployment lifecycle options
+     */
+    deployment?: outputs.GetReleaseChannelServiceInstanceProtectionDeployment;
+    /**
+     * name of the protection
+     */
+    name: string;
+    /**
+     * post-approval lifecycle options
+     */
+    postApproval?: outputs.GetReleaseChannelServiceInstanceProtectionPostApproval;
+    /**
+     * post-deployment lifecycle options
+     */
+    postDeployment?: outputs.GetReleaseChannelServiceInstanceProtectionPostDeployment;
+    /**
+     * pre-approval lifecycle options
+     */
+    preApproval?: outputs.GetReleaseChannelServiceInstanceProtectionPreApproval;
+    /**
+     * reference to a protection stored in Prodvana
+     */
+    ref: outputs.GetReleaseChannelServiceInstanceProtectionRef;
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionDeployment {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionPostApproval {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionPostDeployment {
+    checkDuration?: string;
+    delayCheckDuration?: string;
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionPreApproval {
+    enabled: boolean;
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionRef {
+    /**
+     * Release Channel name
+     */
+    name: string;
+    parameters?: outputs.GetReleaseChannelServiceInstanceProtectionRefParameter[];
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionRefParameter {
+    dockerImageTagValue?: string;
+    intValue?: number;
+    /**
+     * Release Channel name
+     */
+    name: string;
+    secretValue?: outputs.GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue;
+    stringValue?: string;
+}
+
+export interface GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+    key: string;
+    /**
+     * Current application version
+     */
+    version: string;
+}
+
 export interface ManagedK8sRuntimeExec {
     /**
      * API version of the exec credential plugin
@@ -65,6 +318,104 @@ export interface ManagedK8sRuntimeExec {
      * Environment variables to set when executing the command
      */
     env?: {[key: string]: string};
+}
+
+export interface ReleaseChannelConstant {
+    /**
+     * name of the constant
+     */
+    name: string;
+    /**
+     * string value of the constant
+     */
+    stringValue: string;
+}
+
+export interface ReleaseChannelConvergenceProtection {
+    /**
+     * deployment lifecycle options
+     */
+    deployment?: outputs.ReleaseChannelConvergenceProtectionDeployment;
+    /**
+     * name of the protection
+     */
+    name: string;
+    /**
+     * post-approval lifecycle options
+     */
+    postApproval?: outputs.ReleaseChannelConvergenceProtectionPostApproval;
+    /**
+     * post-deployment lifecycle options
+     */
+    postDeployment?: outputs.ReleaseChannelConvergenceProtectionPostDeployment;
+    /**
+     * pre-approval lifecycle options
+     */
+    preApproval?: outputs.ReleaseChannelConvergenceProtectionPreApproval;
+    /**
+     * reference to a protection stored in Prodvana
+     */
+    ref: outputs.ReleaseChannelConvergenceProtectionRef;
+}
+
+export interface ReleaseChannelConvergenceProtectionDeployment {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelConvergenceProtectionPostApproval {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelConvergenceProtectionPostDeployment {
+    checkDuration?: string;
+    delayCheckDuration?: string;
+    enabled: boolean;
+}
+
+export interface ReleaseChannelConvergenceProtectionPreApproval {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelConvergenceProtectionRef {
+    /**
+     * Release Channel name
+     */
+    name: string;
+    parameters?: outputs.ReleaseChannelConvergenceProtectionRefParameter[];
+}
+
+export interface ReleaseChannelConvergenceProtectionRefParameter {
+    dockerImageTagValue?: string;
+    intValue?: number;
+    /**
+     * Release Channel name
+     */
+    name: string;
+    secretValue?: outputs.ReleaseChannelConvergenceProtectionRefParameterSecretValue;
+    stringValue?: string;
+}
+
+export interface ReleaseChannelConvergenceProtectionRefParameterSecretValue {
+    key: string;
+    /**
+     * Current application version
+     */
+    version: string;
+}
+
+export interface ReleaseChannelManualApprovalPrecondition {
+    /**
+     * description of the manual approval
+     */
+    description: string;
+    /**
+     * whether this approval is required for every convergence action, or just the first
+     */
+    everyAction: boolean;
+    /**
+     * name of the manual approval
+     */
+    name: string;
 }
 
 export interface ReleaseChannelPolicy {
@@ -85,6 +436,89 @@ export interface ReleaseChannelPolicyDefaultEnvSecret {
      * Current application version
      */
     version?: string;
+}
+
+export interface ReleaseChannelProtection {
+    /**
+     * deployment lifecycle options
+     */
+    deployment?: outputs.ReleaseChannelProtectionDeployment;
+    /**
+     * name of the protection
+     */
+    name: string;
+    /**
+     * post-approval lifecycle options
+     */
+    postApproval?: outputs.ReleaseChannelProtectionPostApproval;
+    /**
+     * post-deployment lifecycle options
+     */
+    postDeployment?: outputs.ReleaseChannelProtectionPostDeployment;
+    /**
+     * pre-approval lifecycle options
+     */
+    preApproval?: outputs.ReleaseChannelProtectionPreApproval;
+    /**
+     * reference to a protection stored in Prodvana
+     */
+    ref: outputs.ReleaseChannelProtectionRef;
+}
+
+export interface ReleaseChannelProtectionDeployment {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelProtectionPostApproval {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelProtectionPostDeployment {
+    checkDuration?: string;
+    delayCheckDuration?: string;
+    enabled: boolean;
+}
+
+export interface ReleaseChannelProtectionPreApproval {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelProtectionRef {
+    /**
+     * Release Channel name
+     */
+    name: string;
+    parameters?: outputs.ReleaseChannelProtectionRefParameter[];
+}
+
+export interface ReleaseChannelProtectionRefParameter {
+    dockerImageTagValue?: string;
+    intValue?: number;
+    /**
+     * Release Channel name
+     */
+    name: string;
+    secretValue?: outputs.ReleaseChannelProtectionRefParameterSecretValue;
+    stringValue?: string;
+}
+
+export interface ReleaseChannelProtectionRefParameterSecretValue {
+    key: string;
+    /**
+     * Current application version
+     */
+    version: string;
+}
+
+export interface ReleaseChannelReleaseChannelStablePrecondition {
+    /**
+     * duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
+    duration: string;
+    /**
+     * name of a release channel that must be in a stable deployment state
+     */
+    releaseChannel: string;
 }
 
 export interface ReleaseChannelRuntime {
@@ -108,5 +542,77 @@ export interface ReleaseChannelRuntime {
      * type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
      */
     type: string;
+}
+
+export interface ReleaseChannelServiceInstanceProtection {
+    /**
+     * deployment lifecycle options
+     */
+    deployment?: outputs.ReleaseChannelServiceInstanceProtectionDeployment;
+    /**
+     * name of the protection
+     */
+    name: string;
+    /**
+     * post-approval lifecycle options
+     */
+    postApproval?: outputs.ReleaseChannelServiceInstanceProtectionPostApproval;
+    /**
+     * post-deployment lifecycle options
+     */
+    postDeployment?: outputs.ReleaseChannelServiceInstanceProtectionPostDeployment;
+    /**
+     * pre-approval lifecycle options
+     */
+    preApproval?: outputs.ReleaseChannelServiceInstanceProtectionPreApproval;
+    /**
+     * reference to a protection stored in Prodvana
+     */
+    ref: outputs.ReleaseChannelServiceInstanceProtectionRef;
+}
+
+export interface ReleaseChannelServiceInstanceProtectionDeployment {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelServiceInstanceProtectionPostApproval {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelServiceInstanceProtectionPostDeployment {
+    checkDuration?: string;
+    delayCheckDuration?: string;
+    enabled: boolean;
+}
+
+export interface ReleaseChannelServiceInstanceProtectionPreApproval {
+    enabled: boolean;
+}
+
+export interface ReleaseChannelServiceInstanceProtectionRef {
+    /**
+     * Release Channel name
+     */
+    name: string;
+    parameters?: outputs.ReleaseChannelServiceInstanceProtectionRefParameter[];
+}
+
+export interface ReleaseChannelServiceInstanceProtectionRefParameter {
+    dockerImageTagValue?: string;
+    intValue?: number;
+    /**
+     * Release Channel name
+     */
+    name: string;
+    secretValue?: outputs.ReleaseChannelServiceInstanceProtectionRefParameterSecretValue;
+    stringValue?: string;
+}
+
+export interface ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+    key: string;
+    /**
+     * Current application version
+     */
+    version: string;
 }
 

@@ -26,8 +26,14 @@ export function getReleaseChannel(args: GetReleaseChannelArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("prodvana:index/getReleaseChannel:getReleaseChannel", {
         "application": args.application,
+        "constants": args.constants,
+        "convergenceProtections": args.convergenceProtections,
+        "manualApprovalPreconditions": args.manualApprovalPreconditions,
         "name": args.name,
         "policy": args.policy,
+        "protections": args.protections,
+        "releaseChannelStablePreconditions": args.releaseChannelStablePreconditions,
+        "serviceInstanceProtections": args.serviceInstanceProtections,
     }, opts);
 }
 
@@ -40,6 +46,18 @@ export interface GetReleaseChannelArgs {
      */
     application: string;
     /**
+     * Constant values for this release channel
+     */
+    constants?: inputs.GetReleaseChannelConstant[];
+    /**
+     * Feature Coming Soon
+     */
+    convergenceProtections?: inputs.GetReleaseChannelConvergenceProtection[];
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed
+     */
+    manualApprovalPreconditions?: inputs.GetReleaseChannelManualApprovalPrecondition[];
+    /**
      * Release Channel name
      */
     name: string;
@@ -47,6 +65,18 @@ export interface GetReleaseChannelArgs {
      * Release Channel policy applied to all services
      */
     policy?: inputs.GetReleaseChannelPolicy;
+    /**
+     * Protections applied this release channel
+     */
+    protections?: inputs.GetReleaseChannelProtection[];
+    /**
+     * Preconditions requiring other release channels to be stable before this release channel can be deployed
+     */
+    releaseChannelStablePreconditions?: inputs.GetReleaseChannelReleaseChannelStablePrecondition[];
+    /**
+     * Protections applied to service instances in this release channel
+     */
+    serviceInstanceProtections?: inputs.GetReleaseChannelServiceInstanceProtection[];
 }
 
 /**
@@ -58,9 +88,21 @@ export interface GetReleaseChannelResult {
      */
     readonly application: string;
     /**
+     * Constant values for this release channel
+     */
+    readonly constants?: outputs.GetReleaseChannelConstant[];
+    /**
+     * Feature Coming Soon
+     */
+    readonly convergenceProtections?: outputs.GetReleaseChannelConvergenceProtection[];
+    /**
      * Release channel identifier
      */
     readonly id: string;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed
+     */
+    readonly manualApprovalPreconditions?: outputs.GetReleaseChannelManualApprovalPrecondition[];
     /**
      * Release Channel name
      */
@@ -70,9 +112,21 @@ export interface GetReleaseChannelResult {
      */
     readonly policy: outputs.GetReleaseChannelPolicy;
     /**
+     * Protections applied this release channel
+     */
+    readonly protections?: outputs.GetReleaseChannelProtection[];
+    /**
+     * Preconditions requiring other release channels to be stable before this release channel can be deployed
+     */
+    readonly releaseChannelStablePreconditions?: outputs.GetReleaseChannelReleaseChannelStablePrecondition[];
+    /**
      * Release Channel policy applied to all services
      */
     readonly runtimes: outputs.GetReleaseChannelRuntime[];
+    /**
+     * Protections applied to service instances in this release channel
+     */
+    readonly serviceInstanceProtections?: outputs.GetReleaseChannelServiceInstanceProtection[];
     /**
      * Current application version
      */
@@ -106,6 +160,18 @@ export interface GetReleaseChannelOutputArgs {
      */
     application: pulumi.Input<string>;
     /**
+     * Constant values for this release channel
+     */
+    constants?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelConstantArgs>[]>;
+    /**
+     * Feature Coming Soon
+     */
+    convergenceProtections?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelConvergenceProtectionArgs>[]>;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed
+     */
+    manualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelManualApprovalPreconditionArgs>[]>;
+    /**
      * Release Channel name
      */
     name: pulumi.Input<string>;
@@ -113,4 +179,16 @@ export interface GetReleaseChannelOutputArgs {
      * Release Channel policy applied to all services
      */
     policy?: pulumi.Input<inputs.GetReleaseChannelPolicyArgs>;
+    /**
+     * Protections applied this release channel
+     */
+    protections?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelProtectionArgs>[]>;
+    /**
+     * Preconditions requiring other release channels to be stable before this release channel can be deployed
+     */
+    releaseChannelStablePreconditions?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelReleaseChannelStablePreconditionArgs>[]>;
+    /**
+     * Protections applied to service instances in this release channel
+     */
+    serviceInstanceProtections?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelServiceInstanceProtectionArgs>[]>;
 }

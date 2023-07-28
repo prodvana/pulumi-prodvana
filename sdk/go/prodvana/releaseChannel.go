@@ -26,12 +26,24 @@ type ReleaseChannel struct {
 
 	// Name of the Application this Release Channel belongs to
 	Application pulumi.StringOutput `pulumi:"application"`
+	// Constant values for this release channel
+	Constants ReleaseChannelConstantArrayOutput `pulumi:"constants"`
+	// Feature Coming Soon
+	ConvergenceProtections ReleaseChannelConvergenceProtectionArrayOutput `pulumi:"convergenceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions ReleaseChannelManualApprovalPreconditionArrayOutput `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy ReleaseChannelPolicyPtrOutput `pulumi:"policy"`
+	// Protections applied this release channel
+	Protections ReleaseChannelProtectionArrayOutput `pulumi:"protections"`
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions ReleaseChannelReleaseChannelStablePreconditionArrayOutput `pulumi:"releaseChannelStablePreconditions"`
 	// Release Channel policy applied to all services
 	Runtimes ReleaseChannelRuntimeArrayOutput `pulumi:"runtimes"`
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections ReleaseChannelServiceInstanceProtectionArrayOutput `pulumi:"serviceInstanceProtections"`
 	// Current application version
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -74,12 +86,24 @@ func GetReleaseChannel(ctx *pulumi.Context,
 type releaseChannelState struct {
 	// Name of the Application this Release Channel belongs to
 	Application *string `pulumi:"application"`
+	// Constant values for this release channel
+	Constants []ReleaseChannelConstant `pulumi:"constants"`
+	// Feature Coming Soon
+	ConvergenceProtections []ReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions []ReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
 	Name *string `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy *ReleaseChannelPolicy `pulumi:"policy"`
+	// Protections applied this release channel
+	Protections []ReleaseChannelProtection `pulumi:"protections"`
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions []ReleaseChannelReleaseChannelStablePrecondition `pulumi:"releaseChannelStablePreconditions"`
 	// Release Channel policy applied to all services
 	Runtimes []ReleaseChannelRuntime `pulumi:"runtimes"`
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections []ReleaseChannelServiceInstanceProtection `pulumi:"serviceInstanceProtections"`
 	// Current application version
 	Version *string `pulumi:"version"`
 }
@@ -87,12 +111,24 @@ type releaseChannelState struct {
 type ReleaseChannelState struct {
 	// Name of the Application this Release Channel belongs to
 	Application pulumi.StringPtrInput
+	// Constant values for this release channel
+	Constants ReleaseChannelConstantArrayInput
+	// Feature Coming Soon
+	ConvergenceProtections ReleaseChannelConvergenceProtectionArrayInput
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions ReleaseChannelManualApprovalPreconditionArrayInput
 	// Release Channel name
 	Name pulumi.StringPtrInput
 	// Release Channel policy applied to all services
 	Policy ReleaseChannelPolicyPtrInput
+	// Protections applied this release channel
+	Protections ReleaseChannelProtectionArrayInput
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions ReleaseChannelReleaseChannelStablePreconditionArrayInput
 	// Release Channel policy applied to all services
 	Runtimes ReleaseChannelRuntimeArrayInput
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections ReleaseChannelServiceInstanceProtectionArrayInput
 	// Current application version
 	Version pulumi.StringPtrInput
 }
@@ -104,24 +140,48 @@ func (ReleaseChannelState) ElementType() reflect.Type {
 type releaseChannelArgs struct {
 	// Name of the Application this Release Channel belongs to
 	Application string `pulumi:"application"`
+	// Constant values for this release channel
+	Constants []ReleaseChannelConstant `pulumi:"constants"`
+	// Feature Coming Soon
+	ConvergenceProtections []ReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions []ReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
 	Name *string `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy *ReleaseChannelPolicy `pulumi:"policy"`
+	// Protections applied this release channel
+	Protections []ReleaseChannelProtection `pulumi:"protections"`
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions []ReleaseChannelReleaseChannelStablePrecondition `pulumi:"releaseChannelStablePreconditions"`
 	// Release Channel policy applied to all services
 	Runtimes []ReleaseChannelRuntime `pulumi:"runtimes"`
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections []ReleaseChannelServiceInstanceProtection `pulumi:"serviceInstanceProtections"`
 }
 
 // The set of arguments for constructing a ReleaseChannel resource.
 type ReleaseChannelArgs struct {
 	// Name of the Application this Release Channel belongs to
 	Application pulumi.StringInput
+	// Constant values for this release channel
+	Constants ReleaseChannelConstantArrayInput
+	// Feature Coming Soon
+	ConvergenceProtections ReleaseChannelConvergenceProtectionArrayInput
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions ReleaseChannelManualApprovalPreconditionArrayInput
 	// Release Channel name
 	Name pulumi.StringPtrInput
 	// Release Channel policy applied to all services
 	Policy ReleaseChannelPolicyPtrInput
+	// Protections applied this release channel
+	Protections ReleaseChannelProtectionArrayInput
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions ReleaseChannelReleaseChannelStablePreconditionArrayInput
 	// Release Channel policy applied to all services
 	Runtimes ReleaseChannelRuntimeArrayInput
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections ReleaseChannelServiceInstanceProtectionArrayInput
 }
 
 func (ReleaseChannelArgs) ElementType() reflect.Type {
@@ -216,6 +276,25 @@ func (o ReleaseChannelOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannel) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
 }
 
+// Constant values for this release channel
+func (o ReleaseChannelOutput) Constants() ReleaseChannelConstantArrayOutput {
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelConstantArrayOutput { return v.Constants }).(ReleaseChannelConstantArrayOutput)
+}
+
+// Feature Coming Soon
+func (o ReleaseChannelOutput) ConvergenceProtections() ReleaseChannelConvergenceProtectionArrayOutput {
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelConvergenceProtectionArrayOutput {
+		return v.ConvergenceProtections
+	}).(ReleaseChannelConvergenceProtectionArrayOutput)
+}
+
+// Preconditions requiring manual approval before this release channel can be deployed
+func (o ReleaseChannelOutput) ManualApprovalPreconditions() ReleaseChannelManualApprovalPreconditionArrayOutput {
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelManualApprovalPreconditionArrayOutput {
+		return v.ManualApprovalPreconditions
+	}).(ReleaseChannelManualApprovalPreconditionArrayOutput)
+}
+
 // Release Channel name
 func (o ReleaseChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -226,9 +305,28 @@ func (o ReleaseChannelOutput) Policy() ReleaseChannelPolicyPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelPolicyPtrOutput { return v.Policy }).(ReleaseChannelPolicyPtrOutput)
 }
 
+// Protections applied this release channel
+func (o ReleaseChannelOutput) Protections() ReleaseChannelProtectionArrayOutput {
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelProtectionArrayOutput { return v.Protections }).(ReleaseChannelProtectionArrayOutput)
+}
+
+// Preconditions requiring other release channels to be stable before this release channel can be deployed
+func (o ReleaseChannelOutput) ReleaseChannelStablePreconditions() ReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+		return v.ReleaseChannelStablePreconditions
+	}).(ReleaseChannelReleaseChannelStablePreconditionArrayOutput)
+}
+
 // Release Channel policy applied to all services
 func (o ReleaseChannelOutput) Runtimes() ReleaseChannelRuntimeArrayOutput {
 	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelRuntimeArrayOutput { return v.Runtimes }).(ReleaseChannelRuntimeArrayOutput)
+}
+
+// Protections applied to service instances in this release channel
+func (o ReleaseChannelOutput) ServiceInstanceProtections() ReleaseChannelServiceInstanceProtectionArrayOutput {
+	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelServiceInstanceProtectionArrayOutput {
+		return v.ServiceInstanceProtections
+	}).(ReleaseChannelServiceInstanceProtectionArrayOutput)
 }
 
 // Current application version

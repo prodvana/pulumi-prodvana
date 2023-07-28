@@ -28,6 +28,24 @@ namespace Pulumi.Prodvana
         public Output<string> Application { get; private set; } = null!;
 
         /// <summary>
+        /// Constant values for this release channel
+        /// </summary>
+        [Output("constants")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelConstant>> Constants { get; private set; } = null!;
+
+        /// <summary>
+        /// Feature Coming Soon
+        /// </summary>
+        [Output("convergenceProtections")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelConvergenceProtection>> ConvergenceProtections { get; private set; } = null!;
+
+        /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed
+        /// </summary>
+        [Output("manualApprovalPreconditions")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelManualApprovalPrecondition>> ManualApprovalPreconditions { get; private set; } = null!;
+
+        /// <summary>
         /// Release Channel name
         /// </summary>
         [Output("name")]
@@ -40,10 +58,28 @@ namespace Pulumi.Prodvana
         public Output<Outputs.ReleaseChannelPolicy?> Policy { get; private set; } = null!;
 
         /// <summary>
+        /// Protections applied this release channel
+        /// </summary>
+        [Output("protections")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelProtection>> Protections { get; private set; } = null!;
+
+        /// <summary>
+        /// Preconditions requiring other release channels to be stable before this release channel can be deployed
+        /// </summary>
+        [Output("releaseChannelStablePreconditions")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelReleaseChannelStablePrecondition>> ReleaseChannelStablePreconditions { get; private set; } = null!;
+
+        /// <summary>
         /// Release Channel policy applied to all services
         /// </summary>
         [Output("runtimes")]
         public Output<ImmutableArray<Outputs.ReleaseChannelRuntime>> Runtimes { get; private set; } = null!;
+
+        /// <summary>
+        /// Protections applied to service instances in this release channel
+        /// </summary>
+        [Output("serviceInstanceProtections")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelServiceInstanceProtection>> ServiceInstanceProtections { get; private set; } = null!;
 
         /// <summary>
         /// Current application version
@@ -103,6 +139,42 @@ namespace Pulumi.Prodvana
         [Input("application", required: true)]
         public Input<string> Application { get; set; } = null!;
 
+        [Input("constants")]
+        private InputList<Inputs.ReleaseChannelConstantArgs>? _constants;
+
+        /// <summary>
+        /// Constant values for this release channel
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelConstantArgs> Constants
+        {
+            get => _constants ?? (_constants = new InputList<Inputs.ReleaseChannelConstantArgs>());
+            set => _constants = value;
+        }
+
+        [Input("convergenceProtections")]
+        private InputList<Inputs.ReleaseChannelConvergenceProtectionArgs>? _convergenceProtections;
+
+        /// <summary>
+        /// Feature Coming Soon
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelConvergenceProtectionArgs> ConvergenceProtections
+        {
+            get => _convergenceProtections ?? (_convergenceProtections = new InputList<Inputs.ReleaseChannelConvergenceProtectionArgs>());
+            set => _convergenceProtections = value;
+        }
+
+        [Input("manualApprovalPreconditions")]
+        private InputList<Inputs.ReleaseChannelManualApprovalPreconditionArgs>? _manualApprovalPreconditions;
+
+        /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelManualApprovalPreconditionArgs> ManualApprovalPreconditions
+        {
+            get => _manualApprovalPreconditions ?? (_manualApprovalPreconditions = new InputList<Inputs.ReleaseChannelManualApprovalPreconditionArgs>());
+            set => _manualApprovalPreconditions = value;
+        }
+
         /// <summary>
         /// Release Channel name
         /// </summary>
@@ -115,6 +187,30 @@ namespace Pulumi.Prodvana
         [Input("policy")]
         public Input<Inputs.ReleaseChannelPolicyArgs>? Policy { get; set; }
 
+        [Input("protections")]
+        private InputList<Inputs.ReleaseChannelProtectionArgs>? _protections;
+
+        /// <summary>
+        /// Protections applied this release channel
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelProtectionArgs> Protections
+        {
+            get => _protections ?? (_protections = new InputList<Inputs.ReleaseChannelProtectionArgs>());
+            set => _protections = value;
+        }
+
+        [Input("releaseChannelStablePreconditions")]
+        private InputList<Inputs.ReleaseChannelReleaseChannelStablePreconditionArgs>? _releaseChannelStablePreconditions;
+
+        /// <summary>
+        /// Preconditions requiring other release channels to be stable before this release channel can be deployed
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelReleaseChannelStablePreconditionArgs> ReleaseChannelStablePreconditions
+        {
+            get => _releaseChannelStablePreconditions ?? (_releaseChannelStablePreconditions = new InputList<Inputs.ReleaseChannelReleaseChannelStablePreconditionArgs>());
+            set => _releaseChannelStablePreconditions = value;
+        }
+
         [Input("runtimes", required: true)]
         private InputList<Inputs.ReleaseChannelRuntimeArgs>? _runtimes;
 
@@ -125,6 +221,18 @@ namespace Pulumi.Prodvana
         {
             get => _runtimes ?? (_runtimes = new InputList<Inputs.ReleaseChannelRuntimeArgs>());
             set => _runtimes = value;
+        }
+
+        [Input("serviceInstanceProtections")]
+        private InputList<Inputs.ReleaseChannelServiceInstanceProtectionArgs>? _serviceInstanceProtections;
+
+        /// <summary>
+        /// Protections applied to service instances in this release channel
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelServiceInstanceProtectionArgs> ServiceInstanceProtections
+        {
+            get => _serviceInstanceProtections ?? (_serviceInstanceProtections = new InputList<Inputs.ReleaseChannelServiceInstanceProtectionArgs>());
+            set => _serviceInstanceProtections = value;
         }
 
         public ReleaseChannelArgs()
@@ -141,6 +249,42 @@ namespace Pulumi.Prodvana
         [Input("application")]
         public Input<string>? Application { get; set; }
 
+        [Input("constants")]
+        private InputList<Inputs.ReleaseChannelConstantGetArgs>? _constants;
+
+        /// <summary>
+        /// Constant values for this release channel
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelConstantGetArgs> Constants
+        {
+            get => _constants ?? (_constants = new InputList<Inputs.ReleaseChannelConstantGetArgs>());
+            set => _constants = value;
+        }
+
+        [Input("convergenceProtections")]
+        private InputList<Inputs.ReleaseChannelConvergenceProtectionGetArgs>? _convergenceProtections;
+
+        /// <summary>
+        /// Feature Coming Soon
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelConvergenceProtectionGetArgs> ConvergenceProtections
+        {
+            get => _convergenceProtections ?? (_convergenceProtections = new InputList<Inputs.ReleaseChannelConvergenceProtectionGetArgs>());
+            set => _convergenceProtections = value;
+        }
+
+        [Input("manualApprovalPreconditions")]
+        private InputList<Inputs.ReleaseChannelManualApprovalPreconditionGetArgs>? _manualApprovalPreconditions;
+
+        /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelManualApprovalPreconditionGetArgs> ManualApprovalPreconditions
+        {
+            get => _manualApprovalPreconditions ?? (_manualApprovalPreconditions = new InputList<Inputs.ReleaseChannelManualApprovalPreconditionGetArgs>());
+            set => _manualApprovalPreconditions = value;
+        }
+
         /// <summary>
         /// Release Channel name
         /// </summary>
@@ -153,6 +297,30 @@ namespace Pulumi.Prodvana
         [Input("policy")]
         public Input<Inputs.ReleaseChannelPolicyGetArgs>? Policy { get; set; }
 
+        [Input("protections")]
+        private InputList<Inputs.ReleaseChannelProtectionGetArgs>? _protections;
+
+        /// <summary>
+        /// Protections applied this release channel
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelProtectionGetArgs> Protections
+        {
+            get => _protections ?? (_protections = new InputList<Inputs.ReleaseChannelProtectionGetArgs>());
+            set => _protections = value;
+        }
+
+        [Input("releaseChannelStablePreconditions")]
+        private InputList<Inputs.ReleaseChannelReleaseChannelStablePreconditionGetArgs>? _releaseChannelStablePreconditions;
+
+        /// <summary>
+        /// Preconditions requiring other release channels to be stable before this release channel can be deployed
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelReleaseChannelStablePreconditionGetArgs> ReleaseChannelStablePreconditions
+        {
+            get => _releaseChannelStablePreconditions ?? (_releaseChannelStablePreconditions = new InputList<Inputs.ReleaseChannelReleaseChannelStablePreconditionGetArgs>());
+            set => _releaseChannelStablePreconditions = value;
+        }
+
         [Input("runtimes")]
         private InputList<Inputs.ReleaseChannelRuntimeGetArgs>? _runtimes;
 
@@ -163,6 +331,18 @@ namespace Pulumi.Prodvana
         {
             get => _runtimes ?? (_runtimes = new InputList<Inputs.ReleaseChannelRuntimeGetArgs>());
             set => _runtimes = value;
+        }
+
+        [Input("serviceInstanceProtections")]
+        private InputList<Inputs.ReleaseChannelServiceInstanceProtectionGetArgs>? _serviceInstanceProtections;
+
+        /// <summary>
+        /// Protections applied to service instances in this release channel
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelServiceInstanceProtectionGetArgs> ServiceInstanceProtections
+        {
+            get => _serviceInstanceProtections ?? (_serviceInstanceProtections = new InputList<Inputs.ReleaseChannelServiceInstanceProtectionGetArgs>());
+            set => _serviceInstanceProtections = value;
         }
 
         /// <summary>

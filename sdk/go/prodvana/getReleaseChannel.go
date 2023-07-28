@@ -53,24 +53,48 @@ func LookupReleaseChannel(ctx *pulumi.Context, args *LookupReleaseChannelArgs, o
 type LookupReleaseChannelArgs struct {
 	// Name of the Application this Release Channel belongs to
 	Application string `pulumi:"application"`
+	// Constant values for this release channel
+	Constants []GetReleaseChannelConstant `pulumi:"constants"`
+	// Feature Coming Soon
+	ConvergenceProtections []GetReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions []GetReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
 	Name string `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy *GetReleaseChannelPolicy `pulumi:"policy"`
+	// Protections applied this release channel
+	Protections []GetReleaseChannelProtection `pulumi:"protections"`
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions []GetReleaseChannelReleaseChannelStablePrecondition `pulumi:"releaseChannelStablePreconditions"`
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections []GetReleaseChannelServiceInstanceProtection `pulumi:"serviceInstanceProtections"`
 }
 
 // A collection of values returned by getReleaseChannel.
 type LookupReleaseChannelResult struct {
 	// Name of the Application this Release Channel belongs to
 	Application string `pulumi:"application"`
+	// Constant values for this release channel
+	Constants []GetReleaseChannelConstant `pulumi:"constants"`
+	// Feature Coming Soon
+	ConvergenceProtections []GetReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
 	// Release channel identifier
 	Id string `pulumi:"id"`
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions []GetReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
 	Name string `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy GetReleaseChannelPolicy `pulumi:"policy"`
+	// Protections applied this release channel
+	Protections []GetReleaseChannelProtection `pulumi:"protections"`
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions []GetReleaseChannelReleaseChannelStablePrecondition `pulumi:"releaseChannelStablePreconditions"`
 	// Release Channel policy applied to all services
 	Runtimes []GetReleaseChannelRuntime `pulumi:"runtimes"`
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections []GetReleaseChannelServiceInstanceProtection `pulumi:"serviceInstanceProtections"`
 	// Current application version
 	Version string `pulumi:"version"`
 }
@@ -92,10 +116,22 @@ func LookupReleaseChannelOutput(ctx *pulumi.Context, args LookupReleaseChannelOu
 type LookupReleaseChannelOutputArgs struct {
 	// Name of the Application this Release Channel belongs to
 	Application pulumi.StringInput `pulumi:"application"`
+	// Constant values for this release channel
+	Constants GetReleaseChannelConstantArrayInput `pulumi:"constants"`
+	// Feature Coming Soon
+	ConvergenceProtections GetReleaseChannelConvergenceProtectionArrayInput `pulumi:"convergenceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed
+	ManualApprovalPreconditions GetReleaseChannelManualApprovalPreconditionArrayInput `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
 	Name pulumi.StringInput `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy GetReleaseChannelPolicyPtrInput `pulumi:"policy"`
+	// Protections applied this release channel
+	Protections GetReleaseChannelProtectionArrayInput `pulumi:"protections"`
+	// Preconditions requiring other release channels to be stable before this release channel can be deployed
+	ReleaseChannelStablePreconditions GetReleaseChannelReleaseChannelStablePreconditionArrayInput `pulumi:"releaseChannelStablePreconditions"`
+	// Protections applied to service instances in this release channel
+	ServiceInstanceProtections GetReleaseChannelServiceInstanceProtectionArrayInput `pulumi:"serviceInstanceProtections"`
 }
 
 func (LookupReleaseChannelOutputArgs) ElementType() reflect.Type {
@@ -122,9 +158,28 @@ func (o LookupReleaseChannelResultOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseChannelResult) string { return v.Application }).(pulumi.StringOutput)
 }
 
+// Constant values for this release channel
+func (o LookupReleaseChannelResultOutput) Constants() GetReleaseChannelConstantArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelConstant { return v.Constants }).(GetReleaseChannelConstantArrayOutput)
+}
+
+// Feature Coming Soon
+func (o LookupReleaseChannelResultOutput) ConvergenceProtections() GetReleaseChannelConvergenceProtectionArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelConvergenceProtection {
+		return v.ConvergenceProtections
+	}).(GetReleaseChannelConvergenceProtectionArrayOutput)
+}
+
 // Release channel identifier
 func (o LookupReleaseChannelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseChannelResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Preconditions requiring manual approval before this release channel can be deployed
+func (o LookupReleaseChannelResultOutput) ManualApprovalPreconditions() GetReleaseChannelManualApprovalPreconditionArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelManualApprovalPrecondition {
+		return v.ManualApprovalPreconditions
+	}).(GetReleaseChannelManualApprovalPreconditionArrayOutput)
 }
 
 // Release Channel name
@@ -137,9 +192,28 @@ func (o LookupReleaseChannelResultOutput) Policy() GetReleaseChannelPolicyOutput
 	return o.ApplyT(func(v LookupReleaseChannelResult) GetReleaseChannelPolicy { return v.Policy }).(GetReleaseChannelPolicyOutput)
 }
 
+// Protections applied this release channel
+func (o LookupReleaseChannelResultOutput) Protections() GetReleaseChannelProtectionArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelProtection { return v.Protections }).(GetReleaseChannelProtectionArrayOutput)
+}
+
+// Preconditions requiring other release channels to be stable before this release channel can be deployed
+func (o LookupReleaseChannelResultOutput) ReleaseChannelStablePreconditions() GetReleaseChannelReleaseChannelStablePreconditionArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelReleaseChannelStablePrecondition {
+		return v.ReleaseChannelStablePreconditions
+	}).(GetReleaseChannelReleaseChannelStablePreconditionArrayOutput)
+}
+
 // Release Channel policy applied to all services
 func (o LookupReleaseChannelResultOutput) Runtimes() GetReleaseChannelRuntimeArrayOutput {
 	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelRuntime { return v.Runtimes }).(GetReleaseChannelRuntimeArrayOutput)
+}
+
+// Protections applied to service instances in this release channel
+func (o LookupReleaseChannelResultOutput) ServiceInstanceProtections() GetReleaseChannelServiceInstanceProtectionArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelServiceInstanceProtection {
+		return v.ServiceInstanceProtections
+	}).(GetReleaseChannelServiceInstanceProtectionArrayOutput)
 }
 
 // Current application version

@@ -12,14 +12,68 @@ from . import outputs
 
 __all__ = [
     'ManagedK8sRuntimeExec',
+    'ReleaseChannelConstant',
+    'ReleaseChannelConvergenceProtection',
+    'ReleaseChannelConvergenceProtectionDeployment',
+    'ReleaseChannelConvergenceProtectionPostApproval',
+    'ReleaseChannelConvergenceProtectionPostDeployment',
+    'ReleaseChannelConvergenceProtectionPreApproval',
+    'ReleaseChannelConvergenceProtectionRef',
+    'ReleaseChannelConvergenceProtectionRefParameter',
+    'ReleaseChannelConvergenceProtectionRefParameterSecretValue',
+    'ReleaseChannelManualApprovalPrecondition',
     'ReleaseChannelPolicy',
     'ReleaseChannelPolicyDefaultEnv',
     'ReleaseChannelPolicyDefaultEnvSecret',
+    'ReleaseChannelProtection',
+    'ReleaseChannelProtectionDeployment',
+    'ReleaseChannelProtectionPostApproval',
+    'ReleaseChannelProtectionPostDeployment',
+    'ReleaseChannelProtectionPreApproval',
+    'ReleaseChannelProtectionRef',
+    'ReleaseChannelProtectionRefParameter',
+    'ReleaseChannelProtectionRefParameterSecretValue',
+    'ReleaseChannelReleaseChannelStablePrecondition',
     'ReleaseChannelRuntime',
+    'ReleaseChannelServiceInstanceProtection',
+    'ReleaseChannelServiceInstanceProtectionDeployment',
+    'ReleaseChannelServiceInstanceProtectionPostApproval',
+    'ReleaseChannelServiceInstanceProtectionPostDeployment',
+    'ReleaseChannelServiceInstanceProtectionPreApproval',
+    'ReleaseChannelServiceInstanceProtectionRef',
+    'ReleaseChannelServiceInstanceProtectionRefParameter',
+    'ReleaseChannelServiceInstanceProtectionRefParameterSecretValue',
+    'GetReleaseChannelConstantResult',
+    'GetReleaseChannelConvergenceProtectionResult',
+    'GetReleaseChannelConvergenceProtectionDeploymentResult',
+    'GetReleaseChannelConvergenceProtectionPostApprovalResult',
+    'GetReleaseChannelConvergenceProtectionPostDeploymentResult',
+    'GetReleaseChannelConvergenceProtectionPreApprovalResult',
+    'GetReleaseChannelConvergenceProtectionRefResult',
+    'GetReleaseChannelConvergenceProtectionRefParameterResult',
+    'GetReleaseChannelConvergenceProtectionRefParameterSecretValueResult',
+    'GetReleaseChannelManualApprovalPreconditionResult',
     'GetReleaseChannelPolicyResult',
     'GetReleaseChannelPolicyDefaultEnvResult',
     'GetReleaseChannelPolicyDefaultEnvSecretResult',
+    'GetReleaseChannelProtectionResult',
+    'GetReleaseChannelProtectionDeploymentResult',
+    'GetReleaseChannelProtectionPostApprovalResult',
+    'GetReleaseChannelProtectionPostDeploymentResult',
+    'GetReleaseChannelProtectionPreApprovalResult',
+    'GetReleaseChannelProtectionRefResult',
+    'GetReleaseChannelProtectionRefParameterResult',
+    'GetReleaseChannelProtectionRefParameterSecretValueResult',
+    'GetReleaseChannelReleaseChannelStablePreconditionResult',
     'GetReleaseChannelRuntimeResult',
+    'GetReleaseChannelServiceInstanceProtectionResult',
+    'GetReleaseChannelServiceInstanceProtectionDeploymentResult',
+    'GetReleaseChannelServiceInstanceProtectionPostApprovalResult',
+    'GetReleaseChannelServiceInstanceProtectionPostDeploymentResult',
+    'GetReleaseChannelServiceInstanceProtectionPreApprovalResult',
+    'GetReleaseChannelServiceInstanceProtectionRefResult',
+    'GetReleaseChannelServiceInstanceProtectionRefParameterResult',
+    'GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueResult',
 ]
 
 @pulumi.output_type
@@ -90,6 +144,421 @@ class ManagedK8sRuntimeExec(dict):
         Environment variables to set when executing the command
         """
         return pulumi.get(self, "env")
+
+
+@pulumi.output_type
+class ReleaseChannelConstant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelConstant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelConstant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelConstant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 string_value: str):
+        """
+        :param str name: name of the constant
+        :param str string_value: string value of the constant
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the constant
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> str:
+        """
+        string value of the constant
+        """
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postApproval":
+            suggest = "post_approval"
+        elif key == "postDeployment":
+            suggest = "post_deployment"
+        elif key == "preApproval":
+            suggest = "pre_approval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelConvergenceProtection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelConvergenceProtection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelConvergenceProtection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ref: 'outputs.ReleaseChannelConvergenceProtectionRef',
+                 deployment: Optional['outputs.ReleaseChannelConvergenceProtectionDeployment'] = None,
+                 name: Optional[str] = None,
+                 post_approval: Optional['outputs.ReleaseChannelConvergenceProtectionPostApproval'] = None,
+                 post_deployment: Optional['outputs.ReleaseChannelConvergenceProtectionPostDeployment'] = None,
+                 pre_approval: Optional['outputs.ReleaseChannelConvergenceProtectionPreApproval'] = None):
+        """
+        :param 'ReleaseChannelConvergenceProtectionRefArgs' ref: reference to a protection stored in Prodvana
+        :param 'ReleaseChannelConvergenceProtectionDeploymentArgs' deployment: deployment lifecycle options
+        :param str name: name of the protection
+        :param 'ReleaseChannelConvergenceProtectionPostApprovalArgs' post_approval: post-approval lifecycle options
+        :param 'ReleaseChannelConvergenceProtectionPostDeploymentArgs' post_deployment: post-deployment lifecycle options
+        :param 'ReleaseChannelConvergenceProtectionPreApprovalArgs' pre_approval: pre-approval lifecycle options
+        """
+        pulumi.set(__self__, "ref", ref)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if post_approval is not None:
+            pulumi.set(__self__, "post_approval", post_approval)
+        if post_deployment is not None:
+            pulumi.set(__self__, "post_deployment", post_deployment)
+        if pre_approval is not None:
+            pulumi.set(__self__, "pre_approval", pre_approval)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> 'outputs.ReleaseChannelConvergenceProtectionRef':
+        """
+        reference to a protection stored in Prodvana
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.ReleaseChannelConvergenceProtectionDeployment']:
+        """
+        deployment lifecycle options
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the protection
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="postApproval")
+    def post_approval(self) -> Optional['outputs.ReleaseChannelConvergenceProtectionPostApproval']:
+        """
+        post-approval lifecycle options
+        """
+        return pulumi.get(self, "post_approval")
+
+    @property
+    @pulumi.getter(name="postDeployment")
+    def post_deployment(self) -> Optional['outputs.ReleaseChannelConvergenceProtectionPostDeployment']:
+        """
+        post-deployment lifecycle options
+        """
+        return pulumi.get(self, "post_deployment")
+
+    @property
+    @pulumi.getter(name="preApproval")
+    def pre_approval(self) -> Optional['outputs.ReleaseChannelConvergenceProtectionPreApproval']:
+        """
+        pre-approval lifecycle options
+        """
+        return pulumi.get(self, "pre_approval")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionDeployment(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionPostApproval(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionPostDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkDuration":
+            suggest = "check_duration"
+        elif key == "delayCheckDuration":
+            suggest = "delay_check_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelConvergenceProtectionPostDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelConvergenceProtectionPostDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelConvergenceProtectionPostDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_duration: Optional[str] = None,
+                 delay_check_duration: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        if check_duration is not None:
+            pulumi.set(__self__, "check_duration", check_duration)
+        if delay_check_duration is not None:
+            pulumi.set(__self__, "delay_check_duration", delay_check_duration)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="checkDuration")
+    def check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "check_duration")
+
+    @property
+    @pulumi.getter(name="delayCheckDuration")
+    def delay_check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "delay_check_duration")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionPreApproval(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionRef(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: Optional[Sequence['outputs.ReleaseChannelConvergenceProtectionRefParameter']] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.ReleaseChannelConvergenceProtectionRefParameter']]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionRefParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dockerImageTagValue":
+            suggest = "docker_image_tag_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "secretValue":
+            suggest = "secret_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelConvergenceProtectionRefParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelConvergenceProtectionRefParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelConvergenceProtectionRefParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 docker_image_tag_value: Optional[str] = None,
+                 int_value: Optional[int] = None,
+                 secret_value: Optional['outputs.ReleaseChannelConvergenceProtectionRefParameterSecretValue'] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if docker_image_tag_value is not None:
+            pulumi.set(__self__, "docker_image_tag_value", docker_image_tag_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dockerImageTagValue")
+    def docker_image_tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "docker_image_tag_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[int]:
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional['outputs.ReleaseChannelConvergenceProtectionRefParameterSecretValue']:
+        return pulumi.get(self, "secret_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class ReleaseChannelConvergenceProtectionRefParameterSecretValue(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 version: str):
+        """
+        :param str version: Current application version
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Current application version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ReleaseChannelManualApprovalPrecondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "everyAction":
+            suggest = "every_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelManualApprovalPrecondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelManualApprovalPrecondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelManualApprovalPrecondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 description: Optional[str] = None,
+                 every_action: Optional[bool] = None):
+        """
+        :param str name: name of the manual approval
+        :param str description: description of the manual approval
+        :param bool every_action: whether this approval is required for every convergence action, or just the first
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if every_action is not None:
+            pulumi.set(__self__, "every_action", every_action)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the manual approval
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        description of the manual approval
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="everyAction")
+    def every_action(self) -> Optional[bool]:
+        """
+        whether this approval is required for every convergence action, or just the first
+        """
+        return pulumi.get(self, "every_action")
 
 
 @pulumi.output_type
@@ -174,6 +643,362 @@ class ReleaseChannelPolicyDefaultEnvSecret(dict):
         Current application version
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ReleaseChannelProtection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postApproval":
+            suggest = "post_approval"
+        elif key == "postDeployment":
+            suggest = "post_deployment"
+        elif key == "preApproval":
+            suggest = "pre_approval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelProtection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelProtection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelProtection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ref: 'outputs.ReleaseChannelProtectionRef',
+                 deployment: Optional['outputs.ReleaseChannelProtectionDeployment'] = None,
+                 name: Optional[str] = None,
+                 post_approval: Optional['outputs.ReleaseChannelProtectionPostApproval'] = None,
+                 post_deployment: Optional['outputs.ReleaseChannelProtectionPostDeployment'] = None,
+                 pre_approval: Optional['outputs.ReleaseChannelProtectionPreApproval'] = None):
+        """
+        :param 'ReleaseChannelProtectionRefArgs' ref: reference to a protection stored in Prodvana
+        :param 'ReleaseChannelProtectionDeploymentArgs' deployment: deployment lifecycle options
+        :param str name: name of the protection
+        :param 'ReleaseChannelProtectionPostApprovalArgs' post_approval: post-approval lifecycle options
+        :param 'ReleaseChannelProtectionPostDeploymentArgs' post_deployment: post-deployment lifecycle options
+        :param 'ReleaseChannelProtectionPreApprovalArgs' pre_approval: pre-approval lifecycle options
+        """
+        pulumi.set(__self__, "ref", ref)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if post_approval is not None:
+            pulumi.set(__self__, "post_approval", post_approval)
+        if post_deployment is not None:
+            pulumi.set(__self__, "post_deployment", post_deployment)
+        if pre_approval is not None:
+            pulumi.set(__self__, "pre_approval", pre_approval)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> 'outputs.ReleaseChannelProtectionRef':
+        """
+        reference to a protection stored in Prodvana
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.ReleaseChannelProtectionDeployment']:
+        """
+        deployment lifecycle options
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the protection
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="postApproval")
+    def post_approval(self) -> Optional['outputs.ReleaseChannelProtectionPostApproval']:
+        """
+        post-approval lifecycle options
+        """
+        return pulumi.get(self, "post_approval")
+
+    @property
+    @pulumi.getter(name="postDeployment")
+    def post_deployment(self) -> Optional['outputs.ReleaseChannelProtectionPostDeployment']:
+        """
+        post-deployment lifecycle options
+        """
+        return pulumi.get(self, "post_deployment")
+
+    @property
+    @pulumi.getter(name="preApproval")
+    def pre_approval(self) -> Optional['outputs.ReleaseChannelProtectionPreApproval']:
+        """
+        pre-approval lifecycle options
+        """
+        return pulumi.get(self, "pre_approval")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionDeployment(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionPostApproval(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionPostDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkDuration":
+            suggest = "check_duration"
+        elif key == "delayCheckDuration":
+            suggest = "delay_check_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelProtectionPostDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelProtectionPostDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelProtectionPostDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_duration: Optional[str] = None,
+                 delay_check_duration: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        if check_duration is not None:
+            pulumi.set(__self__, "check_duration", check_duration)
+        if delay_check_duration is not None:
+            pulumi.set(__self__, "delay_check_duration", delay_check_duration)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="checkDuration")
+    def check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "check_duration")
+
+    @property
+    @pulumi.getter(name="delayCheckDuration")
+    def delay_check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "delay_check_duration")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionPreApproval(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionRef(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: Optional[Sequence['outputs.ReleaseChannelProtectionRefParameter']] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.ReleaseChannelProtectionRefParameter']]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionRefParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dockerImageTagValue":
+            suggest = "docker_image_tag_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "secretValue":
+            suggest = "secret_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelProtectionRefParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelProtectionRefParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelProtectionRefParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 docker_image_tag_value: Optional[str] = None,
+                 int_value: Optional[int] = None,
+                 secret_value: Optional['outputs.ReleaseChannelProtectionRefParameterSecretValue'] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if docker_image_tag_value is not None:
+            pulumi.set(__self__, "docker_image_tag_value", docker_image_tag_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dockerImageTagValue")
+    def docker_image_tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "docker_image_tag_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[int]:
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional['outputs.ReleaseChannelProtectionRefParameterSecretValue']:
+        return pulumi.get(self, "secret_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class ReleaseChannelProtectionRefParameterSecretValue(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 version: str):
+        """
+        :param str version: Current application version
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Current application version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ReleaseChannelReleaseChannelStablePrecondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseChannel":
+            suggest = "release_channel"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelReleaseChannelStablePrecondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelReleaseChannelStablePrecondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelReleaseChannelStablePrecondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: str,
+                 release_channel: str):
+        """
+        :param str duration: duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        :param str release_channel: name of a release channel that must be in a stable deployment state
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "release_channel", release_channel)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> str:
+        """
+        name of a release channel that must be in a stable deployment state
+        """
+        return pulumi.get(self, "release_channel")
 
 
 @pulumi.output_type
@@ -263,6 +1088,629 @@ class ReleaseChannelRuntime(dict):
 
 
 @pulumi.output_type
+class ReleaseChannelServiceInstanceProtection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postApproval":
+            suggest = "post_approval"
+        elif key == "postDeployment":
+            suggest = "post_deployment"
+        elif key == "preApproval":
+            suggest = "pre_approval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelServiceInstanceProtection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelServiceInstanceProtection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelServiceInstanceProtection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ref: 'outputs.ReleaseChannelServiceInstanceProtectionRef',
+                 deployment: Optional['outputs.ReleaseChannelServiceInstanceProtectionDeployment'] = None,
+                 name: Optional[str] = None,
+                 post_approval: Optional['outputs.ReleaseChannelServiceInstanceProtectionPostApproval'] = None,
+                 post_deployment: Optional['outputs.ReleaseChannelServiceInstanceProtectionPostDeployment'] = None,
+                 pre_approval: Optional['outputs.ReleaseChannelServiceInstanceProtectionPreApproval'] = None):
+        """
+        :param 'ReleaseChannelServiceInstanceProtectionRefArgs' ref: reference to a protection stored in Prodvana
+        :param 'ReleaseChannelServiceInstanceProtectionDeploymentArgs' deployment: deployment lifecycle options
+        :param str name: name of the protection
+        :param 'ReleaseChannelServiceInstanceProtectionPostApprovalArgs' post_approval: post-approval lifecycle options
+        :param 'ReleaseChannelServiceInstanceProtectionPostDeploymentArgs' post_deployment: post-deployment lifecycle options
+        :param 'ReleaseChannelServiceInstanceProtectionPreApprovalArgs' pre_approval: pre-approval lifecycle options
+        """
+        pulumi.set(__self__, "ref", ref)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if post_approval is not None:
+            pulumi.set(__self__, "post_approval", post_approval)
+        if post_deployment is not None:
+            pulumi.set(__self__, "post_deployment", post_deployment)
+        if pre_approval is not None:
+            pulumi.set(__self__, "pre_approval", pre_approval)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> 'outputs.ReleaseChannelServiceInstanceProtectionRef':
+        """
+        reference to a protection stored in Prodvana
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.ReleaseChannelServiceInstanceProtectionDeployment']:
+        """
+        deployment lifecycle options
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the protection
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="postApproval")
+    def post_approval(self) -> Optional['outputs.ReleaseChannelServiceInstanceProtectionPostApproval']:
+        """
+        post-approval lifecycle options
+        """
+        return pulumi.get(self, "post_approval")
+
+    @property
+    @pulumi.getter(name="postDeployment")
+    def post_deployment(self) -> Optional['outputs.ReleaseChannelServiceInstanceProtectionPostDeployment']:
+        """
+        post-deployment lifecycle options
+        """
+        return pulumi.get(self, "post_deployment")
+
+    @property
+    @pulumi.getter(name="preApproval")
+    def pre_approval(self) -> Optional['outputs.ReleaseChannelServiceInstanceProtectionPreApproval']:
+        """
+        pre-approval lifecycle options
+        """
+        return pulumi.get(self, "pre_approval")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionDeployment(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionPostApproval(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionPostDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkDuration":
+            suggest = "check_duration"
+        elif key == "delayCheckDuration":
+            suggest = "delay_check_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelServiceInstanceProtectionPostDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelServiceInstanceProtectionPostDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelServiceInstanceProtectionPostDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_duration: Optional[str] = None,
+                 delay_check_duration: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        if check_duration is not None:
+            pulumi.set(__self__, "check_duration", check_duration)
+        if delay_check_duration is not None:
+            pulumi.set(__self__, "delay_check_duration", delay_check_duration)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="checkDuration")
+    def check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "check_duration")
+
+    @property
+    @pulumi.getter(name="delayCheckDuration")
+    def delay_check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "delay_check_duration")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionPreApproval(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionRef(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: Optional[Sequence['outputs.ReleaseChannelServiceInstanceProtectionRefParameter']] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.ReleaseChannelServiceInstanceProtectionRefParameter']]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionRefParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dockerImageTagValue":
+            suggest = "docker_image_tag_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "secretValue":
+            suggest = "secret_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelServiceInstanceProtectionRefParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelServiceInstanceProtectionRefParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelServiceInstanceProtectionRefParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 docker_image_tag_value: Optional[str] = None,
+                 int_value: Optional[int] = None,
+                 secret_value: Optional['outputs.ReleaseChannelServiceInstanceProtectionRefParameterSecretValue'] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if docker_image_tag_value is not None:
+            pulumi.set(__self__, "docker_image_tag_value", docker_image_tag_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dockerImageTagValue")
+    def docker_image_tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "docker_image_tag_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[int]:
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional['outputs.ReleaseChannelServiceInstanceProtectionRefParameterSecretValue']:
+        return pulumi.get(self, "secret_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class ReleaseChannelServiceInstanceProtectionRefParameterSecretValue(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 version: str):
+        """
+        :param str version: Current application version
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Current application version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetReleaseChannelConstantResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 string_value: str):
+        """
+        :param str name: name of the constant
+        :param str string_value: string value of the constant
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the constant
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> str:
+        """
+        string value of the constant
+        """
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 ref: 'outputs.GetReleaseChannelConvergenceProtectionRefResult',
+                 deployment: Optional['outputs.GetReleaseChannelConvergenceProtectionDeploymentResult'] = None,
+                 post_approval: Optional['outputs.GetReleaseChannelConvergenceProtectionPostApprovalResult'] = None,
+                 post_deployment: Optional['outputs.GetReleaseChannelConvergenceProtectionPostDeploymentResult'] = None,
+                 pre_approval: Optional['outputs.GetReleaseChannelConvergenceProtectionPreApprovalResult'] = None):
+        """
+        :param str name: name of the protection
+        :param 'GetReleaseChannelConvergenceProtectionRefArgs' ref: reference to a protection stored in Prodvana
+        :param 'GetReleaseChannelConvergenceProtectionDeploymentArgs' deployment: deployment lifecycle options
+        :param 'GetReleaseChannelConvergenceProtectionPostApprovalArgs' post_approval: post-approval lifecycle options
+        :param 'GetReleaseChannelConvergenceProtectionPostDeploymentArgs' post_deployment: post-deployment lifecycle options
+        :param 'GetReleaseChannelConvergenceProtectionPreApprovalArgs' pre_approval: pre-approval lifecycle options
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ref", ref)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+        if post_approval is not None:
+            pulumi.set(__self__, "post_approval", post_approval)
+        if post_deployment is not None:
+            pulumi.set(__self__, "post_deployment", post_deployment)
+        if pre_approval is not None:
+            pulumi.set(__self__, "pre_approval", pre_approval)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the protection
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> 'outputs.GetReleaseChannelConvergenceProtectionRefResult':
+        """
+        reference to a protection stored in Prodvana
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.GetReleaseChannelConvergenceProtectionDeploymentResult']:
+        """
+        deployment lifecycle options
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="postApproval")
+    def post_approval(self) -> Optional['outputs.GetReleaseChannelConvergenceProtectionPostApprovalResult']:
+        """
+        post-approval lifecycle options
+        """
+        return pulumi.get(self, "post_approval")
+
+    @property
+    @pulumi.getter(name="postDeployment")
+    def post_deployment(self) -> Optional['outputs.GetReleaseChannelConvergenceProtectionPostDeploymentResult']:
+        """
+        post-deployment lifecycle options
+        """
+        return pulumi.get(self, "post_deployment")
+
+    @property
+    @pulumi.getter(name="preApproval")
+    def pre_approval(self) -> Optional['outputs.GetReleaseChannelConvergenceProtectionPreApprovalResult']:
+        """
+        pre-approval lifecycle options
+        """
+        return pulumi.get(self, "pre_approval")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionDeploymentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionPostApprovalResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionPostDeploymentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 check_duration: Optional[str] = None,
+                 delay_check_duration: Optional[str] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if check_duration is not None:
+            pulumi.set(__self__, "check_duration", check_duration)
+        if delay_check_duration is not None:
+            pulumi.set(__self__, "delay_check_duration", delay_check_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="checkDuration")
+    def check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "check_duration")
+
+    @property
+    @pulumi.getter(name="delayCheckDuration")
+    def delay_check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "delay_check_duration")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionPreApprovalResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionRefResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: Optional[Sequence['outputs.GetReleaseChannelConvergenceProtectionRefParameterResult']] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GetReleaseChannelConvergenceProtectionRefParameterResult']]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionRefParameterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 docker_image_tag_value: Optional[str] = None,
+                 int_value: Optional[int] = None,
+                 secret_value: Optional['outputs.GetReleaseChannelConvergenceProtectionRefParameterSecretValueResult'] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if docker_image_tag_value is not None:
+            pulumi.set(__self__, "docker_image_tag_value", docker_image_tag_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dockerImageTagValue")
+    def docker_image_tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "docker_image_tag_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[int]:
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional['outputs.GetReleaseChannelConvergenceProtectionRefParameterSecretValueResult']:
+        return pulumi.get(self, "secret_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class GetReleaseChannelConvergenceProtectionRefParameterSecretValueResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 version: str):
+        """
+        :param str version: Current application version
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Current application version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetReleaseChannelManualApprovalPreconditionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 description: Optional[str] = None,
+                 every_action: Optional[bool] = None):
+        """
+        :param str name: name of the manual approval
+        :param str description: description of the manual approval
+        :param bool every_action: whether to require manual approval for every action, or just the first
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if every_action is not None:
+            pulumi.set(__self__, "every_action", every_action)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the manual approval
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        description of the manual approval
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="everyAction")
+    def every_action(self) -> Optional[bool]:
+        """
+        whether to require manual approval for every action, or just the first
+        """
+        return pulumi.get(self, "every_action")
+
+
+@pulumi.output_type
 class GetReleaseChannelPolicyResult(dict):
     def __init__(__self__, *,
                  default_env: Mapping[str, 'outputs.GetReleaseChannelPolicyDefaultEnvResult']):
@@ -329,6 +1777,277 @@ class GetReleaseChannelPolicyDefaultEnvSecretResult(dict):
 
 
 @pulumi.output_type
+class GetReleaseChannelProtectionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 ref: 'outputs.GetReleaseChannelProtectionRefResult',
+                 deployment: Optional['outputs.GetReleaseChannelProtectionDeploymentResult'] = None,
+                 post_approval: Optional['outputs.GetReleaseChannelProtectionPostApprovalResult'] = None,
+                 post_deployment: Optional['outputs.GetReleaseChannelProtectionPostDeploymentResult'] = None,
+                 pre_approval: Optional['outputs.GetReleaseChannelProtectionPreApprovalResult'] = None):
+        """
+        :param str name: name of the protection
+        :param 'GetReleaseChannelProtectionRefArgs' ref: reference to a protection stored in Prodvana
+        :param 'GetReleaseChannelProtectionDeploymentArgs' deployment: deployment lifecycle options
+        :param 'GetReleaseChannelProtectionPostApprovalArgs' post_approval: post-approval lifecycle options
+        :param 'GetReleaseChannelProtectionPostDeploymentArgs' post_deployment: post-deployment lifecycle options
+        :param 'GetReleaseChannelProtectionPreApprovalArgs' pre_approval: pre-approval lifecycle options
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ref", ref)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+        if post_approval is not None:
+            pulumi.set(__self__, "post_approval", post_approval)
+        if post_deployment is not None:
+            pulumi.set(__self__, "post_deployment", post_deployment)
+        if pre_approval is not None:
+            pulumi.set(__self__, "pre_approval", pre_approval)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the protection
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> 'outputs.GetReleaseChannelProtectionRefResult':
+        """
+        reference to a protection stored in Prodvana
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.GetReleaseChannelProtectionDeploymentResult']:
+        """
+        deployment lifecycle options
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="postApproval")
+    def post_approval(self) -> Optional['outputs.GetReleaseChannelProtectionPostApprovalResult']:
+        """
+        post-approval lifecycle options
+        """
+        return pulumi.get(self, "post_approval")
+
+    @property
+    @pulumi.getter(name="postDeployment")
+    def post_deployment(self) -> Optional['outputs.GetReleaseChannelProtectionPostDeploymentResult']:
+        """
+        post-deployment lifecycle options
+        """
+        return pulumi.get(self, "post_deployment")
+
+    @property
+    @pulumi.getter(name="preApproval")
+    def pre_approval(self) -> Optional['outputs.GetReleaseChannelProtectionPreApprovalResult']:
+        """
+        pre-approval lifecycle options
+        """
+        return pulumi.get(self, "pre_approval")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionDeploymentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionPostApprovalResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionPostDeploymentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 check_duration: Optional[str] = None,
+                 delay_check_duration: Optional[str] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if check_duration is not None:
+            pulumi.set(__self__, "check_duration", check_duration)
+        if delay_check_duration is not None:
+            pulumi.set(__self__, "delay_check_duration", delay_check_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="checkDuration")
+    def check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "check_duration")
+
+    @property
+    @pulumi.getter(name="delayCheckDuration")
+    def delay_check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "delay_check_duration")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionPreApprovalResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionRefResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: Optional[Sequence['outputs.GetReleaseChannelProtectionRefParameterResult']] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GetReleaseChannelProtectionRefParameterResult']]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionRefParameterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 docker_image_tag_value: Optional[str] = None,
+                 int_value: Optional[int] = None,
+                 secret_value: Optional['outputs.GetReleaseChannelProtectionRefParameterSecretValueResult'] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if docker_image_tag_value is not None:
+            pulumi.set(__self__, "docker_image_tag_value", docker_image_tag_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dockerImageTagValue")
+    def docker_image_tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "docker_image_tag_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[int]:
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional['outputs.GetReleaseChannelProtectionRefParameterSecretValueResult']:
+        return pulumi.get(self, "secret_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class GetReleaseChannelProtectionRefParameterSecretValueResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 version: str):
+        """
+        :param str version: Current application version
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Current application version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetReleaseChannelReleaseChannelStablePreconditionResult(dict):
+    def __init__(__self__, *,
+                 duration: str,
+                 release_channel: str):
+        """
+        :param str duration: duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        :param str release_channel: name of a release channel that must be in a stable deployment state
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "release_channel", release_channel)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="releaseChannel")
+    def release_channel(self) -> str:
+        """
+        name of a release channel that must be in a stable deployment state
+        """
+        return pulumi.get(self, "release_channel")
+
+
+@pulumi.output_type
 class GetReleaseChannelRuntimeResult(dict):
     def __init__(__self__, *,
                  ecs_prefix: str,
@@ -389,5 +2108,247 @@ class GetReleaseChannelRuntimeResult(dict):
         name of the a runtime
         """
         return pulumi.get(self, "runtime")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 ref: 'outputs.GetReleaseChannelServiceInstanceProtectionRefResult',
+                 deployment: Optional['outputs.GetReleaseChannelServiceInstanceProtectionDeploymentResult'] = None,
+                 post_approval: Optional['outputs.GetReleaseChannelServiceInstanceProtectionPostApprovalResult'] = None,
+                 post_deployment: Optional['outputs.GetReleaseChannelServiceInstanceProtectionPostDeploymentResult'] = None,
+                 pre_approval: Optional['outputs.GetReleaseChannelServiceInstanceProtectionPreApprovalResult'] = None):
+        """
+        :param str name: name of the protection
+        :param 'GetReleaseChannelServiceInstanceProtectionRefArgs' ref: reference to a protection stored in Prodvana
+        :param 'GetReleaseChannelServiceInstanceProtectionDeploymentArgs' deployment: deployment lifecycle options
+        :param 'GetReleaseChannelServiceInstanceProtectionPostApprovalArgs' post_approval: post-approval lifecycle options
+        :param 'GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs' post_deployment: post-deployment lifecycle options
+        :param 'GetReleaseChannelServiceInstanceProtectionPreApprovalArgs' pre_approval: pre-approval lifecycle options
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ref", ref)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
+        if post_approval is not None:
+            pulumi.set(__self__, "post_approval", post_approval)
+        if post_deployment is not None:
+            pulumi.set(__self__, "post_deployment", post_deployment)
+        if pre_approval is not None:
+            pulumi.set(__self__, "pre_approval", pre_approval)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the protection
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> 'outputs.GetReleaseChannelServiceInstanceProtectionRefResult':
+        """
+        reference to a protection stored in Prodvana
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.GetReleaseChannelServiceInstanceProtectionDeploymentResult']:
+        """
+        deployment lifecycle options
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="postApproval")
+    def post_approval(self) -> Optional['outputs.GetReleaseChannelServiceInstanceProtectionPostApprovalResult']:
+        """
+        post-approval lifecycle options
+        """
+        return pulumi.get(self, "post_approval")
+
+    @property
+    @pulumi.getter(name="postDeployment")
+    def post_deployment(self) -> Optional['outputs.GetReleaseChannelServiceInstanceProtectionPostDeploymentResult']:
+        """
+        post-deployment lifecycle options
+        """
+        return pulumi.get(self, "post_deployment")
+
+    @property
+    @pulumi.getter(name="preApproval")
+    def pre_approval(self) -> Optional['outputs.GetReleaseChannelServiceInstanceProtectionPreApprovalResult']:
+        """
+        pre-approval lifecycle options
+        """
+        return pulumi.get(self, "pre_approval")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionDeploymentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionPostApprovalResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionPostDeploymentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 check_duration: Optional[str] = None,
+                 delay_check_duration: Optional[str] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if check_duration is not None:
+            pulumi.set(__self__, "check_duration", check_duration)
+        if delay_check_duration is not None:
+            pulumi.set(__self__, "delay_check_duration", delay_check_duration)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="checkDuration")
+    def check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "check_duration")
+
+    @property
+    @pulumi.getter(name="delayCheckDuration")
+    def delay_check_duration(self) -> Optional[str]:
+        return pulumi.get(self, "delay_check_duration")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionPreApprovalResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionRefResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 parameters: Optional[Sequence['outputs.GetReleaseChannelServiceInstanceProtectionRefParameterResult']] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GetReleaseChannelServiceInstanceProtectionRefParameterResult']]:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionRefParameterResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 docker_image_tag_value: Optional[str] = None,
+                 int_value: Optional[int] = None,
+                 secret_value: Optional['outputs.GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueResult'] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param str name: Release Channel name
+        """
+        pulumi.set(__self__, "name", name)
+        if docker_image_tag_value is not None:
+            pulumi.set(__self__, "docker_image_tag_value", docker_image_tag_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if secret_value is not None:
+            pulumi.set(__self__, "secret_value", secret_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Release Channel name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dockerImageTagValue")
+    def docker_image_tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "docker_image_tag_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[int]:
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="secretValue")
+    def secret_value(self) -> Optional['outputs.GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueResult']:
+        return pulumi.get(self, "secret_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 version: str):
+        """
+        :param str version: Current application version
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Current application version
+        """
+        return pulumi.get(self, "version")
 
 

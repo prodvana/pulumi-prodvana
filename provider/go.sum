@@ -1595,10 +1595,10 @@ github.com/posener/complete v1.2.3 h1:NP0eAhjcjImqslEwo/1hq7gpajME0fTLTezBKDqfXq
 github.com/posener/complete v1.2.3/go.mod h1:WZIdtGGp+qx0sLrYKtIRAruyNpv6hFCicSgv7Sy7s/s=
 github.com/pquerna/cachecontrol v0.0.0-20171018203845-0dec1b30a021/go.mod h1:prYjPmNq4d1NPVmpShWobRqXY3q7Vp+80DqgxxUrUIA=
 github.com/prashantv/gostub v1.1.0/go.mod h1:A5zLQHz7ieHGG7is6LLXLz7I8+3LZzsrV0P1IAHhP5U=
-github.com/prodvana/prodvana-public/go/prodvana-sdk v0.1.16 h1:MZVr3NxZLJpdB+IzCZsgteHfX1dsRkNQISQhxPMml0k=
-github.com/prodvana/prodvana-public/go/prodvana-sdk v0.1.16/go.mod h1:v4uIY1pXGAzWTfEFWC/nPOvAmBVpnC55zMwcH3uYA0M=
-github.com/prodvana/terraform-provider-prodvana v0.1.5 h1:mWGnOr8x4eYuxTozoGWtxlqGztgvVpjNieihI60bu00=
-github.com/prodvana/terraform-provider-prodvana v0.1.5/go.mod h1:IJUXFx2obr53BKgDwNppg0PG8UkeXMad1uKD4u3UuWw=
+github.com/prodvana/prodvana-public/go/prodvana-sdk v0.2.2 h1:V9VAYy1BRODCUi/ceSPUIeAVEOMTgQxMR4Ja9CAwMaM=
+github.com/prodvana/prodvana-public/go/prodvana-sdk v0.2.2/go.mod h1:v4uIY1pXGAzWTfEFWC/nPOvAmBVpnC55zMwcH3uYA0M=
+github.com/prodvana/terraform-provider-prodvana v0.1.8 h1:jWxLttWf8Rv/no2A4eiwM7WD+0ZJluhCeFVBlN20nj0=
+github.com/prodvana/terraform-provider-prodvana v0.1.8/go.mod h1:XzhZ1wv0WswNuymPzMhV6KoDI6j8kHZVjiTtOGtnvo4=
 github.com/prometheus/alertmanager v0.24.0/go.mod h1:r6fy/D7FRuZh5YbnX6J3MBY0eI4Pb5yPYS7/bPSXXqI=
 github.com/prometheus/client_golang v0.0.0-20180209125602-c332b6f63c06/go.mod h1:7SWBe2y4D6OKWSNQJUaRYU/AaXPKyh/dDVn+NZz0KFw=
 github.com/prometheus/client_golang v0.9.1/go.mod h1:7SWBe2y4D6OKWSNQJUaRYU/AaXPKyh/dDVn+NZz0KFw=
