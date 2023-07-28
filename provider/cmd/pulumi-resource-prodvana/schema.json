@@ -1,0 +1,947 @@
+{
+    "name": "prodvana",
+    "displayName": "Prodvana",
+    "description": "A Pulumi package for creating and managing Prodvana cloud resources.",
+    "keywords": [
+        "pulumi",
+        "prodvana",
+        "category/cloud",
+        "category/infrastructure"
+    ],
+    "homepage": "https://prodvana.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`prodvana` Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana).",
+    "repository": "https://github.com/prodvana/pulumi-prodvana",
+    "publisher": "Prodvana",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/prodvana/pulumi-prodvana/sdk/go/prodvana"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing Prodvana cloud resources.",
+            "packageName": "",
+            "pluginName": "",
+            "pluginVersion": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-prodvana` repo](https://github.com/prodvana/pulumi-prodvana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-prodvana` repo](https://github.com/prodvana/terraform-provider-prodvana/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-prodvana` repo](https://github.com/prodvana/pulumi-prodvana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-prodvana` repo](https://github.com/prodvana/terraform-provider-prodvana/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiToken": {
+                "type": "string",
+                "description": "An API token generated with permissions to this organization.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "PVN_API_TOKEN"
+                    ]
+                },
+                "secret": true
+            },
+            "orgSlug": {
+                "type": "string",
+                "description": "Prodvana organization to authenticate with (you can find this in your Org's url: \u003corg\u003e.prodvana.io)\n",
+                "defaultInfo": {
+                    "environment": [
+                        "PVN_ORG_SLUG"
+                    ]
+                }
+            }
+        }
+    },
+    "types": {
+        "prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec": {
+            "properties": {
+                "apiVersion": {
+                    "type": "string",
+                    "description": "API version of the exec credential plugin\n"
+                },
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Arguments to pass when executing the command\n"
+                },
+                "command": {
+                    "type": "string",
+                    "description": "Command to execute\n"
+                },
+                "env": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environment variables to set when executing the command\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "apiVersion",
+                "command"
+            ]
+        },
+        "prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy": {
+            "properties": {
+                "defaultEnv": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnv:ReleaseChannelPolicyDefaultEnv"
+                    },
+                    "description": "default environment variables for services in this Release Channel\n"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/ReleaseChannelPolicyDefaultEnv:ReleaseChannelPolicyDefaultEnv": {
+            "properties": {
+                "secret": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvSecret:ReleaseChannelPolicyDefaultEnvSecret"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/ReleaseChannelPolicyDefaultEnvSecret:ReleaseChannelPolicyDefaultEnvSecret": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime": {
+            "properties": {
+                "ecsPrefix": {
+                    "type": "string",
+                    "description": "Prefix used when naming ECS resources. Can only be set on an ECS Runtime.\n"
+                },
+                "k8sNamespace": {
+                    "type": "string",
+                    "description": "Optionally set a custom namespace. If not set, Prodvana will create and manage the namespace. If set, the namespace *must* already exist and Prodvana will not try to create or delete it. Can only be set on a Kubernetes Runtime.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "optional identifier for this runtime connection within this release channel\n"
+                },
+                "runtime": {
+                    "type": "string",
+                    "description": "name of the a runtime\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ecsPrefix",
+                        "k8sNamespace",
+                        "name",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy": {
+            "properties": {
+                "defaultEnv": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnv:getReleaseChannelPolicyDefaultEnv"
+                    },
+                    "description": "default environment variables for services in this Release Channel\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultEnv"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "prodvana:index/getReleaseChannelPolicyDefaultEnv:getReleaseChannelPolicyDefaultEnv": {
+            "properties": {
+                "secret": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvSecret:getReleaseChannelPolicyDefaultEnvSecret"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/getReleaseChannelPolicyDefaultEnvSecret:getReleaseChannelPolicyDefaultEnvSecret": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/getReleaseChannelRuntime:getReleaseChannelRuntime": {
+            "properties": {
+                "ecsPrefix": {
+                    "type": "string",
+                    "description": "ECS prefix\n"
+                },
+                "k8sNamespace": {
+                    "type": "string",
+                    "description": "Kubernetes namespace\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "optional identifier for this runtime connection within this release channel\n"
+                },
+                "runtime": {
+                    "type": "string",
+                    "description": "name of the a runtime\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ecsPrefix",
+                "k8sNamespace",
+                "name",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        }
+    },
+    "provider": {
+        "description": "The provider type for the prodvana package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiToken": {
+                "type": "string",
+                "description": "An API token generated with permissions to this organization.\n",
+                "secret": true
+            },
+            "orgSlug": {
+                "type": "string",
+                "description": "Prodvana organization to authenticate with (you can find this in your Org's url: \u003corg\u003e.prodvana.io)\n"
+            }
+        },
+        "inputProperties": {
+            "apiToken": {
+                "type": "string",
+                "description": "An API token generated with permissions to this organization.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "PVN_API_TOKEN"
+                    ]
+                },
+                "secret": true
+            },
+            "orgSlug": {
+                "type": "string",
+                "description": "Prodvana organization to authenticate with (you can find this in your Org's url: \u003corg\u003e.prodvana.io)\n",
+                "defaultInfo": {
+                    "environment": [
+                        "PVN_ORG_SLUG"
+                    ]
+                }
+            }
+        }
+    },
+    "resources": {
+        "prodvana:index/application:Application": {
+            "description": "This resource allows you to manage a Prodvana [Application](https://docs.prodvana.io/docs/prodvana-concepts#application).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@pulumi/prodvana\";\n\nconst example = new prodvana.Application(\"example\", {});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\nexample = prodvana.Application(\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Prodvana.Application(\"example\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := prodvana.NewApplication(ctx, \"example\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.Application;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Application(\"example\");\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: prodvana:Application\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import prodvana:index/application:Application example \u003capplication name\u003e\n```\n\n ",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Application name\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "required": [
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Application name\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Application resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Application name\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Current application version\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "prodvana:index/k8sRuntime:K8sRuntime": {
+            "description": "This resource allows you to manage a Prodvana Kubernetes [Runtime](https://docs.prodvana.io/docs/prodvana-concepts#runtime). You are responsible for managing the agent lifetime. Also see `prodvana.ManagedK8sRuntime`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@pulumi/prodvana\";\n\nconst example = new prodvana.K8sRuntime(\"example\", {});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\nexample = prodvana.K8sRuntime(\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Prodvana.K8sRuntime(\"example\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := prodvana.NewK8sRuntime(ctx, \"example\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new K8sRuntime(\"example\");\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: prodvana:K8sRuntime\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import prodvana:index/k8sRuntime:K8sRuntime example \u003cruntime name\u003e\n```\n\n ",
+            "properties": {
+                "agentApiToken": {
+                    "type": "string",
+                    "description": "API Token used for linking the Kubernetes Prodvana agent\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Runtime name\n"
+                }
+            },
+            "required": [
+                "agentApiToken",
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Runtime name\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering K8sRuntime resources.\n",
+                "properties": {
+                    "agentApiToken": {
+                        "type": "string",
+                        "description": "API Token used for linking the Kubernetes Prodvana agent\n",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Runtime name\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "prodvana:index/managedK8sRuntime:ManagedK8sRuntime": {
+            "properties": {
+                "agentEnv": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.\n"
+                },
+                "agentNamespace": {
+                    "type": "string",
+                    "description": "The namespace of the agent\n"
+                },
+                "agentRuntimeId": {
+                    "type": "string",
+                    "description": "The runtime identifier of the agent\n"
+                },
+                "clientCertificate": {
+                    "type": "string",
+                    "description": "PEM-encoded client certificate for TLS authentication.\n"
+                },
+                "clientKey": {
+                    "type": "string",
+                    "description": "PEM-encoded client certificate key for TLS authentication.\n"
+                },
+                "clusterCaCertificate": {
+                    "type": "string",
+                    "description": "PEM-encoded root certificates bundle for TLS authentication.\n"
+                },
+                "configContext": {
+                    "type": "string",
+                    "description": "Context to use from the kube config file.\n"
+                },
+                "configContextAuthInfo": {
+                    "type": "string",
+                    "description": "Authentication info context of the kube config (name of the kubeconfig user, `--user` flag in `kubectl`).\n"
+                },
+                "configContextCluster": {
+                    "type": "string",
+                    "description": "Cluster context of the kube config (name of the kubeconfig cluster, `--cluster` flag in `kubectl`).\n"
+                },
+                "configPath": {
+                    "type": "string",
+                    "description": "Path to the kube config file.\n"
+                },
+                "configPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of paths to kube config files.\n"
+                },
+                "exec": {
+                    "$ref": "#/types/prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec",
+                    "description": "Exec configuration for authentication to the Kubernetes cluster\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The address of the Kubernetes cluster (scheme://hostname:port)\n"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "Whether server should be accessed without verifying the TLS certificate\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Runtime name\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password for basic authentication to the Kubernetes cluster\n"
+                },
+                "proxyUrl": {
+                    "type": "string",
+                    "description": "Proxy URL to use when accessing the Kubernetes cluster\n"
+                },
+                "timeout": {
+                    "type": "string",
+                    "description": "How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                },
+                "tlsServerName": {
+                    "type": "string",
+                    "description": "Server name passed to the server for SNI and is used in the client to check server certificates against\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Token to authenticate an service account\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username for basic authentication to the Kubernetes cluster\n"
+                }
+            },
+            "required": [
+                "agentEnv",
+                "agentNamespace",
+                "agentRuntimeId",
+                "clientCertificate",
+                "clientKey",
+                "clusterCaCertificate",
+                "configContext",
+                "configContextAuthInfo",
+                "configContextCluster",
+                "configPath",
+                "configPaths",
+                "host",
+                "insecure",
+                "name",
+                "password",
+                "proxyUrl",
+                "timeout",
+                "tlsServerName",
+                "token",
+                "username"
+            ],
+            "inputProperties": {
+                "agentEnv": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.\n"
+                },
+                "clientCertificate": {
+                    "type": "string",
+                    "description": "PEM-encoded client certificate for TLS authentication.\n"
+                },
+                "clientKey": {
+                    "type": "string",
+                    "description": "PEM-encoded client certificate key for TLS authentication.\n"
+                },
+                "clusterCaCertificate": {
+                    "type": "string",
+                    "description": "PEM-encoded root certificates bundle for TLS authentication.\n"
+                },
+                "configContext": {
+                    "type": "string",
+                    "description": "Context to use from the kube config file.\n"
+                },
+                "configContextAuthInfo": {
+                    "type": "string",
+                    "description": "Authentication info context of the kube config (name of the kubeconfig user, `--user` flag in `kubectl`).\n"
+                },
+                "configContextCluster": {
+                    "type": "string",
+                    "description": "Cluster context of the kube config (name of the kubeconfig cluster, `--cluster` flag in `kubectl`).\n"
+                },
+                "configPath": {
+                    "type": "string",
+                    "description": "Path to the kube config file.\n"
+                },
+                "configPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of paths to kube config files.\n"
+                },
+                "exec": {
+                    "$ref": "#/types/prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec",
+                    "description": "Exec configuration for authentication to the Kubernetes cluster\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The address of the Kubernetes cluster (scheme://hostname:port)\n"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "Whether server should be accessed without verifying the TLS certificate\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Runtime name\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password for basic authentication to the Kubernetes cluster\n"
+                },
+                "proxyUrl": {
+                    "type": "string",
+                    "description": "Proxy URL to use when accessing the Kubernetes cluster\n"
+                },
+                "timeout": {
+                    "type": "string",
+                    "description": "How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                },
+                "tlsServerName": {
+                    "type": "string",
+                    "description": "Server name passed to the server for SNI and is used in the client to check server certificates against\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Token to authenticate an service account\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username for basic authentication to the Kubernetes cluster\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ManagedK8sRuntime resources.\n",
+                "properties": {
+                    "agentEnv": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.\n"
+                    },
+                    "agentNamespace": {
+                        "type": "string",
+                        "description": "The namespace of the agent\n"
+                    },
+                    "agentRuntimeId": {
+                        "type": "string",
+                        "description": "The runtime identifier of the agent\n"
+                    },
+                    "clientCertificate": {
+                        "type": "string",
+                        "description": "PEM-encoded client certificate for TLS authentication.\n"
+                    },
+                    "clientKey": {
+                        "type": "string",
+                        "description": "PEM-encoded client certificate key for TLS authentication.\n"
+                    },
+                    "clusterCaCertificate": {
+                        "type": "string",
+                        "description": "PEM-encoded root certificates bundle for TLS authentication.\n"
+                    },
+                    "configContext": {
+                        "type": "string",
+                        "description": "Context to use from the kube config file.\n"
+                    },
+                    "configContextAuthInfo": {
+                        "type": "string",
+                        "description": "Authentication info context of the kube config (name of the kubeconfig user, `--user` flag in `kubectl`).\n"
+                    },
+                    "configContextCluster": {
+                        "type": "string",
+                        "description": "Cluster context of the kube config (name of the kubeconfig cluster, `--cluster` flag in `kubectl`).\n"
+                    },
+                    "configPath": {
+                        "type": "string",
+                        "description": "Path to the kube config file.\n"
+                    },
+                    "configPaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of paths to kube config files.\n"
+                    },
+                    "exec": {
+                        "$ref": "#/types/prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec",
+                        "description": "Exec configuration for authentication to the Kubernetes cluster\n"
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "The address of the Kubernetes cluster (scheme://hostname:port)\n"
+                    },
+                    "insecure": {
+                        "type": "boolean",
+                        "description": "Whether server should be accessed without verifying the TLS certificate\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Runtime name\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password for basic authentication to the Kubernetes cluster\n"
+                    },
+                    "proxyUrl": {
+                        "type": "string",
+                        "description": "Proxy URL to use when accessing the Kubernetes cluster\n"
+                    },
+                    "timeout": {
+                        "type": "string",
+                        "description": "How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                    },
+                    "tlsServerName": {
+                        "type": "string",
+                        "description": "Server name passed to the server for SNI and is used in the client to check server certificates against\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "Token to authenticate an service account\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "Username for basic authentication to the Kubernetes cluster\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "prodvana:index/releaseChannel:ReleaseChannel": {
+            "description": "This resource allows you to manage a Prodvana [Release Channel](https://docs.prodvana.io/docs/prodvana-concepts#release-channel).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nHere's a simple example that creates a release channel in an existing application:\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelPolicyArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ReleaseChannel(\"example\", ReleaseChannelArgs.builder()        \n            .application(\"my-app\")\n            .policy(ReleaseChannelPolicyArgs.builder()\n                .default_env(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(\"default\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: prodvana:ReleaseChannel\n    properties:\n      application: my-app\n      policy:\n        default_env:\n          MYENVVAR:\n            - value: my value\n      runtimes:\n        - runtime: default\n```\n\nHere's an example of how to create an application and release channel in the same module:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@pulumi/prodvana\";\n\nconst app = new prodvana.Application(\"app\", {});\nconst staging = new prodvana.ReleaseChannel(\"staging\", {application: app.name});\nconst prod = new prodvana.ReleaseChannel(\"prod\", {application: app.name});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\napp = prodvana.Application(\"app\")\nstaging = prodvana.ReleaseChannel(\"staging\", application=app.name)\nprod = prodvana.ReleaseChannel(\"prod\", application=app.name)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var app = new Prodvana.Application(\"app\");\n\n    var staging = new Prodvana.ReleaseChannel(\"staging\", new()\n    {\n        Application = app.Name,\n    });\n\n    var prod = new Prodvana.ReleaseChannel(\"prod\", new()\n    {\n        Application = app.Name,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tapp, err := prodvana.NewApplication(ctx, \"app\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = prodvana.NewReleaseChannel(ctx, \"staging\", \u0026prodvana.ReleaseChannelArgs{\n\t\t\tApplication: app.Name,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = prodvana.NewReleaseChannel(ctx, \"prod\", \u0026prodvana.ReleaseChannelArgs{\n\t\t\tApplication: app.Name,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.Application;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var app = new Application(\"app\");\n\n        var staging = new ReleaseChannel(\"staging\", ReleaseChannelArgs.builder()        \n            .application(app.name())\n            .build());\n\n        var prod = new ReleaseChannel(\"prod\", ReleaseChannelArgs.builder()        \n            .application(app.name())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  app:\n    type: prodvana:Application\n  staging:\n    type: prodvana:ReleaseChannel\n    properties:\n      application: ${app.name}\n  prod:\n    type: prodvana:ReleaseChannel\n    properties:\n      application: ${app.name}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import prodvana:index/releaseChannel:ReleaseChannel example \u003capplication name\u003e/\u003crelease channel name\u003e\n```\n\n ",
+            "properties": {
+                "application": {
+                    "type": "string",
+                    "description": "Name of the Application this Release Channel belongs to\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "policy": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
+                    "description": "Release Channel policy applied to all services\n"
+                },
+                "runtimes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime"
+                    },
+                    "description": "Release Channel policy applied to all services\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Current application version\n"
+                }
+            },
+            "required": [
+                "application",
+                "name",
+                "runtimes",
+                "version"
+            ],
+            "inputProperties": {
+                "application": {
+                    "type": "string",
+                    "description": "Name of the Application this Release Channel belongs to\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Release Channel name\n"
+                },
+                "policy": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
+                    "description": "Release Channel policy applied to all services\n"
+                },
+                "runtimes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime"
+                    },
+                    "description": "Release Channel policy applied to all services\n"
+                }
+            },
+            "requiredInputs": [
+                "application",
+                "runtimes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ReleaseChannel resources.\n",
+                "properties": {
+                    "application": {
+                        "type": "string",
+                        "description": "Name of the Application this Release Channel belongs to\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Release Channel name\n"
+                    },
+                    "policy": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
+                        "description": "Release Channel policy applied to all services\n"
+                    },
+                    "runtimes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelRuntime:ReleaseChannelRuntime"
+                        },
+                        "description": "Release Channel policy applied to all services\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Current application version\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "prodvana:index/runtimeLink:RuntimeLink": {
+            "description": "(Alpha! This feature is still in progress.) \nA `runtime_link` resource represents a successfully linked runtime.\nThis is most useful for Kubernetes runtimes -- the agent must be installed and registered with the Prodvana service before the runtime can be used.\nPair this with an explicit `depends_on` block ensures that the runtime is ready before attempting to use it. See the example below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.kubernetes.kubernetes_deployment_v1;\nimport com.pulumi.kubernetes.Kubernetes_deployment_v1Args;\nimport com.pulumi.prodvana.RuntimeLink;\nimport com.pulumi.prodvana.RuntimeLinkArgs;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleK8sRuntime = new K8sRuntime(\"exampleK8sRuntime\");\n\n        var agent = new Kubernetes_deployment_v1(\"agent\", Kubernetes_deployment_v1Args.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .spec(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var exampleRuntimeLink = new RuntimeLink(\"exampleRuntimeLink\", RuntimeLinkArgs.builder()        \n            .id(prodvana_runtime.example().id())\n            .build());\n\n        var exampleReleaseChannel = new ReleaseChannel(\"exampleReleaseChannel\", ReleaseChannelArgs.builder()        \n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(exampleRuntimeLink.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # create the runtime placeholder in Prodvana\n  exampleK8sRuntime: # \u003c...Full Kubernetes setup elided...\u003e\n    type: prodvana:K8sRuntime\n  # deploy the Prodvana agent to the Kubernetes cluster\n  # NOTE: this is an example and may not be complete, see\n  # https://docs.prodvana.io for the latest agent configuration details\n  agent:\n    type: kubernetes:kubernetes_deployment_v1\n    properties:\n      metadata:\n        - name: agent\n          namespace: prodvana\n      spec:\n        - replicas: 1\n          template:\n            - spec:\n                - container:\n                    - name: prodvana-agent\n                      image: prodvana/agent:v0.1.0\n                      args:\n                        - /agent\n                        - --clusterid\n                        - ${prodvana_runtime.example.id}\n                        - --auth\n                        - ${prodvana_runtime.agent_api_token}\n                        - --server-addr\n                        - api.\u003corg_slug\u003e.prodvana.io\n  # this resource will complete only after the agent\n  # registers itself with the Prodvana API\n  exampleRuntimeLink:\n    type: prodvana:RuntimeLink\n    properties:\n      id: ${prodvana_runtime.example.id}\n  exampleReleaseChannel:\n    type: prodvana:ReleaseChannel\n    properties:\n      runtimes:\n        - runtime: ${exampleRuntimeLink.name}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the runtime to wait for linking.\n"
+                },
+                "timeout": {
+                    "type": "string",
+                    "description": "How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                }
+            },
+            "required": [
+                "name",
+                "timeout"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the runtime to wait for linking.\n"
+                },
+                "timeout": {
+                    "type": "string",
+                    "description": "How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RuntimeLink resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the runtime to wait for linking.\n"
+                    },
+                    "timeout": {
+                        "type": "string",
+                        "description": "How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "prodvana:index/getApplication:getApplication": {
+            "description": "Prodvana Application\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@pulumi/prodvana\";\n\nconst example = prodvana.getApplication({\n    name: \"my-app\",\n});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\nexample = prodvana.get_application(name=\"my-app\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Prodvana.GetApplication.Invoke(new()\n    {\n        Name = \"my-app\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := prodvana.LookupApplication(ctx, \u0026prodvana.LookupApplicationArgs{\n\t\t\tName: \"my-app\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.ProdvanaFunctions;\nimport com.pulumi.prodvana.inputs.GetApplicationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = ProdvanaFunctions.getApplication(GetApplicationArgs.builder()\n            .name(\"my-app\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: prodvana:getApplication\n      Arguments:\n        name: my-app\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getApplication.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Application name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getApplication.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Application identifier\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Application name\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Current application version\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "version"
+                ]
+            }
+        },
+        "prodvana:index/getK8sRuntime:getK8sRuntime": {
+            "description": "Prodvana Kubernetes Runtime\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getK8sRuntime.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Runtime name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getK8sRuntime.\n",
+                "properties": {
+                    "agentApiToken": {
+                        "type": "string",
+                        "description": "API Token used for linking the Kubernetes Prodvana agent\n",
+                        "secret": true
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Runtime identifier\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Runtime name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "agentApiToken",
+                    "id",
+                    "name"
+                ]
+            }
+        },
+        "prodvana:index/getReleaseChannel:getReleaseChannel": {
+            "description": "Prodvana Release Channel\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@pulumi/prodvana\";\n\nconst example = prodvana.getReleaseChannel({\n    application: \"my-app\",\n    name: \"my-rc\",\n});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\nexample = prodvana.get_release_channel(application=\"my-app\",\n    name=\"my-rc\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Prodvana.GetReleaseChannel.Invoke(new()\n    {\n        Application = \"my-app\",\n        Name = \"my-rc\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := prodvana.LookupReleaseChannel(ctx, \u0026prodvana.LookupReleaseChannelArgs{\n\t\t\tApplication: \"my-app\",\n\t\t\tName:        \"my-rc\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.ProdvanaFunctions;\nimport com.pulumi.prodvana.inputs.GetReleaseChannelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = ProdvanaFunctions.getReleaseChannel(GetReleaseChannelArgs.builder()\n            .application(\"my-app\")\n            .name(\"my-rc\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: prodvana:getReleaseChannel\n      Arguments:\n        application: my-app\n        name: my-rc\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getReleaseChannel.\n",
+                "properties": {
+                    "application": {
+                        "type": "string",
+                        "description": "Name of the Application this Release Channel belongs to\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Release Channel name\n"
+                    },
+                    "policy": {
+                        "$ref": "#/types/prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy",
+                        "description": "Release Channel policy applied to all services\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "application",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getReleaseChannel.\n",
+                "properties": {
+                    "application": {
+                        "type": "string",
+                        "description": "Name of the Application this Release Channel belongs to\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Release channel identifier\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Release Channel name\n"
+                    },
+                    "policy": {
+                        "$ref": "#/types/prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy",
+                        "description": "Release Channel policy applied to all services\n"
+                    },
+                    "runtimes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelRuntime:getReleaseChannelRuntime"
+                        },
+                        "description": "Release Channel policy applied to all services\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Current application version\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "application",
+                    "id",
+                    "name",
+                    "policy",
+                    "runtimes",
+                    "version"
+                ]
+            }
+        }
+    }
+}
