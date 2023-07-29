@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "prodvana",
-  "server": "https://github.com/prodvana/pulumi-prodvana/releases"
+  "server": "github://api.github.com/prodvana"
 }

@@ -12,7 +12,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`prodvana` Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana).",
     "repository": "https://github.com/prodvana/pulumi-prodvana",
-    "pluginDownloadURL": "https://github.com/prodvana/pulumi-prodvana/releases",
+    "pluginDownloadURL": "github://api.github.com/prodvana",
     "publisher": "Prodvana",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"

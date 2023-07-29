@@ -53,7 +53,7 @@ namespace Pulumi.Prodvana
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/prodvana/pulumi-prodvana/releases";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/prodvana";
             return dst;
         }
 
