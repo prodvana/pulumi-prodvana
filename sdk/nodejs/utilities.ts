@@ -50,7 +50,7 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "https://github.com/prodvana/pulumi-prodvana/releases" };
+    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/prodvana" };
 }
 
 /** @internal */
