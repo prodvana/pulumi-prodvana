@@ -71,6 +71,7 @@ namespace Pulumi.Prodvana
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "https://github.com/prodvana/pulumi-prodvana/releases",
                 AdditionalSecretOutputs =
                 {
                     "agentApiToken",
