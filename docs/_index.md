@@ -1,26 +1,27 @@
 ---
 title: Prodvana
 meta_desc: Provides an overview of the Prodvana Provider for Pulumi.
-layout: overview
+layout: package
 ---
 
-The Prodvana provider for Pulumi can be used to provision resources within your Prodvana organization. For example you can create and manage Runtimes, Applications, and Release Channels.
+The [Prodvana](http://prodvana.io/) provider for Pulumi can be used to provision resources within your Prodvana organization. For example you can create and manage Runtimes, Applications, and Release Channels.
+
 The Prodvana provider must be configured with credentials to manage the resources in your Prodvana organization.
 
 ## Example
 
-{{< chooser language "typescript,python,go" >}}
+{{< chooser language "typescript,python,go" />}}
+
 {{% choosable language typescript %}}
 
 ```typescript
-import * as pulumi from "@pulumi/pulumi";
 import * as prodvana from "@prodvana/pulumi-prodvana";
 
 const app = new prodvana.Application("my-app", {
     name: "my-app",
 });
 ```
- 
+
 {{% /choosable %}}
 {{% choosable language python %}}
 
@@ -34,8 +35,9 @@ app = prodvana.Application("my-app", name="my-app")
 {{% choosable language go %}}
 
 ```go
+package main
+
 import (
-	"fmt"
 	"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,10 +46,10 @@ func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 
 		_, err := prodvana.NewApplication(ctx, "my-app", &prodvana.ApplicationArgs{
-            Name: pulumi.String("my-app")
+			Name: pulumi.String("my-app"),
 		})
 		if err != nil {
-			return fmt.Errorf("error creating application: %v", err)
+			return err
 		}
 
 		return nil
@@ -56,5 +58,3 @@ func main() {
 ```
 
 {{% /choosable %}}
-
-{{< /chooser >}}
