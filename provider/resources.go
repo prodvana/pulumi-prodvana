@@ -66,7 +66,7 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
+		LogoURL: "https://raw.githubusercontent.com/prodvana/pulumi-prodvana/main/docs/prodvana-icon.svg",
 		PluginDownloadURL: "github://api.github.com/prodvana",
 		Description:       "A Pulumi package for creating and managing Prodvana cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
