@@ -17,7 +17,9 @@ The Prodvana provider must be configured with credentials to manage the resource
 ```typescript
 import * as prodvana from "@prodvana/pulumi-prodvana";
 
-const app = new prodvana.Application("my-app");
+const app = new prodvana.Application("my-app", {
+    name: "my-app",
+});
 ```
 
 {{% /choosable %}}
@@ -26,7 +28,7 @@ const app = new prodvana.Application("my-app");
 ```python
 import pulumi_prodvana as prodvana
 
-app = prodvana.Application("my-app")
+app = prodvana.Application("my-app", name="my-app")
 ```
 
 {{% /choosable %}}
@@ -43,7 +45,9 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 
-		_, err := prodvana.NewApplication(ctx, "my-app", &prodvana.ApplicationArgs{})
+		_, err := prodvana.NewApplication(ctx, "my-app", &prodvana.ApplicationArgs{
+			Name: pulumi.String("my-app"),
+		})
 		if err != nil {
 			return err
 		}
