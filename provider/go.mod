@@ -5,7 +5,7 @@ go 1.19
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
 
 require (
-	github.com/prodvana/terraform-provider-prodvana v0.1.8
+	github.com/prodvana/terraform-provider-prodvana v0.1.11
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.14.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.2
 	github.com/pulumi/pulumi/sdk/v3 v3.76.0
@@ -188,7 +188,7 @@ require (
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
-	github.com/prodvana/prodvana-public/go/prodvana-sdk v0.2.2 // indirect
+	github.com/prodvana/prodvana-public/go/prodvana-sdk v0.2.10 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.4 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.1.1 // indirect

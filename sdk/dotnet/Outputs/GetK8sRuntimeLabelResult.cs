@@ -11,17 +11,25 @@ namespace Pulumi.Prodvana.Outputs
 {
 
     [OutputType]
-    public sealed class GetReleaseChannelReleaseChannelStablePreconditionResult
+    public sealed class GetK8sRuntimeLabelResult
     {
         /// <summary>
-        /// name of a release channel that must be in a stable deployment state
+        /// Label name
         /// </summary>
-        public readonly string ReleaseChannel;
+        public readonly string Label;
+        /// <summary>
+        /// Label value
+        /// </summary>
+        public readonly string Value;
 
         [OutputConstructor]
-        private GetReleaseChannelReleaseChannelStablePreconditionResult(string releaseChannel)
+        private GetK8sRuntimeLabelResult(
+            string label,
+
+            string value)
         {
-            ReleaseChannel = releaseChannel;
+            Label = label;
+            Value = value;
         }
     }
 }

@@ -27,6 +27,18 @@ namespace Pulumi.Prodvana
 
     public sealed class GetK8sRuntimeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("labels")]
+        private List<Inputs.GetK8sRuntimeLabelArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public List<Inputs.GetK8sRuntimeLabelArgs> Labels
+        {
+            get => _labels ?? (_labels = new List<Inputs.GetK8sRuntimeLabelArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Runtime name
         /// </summary>
@@ -41,6 +53,18 @@ namespace Pulumi.Prodvana
 
     public sealed class GetK8sRuntimeInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("labels")]
+        private InputList<Inputs.GetK8sRuntimeLabelInputArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.GetK8sRuntimeLabelInputArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.GetK8sRuntimeLabelInputArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Runtime name
         /// </summary>
@@ -66,6 +90,10 @@ namespace Pulumi.Prodvana
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetK8sRuntimeLabelResult> Labels;
+        /// <summary>
         /// Runtime name
         /// </summary>
         public readonly string Name;
@@ -76,10 +104,13 @@ namespace Pulumi.Prodvana
 
             string id,
 
+            ImmutableArray<Outputs.GetK8sRuntimeLabelResult> labels,
+
             string name)
         {
             AgentApiToken = agentApiToken;
             Id = id;
+            Labels = labels;
             Name = name;
         }
     }

@@ -39,14 +39,26 @@ class K8sRuntimeArgs:
 class _K8sRuntimeState:
     def __init__(__self__, *,
                  agent_api_token: Optional[pulumi.Input[str]] = None,
+                 agent_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 agent_image: Optional[pulumi.Input[str]] = None,
+                 agent_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering K8sRuntime resources.
         :param pulumi.Input[str] agent_api_token: API Token used for linking the Kubernetes Prodvana agent
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] agent_args: Arguments to pass to the Kubernetes Prodvana agent container.
+        :param pulumi.Input[str] agent_image: URL of the Kubernetes Prodvana agent container image.
+        :param pulumi.Input[str] agent_url: URL of the Kubernetes Prodvana agent server
         :param pulumi.Input[str] name: Runtime name
         """
         if agent_api_token is not None:
             pulumi.set(__self__, "agent_api_token", agent_api_token)
+        if agent_args is not None:
+            pulumi.set(__self__, "agent_args", agent_args)
+        if agent_image is not None:
+            pulumi.set(__self__, "agent_image", agent_image)
+        if agent_url is not None:
+            pulumi.set(__self__, "agent_url", agent_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -61,6 +73,42 @@ class _K8sRuntimeState:
     @agent_api_token.setter
     def agent_api_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "agent_api_token", value)
+
+    @property
+    @pulumi.getter(name="agentArgs")
+    def agent_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Arguments to pass to the Kubernetes Prodvana agent container.
+        """
+        return pulumi.get(self, "agent_args")
+
+    @agent_args.setter
+    def agent_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "agent_args", value)
+
+    @property
+    @pulumi.getter(name="agentImage")
+    def agent_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the Kubernetes Prodvana agent container image.
+        """
+        return pulumi.get(self, "agent_image")
+
+    @agent_image.setter
+    def agent_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent_image", value)
+
+    @property
+    @pulumi.getter(name="agentUrl")
+    def agent_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the Kubernetes Prodvana agent server
+        """
+        return pulumi.get(self, "agent_url")
+
+    @agent_url.setter
+    def agent_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent_url", value)
 
     @property
     @pulumi.getter
@@ -155,7 +203,10 @@ class K8sRuntime(pulumi.CustomResource):
 
             __props__.__dict__["name"] = name
             __props__.__dict__["agent_api_token"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["agentApiToken"])
+            __props__.__dict__["agent_args"] = None
+            __props__.__dict__["agent_image"] = None
+            __props__.__dict__["agent_url"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["agentApiToken", "agentArgs"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(K8sRuntime, __self__).__init__(
             'prodvana:index/k8sRuntime:K8sRuntime',
@@ -168,6 +219,9 @@ class K8sRuntime(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_api_token: Optional[pulumi.Input[str]] = None,
+            agent_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            agent_image: Optional[pulumi.Input[str]] = None,
+            agent_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'K8sRuntime':
         """
         Get an existing K8sRuntime resource's state with the given name, id, and optional extra
@@ -177,6 +231,9 @@ class K8sRuntime(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] agent_api_token: API Token used for linking the Kubernetes Prodvana agent
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] agent_args: Arguments to pass to the Kubernetes Prodvana agent container.
+        :param pulumi.Input[str] agent_image: URL of the Kubernetes Prodvana agent container image.
+        :param pulumi.Input[str] agent_url: URL of the Kubernetes Prodvana agent server
         :param pulumi.Input[str] name: Runtime name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -184,6 +241,9 @@ class K8sRuntime(pulumi.CustomResource):
         __props__ = _K8sRuntimeState.__new__(_K8sRuntimeState)
 
         __props__.__dict__["agent_api_token"] = agent_api_token
+        __props__.__dict__["agent_args"] = agent_args
+        __props__.__dict__["agent_image"] = agent_image
+        __props__.__dict__["agent_url"] = agent_url
         __props__.__dict__["name"] = name
         return K8sRuntime(resource_name, opts=opts, __props__=__props__)
 
@@ -194,6 +254,30 @@ class K8sRuntime(pulumi.CustomResource):
         API Token used for linking the Kubernetes Prodvana agent
         """
         return pulumi.get(self, "agent_api_token")
+
+    @property
+    @pulumi.getter(name="agentArgs")
+    def agent_args(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Arguments to pass to the Kubernetes Prodvana agent container.
+        """
+        return pulumi.get(self, "agent_args")
+
+    @property
+    @pulumi.getter(name="agentImage")
+    def agent_image(self) -> pulumi.Output[str]:
+        """
+        URL of the Kubernetes Prodvana agent container image.
+        """
+        return pulumi.get(self, "agent_image")
+
+    @property
+    @pulumi.getter(name="agentUrl")
+    def agent_url(self) -> pulumi.Output[str]:
+        """
+        URL of the Kubernetes Prodvana agent server
+        """
+        return pulumi.get(self, "agent_url")
 
     @property
     @pulumi.getter

@@ -28,6 +28,7 @@ class ManagedK8sRuntimeArgs:
                  exec_: Optional[pulumi.Input['ManagedK8sRuntimeExecArgs']] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  proxy_url: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,7 @@ class ManagedK8sRuntimeArgs:
         :param pulumi.Input['ManagedK8sRuntimeExecArgs'] exec_: Exec configuration for authentication to the Kubernetes cluster
         :param pulumi.Input[str] host: The address of the Kubernetes cluster (scheme://hostname:port)
         :param pulumi.Input[bool] insecure: Whether server should be accessed without verifying the TLS certificate
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         :param pulumi.Input[str] password: Password for basic authentication to the Kubernetes cluster
         :param pulumi.Input[str] proxy_url: Proxy URL to use when accessing the Kubernetes cluster
@@ -81,6 +83,8 @@ class ManagedK8sRuntimeArgs:
             pulumi.set(__self__, "host", host)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if password is not None:
@@ -242,6 +246,18 @@ class ManagedK8sRuntimeArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]]]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Runtime name
@@ -342,6 +358,7 @@ class _ManagedK8sRuntimeState:
                  exec_: Optional[pulumi.Input['ManagedK8sRuntimeExecArgs']] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  proxy_url: Optional[pulumi.Input[str]] = None,
@@ -365,6 +382,7 @@ class _ManagedK8sRuntimeState:
         :param pulumi.Input['ManagedK8sRuntimeExecArgs'] exec_: Exec configuration for authentication to the Kubernetes cluster
         :param pulumi.Input[str] host: The address of the Kubernetes cluster (scheme://hostname:port)
         :param pulumi.Input[bool] insecure: Whether server should be accessed without verifying the TLS certificate
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         :param pulumi.Input[str] password: Password for basic authentication to the Kubernetes cluster
         :param pulumi.Input[str] proxy_url: Proxy URL to use when accessing the Kubernetes cluster
@@ -401,6 +419,8 @@ class _ManagedK8sRuntimeState:
             pulumi.set(__self__, "host", host)
         if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if password is not None:
@@ -586,6 +606,18 @@ class _ManagedK8sRuntimeState:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]]]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedK8sRuntimeLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Runtime name
@@ -686,6 +718,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
                  exec_: Optional[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeExecArgs']]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  proxy_url: Optional[pulumi.Input[str]] = None,
@@ -710,6 +743,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedK8sRuntimeExecArgs']] exec_: Exec configuration for authentication to the Kubernetes cluster
         :param pulumi.Input[str] host: The address of the Kubernetes cluster (scheme://hostname:port)
         :param pulumi.Input[bool] insecure: Whether server should be accessed without verifying the TLS certificate
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeLabelArgs']]]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         :param pulumi.Input[str] password: Password for basic authentication to the Kubernetes cluster
         :param pulumi.Input[str] proxy_url: Proxy URL to use when accessing the Kubernetes cluster
@@ -753,6 +787,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
                  exec_: Optional[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeExecArgs']]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  proxy_url: Optional[pulumi.Input[str]] = None,
@@ -781,6 +816,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
             __props__.__dict__["exec_"] = exec_
             __props__.__dict__["host"] = host
             __props__.__dict__["insecure"] = insecure
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = password
             __props__.__dict__["proxy_url"] = proxy_url
@@ -814,6 +850,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
             exec_: Optional[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeExecArgs']]] = None,
             host: Optional[pulumi.Input[str]] = None,
             insecure: Optional[pulumi.Input[bool]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             proxy_url: Optional[pulumi.Input[str]] = None,
@@ -842,6 +879,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedK8sRuntimeExecArgs']] exec_: Exec configuration for authentication to the Kubernetes cluster
         :param pulumi.Input[str] host: The address of the Kubernetes cluster (scheme://hostname:port)
         :param pulumi.Input[bool] insecure: Whether server should be accessed without verifying the TLS certificate
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedK8sRuntimeLabelArgs']]]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         :param pulumi.Input[str] password: Password for basic authentication to the Kubernetes cluster
         :param pulumi.Input[str] proxy_url: Proxy URL to use when accessing the Kubernetes cluster
@@ -868,6 +906,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         __props__.__dict__["exec_"] = exec_
         __props__.__dict__["host"] = host
         __props__.__dict__["insecure"] = insecure
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
         __props__.__dict__["proxy_url"] = proxy_url
@@ -988,6 +1027,14 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         Whether server should be accessed without verifying the TLS certificate
         """
         return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Sequence['outputs.ManagedK8sRuntimeLabel']]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

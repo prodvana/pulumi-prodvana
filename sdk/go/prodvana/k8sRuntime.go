@@ -49,6 +49,12 @@ type K8sRuntime struct {
 
 	// API Token used for linking the Kubernetes Prodvana agent
 	AgentApiToken pulumi.StringOutput `pulumi:"agentApiToken"`
+	// Arguments to pass to the Kubernetes Prodvana agent container.
+	AgentArgs pulumi.StringArrayOutput `pulumi:"agentArgs"`
+	// URL of the Kubernetes Prodvana agent container image.
+	AgentImage pulumi.StringOutput `pulumi:"agentImage"`
+	// URL of the Kubernetes Prodvana agent server
+	AgentUrl pulumi.StringOutput `pulumi:"agentUrl"`
 	// Runtime name
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -62,6 +68,7 @@ func NewK8sRuntime(ctx *pulumi.Context,
 
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"agentApiToken",
+		"agentArgs",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -89,6 +96,12 @@ func GetK8sRuntime(ctx *pulumi.Context,
 type k8sRuntimeState struct {
 	// API Token used for linking the Kubernetes Prodvana agent
 	AgentApiToken *string `pulumi:"agentApiToken"`
+	// Arguments to pass to the Kubernetes Prodvana agent container.
+	AgentArgs []string `pulumi:"agentArgs"`
+	// URL of the Kubernetes Prodvana agent container image.
+	AgentImage *string `pulumi:"agentImage"`
+	// URL of the Kubernetes Prodvana agent server
+	AgentUrl *string `pulumi:"agentUrl"`
 	// Runtime name
 	Name *string `pulumi:"name"`
 }
@@ -96,6 +109,12 @@ type k8sRuntimeState struct {
 type K8sRuntimeState struct {
 	// API Token used for linking the Kubernetes Prodvana agent
 	AgentApiToken pulumi.StringPtrInput
+	// Arguments to pass to the Kubernetes Prodvana agent container.
+	AgentArgs pulumi.StringArrayInput
+	// URL of the Kubernetes Prodvana agent container image.
+	AgentImage pulumi.StringPtrInput
+	// URL of the Kubernetes Prodvana agent server
+	AgentUrl pulumi.StringPtrInput
 	// Runtime name
 	Name pulumi.StringPtrInput
 }
@@ -205,6 +224,21 @@ func (o K8sRuntimeOutput) ToK8sRuntimeOutputWithContext(ctx context.Context) K8s
 // API Token used for linking the Kubernetes Prodvana agent
 func (o K8sRuntimeOutput) AgentApiToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8sRuntime) pulumi.StringOutput { return v.AgentApiToken }).(pulumi.StringOutput)
+}
+
+// Arguments to pass to the Kubernetes Prodvana agent container.
+func (o K8sRuntimeOutput) AgentArgs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *K8sRuntime) pulumi.StringArrayOutput { return v.AgentArgs }).(pulumi.StringArrayOutput)
+}
+
+// URL of the Kubernetes Prodvana agent container image.
+func (o K8sRuntimeOutput) AgentImage() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8sRuntime) pulumi.StringOutput { return v.AgentImage }).(pulumi.StringOutput)
+}
+
+// URL of the Kubernetes Prodvana agent server
+func (o K8sRuntimeOutput) AgentUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *K8sRuntime) pulumi.StringOutput { return v.AgentUrl }).(pulumi.StringOutput)
 }
 
 // Runtime name

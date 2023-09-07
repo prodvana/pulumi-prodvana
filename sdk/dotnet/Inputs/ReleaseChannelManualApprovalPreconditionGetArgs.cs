@@ -18,17 +18,14 @@ namespace Pulumi.Prodvana.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// whether this approval is required for every convergence action, or just the first
-        /// </summary>
         [Input("everyAction")]
         public Input<bool>? EveryAction { get; set; }
 
         /// <summary>
         /// name of the manual approval
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public ReleaseChannelManualApprovalPreconditionGetArgs()
         {

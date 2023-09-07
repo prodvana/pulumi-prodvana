@@ -42,6 +42,8 @@ type ManagedK8sRuntime struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Whether server should be accessed without verifying the TLS certificate
 	Insecure pulumi.BoolOutput `pulumi:"insecure"`
+	// List of labels to apply to the runtime
+	Labels ManagedK8sRuntimeLabelArrayOutput `pulumi:"labels"`
 	// Runtime name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password for basic authentication to the Kubernetes cluster
@@ -116,6 +118,8 @@ type managedK8sRuntimeState struct {
 	Host *string `pulumi:"host"`
 	// Whether server should be accessed without verifying the TLS certificate
 	Insecure *bool `pulumi:"insecure"`
+	// List of labels to apply to the runtime
+	Labels []ManagedK8sRuntimeLabel `pulumi:"labels"`
 	// Runtime name
 	Name *string `pulumi:"name"`
 	// Password for basic authentication to the Kubernetes cluster
@@ -161,6 +165,8 @@ type ManagedK8sRuntimeState struct {
 	Host pulumi.StringPtrInput
 	// Whether server should be accessed without verifying the TLS certificate
 	Insecure pulumi.BoolPtrInput
+	// List of labels to apply to the runtime
+	Labels ManagedK8sRuntimeLabelArrayInput
 	// Runtime name
 	Name pulumi.StringPtrInput
 	// Password for basic authentication to the Kubernetes cluster
@@ -206,6 +212,8 @@ type managedK8sRuntimeArgs struct {
 	Host *string `pulumi:"host"`
 	// Whether server should be accessed without verifying the TLS certificate
 	Insecure *bool `pulumi:"insecure"`
+	// List of labels to apply to the runtime
+	Labels []ManagedK8sRuntimeLabel `pulumi:"labels"`
 	// Runtime name
 	Name *string `pulumi:"name"`
 	// Password for basic authentication to the Kubernetes cluster
@@ -248,6 +256,8 @@ type ManagedK8sRuntimeArgs struct {
 	Host pulumi.StringPtrInput
 	// Whether server should be accessed without verifying the TLS certificate
 	Insecure pulumi.BoolPtrInput
+	// List of labels to apply to the runtime
+	Labels ManagedK8sRuntimeLabelArrayInput
 	// Runtime name
 	Name pulumi.StringPtrInput
 	// Password for basic authentication to the Kubernetes cluster
@@ -419,6 +429,11 @@ func (o ManagedK8sRuntimeOutput) Host() pulumi.StringOutput {
 // Whether server should be accessed without verifying the TLS certificate
 func (o ManagedK8sRuntimeOutput) Insecure() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ManagedK8sRuntime) pulumi.BoolOutput { return v.Insecure }).(pulumi.BoolOutput)
+}
+
+// List of labels to apply to the runtime
+func (o ManagedK8sRuntimeOutput) Labels() ManagedK8sRuntimeLabelArrayOutput {
+	return o.ApplyT(func(v *ManagedK8sRuntime) ManagedK8sRuntimeLabelArrayOutput { return v.Labels }).(ManagedK8sRuntimeLabelArrayOutput)
 }
 
 // Runtime name

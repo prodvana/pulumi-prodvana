@@ -18,6 +18,8 @@ import (
 type RuntimeLink struct {
 	pulumi.CustomResourceState
 
+	// List of labels to apply to the runtime
+	Labels RuntimeLinkLabelArrayOutput `pulumi:"labels"`
 	// Name of the runtime to wait for linking.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
@@ -54,6 +56,8 @@ func GetRuntimeLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RuntimeLink resources.
 type runtimeLinkState struct {
+	// List of labels to apply to the runtime
+	Labels []RuntimeLinkLabel `pulumi:"labels"`
 	// Name of the runtime to wait for linking.
 	Name *string `pulumi:"name"`
 	// How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
@@ -61,6 +65,8 @@ type runtimeLinkState struct {
 }
 
 type RuntimeLinkState struct {
+	// List of labels to apply to the runtime
+	Labels RuntimeLinkLabelArrayInput
 	// Name of the runtime to wait for linking.
 	Name pulumi.StringPtrInput
 	// How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
@@ -72,6 +78,8 @@ func (RuntimeLinkState) ElementType() reflect.Type {
 }
 
 type runtimeLinkArgs struct {
+	// List of labels to apply to the runtime
+	Labels []RuntimeLinkLabel `pulumi:"labels"`
 	// Name of the runtime to wait for linking.
 	Name *string `pulumi:"name"`
 	// How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
@@ -80,6 +88,8 @@ type runtimeLinkArgs struct {
 
 // The set of arguments for constructing a RuntimeLink resource.
 type RuntimeLinkArgs struct {
+	// List of labels to apply to the runtime
+	Labels RuntimeLinkLabelArrayInput
 	// Name of the runtime to wait for linking.
 	Name pulumi.StringPtrInput
 	// How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
@@ -171,6 +181,11 @@ func (o RuntimeLinkOutput) ToRuntimeLinkOutput() RuntimeLinkOutput {
 
 func (o RuntimeLinkOutput) ToRuntimeLinkOutputWithContext(ctx context.Context) RuntimeLinkOutput {
 	return o
+}
+
+// List of labels to apply to the runtime
+func (o RuntimeLinkOutput) Labels() RuntimeLinkLabelArrayOutput {
+	return o.ApplyT(func(v *RuntimeLink) RuntimeLinkLabelArrayOutput { return v.Labels }).(RuntimeLinkLabelArrayOutput)
 }
 
 // Name of the runtime to wait for linking.

@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetK8sRuntimeResult',
@@ -21,13 +23,16 @@ class GetK8sRuntimeResult:
     """
     A collection of values returned by getK8sRuntime.
     """
-    def __init__(__self__, agent_api_token=None, id=None, name=None):
+    def __init__(__self__, agent_api_token=None, id=None, labels=None, name=None):
         if agent_api_token and not isinstance(agent_api_token, str):
             raise TypeError("Expected argument 'agent_api_token' to be a str")
         pulumi.set(__self__, "agent_api_token", agent_api_token)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, list):
+            raise TypeError("Expected argument 'labels' to be a list")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -50,6 +55,14 @@ class GetK8sRuntimeResult:
 
     @property
     @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetK8sRuntimeLabelResult']:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Runtime name
@@ -65,18 +78,22 @@ class AwaitableGetK8sRuntimeResult(GetK8sRuntimeResult):
         return GetK8sRuntimeResult(
             agent_api_token=self.agent_api_token,
             id=self.id,
+            labels=self.labels,
             name=self.name)
 
 
-def get_k8s_runtime(name: Optional[str] = None,
+def get_k8s_runtime(labels: Optional[Sequence[pulumi.InputType['GetK8sRuntimeLabelArgs']]] = None,
+                    name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetK8sRuntimeResult:
     """
     Prodvana Kubernetes Runtime
 
 
+    :param Sequence[pulumi.InputType['GetK8sRuntimeLabelArgs']] labels: List of labels to apply to the runtime
     :param str name: Runtime name
     """
     __args__ = dict()
+    __args__['labels'] = labels
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('prodvana:index/getK8sRuntime:getK8sRuntime', __args__, opts=opts, typ=GetK8sRuntimeResult).value
@@ -84,16 +101,19 @@ def get_k8s_runtime(name: Optional[str] = None,
     return AwaitableGetK8sRuntimeResult(
         agent_api_token=pulumi.get(__ret__, 'agent_api_token'),
         id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_k8s_runtime)
-def get_k8s_runtime_output(name: Optional[pulumi.Input[str]] = None,
+def get_k8s_runtime_output(labels: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetK8sRuntimeLabelArgs']]]]] = None,
+                           name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetK8sRuntimeResult]:
     """
     Prodvana Kubernetes Runtime
 
 
+    :param Sequence[pulumi.InputType['GetK8sRuntimeLabelArgs']] labels: List of labels to apply to the runtime
     :param str name: Runtime name
     """
     ...

@@ -43,6 +43,24 @@ namespace Pulumi.Prodvana
         public Output<string> AgentApiToken { get; private set; } = null!;
 
         /// <summary>
+        /// Arguments to pass to the Kubernetes Prodvana agent container.
+        /// </summary>
+        [Output("agentArgs")]
+        public Output<ImmutableArray<string>> AgentArgs { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the Kubernetes Prodvana agent container image.
+        /// </summary>
+        [Output("agentImage")]
+        public Output<string> AgentImage { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the Kubernetes Prodvana agent server
+        /// </summary>
+        [Output("agentUrl")]
+        public Output<string> AgentUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Runtime name
         /// </summary>
         [Output("name")]
@@ -75,6 +93,7 @@ namespace Pulumi.Prodvana
                 AdditionalSecretOutputs =
                 {
                     "agentApiToken",
+                    "agentArgs",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -128,6 +147,34 @@ namespace Pulumi.Prodvana
                 _agentApiToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("agentArgs")]
+        private InputList<string>? _agentArgs;
+
+        /// <summary>
+        /// Arguments to pass to the Kubernetes Prodvana agent container.
+        /// </summary>
+        public InputList<string> AgentArgs
+        {
+            get => _agentArgs ?? (_agentArgs = new InputList<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
+                _agentArgs = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
+        /// URL of the Kubernetes Prodvana agent container image.
+        /// </summary>
+        [Input("agentImage")]
+        public Input<string>? AgentImage { get; set; }
+
+        /// <summary>
+        /// URL of the Kubernetes Prodvana agent server
+        /// </summary>
+        [Input("agentUrl")]
+        public Input<string>? AgentUrl { get; set; }
 
         /// <summary>
         /// Runtime name

@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'ManagedK8sRuntimeExec',
+    'ManagedK8sRuntimeLabel',
     'ReleaseChannelConstant',
     'ReleaseChannelConvergenceProtection',
     'ReleaseChannelConvergenceProtectionDeployment',
@@ -43,6 +44,8 @@ __all__ = [
     'ReleaseChannelServiceInstanceProtectionRef',
     'ReleaseChannelServiceInstanceProtectionRefParameter',
     'ReleaseChannelServiceInstanceProtectionRefParameterSecretValue',
+    'RuntimeLinkLabel',
+    'GetK8sRuntimeLabelResult',
     'GetReleaseChannelConstantResult',
     'GetReleaseChannelConvergenceProtectionResult',
     'GetReleaseChannelConvergenceProtectionDeploymentResult',
@@ -144,6 +147,35 @@ class ManagedK8sRuntimeExec(dict):
         Environment variables to set when executing the command
         """
         return pulumi.get(self, "env")
+
+
+@pulumi.output_type
+class ManagedK8sRuntimeLabel(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label name
+        :param str value: Label value
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label name
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -522,27 +554,19 @@ class ReleaseChannelManualApprovalPrecondition(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 name: str,
                  description: Optional[str] = None,
-                 every_action: Optional[bool] = None):
+                 every_action: Optional[bool] = None,
+                 name: Optional[str] = None):
         """
-        :param str name: name of the manual approval
         :param str description: description of the manual approval
-        :param bool every_action: whether this approval is required for every convergence action, or just the first
+        :param str name: name of the manual approval
         """
-        pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if every_action is not None:
             pulumi.set(__self__, "every_action", every_action)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        name of the manual approval
-        """
-        return pulumi.get(self, "name")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -555,10 +579,15 @@ class ReleaseChannelManualApprovalPrecondition(dict):
     @property
     @pulumi.getter(name="everyAction")
     def every_action(self) -> Optional[bool]:
-        """
-        whether this approval is required for every convergence action, or just the first
-        """
         return pulumi.get(self, "every_action")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the manual approval
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -975,22 +1004,11 @@ class ReleaseChannelReleaseChannelStablePrecondition(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 duration: str,
                  release_channel: str):
         """
-        :param str duration: duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
         :param str release_channel: name of a release channel that must be in a stable deployment state
         """
-        pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "release_channel", release_channel)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> str:
-        """
-        duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-        """
-        return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter(name="releaseChannel")
@@ -1395,6 +1413,64 @@ class ReleaseChannelServiceInstanceProtectionRefParameterSecretValue(dict):
         Current application version
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class RuntimeLinkLabel(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label name
+        :param str value: Label value
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label name
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetK8sRuntimeLabelResult(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label name
+        :param str value: Label value
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label name
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -2021,22 +2097,11 @@ class GetReleaseChannelProtectionRefParameterSecretValueResult(dict):
 @pulumi.output_type
 class GetReleaseChannelReleaseChannelStablePreconditionResult(dict):
     def __init__(__self__, *,
-                 duration: str,
                  release_channel: str):
         """
-        :param str duration: duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
         :param str release_channel: name of a release channel that must be in a stable deployment state
         """
-        pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "release_channel", release_channel)
-
-    @property
-    @pulumi.getter
-    def duration(self) -> str:
-        """
-        duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-        """
-        return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter(name="releaseChannel")

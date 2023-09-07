@@ -5,6 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetK8sRuntimeLabel {
+    /**
+     * Label name
+     */
+    label: string;
+    /**
+     * Label value
+     */
+    value: string;
+}
+
+export interface GetK8sRuntimeLabelArgs {
+    /**
+     * Label name
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Label value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface GetReleaseChannelConstant {
     /**
      * name of the constant
@@ -387,20 +409,12 @@ export interface GetReleaseChannelProtectionRefParameterSecretValueArgs {
 
 export interface GetReleaseChannelReleaseChannelStablePrecondition {
     /**
-     * duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-     */
-    duration: string;
-    /**
      * name of a release channel that must be in a stable deployment state
      */
     releaseChannel: string;
 }
 
 export interface GetReleaseChannelReleaseChannelStablePreconditionArgs {
-    /**
-     * duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-     */
-    duration: pulumi.Input<string>;
     /**
      * name of a release channel that must be in a stable deployment state
      */
@@ -570,6 +584,17 @@ export interface ManagedK8sRuntimeExec {
     env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface ManagedK8sRuntimeLabel {
+    /**
+     * Label name
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Label value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ReleaseChannelConstant {
     /**
      * name of the constant
@@ -658,14 +683,11 @@ export interface ReleaseChannelManualApprovalPrecondition {
      * description of the manual approval
      */
     description?: pulumi.Input<string>;
-    /**
-     * whether this approval is required for every convergence action, or just the first
-     */
     everyAction?: pulumi.Input<boolean>;
     /**
      * name of the manual approval
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelPolicy {
@@ -761,10 +783,6 @@ export interface ReleaseChannelProtectionRefParameterSecretValue {
 }
 
 export interface ReleaseChannelReleaseChannelStablePrecondition {
-    /**
-     * duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-     */
-    duration: pulumi.Input<string>;
     /**
      * name of a release channel that must be in a stable deployment state
      */
@@ -864,4 +882,15 @@ export interface ReleaseChannelServiceInstanceProtectionRefParameterSecretValue 
      * Current application version
      */
     version: pulumi.Input<string>;
+}
+
+export interface RuntimeLinkLabel {
+    /**
+     * Label name
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Label value
+     */
+    value: pulumi.Input<string>;
 }

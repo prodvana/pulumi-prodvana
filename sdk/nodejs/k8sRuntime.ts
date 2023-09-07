@@ -55,6 +55,18 @@ export class K8sRuntime extends pulumi.CustomResource {
      */
     public /*out*/ readonly agentApiToken!: pulumi.Output<string>;
     /**
+     * Arguments to pass to the Kubernetes Prodvana agent container.
+     */
+    public /*out*/ readonly agentArgs!: pulumi.Output<string[]>;
+    /**
+     * URL of the Kubernetes Prodvana agent container image.
+     */
+    public /*out*/ readonly agentImage!: pulumi.Output<string>;
+    /**
+     * URL of the Kubernetes Prodvana agent server
+     */
+    public /*out*/ readonly agentUrl!: pulumi.Output<string>;
+    /**
      * Runtime name
      */
     public readonly name!: pulumi.Output<string>;
@@ -73,14 +85,20 @@ export class K8sRuntime extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as K8sRuntimeState | undefined;
             resourceInputs["agentApiToken"] = state ? state.agentApiToken : undefined;
+            resourceInputs["agentArgs"] = state ? state.agentArgs : undefined;
+            resourceInputs["agentImage"] = state ? state.agentImage : undefined;
+            resourceInputs["agentUrl"] = state ? state.agentUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as K8sRuntimeArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["agentApiToken"] = undefined /*out*/;
+            resourceInputs["agentArgs"] = undefined /*out*/;
+            resourceInputs["agentImage"] = undefined /*out*/;
+            resourceInputs["agentUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["agentApiToken"] };
+        const secretOpts = { additionalSecretOutputs: ["agentApiToken", "agentArgs"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(K8sRuntime.__pulumiType, name, resourceInputs, opts);
     }
@@ -94,6 +112,18 @@ export interface K8sRuntimeState {
      * API Token used for linking the Kubernetes Prodvana agent
      */
     agentApiToken?: pulumi.Input<string>;
+    /**
+     * Arguments to pass to the Kubernetes Prodvana agent container.
+     */
+    agentArgs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Kubernetes Prodvana agent container image.
+     */
+    agentImage?: pulumi.Input<string>;
+    /**
+     * URL of the Kubernetes Prodvana agent server
+     */
+    agentUrl?: pulumi.Input<string>;
     /**
      * Runtime name
      */
