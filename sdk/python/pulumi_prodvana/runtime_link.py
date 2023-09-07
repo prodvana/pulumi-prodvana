@@ -8,23 +8,41 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RuntimeLinkArgs', 'RuntimeLink']
 
 @pulumi.input_type
 class RuntimeLinkArgs:
     def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RuntimeLink resource.
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Name of the runtime to wait for linking.
         :param pulumi.Input[str] timeout: How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
         """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]]]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -54,17 +72,33 @@ class RuntimeLinkArgs:
 @pulumi.input_type
 class _RuntimeLinkState:
     def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RuntimeLink resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Name of the runtime to wait for linking.
         :param pulumi.Input[str] timeout: How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
         """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]]]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeLinkLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -96,6 +130,7 @@ class RuntimeLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeLinkLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -107,6 +142,7 @@ class RuntimeLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeLinkLabelArgs']]]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Name of the runtime to wait for linking.
         :param pulumi.Input[str] timeout: How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
         """
@@ -137,6 +173,7 @@ class RuntimeLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeLinkLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -148,6 +185,7 @@ class RuntimeLink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RuntimeLinkArgs.__new__(RuntimeLinkArgs)
 
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["timeout"] = timeout
         super(RuntimeLink, __self__).__init__(
@@ -160,6 +198,7 @@ class RuntimeLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeLinkLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[str]] = None) -> 'RuntimeLink':
         """
@@ -169,6 +208,7 @@ class RuntimeLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeLinkLabelArgs']]]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Name of the runtime to wait for linking.
         :param pulumi.Input[str] timeout: How long to wait for the runtime linking to complete. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
         """
@@ -176,9 +216,18 @@ class RuntimeLink(pulumi.CustomResource):
 
         __props__ = _RuntimeLinkState.__new__(_RuntimeLinkState)
 
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["timeout"] = timeout
         return RuntimeLink(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Sequence['outputs.RuntimeLinkLabel']]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

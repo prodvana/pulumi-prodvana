@@ -19,6 +19,12 @@ namespace Pulumi.Prodvana
     public partial class RuntimeLink : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.RuntimeLinkLabel>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the runtime to wait for linking.
         /// </summary>
         [Output("name")]
@@ -77,6 +83,18 @@ namespace Pulumi.Prodvana
 
     public sealed class RuntimeLinkArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputList<Inputs.RuntimeLinkLabelArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.RuntimeLinkLabelArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.RuntimeLinkLabelArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Name of the runtime to wait for linking.
         /// </summary>
@@ -97,6 +115,18 @@ namespace Pulumi.Prodvana
 
     public sealed class RuntimeLinkState : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputList<Inputs.RuntimeLinkLabelGetArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.RuntimeLinkLabelGetArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.RuntimeLinkLabelGetArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Name of the runtime to wait for linking.
         /// </summary>

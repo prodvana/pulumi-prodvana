@@ -24,6 +24,8 @@ func LookupK8sRuntime(ctx *pulumi.Context, args *LookupK8sRuntimeArgs, opts ...p
 
 // A collection of arguments for invoking getK8sRuntime.
 type LookupK8sRuntimeArgs struct {
+	// List of labels to apply to the runtime
+	Labels []GetK8sRuntimeLabel `pulumi:"labels"`
 	// Runtime name
 	Name string `pulumi:"name"`
 }
@@ -34,6 +36,8 @@ type LookupK8sRuntimeResult struct {
 	AgentApiToken string `pulumi:"agentApiToken"`
 	// Runtime identifier
 	Id string `pulumi:"id"`
+	// List of labels to apply to the runtime
+	Labels []GetK8sRuntimeLabel `pulumi:"labels"`
 	// Runtime name
 	Name string `pulumi:"name"`
 }
@@ -53,6 +57,8 @@ func LookupK8sRuntimeOutput(ctx *pulumi.Context, args LookupK8sRuntimeOutputArgs
 
 // A collection of arguments for invoking getK8sRuntime.
 type LookupK8sRuntimeOutputArgs struct {
+	// List of labels to apply to the runtime
+	Labels GetK8sRuntimeLabelArrayInput `pulumi:"labels"`
 	// Runtime name
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -84,6 +90,11 @@ func (o LookupK8sRuntimeResultOutput) AgentApiToken() pulumi.StringOutput {
 // Runtime identifier
 func (o LookupK8sRuntimeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupK8sRuntimeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of labels to apply to the runtime
+func (o LookupK8sRuntimeResultOutput) Labels() GetK8sRuntimeLabelArrayOutput {
+	return o.ApplyT(func(v LookupK8sRuntimeResult) []GetK8sRuntimeLabel { return v.Labels }).(GetK8sRuntimeLabelArrayOutput)
 }
 
 // Runtime name

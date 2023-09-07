@@ -5,7 +5,12 @@
                 "current": "prodvana:index/application:Application"
             },
             "prodvana_k8s_runtime": {
-                "current": "prodvana:index/k8sRuntime:K8sRuntime"
+                "current": "prodvana:index/k8sRuntime:K8sRuntime",
+                "fields": {
+                    "agent_args": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "prodvana_managed_k8s_runtime": {
                 "current": "prodvana:index/managedK8sRuntime:ManagedK8sRuntime",
@@ -21,6 +26,9 @@
                                 }
                             }
                         }
+                    },
+                    "labels": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -96,7 +104,12 @@
                 }
             },
             "prodvana_runtime_link": {
-                "current": "prodvana:index/runtimeLink:RuntimeLink"
+                "current": "prodvana:index/runtimeLink:RuntimeLink",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -104,7 +117,12 @@
                 "current": "prodvana:index/getApplication:getApplication"
             },
             "prodvana_k8s_runtime": {
-                "current": "prodvana:index/getK8sRuntime:getK8sRuntime"
+                "current": "prodvana:index/getK8sRuntime:getK8sRuntime",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "prodvana_release_channel": {
                 "current": "prodvana:index/getReleaseChannel:getReleaseChannel",
@@ -328,7 +346,10 @@
                 "stringValue": "string_value"
             },
             "prodvana:index/k8sRuntime:K8sRuntime": {
-                "agentApiToken": "agent_api_token"
+                "agentApiToken": "agent_api_token",
+                "agentArgs": "agent_args",
+                "agentImage": "agent_image",
+                "agentUrl": "agent_url"
             },
             "prodvana:index/managedK8sRuntime:ManagedK8sRuntime": {
                 "agentEnv": "agent_env",

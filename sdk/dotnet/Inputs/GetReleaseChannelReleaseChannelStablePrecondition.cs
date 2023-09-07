@@ -13,12 +13,6 @@ namespace Pulumi.Prodvana.Inputs
     public sealed class GetReleaseChannelReleaseChannelStablePreconditionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-        /// </summary>
-        [Input("duration", required: true)]
-        public string Duration { get; set; } = null!;
-
-        /// <summary>
         /// name of a release channel that must be in a stable deployment state
         /// </summary>
         [Input("releaseChannel", required: true)]

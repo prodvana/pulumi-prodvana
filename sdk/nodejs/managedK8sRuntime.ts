@@ -91,6 +91,10 @@ export class ManagedK8sRuntime extends pulumi.CustomResource {
      */
     public readonly insecure!: pulumi.Output<boolean>;
     /**
+     * List of labels to apply to the runtime
+     */
+    public readonly labels!: pulumi.Output<outputs.ManagedK8sRuntimeLabel[]>;
+    /**
      * Runtime name
      */
     public readonly name!: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class ManagedK8sRuntime extends pulumi.CustomResource {
             resourceInputs["exec"] = state ? state.exec : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["insecure"] = state ? state.insecure : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["proxyUrl"] = state ? state.proxyUrl : undefined;
@@ -167,6 +172,7 @@ export class ManagedK8sRuntime extends pulumi.CustomResource {
             resourceInputs["exec"] = args ? args.exec : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["insecure"] = args ? args.insecure : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["proxyUrl"] = args ? args.proxyUrl : undefined;
@@ -242,6 +248,10 @@ export interface ManagedK8sRuntimeState {
      * Whether server should be accessed without verifying the TLS certificate
      */
     insecure?: pulumi.Input<boolean>;
+    /**
+     * List of labels to apply to the runtime
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.ManagedK8sRuntimeLabel>[]>;
     /**
      * Runtime name
      */
@@ -324,6 +334,10 @@ export interface ManagedK8sRuntimeArgs {
      * Whether server should be accessed without verifying the TLS certificate
      */
     insecure?: pulumi.Input<boolean>;
+    /**
+     * List of labels to apply to the runtime
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.ManagedK8sRuntimeLabel>[]>;
     /**
      * Runtime name
      */

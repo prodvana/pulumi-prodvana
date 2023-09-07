@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -11,6 +13,7 @@ export function getK8sRuntime(args: GetK8sRuntimeArgs, opts?: pulumi.InvokeOptio
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("prodvana:index/getK8sRuntime:getK8sRuntime", {
+        "labels": args.labels,
         "name": args.name,
     }, opts);
 }
@@ -19,6 +22,10 @@ export function getK8sRuntime(args: GetK8sRuntimeArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getK8sRuntime.
  */
 export interface GetK8sRuntimeArgs {
+    /**
+     * List of labels to apply to the runtime
+     */
+    labels?: inputs.GetK8sRuntimeLabel[];
     /**
      * Runtime name
      */
@@ -38,6 +45,10 @@ export interface GetK8sRuntimeResult {
      */
     readonly id: string;
     /**
+     * List of labels to apply to the runtime
+     */
+    readonly labels: outputs.GetK8sRuntimeLabel[];
+    /**
      * Runtime name
      */
     readonly name: string;
@@ -53,6 +64,10 @@ export function getK8sRuntimeOutput(args: GetK8sRuntimeOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getK8sRuntime.
  */
 export interface GetK8sRuntimeOutputArgs {
+    /**
+     * List of labels to apply to the runtime
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.GetK8sRuntimeLabelArgs>[]>;
     /**
      * Runtime name
      */

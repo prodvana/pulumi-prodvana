@@ -17,14 +17,11 @@ namespace Pulumi.Prodvana.Outputs
         /// description of the manual approval
         /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// whether this approval is required for every convergence action, or just the first
-        /// </summary>
         public readonly bool? EveryAction;
         /// <summary>
         /// name of the manual approval
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
 
         [OutputConstructor]
         private ReleaseChannelManualApprovalPrecondition(
@@ -32,7 +29,7 @@ namespace Pulumi.Prodvana.Outputs
 
             bool? everyAction,
 
-            string name)
+            string? name)
         {
             Description = description;
             EveryAction = everyAction;

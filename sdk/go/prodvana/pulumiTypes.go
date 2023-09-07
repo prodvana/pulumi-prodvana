@@ -207,6 +207,112 @@ func (o ManagedK8sRuntimeExecPtrOutput) Env() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ManagedK8sRuntimeLabel struct {
+	// Label name
+	Label string `pulumi:"label"`
+	// Label value
+	Value string `pulumi:"value"`
+}
+
+// ManagedK8sRuntimeLabelInput is an input type that accepts ManagedK8sRuntimeLabelArgs and ManagedK8sRuntimeLabelOutput values.
+// You can construct a concrete instance of `ManagedK8sRuntimeLabelInput` via:
+//
+//	ManagedK8sRuntimeLabelArgs{...}
+type ManagedK8sRuntimeLabelInput interface {
+	pulumi.Input
+
+	ToManagedK8sRuntimeLabelOutput() ManagedK8sRuntimeLabelOutput
+	ToManagedK8sRuntimeLabelOutputWithContext(context.Context) ManagedK8sRuntimeLabelOutput
+}
+
+type ManagedK8sRuntimeLabelArgs struct {
+	// Label name
+	Label pulumi.StringInput `pulumi:"label"`
+	// Label value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ManagedK8sRuntimeLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (i ManagedK8sRuntimeLabelArgs) ToManagedK8sRuntimeLabelOutput() ManagedK8sRuntimeLabelOutput {
+	return i.ToManagedK8sRuntimeLabelOutputWithContext(context.Background())
+}
+
+func (i ManagedK8sRuntimeLabelArgs) ToManagedK8sRuntimeLabelOutputWithContext(ctx context.Context) ManagedK8sRuntimeLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedK8sRuntimeLabelOutput)
+}
+
+// ManagedK8sRuntimeLabelArrayInput is an input type that accepts ManagedK8sRuntimeLabelArray and ManagedK8sRuntimeLabelArrayOutput values.
+// You can construct a concrete instance of `ManagedK8sRuntimeLabelArrayInput` via:
+//
+//	ManagedK8sRuntimeLabelArray{ ManagedK8sRuntimeLabelArgs{...} }
+type ManagedK8sRuntimeLabelArrayInput interface {
+	pulumi.Input
+
+	ToManagedK8sRuntimeLabelArrayOutput() ManagedK8sRuntimeLabelArrayOutput
+	ToManagedK8sRuntimeLabelArrayOutputWithContext(context.Context) ManagedK8sRuntimeLabelArrayOutput
+}
+
+type ManagedK8sRuntimeLabelArray []ManagedK8sRuntimeLabelInput
+
+func (ManagedK8sRuntimeLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (i ManagedK8sRuntimeLabelArray) ToManagedK8sRuntimeLabelArrayOutput() ManagedK8sRuntimeLabelArrayOutput {
+	return i.ToManagedK8sRuntimeLabelArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedK8sRuntimeLabelArray) ToManagedK8sRuntimeLabelArrayOutputWithContext(ctx context.Context) ManagedK8sRuntimeLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedK8sRuntimeLabelArrayOutput)
+}
+
+type ManagedK8sRuntimeLabelOutput struct{ *pulumi.OutputState }
+
+func (ManagedK8sRuntimeLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (o ManagedK8sRuntimeLabelOutput) ToManagedK8sRuntimeLabelOutput() ManagedK8sRuntimeLabelOutput {
+	return o
+}
+
+func (o ManagedK8sRuntimeLabelOutput) ToManagedK8sRuntimeLabelOutputWithContext(ctx context.Context) ManagedK8sRuntimeLabelOutput {
+	return o
+}
+
+// Label name
+func (o ManagedK8sRuntimeLabelOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedK8sRuntimeLabel) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Label value
+func (o ManagedK8sRuntimeLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedK8sRuntimeLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ManagedK8sRuntimeLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedK8sRuntimeLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (o ManagedK8sRuntimeLabelArrayOutput) ToManagedK8sRuntimeLabelArrayOutput() ManagedK8sRuntimeLabelArrayOutput {
+	return o
+}
+
+func (o ManagedK8sRuntimeLabelArrayOutput) ToManagedK8sRuntimeLabelArrayOutputWithContext(ctx context.Context) ManagedK8sRuntimeLabelArrayOutput {
+	return o
+}
+
+func (o ManagedK8sRuntimeLabelArrayOutput) Index(i pulumi.IntInput) ManagedK8sRuntimeLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedK8sRuntimeLabel {
+		return vs[0].([]ManagedK8sRuntimeLabel)[vs[1].(int)]
+	}).(ManagedK8sRuntimeLabelOutput)
+}
+
 type ReleaseChannelConstant struct {
 	// name of the constant
 	Name string `pulumi:"name"`
@@ -1363,10 +1469,9 @@ func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Ver
 type ReleaseChannelManualApprovalPrecondition struct {
 	// description of the manual approval
 	Description *string `pulumi:"description"`
-	// whether this approval is required for every convergence action, or just the first
-	EveryAction *bool `pulumi:"everyAction"`
+	EveryAction *bool   `pulumi:"everyAction"`
 	// name of the manual approval
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 }
 
 // ReleaseChannelManualApprovalPreconditionInput is an input type that accepts ReleaseChannelManualApprovalPreconditionArgs and ReleaseChannelManualApprovalPreconditionOutput values.
@@ -1383,10 +1488,9 @@ type ReleaseChannelManualApprovalPreconditionInput interface {
 type ReleaseChannelManualApprovalPreconditionArgs struct {
 	// description of the manual approval
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// whether this approval is required for every convergence action, or just the first
-	EveryAction pulumi.BoolPtrInput `pulumi:"everyAction"`
+	EveryAction pulumi.BoolPtrInput   `pulumi:"everyAction"`
 	// name of the manual approval
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (ReleaseChannelManualApprovalPreconditionArgs) ElementType() reflect.Type {
@@ -1445,14 +1549,13 @@ func (o ReleaseChannelManualApprovalPreconditionOutput) Description() pulumi.Str
 	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// whether this approval is required for every convergence action, or just the first
 func (o ReleaseChannelManualApprovalPreconditionOutput) EveryAction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) *bool { return v.EveryAction }).(pulumi.BoolPtrOutput)
 }
 
 // name of the manual approval
-func (o ReleaseChannelManualApprovalPreconditionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) string { return v.Name }).(pulumi.StringOutput)
+func (o ReleaseChannelManualApprovalPreconditionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelManualApprovalPrecondition) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type ReleaseChannelManualApprovalPreconditionArrayOutput struct{ *pulumi.OutputState }
@@ -2902,8 +3005,6 @@ func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Version() pulu
 }
 
 type ReleaseChannelReleaseChannelStablePrecondition struct {
-	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-	Duration string `pulumi:"duration"`
 	// name of a release channel that must be in a stable deployment state
 	ReleaseChannel string `pulumi:"releaseChannel"`
 }
@@ -2920,8 +3021,6 @@ type ReleaseChannelReleaseChannelStablePreconditionInput interface {
 }
 
 type ReleaseChannelReleaseChannelStablePreconditionArgs struct {
-	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-	Duration pulumi.StringInput `pulumi:"duration"`
 	// name of a release channel that must be in a stable deployment state
 	ReleaseChannel pulumi.StringInput `pulumi:"releaseChannel"`
 }
@@ -2975,11 +3074,6 @@ func (o ReleaseChannelReleaseChannelStablePreconditionOutput) ToReleaseChannelRe
 
 func (o ReleaseChannelReleaseChannelStablePreconditionOutput) ToReleaseChannelReleaseChannelStablePreconditionOutputWithContext(ctx context.Context) ReleaseChannelReleaseChannelStablePreconditionOutput {
 	return o
-}
-
-// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-func (o ReleaseChannelReleaseChannelStablePreconditionOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func(v ReleaseChannelReleaseChannelStablePrecondition) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 // name of a release channel that must be in a stable deployment state
@@ -4187,6 +4281,218 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 		}
 		return &v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeLinkLabel struct {
+	// Label name
+	Label string `pulumi:"label"`
+	// Label value
+	Value string `pulumi:"value"`
+}
+
+// RuntimeLinkLabelInput is an input type that accepts RuntimeLinkLabelArgs and RuntimeLinkLabelOutput values.
+// You can construct a concrete instance of `RuntimeLinkLabelInput` via:
+//
+//	RuntimeLinkLabelArgs{...}
+type RuntimeLinkLabelInput interface {
+	pulumi.Input
+
+	ToRuntimeLinkLabelOutput() RuntimeLinkLabelOutput
+	ToRuntimeLinkLabelOutputWithContext(context.Context) RuntimeLinkLabelOutput
+}
+
+type RuntimeLinkLabelArgs struct {
+	// Label name
+	Label pulumi.StringInput `pulumi:"label"`
+	// Label value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RuntimeLinkLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeLinkLabel)(nil)).Elem()
+}
+
+func (i RuntimeLinkLabelArgs) ToRuntimeLinkLabelOutput() RuntimeLinkLabelOutput {
+	return i.ToRuntimeLinkLabelOutputWithContext(context.Background())
+}
+
+func (i RuntimeLinkLabelArgs) ToRuntimeLinkLabelOutputWithContext(ctx context.Context) RuntimeLinkLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeLinkLabelOutput)
+}
+
+// RuntimeLinkLabelArrayInput is an input type that accepts RuntimeLinkLabelArray and RuntimeLinkLabelArrayOutput values.
+// You can construct a concrete instance of `RuntimeLinkLabelArrayInput` via:
+//
+//	RuntimeLinkLabelArray{ RuntimeLinkLabelArgs{...} }
+type RuntimeLinkLabelArrayInput interface {
+	pulumi.Input
+
+	ToRuntimeLinkLabelArrayOutput() RuntimeLinkLabelArrayOutput
+	ToRuntimeLinkLabelArrayOutputWithContext(context.Context) RuntimeLinkLabelArrayOutput
+}
+
+type RuntimeLinkLabelArray []RuntimeLinkLabelInput
+
+func (RuntimeLinkLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeLinkLabel)(nil)).Elem()
+}
+
+func (i RuntimeLinkLabelArray) ToRuntimeLinkLabelArrayOutput() RuntimeLinkLabelArrayOutput {
+	return i.ToRuntimeLinkLabelArrayOutputWithContext(context.Background())
+}
+
+func (i RuntimeLinkLabelArray) ToRuntimeLinkLabelArrayOutputWithContext(ctx context.Context) RuntimeLinkLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeLinkLabelArrayOutput)
+}
+
+type RuntimeLinkLabelOutput struct{ *pulumi.OutputState }
+
+func (RuntimeLinkLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeLinkLabel)(nil)).Elem()
+}
+
+func (o RuntimeLinkLabelOutput) ToRuntimeLinkLabelOutput() RuntimeLinkLabelOutput {
+	return o
+}
+
+func (o RuntimeLinkLabelOutput) ToRuntimeLinkLabelOutputWithContext(ctx context.Context) RuntimeLinkLabelOutput {
+	return o
+}
+
+// Label name
+func (o RuntimeLinkLabelOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeLinkLabel) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Label value
+func (o RuntimeLinkLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeLinkLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RuntimeLinkLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (RuntimeLinkLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuntimeLinkLabel)(nil)).Elem()
+}
+
+func (o RuntimeLinkLabelArrayOutput) ToRuntimeLinkLabelArrayOutput() RuntimeLinkLabelArrayOutput {
+	return o
+}
+
+func (o RuntimeLinkLabelArrayOutput) ToRuntimeLinkLabelArrayOutputWithContext(ctx context.Context) RuntimeLinkLabelArrayOutput {
+	return o
+}
+
+func (o RuntimeLinkLabelArrayOutput) Index(i pulumi.IntInput) RuntimeLinkLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeLinkLabel {
+		return vs[0].([]RuntimeLinkLabel)[vs[1].(int)]
+	}).(RuntimeLinkLabelOutput)
+}
+
+type GetK8sRuntimeLabel struct {
+	// Label name
+	Label string `pulumi:"label"`
+	// Label value
+	Value string `pulumi:"value"`
+}
+
+// GetK8sRuntimeLabelInput is an input type that accepts GetK8sRuntimeLabelArgs and GetK8sRuntimeLabelOutput values.
+// You can construct a concrete instance of `GetK8sRuntimeLabelInput` via:
+//
+//	GetK8sRuntimeLabelArgs{...}
+type GetK8sRuntimeLabelInput interface {
+	pulumi.Input
+
+	ToGetK8sRuntimeLabelOutput() GetK8sRuntimeLabelOutput
+	ToGetK8sRuntimeLabelOutputWithContext(context.Context) GetK8sRuntimeLabelOutput
+}
+
+type GetK8sRuntimeLabelArgs struct {
+	// Label name
+	Label pulumi.StringInput `pulumi:"label"`
+	// Label value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetK8sRuntimeLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (i GetK8sRuntimeLabelArgs) ToGetK8sRuntimeLabelOutput() GetK8sRuntimeLabelOutput {
+	return i.ToGetK8sRuntimeLabelOutputWithContext(context.Background())
+}
+
+func (i GetK8sRuntimeLabelArgs) ToGetK8sRuntimeLabelOutputWithContext(ctx context.Context) GetK8sRuntimeLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sRuntimeLabelOutput)
+}
+
+// GetK8sRuntimeLabelArrayInput is an input type that accepts GetK8sRuntimeLabelArray and GetK8sRuntimeLabelArrayOutput values.
+// You can construct a concrete instance of `GetK8sRuntimeLabelArrayInput` via:
+//
+//	GetK8sRuntimeLabelArray{ GetK8sRuntimeLabelArgs{...} }
+type GetK8sRuntimeLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetK8sRuntimeLabelArrayOutput() GetK8sRuntimeLabelArrayOutput
+	ToGetK8sRuntimeLabelArrayOutputWithContext(context.Context) GetK8sRuntimeLabelArrayOutput
+}
+
+type GetK8sRuntimeLabelArray []GetK8sRuntimeLabelInput
+
+func (GetK8sRuntimeLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (i GetK8sRuntimeLabelArray) ToGetK8sRuntimeLabelArrayOutput() GetK8sRuntimeLabelArrayOutput {
+	return i.ToGetK8sRuntimeLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetK8sRuntimeLabelArray) ToGetK8sRuntimeLabelArrayOutputWithContext(ctx context.Context) GetK8sRuntimeLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetK8sRuntimeLabelArrayOutput)
+}
+
+type GetK8sRuntimeLabelOutput struct{ *pulumi.OutputState }
+
+func (GetK8sRuntimeLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (o GetK8sRuntimeLabelOutput) ToGetK8sRuntimeLabelOutput() GetK8sRuntimeLabelOutput {
+	return o
+}
+
+func (o GetK8sRuntimeLabelOutput) ToGetK8sRuntimeLabelOutputWithContext(ctx context.Context) GetK8sRuntimeLabelOutput {
+	return o
+}
+
+// Label name
+func (o GetK8sRuntimeLabelOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sRuntimeLabel) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Label value
+func (o GetK8sRuntimeLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetK8sRuntimeLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetK8sRuntimeLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetK8sRuntimeLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetK8sRuntimeLabel)(nil)).Elem()
+}
+
+func (o GetK8sRuntimeLabelArrayOutput) ToGetK8sRuntimeLabelArrayOutput() GetK8sRuntimeLabelArrayOutput {
+	return o
+}
+
+func (o GetK8sRuntimeLabelArrayOutput) ToGetK8sRuntimeLabelArrayOutputWithContext(ctx context.Context) GetK8sRuntimeLabelArrayOutput {
+	return o
+}
+
+func (o GetK8sRuntimeLabelArrayOutput) Index(i pulumi.IntInput) GetK8sRuntimeLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetK8sRuntimeLabel {
+		return vs[0].([]GetK8sRuntimeLabel)[vs[1].(int)]
+	}).(GetK8sRuntimeLabelOutput)
 }
 
 type GetReleaseChannelConstant struct {
@@ -6886,8 +7192,6 @@ func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Version() p
 }
 
 type GetReleaseChannelReleaseChannelStablePrecondition struct {
-	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-	Duration string `pulumi:"duration"`
 	// name of a release channel that must be in a stable deployment state
 	ReleaseChannel string `pulumi:"releaseChannel"`
 }
@@ -6904,8 +7208,6 @@ type GetReleaseChannelReleaseChannelStablePreconditionInput interface {
 }
 
 type GetReleaseChannelReleaseChannelStablePreconditionArgs struct {
-	// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-	Duration pulumi.StringInput `pulumi:"duration"`
 	// name of a release channel that must be in a stable deployment state
 	ReleaseChannel pulumi.StringInput `pulumi:"releaseChannel"`
 }
@@ -6959,11 +7261,6 @@ func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) ToGetReleaseCha
 
 func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) ToGetReleaseChannelReleaseChannelStablePreconditionOutputWithContext(ctx context.Context) GetReleaseChannelReleaseChannelStablePreconditionOutput {
 	return o
-}
-
-// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-func (o GetReleaseChannelReleaseChannelStablePreconditionOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReleaseChannelReleaseChannelStablePrecondition) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 // name of a release channel that must be in a stable deployment state
@@ -8176,6 +8473,8 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutp
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeExecInput)(nil)).Elem(), ManagedK8sRuntimeExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeExecPtrInput)(nil)).Elem(), ManagedK8sRuntimeExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeLabelInput)(nil)).Elem(), ManagedK8sRuntimeLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeLabelArrayInput)(nil)).Elem(), ManagedK8sRuntimeLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConstantInput)(nil)).Elem(), ReleaseChannelConstantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConstantArrayInput)(nil)).Elem(), ReleaseChannelConstantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelConvergenceProtectionInput)(nil)).Elem(), ReleaseChannelConvergenceProtectionArgs{})
@@ -8235,6 +8534,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeLinkLabelInput)(nil)).Elem(), RuntimeLinkLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeLinkLabelArrayInput)(nil)).Elem(), RuntimeLinkLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sRuntimeLabelInput)(nil)).Elem(), GetK8sRuntimeLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sRuntimeLabelArrayInput)(nil)).Elem(), GetK8sRuntimeLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConstantInput)(nil)).Elem(), GetReleaseChannelConstantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConstantArrayInput)(nil)).Elem(), GetReleaseChannelConstantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConvergenceProtectionInput)(nil)).Elem(), GetReleaseChannelConvergenceProtectionArgs{})
@@ -8296,6 +8599,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecOutput{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecPtrOutput{})
+	pulumi.RegisterOutputType(ManagedK8sRuntimeLabelOutput{})
+	pulumi.RegisterOutputType(ManagedK8sRuntimeLabelArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelConstantOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelConstantArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelConvergenceProtectionOutput{})
@@ -8355,6 +8660,10 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(RuntimeLinkLabelOutput{})
+	pulumi.RegisterOutputType(RuntimeLinkLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetK8sRuntimeLabelOutput{})
+	pulumi.RegisterOutputType(GetK8sRuntimeLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelConstantOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelConstantArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelConvergenceProtectionOutput{})

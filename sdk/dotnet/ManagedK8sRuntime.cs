@@ -97,6 +97,12 @@ namespace Pulumi.Prodvana
         public Output<bool> Insecure { get; private set; } = null!;
 
         /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.ManagedK8sRuntimeLabel>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// Runtime name
         /// </summary>
         [Output("name")]
@@ -269,6 +275,18 @@ namespace Pulumi.Prodvana
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
+        [Input("labels")]
+        private InputList<Inputs.ManagedK8sRuntimeLabelArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.ManagedK8sRuntimeLabelArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.ManagedK8sRuntimeLabelArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Runtime name
         /// </summary>
@@ -414,6 +432,18 @@ namespace Pulumi.Prodvana
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
+
+        [Input("labels")]
+        private InputList<Inputs.ManagedK8sRuntimeLabelGetArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.ManagedK8sRuntimeLabelGetArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.ManagedK8sRuntimeLabelGetArgs>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Runtime name

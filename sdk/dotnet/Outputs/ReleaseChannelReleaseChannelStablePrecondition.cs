@@ -14,21 +14,13 @@ namespace Pulumi.Prodvana.Outputs
     public sealed class ReleaseChannelReleaseChannelStablePrecondition
     {
         /// <summary>
-        /// duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
-        /// </summary>
-        public readonly string Duration;
-        /// <summary>
         /// name of a release channel that must be in a stable deployment state
         /// </summary>
         public readonly string ReleaseChannel;
 
         [OutputConstructor]
-        private ReleaseChannelReleaseChannelStablePrecondition(
-            string duration,
-
-            string releaseChannel)
+        private ReleaseChannelReleaseChannelStablePrecondition(string releaseChannel)
         {
-            Duration = duration;
             ReleaseChannel = releaseChannel;
         }
     }

@@ -111,6 +111,23 @@
                 "command"
             ]
         },
+        "prodvana:index/ManagedK8sRuntimeLabel:ManagedK8sRuntimeLabel": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Label name\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Label value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
+            ]
+        },
         "prodvana:index/ReleaseChannelConstant:ReleaseChannelConstant": {
             "properties": {
                 "name": {
@@ -299,8 +316,7 @@
                     "description": "description of the manual approval\n"
                 },
                 "everyAction": {
-                    "type": "boolean",
-                    "description": "whether this approval is required for every convergence action, or just the first\n"
+                    "type": "boolean"
                 },
                 "name": {
                     "type": "string",
@@ -308,9 +324,6 @@
                 }
             },
             "type": "object",
-            "required": [
-                "name"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -522,10 +535,6 @@
         },
         "prodvana:index/ReleaseChannelReleaseChannelStablePrecondition:ReleaseChannelReleaseChannelStablePrecondition": {
             "properties": {
-                "duration": {
-                    "type": "string",
-                    "description": "duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
-                },
                 "releaseChannel": {
                     "type": "string",
                     "description": "name of a release channel that must be in a stable deployment state\n"
@@ -533,7 +542,6 @@
             },
             "type": "object",
             "required": [
-                "duration",
                 "releaseChannel"
             ]
         },
@@ -734,6 +742,40 @@
             "required": [
                 "key",
                 "version"
+            ]
+        },
+        "prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Label name\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Label value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
+            ]
+        },
+        "prodvana:index/getK8sRuntimeLabel:getK8sRuntimeLabel": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Label name\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Label value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
             ]
         },
         "prodvana:index/getReleaseChannelConstant:getReleaseChannelConstant": {
@@ -1154,10 +1196,6 @@
         },
         "prodvana:index/getReleaseChannelReleaseChannelStablePrecondition:getReleaseChannelReleaseChannelStablePrecondition": {
             "properties": {
-                "duration": {
-                    "type": "string",
-                    "description": "duration to wait for the release channel to be stable. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
-                },
                 "releaseChannel": {
                     "type": "string",
                     "description": "name of a release channel that must be in a stable deployment state\n"
@@ -1165,7 +1203,6 @@
             },
             "type": "object",
             "required": [
-                "duration",
                 "releaseChannel"
             ]
         },
@@ -1455,6 +1492,22 @@
                     "description": "API Token used for linking the Kubernetes Prodvana agent\n",
                     "secret": true
                 },
+                "agentArgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Arguments to pass to the Kubernetes Prodvana agent container.\n",
+                    "secret": true
+                },
+                "agentImage": {
+                    "type": "string",
+                    "description": "URL of the Kubernetes Prodvana agent container image.\n"
+                },
+                "agentUrl": {
+                    "type": "string",
+                    "description": "URL of the Kubernetes Prodvana agent server\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Runtime name\n"
@@ -1462,6 +1515,9 @@
             },
             "required": [
                 "agentApiToken",
+                "agentArgs",
+                "agentImage",
+                "agentUrl",
                 "name"
             ],
             "inputProperties": {
@@ -1477,6 +1533,22 @@
                         "type": "string",
                         "description": "API Token used for linking the Kubernetes Prodvana agent\n",
                         "secret": true
+                    },
+                    "agentArgs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Arguments to pass to the Kubernetes Prodvana agent container.\n",
+                        "secret": true
+                    },
+                    "agentImage": {
+                        "type": "string",
+                        "description": "URL of the Kubernetes Prodvana agent container image.\n"
+                    },
+                    "agentUrl": {
+                        "type": "string",
+                        "description": "URL of the Kubernetes Prodvana agent server\n"
                     },
                     "name": {
                         "type": "string",
@@ -1550,6 +1622,13 @@
                     "type": "boolean",
                     "description": "Whether server should be accessed without verifying the TLS certificate\n"
                 },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ManagedK8sRuntimeLabel:ManagedK8sRuntimeLabel"
+                    },
+                    "description": "List of labels to apply to the runtime\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Runtime name\n"
@@ -1593,6 +1672,7 @@
                 "configPaths",
                 "host",
                 "insecure",
+                "labels",
                 "name",
                 "password",
                 "proxyUrl",
@@ -1655,6 +1735,13 @@
                 "insecure": {
                     "type": "boolean",
                     "description": "Whether server should be accessed without verifying the TLS certificate\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ManagedK8sRuntimeLabel:ManagedK8sRuntimeLabel"
+                    },
+                    "description": "List of labels to apply to the runtime\n"
                 },
                 "name": {
                     "type": "string",
@@ -1749,6 +1836,13 @@
                     "insecure": {
                         "type": "boolean",
                         "description": "Whether server should be accessed without verifying the TLS certificate\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ManagedK8sRuntimeLabel:ManagedK8sRuntimeLabel"
+                        },
+                        "description": "List of labels to apply to the runtime\n"
                     },
                     "name": {
                         "type": "string",
@@ -1999,6 +2093,13 @@
         "prodvana:index/runtimeLink:RuntimeLink": {
             "description": "(Alpha! This feature is still in progress.) \nA `runtime_link` resource represents a successfully linked runtime.\nThis is most useful for Kubernetes runtimes -- the agent must be installed and registered with the Prodvana service before the runtime can be used.\nPair this with an explicit `depends_on` block ensures that the runtime is ready before attempting to use it. See the example below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.kubernetes.kubernetes_deployment_v1;\nimport com.pulumi.kubernetes.Kubernetes_deployment_v1Args;\nimport com.pulumi.prodvana.RuntimeLink;\nimport com.pulumi.prodvana.RuntimeLinkArgs;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleK8sRuntime = new K8sRuntime(\"exampleK8sRuntime\");\n\n        var agent = new Kubernetes_deployment_v1(\"agent\", Kubernetes_deployment_v1Args.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .spec(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var exampleRuntimeLink = new RuntimeLink(\"exampleRuntimeLink\", RuntimeLinkArgs.builder()        \n            .id(exampleK8sRuntime.id())\n            .build());\n\n        var exampleReleaseChannel = new ReleaseChannel(\"exampleReleaseChannel\", ReleaseChannelArgs.builder()        \n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(exampleRuntimeLink.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # create the runtime placeholder in Prodvana\n  exampleK8sRuntime: # \u003c...Full Kubernetes setup elided...\u003e\n    type: prodvana:K8sRuntime\n  # deploy the Prodvana agent to the Kubernetes cluster\n  # NOTE: this is an example and may not be complete, see\n  # https://docs.prodvana.io for the latest agent configuration details\n  agent:\n    type: kubernetes:kubernetes_deployment_v1\n    properties:\n      metadata:\n        - name: agent\n          namespace: prodvana\n      spec:\n        - replicas: 1\n          template:\n            - spec:\n                - container:\n                    - name: prodvana-agent\n                      image: prodvana/agent:v0.1.0\n                      args:\n                        - /agent\n                        - --clusterid\n                        - ${exampleK8sRuntime.id}\n                        - --auth\n                        - ${prodvana_k8_runtime.agent_api_token}\n                        - --server-addr\n                        - api.\u003corg_slug\u003e.prodvana.io\n  # this resource will complete only after the agent\n  # registers itself with the Prodvana API\n  exampleRuntimeLink:\n    type: prodvana:RuntimeLink\n    properties:\n      id: ${exampleK8sRuntime.id}\n  exampleReleaseChannel:\n    type: prodvana:ReleaseChannel\n    properties:\n      runtimes:\n        - runtime: ${exampleRuntimeLink.name}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel"
+                    },
+                    "description": "List of labels to apply to the runtime\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the runtime to wait for linking.\n"
@@ -2009,10 +2110,18 @@
                 }
             },
             "required": [
+                "labels",
                 "name",
                 "timeout"
             ],
             "inputProperties": {
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel"
+                    },
+                    "description": "List of labels to apply to the runtime\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the runtime to wait for linking.\n"
@@ -2025,6 +2134,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering RuntimeLink resources.\n",
                 "properties": {
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel"
+                        },
+                        "description": "List of labels to apply to the runtime\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the runtime to wait for linking.\n"
@@ -2083,6 +2199,13 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getK8sRuntime.\n",
                 "properties": {
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getK8sRuntimeLabel:getK8sRuntimeLabel"
+                        },
+                        "description": "List of labels to apply to the runtime\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Runtime name\n"
@@ -2105,6 +2228,13 @@
                         "type": "string",
                         "description": "Runtime identifier\n"
                     },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getK8sRuntimeLabel:getK8sRuntimeLabel"
+                        },
+                        "description": "List of labels to apply to the runtime\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Runtime name\n"
@@ -2114,6 +2244,7 @@
                 "required": [
                     "agentApiToken",
                     "id",
+                    "labels",
                     "name"
                 ]
             }
