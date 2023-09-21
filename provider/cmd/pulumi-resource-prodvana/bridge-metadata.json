@@ -9,6 +9,9 @@
                 "fields": {
                     "agent_args": {
                         "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
                     }
                 }
             },

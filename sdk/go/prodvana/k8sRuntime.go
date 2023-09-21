@@ -27,7 +27,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := prodvana.NewK8sRuntime(ctx, "example", nil)
+//			_, err := prodvana.NewK8sRuntime(ctx, "example", &prodvana.K8sRuntimeArgs{
+//				Labels: prodvana.K8sRuntimeLabelArray{
+//					&prodvana.K8sRuntimeLabelArgs{
+//						Label: pulumi.String("env"),
+//						Value: pulumi.String("staging"),
+//					},
+//					&prodvana.K8sRuntimeLabelArgs{
+//						Label: pulumi.String("region"),
+//						Value: pulumi.String("us-central1"),
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -55,6 +66,8 @@ type K8sRuntime struct {
 	AgentImage pulumi.StringOutput `pulumi:"agentImage"`
 	// URL of the Kubernetes Prodvana agent server
 	AgentUrl pulumi.StringOutput `pulumi:"agentUrl"`
+	// List of labels to apply to the runtime
+	Labels K8sRuntimeLabelArrayOutput `pulumi:"labels"`
 	// Runtime name
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -102,6 +115,8 @@ type k8sRuntimeState struct {
 	AgentImage *string `pulumi:"agentImage"`
 	// URL of the Kubernetes Prodvana agent server
 	AgentUrl *string `pulumi:"agentUrl"`
+	// List of labels to apply to the runtime
+	Labels []K8sRuntimeLabel `pulumi:"labels"`
 	// Runtime name
 	Name *string `pulumi:"name"`
 }
@@ -115,6 +130,8 @@ type K8sRuntimeState struct {
 	AgentImage pulumi.StringPtrInput
 	// URL of the Kubernetes Prodvana agent server
 	AgentUrl pulumi.StringPtrInput
+	// List of labels to apply to the runtime
+	Labels K8sRuntimeLabelArrayInput
 	// Runtime name
 	Name pulumi.StringPtrInput
 }
@@ -124,12 +141,16 @@ func (K8sRuntimeState) ElementType() reflect.Type {
 }
 
 type k8sRuntimeArgs struct {
+	// List of labels to apply to the runtime
+	Labels []K8sRuntimeLabel `pulumi:"labels"`
 	// Runtime name
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a K8sRuntime resource.
 type K8sRuntimeArgs struct {
+	// List of labels to apply to the runtime
+	Labels K8sRuntimeLabelArrayInput
 	// Runtime name
 	Name pulumi.StringPtrInput
 }
@@ -239,6 +260,11 @@ func (o K8sRuntimeOutput) AgentImage() pulumi.StringOutput {
 // URL of the Kubernetes Prodvana agent server
 func (o K8sRuntimeOutput) AgentUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *K8sRuntime) pulumi.StringOutput { return v.AgentUrl }).(pulumi.StringOutput)
+}
+
+// List of labels to apply to the runtime
+func (o K8sRuntimeOutput) Labels() K8sRuntimeLabelArrayOutput {
+	return o.ApplyT(func(v *K8sRuntime) K8sRuntimeLabelArrayOutput { return v.Labels }).(K8sRuntimeLabelArrayOutput)
 }
 
 // Runtime name

@@ -15,8 +15,10 @@
 package prodvana
 
 import (
+	// needed for embed
 	_ "embed"
 	"fmt"
+	"os"
 	"path/filepath"
 
 	"github.com/prodvana/pulumi-prodvana/provider/pkg/version"
@@ -37,11 +39,31 @@ const (
 	mainMod = "index" // the prodvana module
 )
 
+// stringValue gets a string value from a property map, then from environment vars; if neither are present, returns empty string ""
+func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
+	val, ok := vars[prop]
+	if ok && val.IsString() {
+		return val.StringValue()
+	}
+	for _, env := range envs {
+		val, ok := os.LookupEnv(env)
+		if ok {
+			return val
+		}
+	}
+	return ""
+}
+
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
+func preConfigureCallback(vars resource.PropertyMap, _ shim.ResourceConfig) error {
+	apiToken := stringValue(vars, "api_token", []string{"PVN_API_TOKEN"})
+	orgSlug := stringValue(vars, "org_slug", []string{"PVN_ORG_SLUG"})
+	if apiToken == "" {
+		return fmt.Errorf("api_token (or PVN_API_TOKEN) must be set")
+	}
+	if orgSlug == "" {
+		return fmt.Errorf("org_slug (or PVN_ORG_SLUG) must be set")
+	}
 	return nil
 }
 
@@ -58,15 +80,15 @@ func Provider() tfbridge.ProviderInfo {
 		P:            p,
 		Version:      version.Version,
 		MetadataInfo: tfbridge.NewProviderMetadata(bridgeMetadata),
-		Name: "prodvana",
-		DisplayName: "Prodvana",
-		Publisher: "Prodvana",
+		Name:         "prodvana",
+		DisplayName:  "Prodvana",
+		Publisher:    "Prodvana",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "https://raw.githubusercontent.com/prodvana/pulumi-prodvana/main/docs/prodvana-icon.svg",
+		LogoURL:           "https://raw.githubusercontent.com/prodvana/pulumi-prodvana/main/docs/prodvana-icon.svg",
 		PluginDownloadURL: "github://api.github.com/prodvana",
 		Description:       "A Pulumi package for creating and managing Prodvana cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
@@ -76,7 +98,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:    "Apache-2.0",
 		Homepage:   "https://prodvana.io",
 		Repository: "https://github.com/prodvana/pulumi-prodvana",
-		GitHubOrg: "prodvana",
+		GitHubOrg:  "prodvana",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_token": {
 				Default: &tfbridge.DefaultInfo{

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Prodvana.Inputs
 {
 
-    public sealed class RuntimeLinkLabelGetArgs : global::Pulumi.ResourceArgs
+    public sealed class K8sRuntimeLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label name
@@ -24,9 +24,9 @@ namespace Pulumi.Prodvana.Inputs
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
-        public RuntimeLinkLabelGetArgs()
+        public K8sRuntimeLabelArgs()
         {
         }
-        public static new RuntimeLinkLabelGetArgs Empty => new RuntimeLinkLabelGetArgs();
+        public static new K8sRuntimeLabelArgs Empty => new K8sRuntimeLabelArgs();
     }
 }

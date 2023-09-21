@@ -565,6 +565,17 @@ export interface GetReleaseChannelServiceInstanceProtectionRefParameterSecretVal
     version: pulumi.Input<string>;
 }
 
+export interface K8sRuntimeLabel {
+    /**
+     * Label name
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Label value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ManagedK8sRuntimeExec {
     /**
      * API version of the exec credential plugin
@@ -882,15 +893,4 @@ export interface ReleaseChannelServiceInstanceProtectionRefParameterSecretValue 
      * Current application version
      */
     version: pulumi.Input<string>;
-}
-
-export interface RuntimeLinkLabel {
-    /**
-     * Label name
-     */
-    label: pulumi.Input<string>;
-    /**
-     * Label value
-     */
-    value: pulumi.Input<string>;
 }

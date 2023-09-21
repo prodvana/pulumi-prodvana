@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -41,10 +39,6 @@ export class RuntimeLink extends pulumi.CustomResource {
     }
 
     /**
-     * List of labels to apply to the runtime
-     */
-    public readonly labels!: pulumi.Output<outputs.RuntimeLinkLabel[]>;
-    /**
      * Name of the runtime to wait for linking.
      */
     public readonly name!: pulumi.Output<string>;
@@ -66,12 +60,10 @@ export class RuntimeLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuntimeLinkState | undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as RuntimeLinkArgs | undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
         }
@@ -84,10 +76,6 @@ export class RuntimeLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RuntimeLink resources.
  */
 export interface RuntimeLinkState {
-    /**
-     * List of labels to apply to the runtime
-     */
-    labels?: pulumi.Input<pulumi.Input<inputs.RuntimeLinkLabel>[]>;
     /**
      * Name of the runtime to wait for linking.
      */
@@ -102,10 +90,6 @@ export interface RuntimeLinkState {
  * The set of arguments for constructing a RuntimeLink resource.
  */
 export interface RuntimeLinkArgs {
-    /**
-     * List of labels to apply to the runtime
-     */
-    labels?: pulumi.Input<pulumi.Input<inputs.RuntimeLinkLabel>[]>;
     /**
      * Name of the runtime to wait for linking.
      */

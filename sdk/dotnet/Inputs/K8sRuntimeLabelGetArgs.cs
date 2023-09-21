@@ -7,29 +7,26 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Prodvana.Outputs
+namespace Pulumi.Prodvana.Inputs
 {
 
-    [OutputType]
-    public sealed class RuntimeLinkLabel
+    public sealed class K8sRuntimeLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label name
         /// </summary>
-        public readonly string Label;
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
         /// <summary>
         /// Label value
         /// </summary>
-        public readonly string Value;
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
-        [OutputConstructor]
-        private RuntimeLinkLabel(
-            string label,
-
-            string value)
+        public K8sRuntimeLabelGetArgs()
         {
-            Label = label;
-            Value = value;
         }
+        public static new K8sRuntimeLabelGetArgs Empty => new K8sRuntimeLabelGetArgs();
     }
 }

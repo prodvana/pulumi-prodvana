@@ -11,6 +11,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'K8sRuntimeLabel',
     'ManagedK8sRuntimeExec',
     'ManagedK8sRuntimeLabel',
     'ReleaseChannelConstant',
@@ -44,7 +45,6 @@ __all__ = [
     'ReleaseChannelServiceInstanceProtectionRef',
     'ReleaseChannelServiceInstanceProtectionRefParameter',
     'ReleaseChannelServiceInstanceProtectionRefParameterSecretValue',
-    'RuntimeLinkLabel',
     'GetK8sRuntimeLabelResult',
     'GetReleaseChannelConstantResult',
     'GetReleaseChannelConvergenceProtectionResult',
@@ -78,6 +78,35 @@ __all__ = [
     'GetReleaseChannelServiceInstanceProtectionRefParameterResult',
     'GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueResult',
 ]
+
+@pulumi.output_type
+class K8sRuntimeLabel(dict):
+    def __init__(__self__, *,
+                 label: str,
+                 value: str):
+        """
+        :param str label: Label name
+        :param str value: Label value
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        Label name
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class ManagedK8sRuntimeExec(dict):
@@ -1413,35 +1442,6 @@ class ReleaseChannelServiceInstanceProtectionRefParameterSecretValue(dict):
         Current application version
         """
         return pulumi.get(self, "version")
-
-
-@pulumi.output_type
-class RuntimeLinkLabel(dict):
-    def __init__(__self__, *,
-                 label: str,
-                 value: str):
-        """
-        :param str label: Label name
-        :param str value: Label value
-        """
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        """
-        Label name
-        """
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        Label value
-        """
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

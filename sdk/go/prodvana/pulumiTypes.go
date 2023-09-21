@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type K8sRuntimeLabel struct {
+	// Label name
+	Label string `pulumi:"label"`
+	// Label value
+	Value string `pulumi:"value"`
+}
+
+// K8sRuntimeLabelInput is an input type that accepts K8sRuntimeLabelArgs and K8sRuntimeLabelOutput values.
+// You can construct a concrete instance of `K8sRuntimeLabelInput` via:
+//
+//	K8sRuntimeLabelArgs{...}
+type K8sRuntimeLabelInput interface {
+	pulumi.Input
+
+	ToK8sRuntimeLabelOutput() K8sRuntimeLabelOutput
+	ToK8sRuntimeLabelOutputWithContext(context.Context) K8sRuntimeLabelOutput
+}
+
+type K8sRuntimeLabelArgs struct {
+	// Label name
+	Label pulumi.StringInput `pulumi:"label"`
+	// Label value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (K8sRuntimeLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sRuntimeLabel)(nil)).Elem()
+}
+
+func (i K8sRuntimeLabelArgs) ToK8sRuntimeLabelOutput() K8sRuntimeLabelOutput {
+	return i.ToK8sRuntimeLabelOutputWithContext(context.Background())
+}
+
+func (i K8sRuntimeLabelArgs) ToK8sRuntimeLabelOutputWithContext(ctx context.Context) K8sRuntimeLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sRuntimeLabelOutput)
+}
+
+// K8sRuntimeLabelArrayInput is an input type that accepts K8sRuntimeLabelArray and K8sRuntimeLabelArrayOutput values.
+// You can construct a concrete instance of `K8sRuntimeLabelArrayInput` via:
+//
+//	K8sRuntimeLabelArray{ K8sRuntimeLabelArgs{...} }
+type K8sRuntimeLabelArrayInput interface {
+	pulumi.Input
+
+	ToK8sRuntimeLabelArrayOutput() K8sRuntimeLabelArrayOutput
+	ToK8sRuntimeLabelArrayOutputWithContext(context.Context) K8sRuntimeLabelArrayOutput
+}
+
+type K8sRuntimeLabelArray []K8sRuntimeLabelInput
+
+func (K8sRuntimeLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sRuntimeLabel)(nil)).Elem()
+}
+
+func (i K8sRuntimeLabelArray) ToK8sRuntimeLabelArrayOutput() K8sRuntimeLabelArrayOutput {
+	return i.ToK8sRuntimeLabelArrayOutputWithContext(context.Background())
+}
+
+func (i K8sRuntimeLabelArray) ToK8sRuntimeLabelArrayOutputWithContext(ctx context.Context) K8sRuntimeLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sRuntimeLabelArrayOutput)
+}
+
+type K8sRuntimeLabelOutput struct{ *pulumi.OutputState }
+
+func (K8sRuntimeLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*K8sRuntimeLabel)(nil)).Elem()
+}
+
+func (o K8sRuntimeLabelOutput) ToK8sRuntimeLabelOutput() K8sRuntimeLabelOutput {
+	return o
+}
+
+func (o K8sRuntimeLabelOutput) ToK8sRuntimeLabelOutputWithContext(ctx context.Context) K8sRuntimeLabelOutput {
+	return o
+}
+
+// Label name
+func (o K8sRuntimeLabelOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v K8sRuntimeLabel) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Label value
+func (o K8sRuntimeLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v K8sRuntimeLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type K8sRuntimeLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (K8sRuntimeLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sRuntimeLabel)(nil)).Elem()
+}
+
+func (o K8sRuntimeLabelArrayOutput) ToK8sRuntimeLabelArrayOutput() K8sRuntimeLabelArrayOutput {
+	return o
+}
+
+func (o K8sRuntimeLabelArrayOutput) ToK8sRuntimeLabelArrayOutputWithContext(ctx context.Context) K8sRuntimeLabelArrayOutput {
+	return o
+}
+
+func (o K8sRuntimeLabelArrayOutput) Index(i pulumi.IntInput) K8sRuntimeLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sRuntimeLabel {
+		return vs[0].([]K8sRuntimeLabel)[vs[1].(int)]
+	}).(K8sRuntimeLabelOutput)
+}
+
 type ManagedK8sRuntimeExec struct {
 	// API version of the exec credential plugin
 	ApiVersion string `pulumi:"apiVersion"`
@@ -4283,112 +4389,6 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-type RuntimeLinkLabel struct {
-	// Label name
-	Label string `pulumi:"label"`
-	// Label value
-	Value string `pulumi:"value"`
-}
-
-// RuntimeLinkLabelInput is an input type that accepts RuntimeLinkLabelArgs and RuntimeLinkLabelOutput values.
-// You can construct a concrete instance of `RuntimeLinkLabelInput` via:
-//
-//	RuntimeLinkLabelArgs{...}
-type RuntimeLinkLabelInput interface {
-	pulumi.Input
-
-	ToRuntimeLinkLabelOutput() RuntimeLinkLabelOutput
-	ToRuntimeLinkLabelOutputWithContext(context.Context) RuntimeLinkLabelOutput
-}
-
-type RuntimeLinkLabelArgs struct {
-	// Label name
-	Label pulumi.StringInput `pulumi:"label"`
-	// Label value
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (RuntimeLinkLabelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuntimeLinkLabel)(nil)).Elem()
-}
-
-func (i RuntimeLinkLabelArgs) ToRuntimeLinkLabelOutput() RuntimeLinkLabelOutput {
-	return i.ToRuntimeLinkLabelOutputWithContext(context.Background())
-}
-
-func (i RuntimeLinkLabelArgs) ToRuntimeLinkLabelOutputWithContext(ctx context.Context) RuntimeLinkLabelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeLinkLabelOutput)
-}
-
-// RuntimeLinkLabelArrayInput is an input type that accepts RuntimeLinkLabelArray and RuntimeLinkLabelArrayOutput values.
-// You can construct a concrete instance of `RuntimeLinkLabelArrayInput` via:
-//
-//	RuntimeLinkLabelArray{ RuntimeLinkLabelArgs{...} }
-type RuntimeLinkLabelArrayInput interface {
-	pulumi.Input
-
-	ToRuntimeLinkLabelArrayOutput() RuntimeLinkLabelArrayOutput
-	ToRuntimeLinkLabelArrayOutputWithContext(context.Context) RuntimeLinkLabelArrayOutput
-}
-
-type RuntimeLinkLabelArray []RuntimeLinkLabelInput
-
-func (RuntimeLinkLabelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RuntimeLinkLabel)(nil)).Elem()
-}
-
-func (i RuntimeLinkLabelArray) ToRuntimeLinkLabelArrayOutput() RuntimeLinkLabelArrayOutput {
-	return i.ToRuntimeLinkLabelArrayOutputWithContext(context.Background())
-}
-
-func (i RuntimeLinkLabelArray) ToRuntimeLinkLabelArrayOutputWithContext(ctx context.Context) RuntimeLinkLabelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuntimeLinkLabelArrayOutput)
-}
-
-type RuntimeLinkLabelOutput struct{ *pulumi.OutputState }
-
-func (RuntimeLinkLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuntimeLinkLabel)(nil)).Elem()
-}
-
-func (o RuntimeLinkLabelOutput) ToRuntimeLinkLabelOutput() RuntimeLinkLabelOutput {
-	return o
-}
-
-func (o RuntimeLinkLabelOutput) ToRuntimeLinkLabelOutputWithContext(ctx context.Context) RuntimeLinkLabelOutput {
-	return o
-}
-
-// Label name
-func (o RuntimeLinkLabelOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v RuntimeLinkLabel) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// Label value
-func (o RuntimeLinkLabelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v RuntimeLinkLabel) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type RuntimeLinkLabelArrayOutput struct{ *pulumi.OutputState }
-
-func (RuntimeLinkLabelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RuntimeLinkLabel)(nil)).Elem()
-}
-
-func (o RuntimeLinkLabelArrayOutput) ToRuntimeLinkLabelArrayOutput() RuntimeLinkLabelArrayOutput {
-	return o
-}
-
-func (o RuntimeLinkLabelArrayOutput) ToRuntimeLinkLabelArrayOutputWithContext(ctx context.Context) RuntimeLinkLabelArrayOutput {
-	return o
-}
-
-func (o RuntimeLinkLabelArrayOutput) Index(i pulumi.IntInput) RuntimeLinkLabelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeLinkLabel {
-		return vs[0].([]RuntimeLinkLabel)[vs[1].(int)]
-	}).(RuntimeLinkLabelOutput)
-}
-
 type GetK8sRuntimeLabel struct {
 	// Label name
 	Label string `pulumi:"label"`
@@ -8471,6 +8471,8 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sRuntimeLabelInput)(nil)).Elem(), K8sRuntimeLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*K8sRuntimeLabelArrayInput)(nil)).Elem(), K8sRuntimeLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeExecInput)(nil)).Elem(), ManagedK8sRuntimeExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeExecPtrInput)(nil)).Elem(), ManagedK8sRuntimeExecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedK8sRuntimeLabelInput)(nil)).Elem(), ManagedK8sRuntimeLabelArgs{})
@@ -8534,8 +8536,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeLinkLabelInput)(nil)).Elem(), RuntimeLinkLabelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeLinkLabelArrayInput)(nil)).Elem(), RuntimeLinkLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sRuntimeLabelInput)(nil)).Elem(), GetK8sRuntimeLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sRuntimeLabelArrayInput)(nil)).Elem(), GetK8sRuntimeLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConstantInput)(nil)).Elem(), GetReleaseChannelConstantArgs{})
@@ -8597,6 +8597,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterOutputType(K8sRuntimeLabelOutput{})
+	pulumi.RegisterOutputType(K8sRuntimeLabelArrayOutput{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecOutput{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecPtrOutput{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeLabelOutput{})
@@ -8660,8 +8662,6 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput{})
-	pulumi.RegisterOutputType(RuntimeLinkLabelOutput{})
-	pulumi.RegisterOutputType(RuntimeLinkLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetK8sRuntimeLabelOutput{})
 	pulumi.RegisterOutputType(GetK8sRuntimeLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelConstantOutput{})
