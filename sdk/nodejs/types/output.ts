@@ -308,6 +308,17 @@ export interface GetReleaseChannelServiceInstanceProtectionRefParameterSecretVal
     version: string;
 }
 
+export interface K8sRuntimeLabel {
+    /**
+     * Label name
+     */
+    label: string;
+    /**
+     * Label value
+     */
+    value: string;
+}
+
 export interface ManagedK8sRuntimeExec {
     /**
      * API version of the exec credential plugin
@@ -625,16 +636,5 @@ export interface ReleaseChannelServiceInstanceProtectionRefParameterSecretValue 
      * Current application version
      */
     version: string;
-}
-
-export interface RuntimeLinkLabel {
-    /**
-     * Label name
-     */
-    label: string;
-    /**
-     * Label value
-     */
-    value: string;
 }
 

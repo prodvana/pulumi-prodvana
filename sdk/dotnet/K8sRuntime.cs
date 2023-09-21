@@ -22,7 +22,22 @@ namespace Pulumi.Prodvana
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Prodvana.K8sRuntime("example");
+    ///     var example = new Prodvana.K8sRuntime("example", new()
+    ///     {
+    ///         Labels = new[]
+    ///         {
+    ///             new Prodvana.Inputs.K8sRuntimeLabelArgs
+    ///             {
+    ///                 Label = "env",
+    ///                 Value = "staging",
+    ///             },
+    ///             new Prodvana.Inputs.K8sRuntimeLabelArgs
+    ///             {
+    ///                 Label = "region",
+    ///                 Value = "us-central1",
+    ///             },
+    ///         },
+    ///     });
     /// 
     /// });
     /// ```
@@ -59,6 +74,12 @@ namespace Pulumi.Prodvana
         /// </summary>
         [Output("agentUrl")]
         public Output<string> AgentUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.K8sRuntimeLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Runtime name
@@ -118,6 +139,18 @@ namespace Pulumi.Prodvana
 
     public sealed class K8sRuntimeArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputList<Inputs.K8sRuntimeLabelArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.K8sRuntimeLabelArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.K8sRuntimeLabelArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Runtime name
         /// </summary>
@@ -175,6 +208,18 @@ namespace Pulumi.Prodvana
         /// </summary>
         [Input("agentUrl")]
         public Input<string>? AgentUrl { get; set; }
+
+        [Input("labels")]
+        private InputList<Inputs.K8sRuntimeLabelGetArgs>? _labels;
+
+        /// <summary>
+        /// List of labels to apply to the runtime
+        /// </summary>
+        public InputList<Inputs.K8sRuntimeLabelGetArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.K8sRuntimeLabelGetArgs>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Runtime name

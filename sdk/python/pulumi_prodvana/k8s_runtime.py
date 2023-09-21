@@ -8,19 +8,37 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['K8sRuntimeArgs', 'K8sRuntime']
 
 @pulumi.input_type
 class K8sRuntimeArgs:
     def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a K8sRuntime resource.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]]]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -42,6 +60,7 @@ class _K8sRuntimeState:
                  agent_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  agent_image: Optional[pulumi.Input[str]] = None,
                  agent_url: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering K8sRuntime resources.
@@ -49,6 +68,7 @@ class _K8sRuntimeState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] agent_args: Arguments to pass to the Kubernetes Prodvana agent container.
         :param pulumi.Input[str] agent_image: URL of the Kubernetes Prodvana agent container image.
         :param pulumi.Input[str] agent_url: URL of the Kubernetes Prodvana agent server
+        :param pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         """
         if agent_api_token is not None:
@@ -59,6 +79,8 @@ class _K8sRuntimeState:
             pulumi.set(__self__, "agent_image", agent_image)
         if agent_url is not None:
             pulumi.set(__self__, "agent_url", agent_url)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -112,6 +134,18 @@ class _K8sRuntimeState:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]]]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sRuntimeLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Runtime name
@@ -128,6 +162,7 @@ class K8sRuntime(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sRuntimeLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -139,7 +174,16 @@ class K8sRuntime(pulumi.CustomResource):
         import pulumi
         import pulumi_prodvana as prodvana
 
-        example = prodvana.K8sRuntime("example")
+        example = prodvana.K8sRuntime("example", labels=[
+            prodvana.K8sRuntimeLabelArgs(
+                label="env",
+                value="staging",
+            ),
+            prodvana.K8sRuntimeLabelArgs(
+                label="region",
+                value="us-central1",
+            ),
+        ])
         ```
 
         ## Import
@@ -150,6 +194,7 @@ class K8sRuntime(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sRuntimeLabelArgs']]]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         """
         ...
@@ -167,7 +212,16 @@ class K8sRuntime(pulumi.CustomResource):
         import pulumi
         import pulumi_prodvana as prodvana
 
-        example = prodvana.K8sRuntime("example")
+        example = prodvana.K8sRuntime("example", labels=[
+            prodvana.K8sRuntimeLabelArgs(
+                label="env",
+                value="staging",
+            ),
+            prodvana.K8sRuntimeLabelArgs(
+                label="region",
+                value="us-central1",
+            ),
+        ])
         ```
 
         ## Import
@@ -191,6 +245,7 @@ class K8sRuntime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sRuntimeLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -201,6 +256,7 @@ class K8sRuntime(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = K8sRuntimeArgs.__new__(K8sRuntimeArgs)
 
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["agent_api_token"] = None
             __props__.__dict__["agent_args"] = None
@@ -222,6 +278,7 @@ class K8sRuntime(pulumi.CustomResource):
             agent_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             agent_image: Optional[pulumi.Input[str]] = None,
             agent_url: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sRuntimeLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'K8sRuntime':
         """
         Get an existing K8sRuntime resource's state with the given name, id, and optional extra
@@ -234,6 +291,7 @@ class K8sRuntime(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] agent_args: Arguments to pass to the Kubernetes Prodvana agent container.
         :param pulumi.Input[str] agent_image: URL of the Kubernetes Prodvana agent container image.
         :param pulumi.Input[str] agent_url: URL of the Kubernetes Prodvana agent server
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sRuntimeLabelArgs']]]] labels: List of labels to apply to the runtime
         :param pulumi.Input[str] name: Runtime name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -244,6 +302,7 @@ class K8sRuntime(pulumi.CustomResource):
         __props__.__dict__["agent_args"] = agent_args
         __props__.__dict__["agent_image"] = agent_image
         __props__.__dict__["agent_url"] = agent_url
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         return K8sRuntime(resource_name, opts=opts, __props__=__props__)
 
@@ -278,6 +337,14 @@ class K8sRuntime(pulumi.CustomResource):
         URL of the Kubernetes Prodvana agent server
         """
         return pulumi.get(self, "agent_url")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Sequence['outputs.K8sRuntimeLabel']]:
+        """
+        List of labels to apply to the runtime
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

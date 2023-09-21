@@ -80,6 +80,23 @@
         }
     },
     "types": {
+        "prodvana:index/K8sRuntimeLabel:K8sRuntimeLabel": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Label name\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Label value\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
+            ]
+        },
         "prodvana:index/ManagedK8sRuntimeExec:ManagedK8sRuntimeExec": {
             "properties": {
                 "apiVersion": {
@@ -742,23 +759,6 @@
             "required": [
                 "key",
                 "version"
-            ]
-        },
-        "prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel": {
-            "properties": {
-                "label": {
-                    "type": "string",
-                    "description": "Label name\n"
-                },
-                "value": {
-                    "type": "string",
-                    "description": "Label value\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "label",
-                "value"
             ]
         },
         "prodvana:index/getK8sRuntimeLabel:getK8sRuntimeLabel": {
@@ -1485,7 +1485,7 @@
             }
         },
         "prodvana:index/k8sRuntime:K8sRuntime": {
-            "description": "This resource allows you to manage a Prodvana Kubernetes [Runtime](https://docs.prodvana.io/docs/prodvana-concepts#runtime). You are responsible for managing the agent lifetime. Also see `prodvana.ManagedK8sRuntime`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@prodvana/pulumi-prodvana\";\n\nconst example = new prodvana.K8sRuntime(\"example\", {});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\nexample = prodvana.K8sRuntime(\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Prodvana.K8sRuntime(\"example\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := prodvana.NewK8sRuntime(ctx, \"example\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new K8sRuntime(\"example\");\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: prodvana:K8sRuntime\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import prodvana:index/k8sRuntime:K8sRuntime example \u003cruntime name\u003e\n```\n\n ",
+            "description": "This resource allows you to manage a Prodvana Kubernetes [Runtime](https://docs.prodvana.io/docs/prodvana-concepts#runtime). You are responsible for managing the agent lifetime. Also see `prodvana.ManagedK8sRuntime`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as prodvana from \"@prodvana/pulumi-prodvana\";\n\nconst example = new prodvana.K8sRuntime(\"example\", {labels: [\n    {\n        label: \"env\",\n        value: \"staging\",\n    },\n    {\n        label: \"region\",\n        value: \"us-central1\",\n    },\n]});\n```\n```python\nimport pulumi\nimport pulumi_prodvana as prodvana\n\nexample = prodvana.K8sRuntime(\"example\", labels=[\n    prodvana.K8sRuntimeLabelArgs(\n        label=\"env\",\n        value=\"staging\",\n    ),\n    prodvana.K8sRuntimeLabelArgs(\n        label=\"region\",\n        value=\"us-central1\",\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Prodvana = Pulumi.Prodvana;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Prodvana.K8sRuntime(\"example\", new()\n    {\n        Labels = new[]\n        {\n            new Prodvana.Inputs.K8sRuntimeLabelArgs\n            {\n                Label = \"env\",\n                Value = \"staging\",\n            },\n            new Prodvana.Inputs.K8sRuntimeLabelArgs\n            {\n                Label = \"region\",\n                Value = \"us-central1\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/prodvana/pulumi-prodvana/sdk/go/prodvana\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := prodvana.NewK8sRuntime(ctx, \"example\", \u0026prodvana.K8sRuntimeArgs{\n\t\t\tLabels: prodvana.K8sRuntimeLabelArray{\n\t\t\t\t\u0026prodvana.K8sRuntimeLabelArgs{\n\t\t\t\t\tLabel: pulumi.String(\"env\"),\n\t\t\t\t\tValue: pulumi.String(\"staging\"),\n\t\t\t\t},\n\t\t\t\t\u0026prodvana.K8sRuntimeLabelArgs{\n\t\t\t\t\tLabel: pulumi.String(\"region\"),\n\t\t\t\t\tValue: pulumi.String(\"us-central1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.prodvana.K8sRuntimeArgs;\nimport com.pulumi.prodvana.inputs.K8sRuntimeLabelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new K8sRuntime(\"example\", K8sRuntimeArgs.builder()        \n            .labels(            \n                K8sRuntimeLabelArgs.builder()\n                    .label(\"env\")\n                    .value(\"staging\")\n                    .build(),\n                K8sRuntimeLabelArgs.builder()\n                    .label(\"region\")\n                    .value(\"us-central1\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: prodvana:K8sRuntime\n    properties:\n      labels:\n        - label: env\n          value: staging\n        - label: region\n          value: us-central1\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import prodvana:index/k8sRuntime:K8sRuntime example \u003cruntime name\u003e\n```\n\n ",
             "properties": {
                 "agentApiToken": {
                     "type": "string",
@@ -1508,6 +1508,13 @@
                     "type": "string",
                     "description": "URL of the Kubernetes Prodvana agent server\n"
                 },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/K8sRuntimeLabel:K8sRuntimeLabel"
+                    },
+                    "description": "List of labels to apply to the runtime\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Runtime name\n"
@@ -1518,9 +1525,17 @@
                 "agentArgs",
                 "agentImage",
                 "agentUrl",
+                "labels",
                 "name"
             ],
             "inputProperties": {
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/K8sRuntimeLabel:K8sRuntimeLabel"
+                    },
+                    "description": "List of labels to apply to the runtime\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Runtime name\n"
@@ -1549,6 +1564,13 @@
                     "agentUrl": {
                         "type": "string",
                         "description": "URL of the Kubernetes Prodvana agent server\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/K8sRuntimeLabel:K8sRuntimeLabel"
+                        },
+                        "description": "List of labels to apply to the runtime\n"
                     },
                     "name": {
                         "type": "string",
@@ -2091,15 +2113,8 @@
             }
         },
         "prodvana:index/runtimeLink:RuntimeLink": {
-            "description": "(Alpha! This feature is still in progress.) \nA `runtime_link` resource represents a successfully linked runtime.\nThis is most useful for Kubernetes runtimes -- the agent must be installed and registered with the Prodvana service before the runtime can be used.\nPair this with an explicit `depends_on` block ensures that the runtime is ready before attempting to use it. See the example below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.kubernetes.kubernetes_deployment_v1;\nimport com.pulumi.kubernetes.Kubernetes_deployment_v1Args;\nimport com.pulumi.prodvana.RuntimeLink;\nimport com.pulumi.prodvana.RuntimeLinkArgs;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleK8sRuntime = new K8sRuntime(\"exampleK8sRuntime\");\n\n        var agent = new Kubernetes_deployment_v1(\"agent\", Kubernetes_deployment_v1Args.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .spec(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var exampleRuntimeLink = new RuntimeLink(\"exampleRuntimeLink\", RuntimeLinkArgs.builder()        \n            .id(exampleK8sRuntime.id())\n            .build());\n\n        var exampleReleaseChannel = new ReleaseChannel(\"exampleReleaseChannel\", ReleaseChannelArgs.builder()        \n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(exampleRuntimeLink.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # create the runtime placeholder in Prodvana\n  exampleK8sRuntime: # \u003c...Full Kubernetes setup elided...\u003e\n    type: prodvana:K8sRuntime\n  # deploy the Prodvana agent to the Kubernetes cluster\n  # NOTE: this is an example and may not be complete, see\n  # https://docs.prodvana.io for the latest agent configuration details\n  agent:\n    type: kubernetes:kubernetes_deployment_v1\n    properties:\n      metadata:\n        - name: agent\n          namespace: prodvana\n      spec:\n        - replicas: 1\n          template:\n            - spec:\n                - container:\n                    - name: prodvana-agent\n                      image: prodvana/agent:v0.1.0\n                      args:\n                        - /agent\n                        - --clusterid\n                        - ${exampleK8sRuntime.id}\n                        - --auth\n                        - ${prodvana_k8_runtime.agent_api_token}\n                        - --server-addr\n                        - api.\u003corg_slug\u003e.prodvana.io\n  # this resource will complete only after the agent\n  # registers itself with the Prodvana API\n  exampleRuntimeLink:\n    type: prodvana:RuntimeLink\n    properties:\n      id: ${exampleK8sRuntime.id}\n  exampleReleaseChannel:\n    type: prodvana:ReleaseChannel\n    properties:\n      runtimes:\n        - runtime: ${exampleRuntimeLink.name}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "(Alpha! This feature is still in progress.) \nA `runtime_link` resource represents a successfully linked runtime.\nThis is most useful for Kubernetes runtimes -- the agent must be installed and registered with the Prodvana service before the runtime can be used.\nPair this with an explicit `depends_on` block ensures that the runtime is ready before attempting to use it. See the example below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.prodvana.K8sRuntime;\nimport com.pulumi.kubernetes.kubernetes_namespace;\nimport com.pulumi.kubernetes.Kubernetes_namespaceArgs;\nimport com.pulumi.kubernetes.kubernetes_service_account;\nimport com.pulumi.kubernetes.Kubernetes_service_accountArgs;\nimport com.pulumi.kubernetes.kubernetes_cluster_role_binding;\nimport com.pulumi.kubernetes.Kubernetes_cluster_role_bindingArgs;\nimport com.pulumi.kubernetes.kubernetes_deployment;\nimport com.pulumi.kubernetes.Kubernetes_deploymentArgs;\nimport com.pulumi.prodvana.RuntimeLink;\nimport com.pulumi.prodvana.RuntimeLinkArgs;\nimport com.pulumi.prodvana.ReleaseChannel;\nimport com.pulumi.prodvana.ReleaseChannelArgs;\nimport com.pulumi.prodvana.inputs.ReleaseChannelRuntimeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleK8sRuntime = new K8sRuntime(\"exampleK8sRuntime\");\n\n        var prodvanakubernetes_namespace = new Kubernetes_namespace(\"prodvanakubernetes_namespace\", Kubernetes_namespaceArgs.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var prodvanakubernetes_service_account = new Kubernetes_service_account(\"prodvanakubernetes_service_account\", Kubernetes_service_accountArgs.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var prodvanakubernetes_cluster_role_binding = new Kubernetes_cluster_role_binding(\"prodvanakubernetes_cluster_role_binding\", Kubernetes_cluster_role_bindingArgs.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var agent = new Kubernetes_deployment(\"agent\", Kubernetes_deploymentArgs.builder()        \n            .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .spec(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var exampleRuntimeLink = new RuntimeLink(\"exampleRuntimeLink\", RuntimeLinkArgs.builder()        \n            .id(exampleK8sRuntime.id())\n            .build());\n\n        var exampleReleaseChannel = new ReleaseChannel(\"exampleReleaseChannel\", ReleaseChannelArgs.builder()        \n            .runtimes(ReleaseChannelRuntimeArgs.builder()\n                .runtime(exampleRuntimeLink.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # create the runtime placeholder in Prodvana\n  exampleK8sRuntime: # \u003c...Full Kubernetes setup elided...\u003e\n    type: prodvana:K8sRuntime\n  # deploy the Prodvana agent to the Kubernetes cluster\n  # NOTE: this is an example and may not be complete, see\n  # https://docs.prodvana.io for the latest agent configuration details\n  prodvanakubernetes_namespace:\n    type: kubernetes:kubernetes_namespace\n    properties:\n      metadata:\n        - name: prodvana\n  prodvanakubernetes_service_account:\n    type: kubernetes:kubernetes_service_account\n    properties:\n      metadata:\n        - name: prodvana\n          namespace: ${prodvanakubernetes_namespace.metadata[0].name}\n  prodvanakubernetes_cluster_role_binding:\n    type: kubernetes:kubernetes_cluster_role_binding\n    properties:\n      metadata:\n        - name: prodvana-access\n      roleRef:\n        - apiGroup: rbac.authorization.k8s.io\n          kind: ClusterRole\n          name: cluster-admin\n      subject:\n        - kind: ServiceAccount\n          name: prodvana\n          namespace: ${prodvanakubernetes_namespace.metadata[0].name}\n  agent:\n    type: kubernetes:kubernetes_deployment\n    properties:\n      metadata:\n        - name: prodvana-agent\n          namespace: ${prodvanakubernetes_namespace.metadata[0].name}\n      spec:\n        - replicas: 1\n          selector:\n            - matchLabels:\n                app: prodvana-agent\n          template:\n            - metadata:\n                - labels:\n                    app: prodvana-agent\n              spec:\n                - serviceAccountName: ${prodvanakubernetes_service_account.metadata[0].name}\n                  container:\n                    - name: agent\n                      image: ${resource.prodvana_k8s_runtime.cluster.agent_image}\n                      args: ${resource.prodvana_k8s_runtime.cluster.agent_args}\n  # this resource will complete only after the agent\n  # registers itself with the Prodvana API\n  exampleRuntimeLink:\n    type: prodvana:RuntimeLink\n    properties:\n      id: ${exampleK8sRuntime.id}\n  exampleReleaseChannel:\n    type: prodvana:ReleaseChannel\n    properties:\n      runtimes:\n        - runtime: ${exampleRuntimeLink.name}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
-                "labels": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel"
-                    },
-                    "description": "List of labels to apply to the runtime\n"
-                },
                 "name": {
                     "type": "string",
                     "description": "Name of the runtime to wait for linking.\n"
@@ -2110,18 +2125,10 @@
                 }
             },
             "required": [
-                "labels",
                 "name",
                 "timeout"
             ],
             "inputProperties": {
-                "labels": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel"
-                    },
-                    "description": "List of labels to apply to the runtime\n"
-                },
                 "name": {
                     "type": "string",
                     "description": "Name of the runtime to wait for linking.\n"
@@ -2134,13 +2141,6 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering RuntimeLink resources.\n",
                 "properties": {
-                    "labels": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/prodvana:index/RuntimeLinkLabel:RuntimeLinkLabel"
-                        },
-                        "description": "List of labels to apply to the runtime\n"
-                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the runtime to wait for linking.\n"

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,7 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as prodvana from "@prodvana/pulumi-prodvana";
  *
- * const example = new prodvana.K8sRuntime("example", {});
+ * const example = new prodvana.K8sRuntime("example", {labels: [
+ *     {
+ *         label: "env",
+ *         value: "staging",
+ *     },
+ *     {
+ *         label: "region",
+ *         value: "us-central1",
+ *     },
+ * ]});
  * ```
  *
  * ## Import
@@ -67,6 +78,10 @@ export class K8sRuntime extends pulumi.CustomResource {
      */
     public /*out*/ readonly agentUrl!: pulumi.Output<string>;
     /**
+     * List of labels to apply to the runtime
+     */
+    public readonly labels!: pulumi.Output<outputs.K8sRuntimeLabel[]>;
+    /**
      * Runtime name
      */
     public readonly name!: pulumi.Output<string>;
@@ -88,9 +103,11 @@ export class K8sRuntime extends pulumi.CustomResource {
             resourceInputs["agentArgs"] = state ? state.agentArgs : undefined;
             resourceInputs["agentImage"] = state ? state.agentImage : undefined;
             resourceInputs["agentUrl"] = state ? state.agentUrl : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as K8sRuntimeArgs | undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["agentApiToken"] = undefined /*out*/;
             resourceInputs["agentArgs"] = undefined /*out*/;
@@ -125,6 +142,10 @@ export interface K8sRuntimeState {
      */
     agentUrl?: pulumi.Input<string>;
     /**
+     * List of labels to apply to the runtime
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.K8sRuntimeLabel>[]>;
+    /**
      * Runtime name
      */
     name?: pulumi.Input<string>;
@@ -134,6 +155,10 @@ export interface K8sRuntimeState {
  * The set of arguments for constructing a K8sRuntime resource.
  */
 export interface K8sRuntimeArgs {
+    /**
+     * List of labels to apply to the runtime
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.K8sRuntimeLabel>[]>;
     /**
      * Runtime name
      */

@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'K8sRuntimeLabelArgs',
     'ManagedK8sRuntimeExecArgs',
     'ManagedK8sRuntimeLabelArgs',
     'ReleaseChannelConstantArgs',
@@ -43,7 +44,6 @@ __all__ = [
     'ReleaseChannelServiceInstanceProtectionRefArgs',
     'ReleaseChannelServiceInstanceProtectionRefParameterArgs',
     'ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs',
-    'RuntimeLinkLabelArgs',
     'GetK8sRuntimeLabelArgs',
     'GetReleaseChannelConstantArgs',
     'GetReleaseChannelConvergenceProtectionArgs',
@@ -76,6 +76,43 @@ __all__ = [
     'GetReleaseChannelServiceInstanceProtectionRefParameterArgs',
     'GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs',
 ]
+
+@pulumi.input_type
+class K8sRuntimeLabelArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] label: Label name
+        :param pulumi.Input[str] value: Label value
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        Label name
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
 
 @pulumi.input_type
 class ManagedK8sRuntimeExecArgs:
@@ -1458,43 +1495,6 @@ class ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs:
     @version.setter
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class RuntimeLinkLabelArgs:
-    def __init__(__self__, *,
-                 label: pulumi.Input[str],
-                 value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] label: Label name
-        :param pulumi.Input[str] value: Label value
-        """
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def label(self) -> pulumi.Input[str]:
-        """
-        Label name
-        """
-        return pulumi.get(self, "label")
-
-    @label.setter
-    def label(self, value: pulumi.Input[str]):
-        pulumi.set(self, "label", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        """
-        Label value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
