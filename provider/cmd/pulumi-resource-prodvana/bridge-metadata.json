@@ -241,6 +241,12 @@
             "prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy": {
                 "defaultEnv": "default_env"
             },
+            "prodvana:index/ReleaseChannelPolicyDefaultEnv:ReleaseChannelPolicyDefaultEnv": {
+                "kubernetesSecret": "kubernetes_secret"
+            },
+            "prodvana:index/ReleaseChannelPolicyDefaultEnvKubernetesSecret:ReleaseChannelPolicyDefaultEnvKubernetesSecret": {
+                "secretName": "secret_name"
+            },
             "prodvana:index/ReleaseChannelProtection:ReleaseChannelProtection": {
                 "postApproval": "post_approval",
                 "postDeployment": "post_deployment",
@@ -283,6 +289,7 @@
             },
             "prodvana:index/getReleaseChannel:getReleaseChannel": {
                 "convergenceProtections": "convergence_protections",
+                "disableAllProtections": "disable_all_protections",
                 "manualApprovalPreconditions": "manual_approval_preconditions",
                 "releaseChannelStablePreconditions": "release_channel_stable_preconditions",
                 "serviceInstanceProtections": "service_instance_protections"
@@ -310,6 +317,12 @@
             },
             "prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy": {
                 "defaultEnv": "default_env"
+            },
+            "prodvana:index/getReleaseChannelPolicyDefaultEnv:getReleaseChannelPolicyDefaultEnv": {
+                "kubernetesSecret": "kubernetes_secret"
+            },
+            "prodvana:index/getReleaseChannelPolicyDefaultEnvKubernetesSecret:getReleaseChannelPolicyDefaultEnvKubernetesSecret": {
+                "secretName": "secret_name"
             },
             "prodvana:index/getReleaseChannelProtection:getReleaseChannelProtection": {
                 "postApproval": "post_approval",
@@ -371,6 +384,7 @@
             },
             "prodvana:index/releaseChannel:ReleaseChannel": {
                 "convergenceProtections": "convergence_protections",
+                "disableAllProtections": "disable_all_protections",
                 "manualApprovalPreconditions": "manual_approval_preconditions",
                 "releaseChannelStablePreconditions": "release_channel_stable_preconditions",
                 "serviceInstanceProtections": "service_instance_protections"

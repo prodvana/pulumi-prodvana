@@ -12,6 +12,9 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelPolicyDefaultEnvInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("kubernetesSecret")]
+        public Input<Inputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretInputArgs>? KubernetesSecret { get; set; }
+
         [Input("secret")]
         public Input<Inputs.GetReleaseChannelPolicyDefaultEnvSecretInputArgs>? Secret { get; set; }
 

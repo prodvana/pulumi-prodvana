@@ -13,15 +13,19 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class GetReleaseChannelPolicyDefaultEnvResult
     {
+        public readonly Outputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult? KubernetesSecret;
         public readonly Outputs.GetReleaseChannelPolicyDefaultEnvSecretResult? Secret;
         public readonly string? Value;
 
         [OutputConstructor]
         private GetReleaseChannelPolicyDefaultEnvResult(
+            Outputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult? kubernetesSecret,
+
             Outputs.GetReleaseChannelPolicyDefaultEnvSecretResult? secret,
 
             string? value)
         {
+            KubernetesSecret = kubernetesSecret;
             Secret = secret;
             Value = value;
         }

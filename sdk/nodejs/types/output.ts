@@ -122,8 +122,14 @@ export interface GetReleaseChannelPolicy {
 }
 
 export interface GetReleaseChannelPolicyDefaultEnv {
+    kubernetesSecret?: outputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecret;
     secret?: outputs.GetReleaseChannelPolicyDefaultEnvSecret;
     value?: string;
+}
+
+export interface GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    key?: string;
+    secretName?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvSecret {
@@ -231,7 +237,7 @@ export interface GetReleaseChannelRuntime {
      */
     runtime?: string;
     /**
-     * type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+     * type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
      */
     type: string;
 }
@@ -452,8 +458,14 @@ export interface ReleaseChannelPolicy {
 }
 
 export interface ReleaseChannelPolicyDefaultEnv {
+    kubernetesSecret?: outputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret;
     secret?: outputs.ReleaseChannelPolicyDefaultEnvSecret;
     value?: string;
+}
+
+export interface ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    key?: string;
+    secretName?: string;
 }
 
 export interface ReleaseChannelPolicyDefaultEnvSecret {
@@ -561,7 +573,7 @@ export interface ReleaseChannelRuntime {
      */
     runtime?: string;
     /**
-     * type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+     * type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
      */
     type: string;
 }

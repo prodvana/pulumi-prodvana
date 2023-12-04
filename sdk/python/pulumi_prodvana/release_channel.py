@@ -20,6 +20,7 @@ class ReleaseChannelArgs:
                  runtimes: pulumi.Input[Sequence[pulumi.Input['ReleaseChannelRuntimeArgs']]],
                  constants: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConstantArgs']]]] = None,
                  convergence_protections: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]]] = None,
+                 disable_all_protections: Optional[pulumi.Input[bool]] = None,
                  manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelManualApprovalPreconditionArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input['ReleaseChannelPolicyArgs']] = None,
@@ -32,6 +33,7 @@ class ReleaseChannelArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelRuntimeArgs']]] runtimes: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConstantArgs']]] constants: Constant values for this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]] convergence_protections: Feature Coming Soon
+        :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelManualApprovalPreconditionArgs']]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
         :param pulumi.Input[str] name: Release Channel name
         :param pulumi.Input['ReleaseChannelPolicyArgs'] policy: Release Channel policy applied to all services
@@ -45,6 +47,8 @@ class ReleaseChannelArgs:
             pulumi.set(__self__, "constants", constants)
         if convergence_protections is not None:
             pulumi.set(__self__, "convergence_protections", convergence_protections)
+        if disable_all_protections is not None:
+            pulumi.set(__self__, "disable_all_protections", disable_all_protections)
         if manual_approval_preconditions is not None:
             pulumi.set(__self__, "manual_approval_preconditions", manual_approval_preconditions)
         if name is not None:
@@ -105,6 +109,18 @@ class ReleaseChannelArgs:
     @convergence_protections.setter
     def convergence_protections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]]]):
         pulumi.set(self, "convergence_protections", value)
+
+    @property
+    @pulumi.getter(name="disableAllProtections")
+    def disable_all_protections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable all protections for this release channel
+        """
+        return pulumi.get(self, "disable_all_protections")
+
+    @disable_all_protections.setter
+    def disable_all_protections(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_all_protections", value)
 
     @property
     @pulumi.getter(name="manualApprovalPreconditions")
@@ -185,6 +201,7 @@ class _ReleaseChannelState:
                  application: Optional[pulumi.Input[str]] = None,
                  constants: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConstantArgs']]]] = None,
                  convergence_protections: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]]] = None,
+                 disable_all_protections: Optional[pulumi.Input[bool]] = None,
                  manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelManualApprovalPreconditionArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input['ReleaseChannelPolicyArgs']] = None,
@@ -198,6 +215,7 @@ class _ReleaseChannelState:
         :param pulumi.Input[str] application: Name of the Application this Release Channel belongs to
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConstantArgs']]] constants: Constant values for this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]] convergence_protections: Feature Coming Soon
+        :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelManualApprovalPreconditionArgs']]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
         :param pulumi.Input[str] name: Release Channel name
         :param pulumi.Input['ReleaseChannelPolicyArgs'] policy: Release Channel policy applied to all services
@@ -213,6 +231,8 @@ class _ReleaseChannelState:
             pulumi.set(__self__, "constants", constants)
         if convergence_protections is not None:
             pulumi.set(__self__, "convergence_protections", convergence_protections)
+        if disable_all_protections is not None:
+            pulumi.set(__self__, "disable_all_protections", disable_all_protections)
         if manual_approval_preconditions is not None:
             pulumi.set(__self__, "manual_approval_preconditions", manual_approval_preconditions)
         if name is not None:
@@ -265,6 +285,18 @@ class _ReleaseChannelState:
     @convergence_protections.setter
     def convergence_protections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]]]):
         pulumi.set(self, "convergence_protections", value)
+
+    @property
+    @pulumi.getter(name="disableAllProtections")
+    def disable_all_protections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable all protections for this release channel
+        """
+        return pulumi.get(self, "disable_all_protections")
+
+    @disable_all_protections.setter
+    def disable_all_protections(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_all_protections", value)
 
     @property
     @pulumi.getter(name="manualApprovalPreconditions")
@@ -371,6 +403,7 @@ class ReleaseChannel(pulumi.CustomResource):
                  application: Optional[pulumi.Input[str]] = None,
                  constants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConstantArgs']]]]] = None,
                  convergence_protections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]]] = None,
+                 disable_all_protections: Optional[pulumi.Input[bool]] = None,
                  manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']]] = None,
@@ -393,6 +426,7 @@ class ReleaseChannel(pulumi.CustomResource):
         :param pulumi.Input[str] application: Name of the Application this Release Channel belongs to
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConstantArgs']]]] constants: Constant values for this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]] convergence_protections: Feature Coming Soon
+        :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
         :param pulumi.Input[str] name: Release Channel name
         :param pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']] policy: Release Channel policy applied to all services
@@ -434,6 +468,7 @@ class ReleaseChannel(pulumi.CustomResource):
                  application: Optional[pulumi.Input[str]] = None,
                  constants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConstantArgs']]]]] = None,
                  convergence_protections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]]] = None,
+                 disable_all_protections: Optional[pulumi.Input[bool]] = None,
                  manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']]] = None,
@@ -455,6 +490,7 @@ class ReleaseChannel(pulumi.CustomResource):
             __props__.__dict__["application"] = application
             __props__.__dict__["constants"] = constants
             __props__.__dict__["convergence_protections"] = convergence_protections
+            __props__.__dict__["disable_all_protections"] = disable_all_protections
             __props__.__dict__["manual_approval_preconditions"] = manual_approval_preconditions
             __props__.__dict__["name"] = name
             __props__.__dict__["policy"] = policy
@@ -478,6 +514,7 @@ class ReleaseChannel(pulumi.CustomResource):
             application: Optional[pulumi.Input[str]] = None,
             constants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConstantArgs']]]]] = None,
             convergence_protections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]]] = None,
+            disable_all_protections: Optional[pulumi.Input[bool]] = None,
             manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             policy: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']]] = None,
@@ -496,6 +533,7 @@ class ReleaseChannel(pulumi.CustomResource):
         :param pulumi.Input[str] application: Name of the Application this Release Channel belongs to
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConstantArgs']]]] constants: Constant values for this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]] convergence_protections: Feature Coming Soon
+        :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
         :param pulumi.Input[str] name: Release Channel name
         :param pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']] policy: Release Channel policy applied to all services
@@ -512,6 +550,7 @@ class ReleaseChannel(pulumi.CustomResource):
         __props__.__dict__["application"] = application
         __props__.__dict__["constants"] = constants
         __props__.__dict__["convergence_protections"] = convergence_protections
+        __props__.__dict__["disable_all_protections"] = disable_all_protections
         __props__.__dict__["manual_approval_preconditions"] = manual_approval_preconditions
         __props__.__dict__["name"] = name
         __props__.__dict__["policy"] = policy
@@ -545,6 +584,14 @@ class ReleaseChannel(pulumi.CustomResource):
         Feature Coming Soon
         """
         return pulumi.get(self, "convergence_protections")
+
+    @property
+    @pulumi.getter(name="disableAllProtections")
+    def disable_all_protections(self) -> pulumi.Output[bool]:
+        """
+        Disable all protections for this release channel
+        """
+        return pulumi.get(self, "disable_all_protections")
 
     @property
     @pulumi.getter(name="manualApprovalPreconditions")

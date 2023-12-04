@@ -30,6 +30,8 @@ type ReleaseChannel struct {
 	Constants ReleaseChannelConstantArrayOutput `pulumi:"constants"`
 	// Feature Coming Soon
 	ConvergenceProtections ReleaseChannelConvergenceProtectionArrayOutput `pulumi:"convergenceProtections"`
+	// Disable all protections for this release channel
+	DisableAllProtections pulumi.BoolOutput `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions ReleaseChannelManualApprovalPreconditionArrayOutput `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
@@ -90,6 +92,8 @@ type releaseChannelState struct {
 	Constants []ReleaseChannelConstant `pulumi:"constants"`
 	// Feature Coming Soon
 	ConvergenceProtections []ReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Disable all protections for this release channel
+	DisableAllProtections *bool `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions []ReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
@@ -115,6 +119,8 @@ type ReleaseChannelState struct {
 	Constants ReleaseChannelConstantArrayInput
 	// Feature Coming Soon
 	ConvergenceProtections ReleaseChannelConvergenceProtectionArrayInput
+	// Disable all protections for this release channel
+	DisableAllProtections pulumi.BoolPtrInput
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions ReleaseChannelManualApprovalPreconditionArrayInput
 	// Release Channel name
@@ -144,6 +150,8 @@ type releaseChannelArgs struct {
 	Constants []ReleaseChannelConstant `pulumi:"constants"`
 	// Feature Coming Soon
 	ConvergenceProtections []ReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Disable all protections for this release channel
+	DisableAllProtections *bool `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions []ReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
@@ -168,6 +176,8 @@ type ReleaseChannelArgs struct {
 	Constants ReleaseChannelConstantArrayInput
 	// Feature Coming Soon
 	ConvergenceProtections ReleaseChannelConvergenceProtectionArrayInput
+	// Disable all protections for this release channel
+	DisableAllProtections pulumi.BoolPtrInput
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions ReleaseChannelManualApprovalPreconditionArrayInput
 	// Release Channel name
@@ -286,6 +296,11 @@ func (o ReleaseChannelOutput) ConvergenceProtections() ReleaseChannelConvergence
 	return o.ApplyT(func(v *ReleaseChannel) ReleaseChannelConvergenceProtectionArrayOutput {
 		return v.ConvergenceProtections
 	}).(ReleaseChannelConvergenceProtectionArrayOutput)
+}
+
+// Disable all protections for this release channel
+func (o ReleaseChannelOutput) DisableAllProtections() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ReleaseChannel) pulumi.BoolOutput { return v.DisableAllProtections }).(pulumi.BoolOutput)
 }
 
 // Preconditions requiring manual approval before this release channel can be deployed

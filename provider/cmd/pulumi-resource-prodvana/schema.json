@@ -365,10 +365,24 @@
         },
         "prodvana:index/ReleaseChannelPolicyDefaultEnv:ReleaseChannelPolicyDefaultEnv": {
             "properties": {
+                "kubernetesSecret": {
+                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvKubernetesSecret:ReleaseChannelPolicyDefaultEnvKubernetesSecret"
+                },
                 "secret": {
                     "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvSecret:ReleaseChannelPolicyDefaultEnvSecret"
                 },
                 "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/ReleaseChannelPolicyDefaultEnvKubernetesSecret:ReleaseChannelPolicyDefaultEnvKubernetesSecret": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "secretName": {
                     "type": "string"
                 }
             },
@@ -582,7 +596,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)\n"
+                    "description": "type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)\n"
                 }
             },
             "type": "object",
@@ -1005,10 +1019,24 @@
         },
         "prodvana:index/getReleaseChannelPolicyDefaultEnv:getReleaseChannelPolicyDefaultEnv": {
             "properties": {
+                "kubernetesSecret": {
+                    "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvKubernetesSecret:getReleaseChannelPolicyDefaultEnvKubernetesSecret"
+                },
                 "secret": {
                     "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvSecret:getReleaseChannelPolicyDefaultEnvSecret"
                 },
                 "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "prodvana:index/getReleaseChannelPolicyDefaultEnvKubernetesSecret:getReleaseChannelPolicyDefaultEnvKubernetesSecret": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "secretName": {
                     "type": "string"
                 }
             },
@@ -1226,7 +1254,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)\n"
+                    "description": "type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)\n"
                 }
             },
             "type": "object",
@@ -1919,6 +1947,10 @@
                     },
                     "description": "Feature Coming Soon\n"
                 },
+                "disableAllProtections": {
+                    "type": "boolean",
+                    "description": "Disable all protections for this release channel\n"
+                },
                 "manualApprovalPreconditions": {
                     "type": "array",
                     "items": {
@@ -1969,6 +2001,7 @@
             },
             "required": [
                 "application",
+                "disableAllProtections",
                 "name",
                 "runtimes",
                 "version"
@@ -1991,6 +2024,10 @@
                         "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection"
                     },
                     "description": "Feature Coming Soon\n"
+                },
+                "disableAllProtections": {
+                    "type": "boolean",
+                    "description": "Disable all protections for this release channel\n"
                 },
                 "manualApprovalPreconditions": {
                     "type": "array",
@@ -2060,6 +2097,10 @@
                             "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtection:ReleaseChannelConvergenceProtection"
                         },
                         "description": "Feature Coming Soon\n"
+                    },
+                    "disableAllProtections": {
+                        "type": "boolean",
+                        "description": "Disable all protections for this release channel\n"
                     },
                     "manualApprovalPreconditions": {
                         "type": "array",
@@ -2272,6 +2313,10 @@
                         },
                         "description": "Feature Coming Soon\n"
                     },
+                    "disableAllProtections": {
+                        "type": "boolean",
+                        "description": "Disable all protections for this release channel\n"
+                    },
                     "manualApprovalPreconditions": {
                         "type": "array",
                         "items": {
@@ -2335,6 +2380,10 @@
                             "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtection:getReleaseChannelConvergenceProtection"
                         },
                         "description": "Feature Coming Soon\n"
+                    },
+                    "disableAllProtections": {
+                        "type": "boolean",
+                        "description": "Disable all protections for this release channel\n"
                     },
                     "id": {
                         "type": "string",

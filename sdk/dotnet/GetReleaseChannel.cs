@@ -103,6 +103,12 @@ namespace Pulumi.Prodvana
             set => _convergenceProtections = value;
         }
 
+        /// <summary>
+        /// Disable all protections for this release channel
+        /// </summary>
+        [Input("disableAllProtections")]
+        public bool? DisableAllProtections { get; set; }
+
         [Input("manualApprovalPreconditions")]
         private List<Inputs.GetReleaseChannelManualApprovalPreconditionArgs>? _manualApprovalPreconditions;
 
@@ -201,6 +207,12 @@ namespace Pulumi.Prodvana
             set => _convergenceProtections = value;
         }
 
+        /// <summary>
+        /// Disable all protections for this release channel
+        /// </summary>
+        [Input("disableAllProtections")]
+        public Input<bool>? DisableAllProtections { get; set; }
+
         [Input("manualApprovalPreconditions")]
         private InputList<Inputs.GetReleaseChannelManualApprovalPreconditionInputArgs>? _manualApprovalPreconditions;
 
@@ -284,6 +296,10 @@ namespace Pulumi.Prodvana
         /// </summary>
         public readonly ImmutableArray<Outputs.GetReleaseChannelConvergenceProtectionResult> ConvergenceProtections;
         /// <summary>
+        /// Disable all protections for this release channel
+        /// </summary>
+        public readonly bool? DisableAllProtections;
+        /// <summary>
         /// Release channel identifier
         /// </summary>
         public readonly string Id;
@@ -328,6 +344,8 @@ namespace Pulumi.Prodvana
 
             ImmutableArray<Outputs.GetReleaseChannelConvergenceProtectionResult> convergenceProtections,
 
+            bool? disableAllProtections,
+
             string id,
 
             ImmutableArray<Outputs.GetReleaseChannelManualApprovalPreconditionResult> manualApprovalPreconditions,
@@ -349,6 +367,7 @@ namespace Pulumi.Prodvana
             Application = application;
             Constants = constants;
             ConvergenceProtections = convergenceProtections;
+            DisableAllProtections = disableAllProtections;
             Id = id;
             ManualApprovalPreconditions = manualApprovalPreconditions;
             Name = name;

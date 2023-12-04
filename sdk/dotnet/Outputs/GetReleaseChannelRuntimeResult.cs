@@ -30,7 +30,7 @@ namespace Pulumi.Prodvana.Outputs
         /// </summary>
         public readonly string? Runtime;
         /// <summary>
-        /// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+        /// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
         /// </summary>
         public readonly string Type;
 
