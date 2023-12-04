@@ -56,6 +56,10 @@ export class ReleaseChannel extends pulumi.CustomResource {
      */
     public readonly convergenceProtections!: pulumi.Output<outputs.ReleaseChannelConvergenceProtection[] | undefined>;
     /**
+     * Disable all protections for this release channel
+     */
+    public readonly disableAllProtections!: pulumi.Output<boolean>;
+    /**
      * Preconditions requiring manual approval before this release channel can be deployed
      */
     public readonly manualApprovalPreconditions!: pulumi.Output<outputs.ReleaseChannelManualApprovalPrecondition[] | undefined>;
@@ -104,6 +108,7 @@ export class ReleaseChannel extends pulumi.CustomResource {
             resourceInputs["application"] = state ? state.application : undefined;
             resourceInputs["constants"] = state ? state.constants : undefined;
             resourceInputs["convergenceProtections"] = state ? state.convergenceProtections : undefined;
+            resourceInputs["disableAllProtections"] = state ? state.disableAllProtections : undefined;
             resourceInputs["manualApprovalPreconditions"] = state ? state.manualApprovalPreconditions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["policy"] = state ? state.policy : undefined;
@@ -123,6 +128,7 @@ export class ReleaseChannel extends pulumi.CustomResource {
             resourceInputs["application"] = args ? args.application : undefined;
             resourceInputs["constants"] = args ? args.constants : undefined;
             resourceInputs["convergenceProtections"] = args ? args.convergenceProtections : undefined;
+            resourceInputs["disableAllProtections"] = args ? args.disableAllProtections : undefined;
             resourceInputs["manualApprovalPreconditions"] = args ? args.manualApprovalPreconditions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
@@ -153,6 +159,10 @@ export interface ReleaseChannelState {
      * Feature Coming Soon
      */
     convergenceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConvergenceProtection>[]>;
+    /**
+     * Disable all protections for this release channel
+     */
+    disableAllProtections?: pulumi.Input<boolean>;
     /**
      * Preconditions requiring manual approval before this release channel can be deployed
      */
@@ -203,6 +213,10 @@ export interface ReleaseChannelArgs {
      * Feature Coming Soon
      */
     convergenceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConvergenceProtection>[]>;
+    /**
+     * Disable all protections for this release channel
+     */
+    disableAllProtections?: pulumi.Input<boolean>;
     /**
      * Preconditions requiring manual approval before this release channel can be deployed
      */

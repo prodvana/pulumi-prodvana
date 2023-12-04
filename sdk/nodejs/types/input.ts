@@ -238,13 +238,25 @@ export interface GetReleaseChannelPolicyArgs {
 }
 
 export interface GetReleaseChannelPolicyDefaultEnv {
+    kubernetesSecret?: inputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecret;
     secret?: inputs.GetReleaseChannelPolicyDefaultEnvSecret;
     value?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvArgs {
+    kubernetesSecret?: pulumi.Input<inputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs>;
     secret?: pulumi.Input<inputs.GetReleaseChannelPolicyDefaultEnvSecretArgs>;
     value?: pulumi.Input<string>;
+}
+
+export interface GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    key?: string;
+    secretName?: string;
+}
+
+export interface GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs {
+    key?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string>;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvSecret {
@@ -709,8 +721,14 @@ export interface ReleaseChannelPolicy {
 }
 
 export interface ReleaseChannelPolicyDefaultEnv {
+    kubernetesSecret?: pulumi.Input<inputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret>;
     secret?: pulumi.Input<inputs.ReleaseChannelPolicyDefaultEnvSecret>;
     value?: pulumi.Input<string>;
+}
+
+export interface ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    key?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelPolicyDefaultEnvSecret {
@@ -818,7 +836,7 @@ export interface ReleaseChannelRuntime {
      */
     runtime?: pulumi.Input<string>;
     /**
-     * type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+     * type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
      */
     type?: pulumi.Input<string>;
 }

@@ -28,6 +28,7 @@ export function getReleaseChannel(args: GetReleaseChannelArgs, opts?: pulumi.Inv
         "application": args.application,
         "constants": args.constants,
         "convergenceProtections": args.convergenceProtections,
+        "disableAllProtections": args.disableAllProtections,
         "manualApprovalPreconditions": args.manualApprovalPreconditions,
         "name": args.name,
         "policy": args.policy,
@@ -53,6 +54,10 @@ export interface GetReleaseChannelArgs {
      * Feature Coming Soon
      */
     convergenceProtections?: inputs.GetReleaseChannelConvergenceProtection[];
+    /**
+     * Disable all protections for this release channel
+     */
+    disableAllProtections?: boolean;
     /**
      * Preconditions requiring manual approval before this release channel can be deployed
      */
@@ -95,6 +100,10 @@ export interface GetReleaseChannelResult {
      * Feature Coming Soon
      */
     readonly convergenceProtections?: outputs.GetReleaseChannelConvergenceProtection[];
+    /**
+     * Disable all protections for this release channel
+     */
+    readonly disableAllProtections?: boolean;
     /**
      * Release channel identifier
      */
@@ -167,6 +176,10 @@ export interface GetReleaseChannelOutputArgs {
      * Feature Coming Soon
      */
     convergenceProtections?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelConvergenceProtectionArgs>[]>;
+    /**
+     * Disable all protections for this release channel
+     */
+    disableAllProtections?: pulumi.Input<boolean>;
     /**
      * Preconditions requiring manual approval before this release channel can be deployed
      */

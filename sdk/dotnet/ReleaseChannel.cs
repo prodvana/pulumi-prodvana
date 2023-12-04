@@ -40,6 +40,12 @@ namespace Pulumi.Prodvana
         public Output<ImmutableArray<Outputs.ReleaseChannelConvergenceProtection>> ConvergenceProtections { get; private set; } = null!;
 
         /// <summary>
+        /// Disable all protections for this release channel
+        /// </summary>
+        [Output("disableAllProtections")]
+        public Output<bool> DisableAllProtections { get; private set; } = null!;
+
+        /// <summary>
         /// Preconditions requiring manual approval before this release channel can be deployed
         /// </summary>
         [Output("manualApprovalPreconditions")]
@@ -164,6 +170,12 @@ namespace Pulumi.Prodvana
             set => _convergenceProtections = value;
         }
 
+        /// <summary>
+        /// Disable all protections for this release channel
+        /// </summary>
+        [Input("disableAllProtections")]
+        public Input<bool>? DisableAllProtections { get; set; }
+
         [Input("manualApprovalPreconditions")]
         private InputList<Inputs.ReleaseChannelManualApprovalPreconditionArgs>? _manualApprovalPreconditions;
 
@@ -273,6 +285,12 @@ namespace Pulumi.Prodvana
             get => _convergenceProtections ?? (_convergenceProtections = new InputList<Inputs.ReleaseChannelConvergenceProtectionGetArgs>());
             set => _convergenceProtections = value;
         }
+
+        /// <summary>
+        /// Disable all protections for this release channel
+        /// </summary>
+        [Input("disableAllProtections")]
+        public Input<bool>? DisableAllProtections { get; set; }
 
         [Input("manualApprovalPreconditions")]
         private InputList<Inputs.ReleaseChannelManualApprovalPreconditionGetArgs>? _manualApprovalPreconditions;

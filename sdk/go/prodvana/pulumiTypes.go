@@ -1822,8 +1822,9 @@ func (o ReleaseChannelPolicyPtrOutput) DefaultEnv() ReleaseChannelPolicyDefaultE
 }
 
 type ReleaseChannelPolicyDefaultEnv struct {
-	Secret *ReleaseChannelPolicyDefaultEnvSecret `pulumi:"secret"`
-	Value  *string                               `pulumi:"value"`
+	KubernetesSecret *ReleaseChannelPolicyDefaultEnvKubernetesSecret `pulumi:"kubernetesSecret"`
+	Secret           *ReleaseChannelPolicyDefaultEnvSecret           `pulumi:"secret"`
+	Value            *string                                         `pulumi:"value"`
 }
 
 // ReleaseChannelPolicyDefaultEnvInput is an input type that accepts ReleaseChannelPolicyDefaultEnvArgs and ReleaseChannelPolicyDefaultEnvOutput values.
@@ -1838,8 +1839,9 @@ type ReleaseChannelPolicyDefaultEnvInput interface {
 }
 
 type ReleaseChannelPolicyDefaultEnvArgs struct {
-	Secret ReleaseChannelPolicyDefaultEnvSecretPtrInput `pulumi:"secret"`
-	Value  pulumi.StringPtrInput                        `pulumi:"value"`
+	KubernetesSecret ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput `pulumi:"kubernetesSecret"`
+	Secret           ReleaseChannelPolicyDefaultEnvSecretPtrInput           `pulumi:"secret"`
+	Value            pulumi.StringPtrInput                                  `pulumi:"value"`
 }
 
 func (ReleaseChannelPolicyDefaultEnvArgs) ElementType() reflect.Type {
@@ -1893,6 +1895,12 @@ func (o ReleaseChannelPolicyDefaultEnvOutput) ToReleaseChannelPolicyDefaultEnvOu
 	return o
 }
 
+func (o ReleaseChannelPolicyDefaultEnvOutput) KubernetesSecret() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnv) *ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+		return v.KubernetesSecret
+	}).(ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
+}
+
 func (o ReleaseChannelPolicyDefaultEnvOutput) Secret() ReleaseChannelPolicyDefaultEnvSecretPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnv) *ReleaseChannelPolicyDefaultEnvSecret { return v.Secret }).(ReleaseChannelPolicyDefaultEnvSecretPtrOutput)
 }
@@ -1919,6 +1927,154 @@ func (o ReleaseChannelPolicyDefaultEnvMapOutput) MapIndex(k pulumi.StringInput) 
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReleaseChannelPolicyDefaultEnv {
 		return vs[0].(map[string]ReleaseChannelPolicyDefaultEnv)[vs[1].(string)]
 	}).(ReleaseChannelPolicyDefaultEnvOutput)
+}
+
+type ReleaseChannelPolicyDefaultEnvKubernetesSecret struct {
+	Key        *string `pulumi:"key"`
+	SecretName *string `pulumi:"secretName"`
+}
+
+// ReleaseChannelPolicyDefaultEnvKubernetesSecretInput is an input type that accepts ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs and ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput values.
+// You can construct a concrete instance of `ReleaseChannelPolicyDefaultEnvKubernetesSecretInput` via:
+//
+//	ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{...}
+type ReleaseChannelPolicyDefaultEnvKubernetesSecretInput interface {
+	pulumi.Input
+
+	ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput
+	ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput
+}
+
+type ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs struct {
+	Key        pulumi.StringPtrInput `pulumi:"key"`
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+}
+
+func (ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (i ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return i.ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(ctx context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput)
+}
+
+func (i ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return i.ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput).ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx)
+}
+
+// ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput is an input type that accepts ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs, ReleaseChannelPolicyDefaultEnvKubernetesSecretPtr and ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput values.
+// You can construct a concrete instance of `ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput` via:
+//
+//	        ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput interface {
+	pulumi.Input
+
+	ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput
+	ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput
+}
+
+type releaseChannelPolicyDefaultEnvKubernetesSecretPtrType ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs
+
+func ReleaseChannelPolicyDefaultEnvKubernetesSecretPtr(v *ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput {
+	return (*releaseChannelPolicyDefaultEnvKubernetesSecretPtrType)(v)
+}
+
+func (*releaseChannelPolicyDefaultEnvKubernetesSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (i *releaseChannelPolicyDefaultEnvKubernetesSecretPtrType) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return i.ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *releaseChannelPolicyDefaultEnvKubernetesSecretPtrType) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
+}
+
+type ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return o
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(ctx context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return o
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o.ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseChannelPolicyDefaultEnvKubernetesSecret) *ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+		return &v
+	}).(ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) ToReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Elem() ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvKubernetesSecret) ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseChannelPolicyDefaultEnvKubernetesSecret
+		return ret
+	}).(ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput)
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ReleaseChannelPolicyDefaultEnvSecret struct {
@@ -3216,7 +3372,7 @@ type ReleaseChannelRuntime struct {
 	Name *string `pulumi:"name"`
 	// name of the a runtime
 	Runtime *string `pulumi:"runtime"`
-	// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+	// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
 	Type *string `pulumi:"type"`
 }
 
@@ -3240,7 +3396,7 @@ type ReleaseChannelRuntimeArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// name of the a runtime
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
-	// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+	// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -3315,7 +3471,7 @@ func (o ReleaseChannelRuntimeOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelRuntime) *string { return v.Runtime }).(pulumi.StringPtrOutput)
 }
 
-// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
 func (o ReleaseChannelRuntimeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelRuntime) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5901,8 +6057,9 @@ func (o GetReleaseChannelPolicyPtrOutput) DefaultEnv() GetReleaseChannelPolicyDe
 }
 
 type GetReleaseChannelPolicyDefaultEnv struct {
-	Secret *GetReleaseChannelPolicyDefaultEnvSecret `pulumi:"secret"`
-	Value  *string                                  `pulumi:"value"`
+	KubernetesSecret *GetReleaseChannelPolicyDefaultEnvKubernetesSecret `pulumi:"kubernetesSecret"`
+	Secret           *GetReleaseChannelPolicyDefaultEnvSecret           `pulumi:"secret"`
+	Value            *string                                            `pulumi:"value"`
 }
 
 // GetReleaseChannelPolicyDefaultEnvInput is an input type that accepts GetReleaseChannelPolicyDefaultEnvArgs and GetReleaseChannelPolicyDefaultEnvOutput values.
@@ -5917,8 +6074,9 @@ type GetReleaseChannelPolicyDefaultEnvInput interface {
 }
 
 type GetReleaseChannelPolicyDefaultEnvArgs struct {
-	Secret GetReleaseChannelPolicyDefaultEnvSecretPtrInput `pulumi:"secret"`
-	Value  pulumi.StringPtrInput                           `pulumi:"value"`
+	KubernetesSecret GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput `pulumi:"kubernetesSecret"`
+	Secret           GetReleaseChannelPolicyDefaultEnvSecretPtrInput           `pulumi:"secret"`
+	Value            pulumi.StringPtrInput                                     `pulumi:"value"`
 }
 
 func (GetReleaseChannelPolicyDefaultEnvArgs) ElementType() reflect.Type {
@@ -5972,6 +6130,12 @@ func (o GetReleaseChannelPolicyDefaultEnvOutput) ToGetReleaseChannelPolicyDefaul
 	return o
 }
 
+func (o GetReleaseChannelPolicyDefaultEnvOutput) KubernetesSecret() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnv) *GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+		return v.KubernetesSecret
+	}).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
+}
+
 func (o GetReleaseChannelPolicyDefaultEnvOutput) Secret() GetReleaseChannelPolicyDefaultEnvSecretPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnv) *GetReleaseChannelPolicyDefaultEnvSecret { return v.Secret }).(GetReleaseChannelPolicyDefaultEnvSecretPtrOutput)
 }
@@ -5998,6 +6162,154 @@ func (o GetReleaseChannelPolicyDefaultEnvMapOutput) MapIndex(k pulumi.StringInpu
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetReleaseChannelPolicyDefaultEnv {
 		return vs[0].(map[string]GetReleaseChannelPolicyDefaultEnv)[vs[1].(string)]
 	}).(GetReleaseChannelPolicyDefaultEnvOutput)
+}
+
+type GetReleaseChannelPolicyDefaultEnvKubernetesSecret struct {
+	Key        *string `pulumi:"key"`
+	SecretName *string `pulumi:"secretName"`
+}
+
+// GetReleaseChannelPolicyDefaultEnvKubernetesSecretInput is an input type that accepts GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs and GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput values.
+// You can construct a concrete instance of `GetReleaseChannelPolicyDefaultEnvKubernetesSecretInput` via:
+//
+//	GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{...}
+type GetReleaseChannelPolicyDefaultEnvKubernetesSecretInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput
+	ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput
+}
+
+type GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs struct {
+	Key        pulumi.StringPtrInput `pulumi:"key"`
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+}
+
+func (GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (i GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return i.ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(ctx context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput)
+}
+
+func (i GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return i.ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput).ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx)
+}
+
+// GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput is an input type that accepts GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs, GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtr and GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput values.
+// You can construct a concrete instance of `GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput` via:
+//
+//	        GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput
+	ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput
+}
+
+type getReleaseChannelPolicyDefaultEnvKubernetesSecretPtrType GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs
+
+func GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtr(v *GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs) GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput {
+	return (*getReleaseChannelPolicyDefaultEnvKubernetesSecretPtrType)(v)
+}
+
+func (*getReleaseChannelPolicyDefaultEnvKubernetesSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (i *getReleaseChannelPolicyDefaultEnvKubernetesSecretPtrType) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return i.ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *getReleaseChannelPolicyDefaultEnvKubernetesSecretPtrType) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
+}
+
+type GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return o
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretOutputWithContext(ctx context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return o
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o.ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+		return &v
+	}).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetReleaseChannelPolicyDefaultEnvKubernetesSecret)(nil)).Elem()
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) ToGetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutputWithContext(ctx context.Context) GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
+	return o
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Elem() GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput {
+	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvKubernetesSecret) GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+		if v != nil {
+			return *v
+		}
+		var ret GetReleaseChannelPolicyDefaultEnvKubernetesSecret
+		return ret
+	}).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput)
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretName
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetReleaseChannelPolicyDefaultEnvSecret struct {
@@ -7297,7 +7609,7 @@ type GetReleaseChannelRuntime struct {
 	Name string `pulumi:"name"`
 	// name of the a runtime
 	Runtime *string `pulumi:"runtime"`
-	// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+	// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
 	Type string `pulumi:"type"`
 }
 
@@ -7321,7 +7633,7 @@ type GetReleaseChannelRuntimeArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// name of the a runtime
 	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
-	// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+	// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -7396,7 +7708,7 @@ func (o GetReleaseChannelRuntimeOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelRuntime) *string { return v.Runtime }).(pulumi.StringPtrOutput)
 }
 
-// type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+// type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
 func (o GetReleaseChannelRuntimeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelRuntime) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8500,6 +8812,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyPtrInput)(nil)).Elem(), ReleaseChannelPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvMapInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvKubernetesSecretInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvSecretInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelPolicyDefaultEnvSecretPtrInput)(nil)).Elem(), ReleaseChannelPolicyDefaultEnvSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelProtectionInput)(nil)).Elem(), ReleaseChannelProtectionArgs{})
@@ -8561,6 +8875,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyPtrInput)(nil)).Elem(), GetReleaseChannelPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvMapInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvKubernetesSecretInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvSecretInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelPolicyDefaultEnvSecretPtrInput)(nil)).Elem(), GetReleaseChannelPolicyDefaultEnvSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelProtectionInput)(nil)).Elem(), GetReleaseChannelProtectionArgs{})
@@ -8626,6 +8942,8 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseChannelPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvMapOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvSecretOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPolicyDefaultEnvSecretPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelProtectionOutput{})
@@ -8687,6 +9005,8 @@ func init() {
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvMapOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvSecretOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelPolicyDefaultEnvSecretPtrOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelProtectionOutput{})

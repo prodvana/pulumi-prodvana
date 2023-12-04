@@ -57,6 +57,8 @@ type LookupReleaseChannelArgs struct {
 	Constants []GetReleaseChannelConstant `pulumi:"constants"`
 	// Feature Coming Soon
 	ConvergenceProtections []GetReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Disable all protections for this release channel
+	DisableAllProtections *bool `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions []GetReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
@@ -79,6 +81,8 @@ type LookupReleaseChannelResult struct {
 	Constants []GetReleaseChannelConstant `pulumi:"constants"`
 	// Feature Coming Soon
 	ConvergenceProtections []GetReleaseChannelConvergenceProtection `pulumi:"convergenceProtections"`
+	// Disable all protections for this release channel
+	DisableAllProtections *bool `pulumi:"disableAllProtections"`
 	// Release channel identifier
 	Id string `pulumi:"id"`
 	// Preconditions requiring manual approval before this release channel can be deployed
@@ -120,6 +124,8 @@ type LookupReleaseChannelOutputArgs struct {
 	Constants GetReleaseChannelConstantArrayInput `pulumi:"constants"`
 	// Feature Coming Soon
 	ConvergenceProtections GetReleaseChannelConvergenceProtectionArrayInput `pulumi:"convergenceProtections"`
+	// Disable all protections for this release channel
+	DisableAllProtections pulumi.BoolPtrInput `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions GetReleaseChannelManualApprovalPreconditionArrayInput `pulumi:"manualApprovalPreconditions"`
 	// Release Channel name
@@ -168,6 +174,11 @@ func (o LookupReleaseChannelResultOutput) ConvergenceProtections() GetReleaseCha
 	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelConvergenceProtection {
 		return v.ConvergenceProtections
 	}).(GetReleaseChannelConvergenceProtectionArrayOutput)
+}
+
+// Disable all protections for this release channel
+func (o LookupReleaseChannelResultOutput) DisableAllProtections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) *bool { return v.DisableAllProtections }).(pulumi.BoolPtrOutput)
 }
 
 // Release channel identifier

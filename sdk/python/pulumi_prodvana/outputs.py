@@ -26,6 +26,7 @@ __all__ = [
     'ReleaseChannelManualApprovalPrecondition',
     'ReleaseChannelPolicy',
     'ReleaseChannelPolicyDefaultEnv',
+    'ReleaseChannelPolicyDefaultEnvKubernetesSecret',
     'ReleaseChannelPolicyDefaultEnvSecret',
     'ReleaseChannelProtection',
     'ReleaseChannelProtectionDeployment',
@@ -58,6 +59,7 @@ __all__ = [
     'GetReleaseChannelManualApprovalPreconditionResult',
     'GetReleaseChannelPolicyResult',
     'GetReleaseChannelPolicyDefaultEnvResult',
+    'GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult',
     'GetReleaseChannelPolicyDefaultEnvSecretResult',
     'GetReleaseChannelProtectionResult',
     'GetReleaseChannelProtectionDeploymentResult',
@@ -657,13 +659,38 @@ class ReleaseChannelPolicy(dict):
 
 @pulumi.output_type
 class ReleaseChannelPolicyDefaultEnv(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kubernetesSecret":
+            suggest = "kubernetes_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelPolicyDefaultEnv. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelPolicyDefaultEnv.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelPolicyDefaultEnv.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 kubernetes_secret: Optional['outputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret'] = None,
                  secret: Optional['outputs.ReleaseChannelPolicyDefaultEnvSecret'] = None,
                  value: Optional[str] = None):
+        if kubernetes_secret is not None:
+            pulumi.set(__self__, "kubernetes_secret", kubernetes_secret)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="kubernetesSecret")
+    def kubernetes_secret(self) -> Optional['outputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret']:
+        return pulumi.get(self, "kubernetes_secret")
 
     @property
     @pulumi.getter
@@ -674,6 +701,44 @@ class ReleaseChannelPolicyDefaultEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ReleaseChannelPolicyDefaultEnvKubernetesSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretName":
+            suggest = "secret_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseChannelPolicyDefaultEnvKubernetesSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseChannelPolicyDefaultEnvKubernetesSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseChannelPolicyDefaultEnvKubernetesSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 secret_name: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[str]:
+        return pulumi.get(self, "secret_name")
 
 
 @pulumi.output_type
@@ -1080,7 +1145,7 @@ class ReleaseChannelRuntime(dict):
         :param str k8s_namespace: Optionally set a custom namespace. If not set, Prodvana will create and manage the namespace. If set, the namespace *must* already exist and Prodvana will not try to create or delete it. Can only be set on a Kubernetes Runtime.
         :param str name: optional identifier for this runtime connection within this release channel
         :param str runtime: name of the a runtime
-        :param str type: type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+        :param str type: type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
         """
         if ecs_prefix is not None:
             pulumi.set(__self__, "ecs_prefix", ecs_prefix)
@@ -1129,7 +1194,7 @@ class ReleaseChannelRuntime(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+        type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
         """
         return pulumi.get(self, "type")
 
@@ -1807,12 +1872,20 @@ class GetReleaseChannelPolicyResult(dict):
 @pulumi.output_type
 class GetReleaseChannelPolicyDefaultEnvResult(dict):
     def __init__(__self__, *,
+                 kubernetes_secret: Optional['outputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult'] = None,
                  secret: Optional['outputs.GetReleaseChannelPolicyDefaultEnvSecretResult'] = None,
                  value: Optional[str] = None):
+        if kubernetes_secret is not None:
+            pulumi.set(__self__, "kubernetes_secret", kubernetes_secret)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if value is not None:
             pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="kubernetesSecret")
+    def kubernetes_secret(self) -> Optional['outputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult']:
+        return pulumi.get(self, "kubernetes_secret")
 
     @property
     @pulumi.getter
@@ -1823,6 +1896,27 @@ class GetReleaseChannelPolicyDefaultEnvResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 secret_name: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[str]:
+        return pulumi.get(self, "secret_name")
 
 
 @pulumi.output_type
@@ -2124,7 +2218,7 @@ class GetReleaseChannelRuntimeResult(dict):
         :param str ecs_prefix: ECS prefix
         :param str k8s_namespace: Kubernetes namespace
         :param str name: optional identifier for this runtime connection within this release channel
-        :param str type: type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+        :param str type: type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
         :param str runtime: name of the a runtime
         """
         pulumi.set(__self__, "ecs_prefix", ecs_prefix)
@@ -2162,7 +2256,7 @@ class GetReleaseChannelRuntimeResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        type of the runtime connection, one of (EXTENSION, LONG*LIVED*COMPUTE, UNKNOWN_CONNECTION)
+        type of the runtime connection, one of (AWS*ECS, EXTENSION, GOOGLE*CLOUD*RUN, LONG*LIVED*COMPUTE, UNKNOWN*CONNECTION)
         """
         return pulumi.get(self, "type")
 
