@@ -18,7 +18,6 @@ import (
 	// needed for embed
 	_ "embed"
 	"fmt"
-	"os"
 	"path/filepath"
 
 	"github.com/prodvana/pulumi-prodvana/provider/pkg/version"
@@ -39,31 +38,8 @@ const (
 	mainMod = "index" // the prodvana module
 )
 
-// stringValue gets a string value from a property map, then from environment vars; if neither are present, returns empty string ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	for _, env := range envs {
-		val, ok := os.LookupEnv(env)
-		if ok {
-			return val
-		}
-	}
-	return ""
-}
-
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
-func preConfigureCallback(vars resource.PropertyMap, _ shim.ResourceConfig) error {
-	apiToken := stringValue(vars, "api_token", []string{"PVN_API_TOKEN"})
-	orgSlug := stringValue(vars, "org_slug", []string{"PVN_ORG_SLUG"})
-	if apiToken == "" {
-		return fmt.Errorf("api_token (or PVN_API_TOKEN) must be set")
-	}
-	if orgSlug == "" {
-		return fmt.Errorf("org_slug (or PVN_ORG_SLUG) must be set")
-	}
+func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
 	return nil
 }
 
