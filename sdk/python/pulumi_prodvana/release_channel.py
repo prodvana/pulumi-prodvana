@@ -26,7 +26,8 @@ class ReleaseChannelArgs:
                  policy: Optional[pulumi.Input['ReleaseChannelPolicyArgs']] = None,
                  protections: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelProtectionArgs']]]] = None,
                  release_channel_stable_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelReleaseChannelStablePreconditionArgs']]]] = None,
-                 service_instance_protections: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelServiceInstanceProtectionArgs']]]] = None):
+                 service_instance_protections: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelServiceInstanceProtectionArgs']]]] = None,
+                 shared_manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]]] = None):
         """
         The set of arguments for constructing a ReleaseChannel resource.
         :param pulumi.Input[str] application: Name of the Application this Release Channel belongs to
@@ -35,11 +36,12 @@ class ReleaseChannelArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]] convergence_protections: Feature Coming Soon
         :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelManualApprovalPreconditionArgs']]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
-        :param pulumi.Input[str] name: Release Channel name
+        :param pulumi.Input[str] name: name of the constant
         :param pulumi.Input['ReleaseChannelPolicyArgs'] policy: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelProtectionArgs']]] protections: Protections applied this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelReleaseChannelStablePreconditionArgs']]] release_channel_stable_preconditions: Preconditions requiring other release channels to be stable before this release channel can be deployed
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelServiceInstanceProtectionArgs']]] service_instance_protections: Protections applied to service instances in this release channel
+        :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]] shared_manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
         """
         pulumi.set(__self__, "application", application)
         pulumi.set(__self__, "runtimes", runtimes)
@@ -61,6 +63,8 @@ class ReleaseChannelArgs:
             pulumi.set(__self__, "release_channel_stable_preconditions", release_channel_stable_preconditions)
         if service_instance_protections is not None:
             pulumi.set(__self__, "service_instance_protections", service_instance_protections)
+        if shared_manual_approval_preconditions is not None:
+            pulumi.set(__self__, "shared_manual_approval_preconditions", shared_manual_approval_preconditions)
 
     @property
     @pulumi.getter
@@ -138,7 +142,7 @@ class ReleaseChannelArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Release Channel name
+        name of the constant
         """
         return pulumi.get(self, "name")
 
@@ -194,6 +198,18 @@ class ReleaseChannelArgs:
     def service_instance_protections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelServiceInstanceProtectionArgs']]]]):
         pulumi.set(self, "service_instance_protections", value)
 
+    @property
+    @pulumi.getter(name="sharedManualApprovalPreconditions")
+    def shared_manual_approval_preconditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]:
+        """
+        Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        """
+        return pulumi.get(self, "shared_manual_approval_preconditions")
+
+    @shared_manual_approval_preconditions.setter
+    def shared_manual_approval_preconditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]):
+        pulumi.set(self, "shared_manual_approval_preconditions", value)
+
 
 @pulumi.input_type
 class _ReleaseChannelState:
@@ -209,6 +225,7 @@ class _ReleaseChannelState:
                  release_channel_stable_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelReleaseChannelStablePreconditionArgs']]]] = None,
                  runtimes: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelRuntimeArgs']]]] = None,
                  service_instance_protections: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelServiceInstanceProtectionArgs']]]] = None,
+                 shared_manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReleaseChannel resources.
@@ -217,13 +234,14 @@ class _ReleaseChannelState:
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelConvergenceProtectionArgs']]] convergence_protections: Feature Coming Soon
         :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelManualApprovalPreconditionArgs']]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
-        :param pulumi.Input[str] name: Release Channel name
+        :param pulumi.Input[str] name: name of the constant
         :param pulumi.Input['ReleaseChannelPolicyArgs'] policy: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelProtectionArgs']]] protections: Protections applied this release channel
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelReleaseChannelStablePreconditionArgs']]] release_channel_stable_preconditions: Preconditions requiring other release channels to be stable before this release channel can be deployed
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelRuntimeArgs']]] runtimes: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelServiceInstanceProtectionArgs']]] service_instance_protections: Protections applied to service instances in this release channel
-        :param pulumi.Input[str] version: Current application version
+        :param pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]] shared_manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        :param pulumi.Input[str] version: Version of the secret
         """
         if application is not None:
             pulumi.set(__self__, "application", application)
@@ -247,6 +265,8 @@ class _ReleaseChannelState:
             pulumi.set(__self__, "runtimes", runtimes)
         if service_instance_protections is not None:
             pulumi.set(__self__, "service_instance_protections", service_instance_protections)
+        if shared_manual_approval_preconditions is not None:
+            pulumi.set(__self__, "shared_manual_approval_preconditions", shared_manual_approval_preconditions)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -314,7 +334,7 @@ class _ReleaseChannelState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Release Channel name
+        name of the constant
         """
         return pulumi.get(self, "name")
 
@@ -383,10 +403,22 @@ class _ReleaseChannelState:
         pulumi.set(self, "service_instance_protections", value)
 
     @property
+    @pulumi.getter(name="sharedManualApprovalPreconditions")
+    def shared_manual_approval_preconditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]:
+        """
+        Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        """
+        return pulumi.get(self, "shared_manual_approval_preconditions")
+
+    @shared_manual_approval_preconditions.setter
+    def shared_manual_approval_preconditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]):
+        pulumi.set(self, "shared_manual_approval_preconditions", value)
+
+    @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Current application version
+        Version of the secret
         """
         return pulumi.get(self, "version")
 
@@ -411,6 +443,7 @@ class ReleaseChannel(pulumi.CustomResource):
                  release_channel_stable_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelReleaseChannelStablePreconditionArgs']]]]] = None,
                  runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelRuntimeArgs']]]]] = None,
                  service_instance_protections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelServiceInstanceProtectionArgs']]]]] = None,
+                 shared_manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage a Prodvana [Release Channel](https://docs.prodvana.io/docs/prodvana-concepts#release-channel).
@@ -428,12 +461,13 @@ class ReleaseChannel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]] convergence_protections: Feature Coming Soon
         :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
-        :param pulumi.Input[str] name: Release Channel name
+        :param pulumi.Input[str] name: name of the constant
         :param pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']] policy: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelProtectionArgs']]]] protections: Protections applied this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelReleaseChannelStablePreconditionArgs']]]] release_channel_stable_preconditions: Preconditions requiring other release channels to be stable before this release channel can be deployed
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelRuntimeArgs']]]] runtimes: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelServiceInstanceProtectionArgs']]]] service_instance_protections: Protections applied to service instances in this release channel
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelSharedManualApprovalPreconditionArgs']]]] shared_manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
         """
         ...
     @overload
@@ -476,6 +510,7 @@ class ReleaseChannel(pulumi.CustomResource):
                  release_channel_stable_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelReleaseChannelStablePreconditionArgs']]]]] = None,
                  runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelRuntimeArgs']]]]] = None,
                  service_instance_protections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelServiceInstanceProtectionArgs']]]]] = None,
+                 shared_manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,6 +535,7 @@ class ReleaseChannel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'runtimes'")
             __props__.__dict__["runtimes"] = runtimes
             __props__.__dict__["service_instance_protections"] = service_instance_protections
+            __props__.__dict__["shared_manual_approval_preconditions"] = shared_manual_approval_preconditions
             __props__.__dict__["version"] = None
         super(ReleaseChannel, __self__).__init__(
             'prodvana:index/releaseChannel:ReleaseChannel',
@@ -522,6 +558,7 @@ class ReleaseChannel(pulumi.CustomResource):
             release_channel_stable_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelReleaseChannelStablePreconditionArgs']]]]] = None,
             runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelRuntimeArgs']]]]] = None,
             service_instance_protections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelServiceInstanceProtectionArgs']]]]] = None,
+            shared_manual_approval_preconditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelSharedManualApprovalPreconditionArgs']]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'ReleaseChannel':
         """
         Get an existing ReleaseChannel resource's state with the given name, id, and optional extra
@@ -535,13 +572,14 @@ class ReleaseChannel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelConvergenceProtectionArgs']]]] convergence_protections: Feature Coming Soon
         :param pulumi.Input[bool] disable_all_protections: Disable all protections for this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelManualApprovalPreconditionArgs']]]] manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed
-        :param pulumi.Input[str] name: Release Channel name
+        :param pulumi.Input[str] name: name of the constant
         :param pulumi.Input[pulumi.InputType['ReleaseChannelPolicyArgs']] policy: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelProtectionArgs']]]] protections: Protections applied this release channel
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelReleaseChannelStablePreconditionArgs']]]] release_channel_stable_preconditions: Preconditions requiring other release channels to be stable before this release channel can be deployed
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelRuntimeArgs']]]] runtimes: Release Channel policy applied to all services
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelServiceInstanceProtectionArgs']]]] service_instance_protections: Protections applied to service instances in this release channel
-        :param pulumi.Input[str] version: Current application version
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReleaseChannelSharedManualApprovalPreconditionArgs']]]] shared_manual_approval_preconditions: Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        :param pulumi.Input[str] version: Version of the secret
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,6 +596,7 @@ class ReleaseChannel(pulumi.CustomResource):
         __props__.__dict__["release_channel_stable_preconditions"] = release_channel_stable_preconditions
         __props__.__dict__["runtimes"] = runtimes
         __props__.__dict__["service_instance_protections"] = service_instance_protections
+        __props__.__dict__["shared_manual_approval_preconditions"] = shared_manual_approval_preconditions
         __props__.__dict__["version"] = version
         return ReleaseChannel(resource_name, opts=opts, __props__=__props__)
 
@@ -605,7 +644,7 @@ class ReleaseChannel(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Release Channel name
+        name of the constant
         """
         return pulumi.get(self, "name")
 
@@ -650,10 +689,18 @@ class ReleaseChannel(pulumi.CustomResource):
         return pulumi.get(self, "service_instance_protections")
 
     @property
+    @pulumi.getter(name="sharedManualApprovalPreconditions")
+    def shared_manual_approval_preconditions(self) -> pulumi.Output[Optional[Sequence['outputs.ReleaseChannelSharedManualApprovalPrecondition']]]:
+        """
+        Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        """
+        return pulumi.get(self, "shared_manual_approval_preconditions")
+
+    @property
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Current application version
+        Version of the secret
         """
         return pulumi.get(self, "version")
 

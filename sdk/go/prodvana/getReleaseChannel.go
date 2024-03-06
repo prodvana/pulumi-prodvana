@@ -61,7 +61,7 @@ type LookupReleaseChannelArgs struct {
 	DisableAllProtections *bool `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions []GetReleaseChannelManualApprovalPrecondition `pulumi:"manualApprovalPreconditions"`
-	// Release Channel name
+	// name of the constant
 	Name string `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy *GetReleaseChannelPolicy `pulumi:"policy"`
@@ -71,6 +71,8 @@ type LookupReleaseChannelArgs struct {
 	ReleaseChannelStablePreconditions []GetReleaseChannelReleaseChannelStablePrecondition `pulumi:"releaseChannelStablePreconditions"`
 	// Protections applied to service instances in this release channel
 	ServiceInstanceProtections []GetReleaseChannelServiceInstanceProtection `pulumi:"serviceInstanceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+	SharedManualApprovalPreconditions []GetReleaseChannelSharedManualApprovalPrecondition `pulumi:"sharedManualApprovalPreconditions"`
 }
 
 // A collection of values returned by getReleaseChannel.
@@ -99,6 +101,8 @@ type LookupReleaseChannelResult struct {
 	Runtimes []GetReleaseChannelRuntime `pulumi:"runtimes"`
 	// Protections applied to service instances in this release channel
 	ServiceInstanceProtections []GetReleaseChannelServiceInstanceProtection `pulumi:"serviceInstanceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+	SharedManualApprovalPreconditions []GetReleaseChannelSharedManualApprovalPrecondition `pulumi:"sharedManualApprovalPreconditions"`
 	// Current application version
 	Version string `pulumi:"version"`
 }
@@ -128,7 +132,7 @@ type LookupReleaseChannelOutputArgs struct {
 	DisableAllProtections pulumi.BoolPtrInput `pulumi:"disableAllProtections"`
 	// Preconditions requiring manual approval before this release channel can be deployed
 	ManualApprovalPreconditions GetReleaseChannelManualApprovalPreconditionArrayInput `pulumi:"manualApprovalPreconditions"`
-	// Release Channel name
+	// name of the constant
 	Name pulumi.StringInput `pulumi:"name"`
 	// Release Channel policy applied to all services
 	Policy GetReleaseChannelPolicyPtrInput `pulumi:"policy"`
@@ -138,6 +142,8 @@ type LookupReleaseChannelOutputArgs struct {
 	ReleaseChannelStablePreconditions GetReleaseChannelReleaseChannelStablePreconditionArrayInput `pulumi:"releaseChannelStablePreconditions"`
 	// Protections applied to service instances in this release channel
 	ServiceInstanceProtections GetReleaseChannelServiceInstanceProtectionArrayInput `pulumi:"serviceInstanceProtections"`
+	// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+	SharedManualApprovalPreconditions GetReleaseChannelSharedManualApprovalPreconditionArrayInput `pulumi:"sharedManualApprovalPreconditions"`
 }
 
 func (LookupReleaseChannelOutputArgs) ElementType() reflect.Type {
@@ -225,6 +231,13 @@ func (o LookupReleaseChannelResultOutput) ServiceInstanceProtections() GetReleas
 	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelServiceInstanceProtection {
 		return v.ServiceInstanceProtections
 	}).(GetReleaseChannelServiceInstanceProtectionArrayOutput)
+}
+
+// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+func (o LookupReleaseChannelResultOutput) SharedManualApprovalPreconditions() GetReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return o.ApplyT(func(v LookupReleaseChannelResult) []GetReleaseChannelSharedManualApprovalPrecondition {
+		return v.SharedManualApprovalPreconditions
+	}).(GetReleaseChannelSharedManualApprovalPreconditionArrayOutput)
 }
 
 // Current application version

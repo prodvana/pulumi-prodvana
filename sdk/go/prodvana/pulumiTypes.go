@@ -676,6 +676,7 @@ func (o ReleaseChannelConvergenceProtectionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ReleaseChannelConvergenceProtectionDeployment struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -691,6 +692,7 @@ type ReleaseChannelConvergenceProtectionDeploymentInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionDeploymentArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -771,6 +773,7 @@ func (o ReleaseChannelConvergenceProtectionDeploymentOutput) ToReleaseChannelCon
 	}).(ReleaseChannelConvergenceProtectionDeploymentPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -799,6 +802,7 @@ func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) Elem() ReleaseCh
 	}).(ReleaseChannelConvergenceProtectionDeploymentOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionDeployment) *bool {
 		if v == nil {
@@ -809,6 +813,7 @@ func (o ReleaseChannelConvergenceProtectionDeploymentPtrOutput) Enabled() pulumi
 }
 
 type ReleaseChannelConvergenceProtectionPostApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -824,6 +829,7 @@ type ReleaseChannelConvergenceProtectionPostApprovalInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionPostApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -904,6 +910,7 @@ func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) ToReleaseChannelC
 	}).(ReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionPostApprovalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -932,6 +939,7 @@ func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Elem() Release
 	}).(ReleaseChannelConvergenceProtectionPostApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostApproval) *bool {
 		if v == nil {
@@ -942,9 +950,12 @@ func (o ReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Enabled() pulu
 }
 
 type ReleaseChannelConvergenceProtectionPostDeployment struct {
-	CheckDuration      *string `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration *string `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
-	Enabled            *bool   `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // ReleaseChannelConvergenceProtectionPostDeploymentInput is an input type that accepts ReleaseChannelConvergenceProtectionPostDeploymentArgs and ReleaseChannelConvergenceProtectionPostDeploymentOutput values.
@@ -959,9 +970,12 @@ type ReleaseChannelConvergenceProtectionPostDeploymentInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionPostDeploymentArgs struct {
-	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
-	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (ReleaseChannelConvergenceProtectionPostDeploymentArgs) ElementType() reflect.Type {
@@ -1041,14 +1055,17 @@ func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) ToReleaseChanne
 	}).(ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionPostDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPostDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1077,6 +1094,7 @@ func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Elem() Relea
 	}).(ReleaseChannelConvergenceProtectionPostDeploymentOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) *string {
 		if v == nil {
@@ -1086,6 +1104,7 @@ func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) CheckDuratio
 	}).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) *string {
 		if v == nil {
@@ -1095,6 +1114,7 @@ func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) DelayCheckDu
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPostDeployment) *bool {
 		if v == nil {
@@ -1105,6 +1125,7 @@ func (o ReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Enabled() pu
 }
 
 type ReleaseChannelConvergenceProtectionPreApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1120,6 +1141,7 @@ type ReleaseChannelConvergenceProtectionPreApprovalInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionPreApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1200,6 +1222,7 @@ func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) ToReleaseChannelCo
 	}).(ReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionPreApprovalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionPreApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1228,6 +1251,7 @@ func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Elem() ReleaseC
 	}).(ReleaseChannelConvergenceProtectionPreApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionPreApproval) *bool {
 		if v == nil {
@@ -1238,8 +1262,9 @@ func (o ReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Enabled() pulum
 }
 
 type ReleaseChannelConvergenceProtectionRef struct {
-	// Release Channel name
-	Name       string                                            `pulumi:"name"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters []ReleaseChannelConvergenceProtectionRefParameter `pulumi:"parameters"`
 }
 
@@ -1255,8 +1280,9 @@ type ReleaseChannelConvergenceProtectionRefInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionRefArgs struct {
-	// Release Channel name
-	Name       pulumi.StringInput                                        `pulumi:"name"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters ReleaseChannelConvergenceProtectionRefParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -1286,11 +1312,12 @@ func (o ReleaseChannelConvergenceProtectionRefOutput) ToReleaseChannelConvergenc
 	return o
 }
 
-// Release Channel name
+// name of the constant
 func (o ReleaseChannelConvergenceProtectionRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameters to pass to the protection
 func (o ReleaseChannelConvergenceProtectionRefOutput) Parameters() ReleaseChannelConvergenceProtectionRefParameterArrayOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRef) []ReleaseChannelConvergenceProtectionRefParameter {
 		return v.Parameters
@@ -1298,12 +1325,16 @@ func (o ReleaseChannelConvergenceProtectionRefOutput) Parameters() ReleaseChanne
 }
 
 type ReleaseChannelConvergenceProtectionRefParameter struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
-	IntValue            *int    `pulumi:"intValue"`
-	// Release Channel name
-	Name        string                                                      `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue *int `pulumi:"intValue"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue *ReleaseChannelConvergenceProtectionRefParameterSecretValue `pulumi:"secretValue"`
-	StringValue *string                                                     `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue *string `pulumi:"stringValue"`
 }
 
 // ReleaseChannelConvergenceProtectionRefParameterInput is an input type that accepts ReleaseChannelConvergenceProtectionRefParameterArgs and ReleaseChannelConvergenceProtectionRefParameterOutput values.
@@ -1318,12 +1349,16 @@ type ReleaseChannelConvergenceProtectionRefParameterInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionRefParameterArgs struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
-	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
-	// Release Channel name
-	Name        pulumi.StringInput                                                 `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue pulumi.IntPtrInput `pulumi:"intValue"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
-	StringValue pulumi.StringPtrInput                                              `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
 
 func (ReleaseChannelConvergenceProtectionRefParameterArgs) ElementType() reflect.Type {
@@ -1377,25 +1412,29 @@ func (o ReleaseChannelConvergenceProtectionRefParameterOutput) ToReleaseChannelC
 	return o
 }
 
+// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelConvergenceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
 }
 
+// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelConvergenceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
 }
 
-// Release Channel name
+// name of the constant
 func (o ReleaseChannelConvergenceProtectionRefParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelConvergenceProtectionRefParameterOutput) SecretValue() ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *ReleaseChannelConvergenceProtectionRefParameterSecretValue {
 		return v.SecretValue
 	}).(ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// string value of the constant
 func (o ReleaseChannelConvergenceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
 }
@@ -1421,8 +1460,9 @@ func (o ReleaseChannelConvergenceProtectionRefParameterArrayOutput) Index(i pulu
 }
 
 type ReleaseChannelConvergenceProtectionRefParameterSecretValue struct {
+	// Name of the secret.
 	Key string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version string `pulumi:"version"`
 }
 
@@ -1438,8 +1478,9 @@ type ReleaseChannelConvergenceProtectionRefParameterSecretValueInput interface {
 }
 
 type ReleaseChannelConvergenceProtectionRefParameterSecretValueArgs struct {
+	// Name of the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -1520,11 +1561,12 @@ func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToRele
 	}).(ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -1553,6 +1595,7 @@ func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Ele
 	}).(ReleaseChannelConvergenceProtectionRefParameterSecretValueOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -1562,7 +1605,7 @@ func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Key
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -1822,9 +1865,12 @@ func (o ReleaseChannelPolicyPtrOutput) DefaultEnv() ReleaseChannelPolicyDefaultE
 }
 
 type ReleaseChannelPolicyDefaultEnv struct {
+	// Reference to a secret value stored in Kubernetes.
 	KubernetesSecret *ReleaseChannelPolicyDefaultEnvKubernetesSecret `pulumi:"kubernetesSecret"`
-	Secret           *ReleaseChannelPolicyDefaultEnvSecret           `pulumi:"secret"`
-	Value            *string                                         `pulumi:"value"`
+	// Reference to a secret value stored in Prodvana.
+	Secret *ReleaseChannelPolicyDefaultEnvSecret `pulumi:"secret"`
+	// Non-sensitive environment variable value
+	Value *string `pulumi:"value"`
 }
 
 // ReleaseChannelPolicyDefaultEnvInput is an input type that accepts ReleaseChannelPolicyDefaultEnvArgs and ReleaseChannelPolicyDefaultEnvOutput values.
@@ -1839,9 +1885,12 @@ type ReleaseChannelPolicyDefaultEnvInput interface {
 }
 
 type ReleaseChannelPolicyDefaultEnvArgs struct {
+	// Reference to a secret value stored in Kubernetes.
 	KubernetesSecret ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput `pulumi:"kubernetesSecret"`
-	Secret           ReleaseChannelPolicyDefaultEnvSecretPtrInput           `pulumi:"secret"`
-	Value            pulumi.StringPtrInput                                  `pulumi:"value"`
+	// Reference to a secret value stored in Prodvana.
+	Secret ReleaseChannelPolicyDefaultEnvSecretPtrInput `pulumi:"secret"`
+	// Non-sensitive environment variable value
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ReleaseChannelPolicyDefaultEnvArgs) ElementType() reflect.Type {
@@ -1895,16 +1944,19 @@ func (o ReleaseChannelPolicyDefaultEnvOutput) ToReleaseChannelPolicyDefaultEnvOu
 	return o
 }
 
+// Reference to a secret value stored in Kubernetes.
 func (o ReleaseChannelPolicyDefaultEnvOutput) KubernetesSecret() ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnv) *ReleaseChannelPolicyDefaultEnvKubernetesSecret {
 		return v.KubernetesSecret
 	}).(ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
 }
 
+// Reference to a secret value stored in Prodvana.
 func (o ReleaseChannelPolicyDefaultEnvOutput) Secret() ReleaseChannelPolicyDefaultEnvSecretPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnv) *ReleaseChannelPolicyDefaultEnvSecret { return v.Secret }).(ReleaseChannelPolicyDefaultEnvSecretPtrOutput)
 }
 
+// Non-sensitive environment variable value
 func (o ReleaseChannelPolicyDefaultEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1930,7 +1982,9 @@ func (o ReleaseChannelPolicyDefaultEnvMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type ReleaseChannelPolicyDefaultEnvKubernetesSecret struct {
-	Key        *string `pulumi:"key"`
+	// Name of the secret.
+	Key *string `pulumi:"key"`
+	// Name of the secret object
 	SecretName *string `pulumi:"secretName"`
 }
 
@@ -1946,7 +2000,9 @@ type ReleaseChannelPolicyDefaultEnvKubernetesSecretInput interface {
 }
 
 type ReleaseChannelPolicyDefaultEnvKubernetesSecretArgs struct {
-	Key        pulumi.StringPtrInput `pulumi:"key"`
+	// Name of the secret.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Name of the secret object
 	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
 }
 
@@ -2027,10 +2083,12 @@ func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToReleaseChannelPo
 	}).(ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Name of the secret object
 func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.SecretName }).(pulumi.StringPtrOutput)
 }
@@ -2059,6 +2117,7 @@ func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Elem() ReleaseC
 	}).(ReleaseChannelPolicyDefaultEnvKubernetesSecretOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
 		if v == nil {
@@ -2068,6 +2127,7 @@ func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Key() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the secret object
 func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
 		if v == nil {
@@ -2078,8 +2138,9 @@ func (o ReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) SecretName() pu
 }
 
 type ReleaseChannelPolicyDefaultEnvSecret struct {
+	// Name of the secret.
 	Key *string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version *string `pulumi:"version"`
 }
 
@@ -2095,8 +2156,9 @@ type ReleaseChannelPolicyDefaultEnvSecretInput interface {
 }
 
 type ReleaseChannelPolicyDefaultEnvSecretArgs struct {
+	// Name of the secret.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -2177,11 +2239,12 @@ func (o ReleaseChannelPolicyDefaultEnvSecretOutput) ToReleaseChannelPolicyDefaul
 	}).(ReleaseChannelPolicyDefaultEnvSecretPtrOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelPolicyDefaultEnvSecretOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnvSecret) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelPolicyDefaultEnvSecretOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelPolicyDefaultEnvSecret) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2210,6 +2273,7 @@ func (o ReleaseChannelPolicyDefaultEnvSecretPtrOutput) Elem() ReleaseChannelPoli
 	}).(ReleaseChannelPolicyDefaultEnvSecretOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelPolicyDefaultEnvSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvSecret) *string {
 		if v == nil {
@@ -2219,7 +2283,7 @@ func (o ReleaseChannelPolicyDefaultEnvSecretPtrOutput) Key() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelPolicyDefaultEnvSecretPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelPolicyDefaultEnvSecret) *string {
 		if v == nil {
@@ -2372,6 +2436,7 @@ func (o ReleaseChannelProtectionArrayOutput) Index(i pulumi.IntInput) ReleaseCha
 }
 
 type ReleaseChannelProtectionDeployment struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -2387,6 +2452,7 @@ type ReleaseChannelProtectionDeploymentInput interface {
 }
 
 type ReleaseChannelProtectionDeploymentArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -2467,6 +2533,7 @@ func (o ReleaseChannelProtectionDeploymentOutput) ToReleaseChannelProtectionDepl
 	}).(ReleaseChannelProtectionDeploymentPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2495,6 +2562,7 @@ func (o ReleaseChannelProtectionDeploymentPtrOutput) Elem() ReleaseChannelProtec
 	}).(ReleaseChannelProtectionDeploymentOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionDeployment) *bool {
 		if v == nil {
@@ -2505,6 +2573,7 @@ func (o ReleaseChannelProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOut
 }
 
 type ReleaseChannelProtectionPostApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -2520,6 +2589,7 @@ type ReleaseChannelProtectionPostApprovalInput interface {
 }
 
 type ReleaseChannelProtectionPostApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -2600,6 +2670,7 @@ func (o ReleaseChannelProtectionPostApprovalOutput) ToReleaseChannelProtectionPo
 	}).(ReleaseChannelProtectionPostApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionPostApprovalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionPostApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2628,6 +2699,7 @@ func (o ReleaseChannelProtectionPostApprovalPtrOutput) Elem() ReleaseChannelProt
 	}).(ReleaseChannelProtectionPostApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionPostApproval) *bool {
 		if v == nil {
@@ -2638,9 +2710,12 @@ func (o ReleaseChannelProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrO
 }
 
 type ReleaseChannelProtectionPostDeployment struct {
-	CheckDuration      *string `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration *string `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
-	Enabled            *bool   `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // ReleaseChannelProtectionPostDeploymentInput is an input type that accepts ReleaseChannelProtectionPostDeploymentArgs and ReleaseChannelProtectionPostDeploymentOutput values.
@@ -2655,9 +2730,12 @@ type ReleaseChannelProtectionPostDeploymentInput interface {
 }
 
 type ReleaseChannelProtectionPostDeploymentArgs struct {
-	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
-	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (ReleaseChannelProtectionPostDeploymentArgs) ElementType() reflect.Type {
@@ -2737,14 +2815,17 @@ func (o ReleaseChannelProtectionPostDeploymentOutput) ToReleaseChannelProtection
 	}).(ReleaseChannelProtectionPostDeploymentPtrOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionPostDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionPostDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2773,6 +2854,7 @@ func (o ReleaseChannelProtectionPostDeploymentPtrOutput) Elem() ReleaseChannelPr
 	}).(ReleaseChannelProtectionPostDeploymentOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) *string {
 		if v == nil {
@@ -2782,6 +2864,7 @@ func (o ReleaseChannelProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) *string {
 		if v == nil {
@@ -2791,6 +2874,7 @@ func (o ReleaseChannelProtectionPostDeploymentPtrOutput) DelayCheckDuration() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionPostDeployment) *bool {
 		if v == nil {
@@ -2801,6 +2885,7 @@ func (o ReleaseChannelProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPt
 }
 
 type ReleaseChannelProtectionPreApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -2816,6 +2901,7 @@ type ReleaseChannelProtectionPreApprovalInput interface {
 }
 
 type ReleaseChannelProtectionPreApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -2896,6 +2982,7 @@ func (o ReleaseChannelProtectionPreApprovalOutput) ToReleaseChannelProtectionPre
 	}).(ReleaseChannelProtectionPreApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionPreApprovalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionPreApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2924,6 +3011,7 @@ func (o ReleaseChannelProtectionPreApprovalPtrOutput) Elem() ReleaseChannelProte
 	}).(ReleaseChannelProtectionPreApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionPreApproval) *bool {
 		if v == nil {
@@ -2934,8 +3022,9 @@ func (o ReleaseChannelProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOu
 }
 
 type ReleaseChannelProtectionRef struct {
-	// Release Channel name
-	Name       string                                 `pulumi:"name"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters []ReleaseChannelProtectionRefParameter `pulumi:"parameters"`
 }
 
@@ -2951,8 +3040,9 @@ type ReleaseChannelProtectionRefInput interface {
 }
 
 type ReleaseChannelProtectionRefArgs struct {
-	// Release Channel name
-	Name       pulumi.StringInput                             `pulumi:"name"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters ReleaseChannelProtectionRefParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -2982,22 +3072,27 @@ func (o ReleaseChannelProtectionRefOutput) ToReleaseChannelProtectionRefOutputWi
 	return o
 }
 
-// Release Channel name
+// name of the constant
 func (o ReleaseChannelProtectionRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRef) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameters to pass to the protection
 func (o ReleaseChannelProtectionRefOutput) Parameters() ReleaseChannelProtectionRefParameterArrayOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRef) []ReleaseChannelProtectionRefParameter { return v.Parameters }).(ReleaseChannelProtectionRefParameterArrayOutput)
 }
 
 type ReleaseChannelProtectionRefParameter struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
-	IntValue            *int    `pulumi:"intValue"`
-	// Release Channel name
-	Name        string                                           `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue *int `pulumi:"intValue"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue *ReleaseChannelProtectionRefParameterSecretValue `pulumi:"secretValue"`
-	StringValue *string                                          `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue *string `pulumi:"stringValue"`
 }
 
 // ReleaseChannelProtectionRefParameterInput is an input type that accepts ReleaseChannelProtectionRefParameterArgs and ReleaseChannelProtectionRefParameterOutput values.
@@ -3012,12 +3107,16 @@ type ReleaseChannelProtectionRefParameterInput interface {
 }
 
 type ReleaseChannelProtectionRefParameterArgs struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
-	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
-	// Release Channel name
-	Name        pulumi.StringInput                                      `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue pulumi.IntPtrInput `pulumi:"intValue"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue ReleaseChannelProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
-	StringValue pulumi.StringPtrInput                                   `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
 
 func (ReleaseChannelProtectionRefParameterArgs) ElementType() reflect.Type {
@@ -3071,25 +3170,29 @@ func (o ReleaseChannelProtectionRefParameterOutput) ToReleaseChannelProtectionRe
 	return o
 }
 
+// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
 }
 
+// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
 }
 
-// Release Channel name
+// name of the constant
 func (o ReleaseChannelProtectionRefParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelProtectionRefParameterOutput) SecretValue() ReleaseChannelProtectionRefParameterSecretValuePtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *ReleaseChannelProtectionRefParameterSecretValue {
 		return v.SecretValue
 	}).(ReleaseChannelProtectionRefParameterSecretValuePtrOutput)
 }
 
+// string value of the constant
 func (o ReleaseChannelProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
 }
@@ -3115,8 +3218,9 @@ func (o ReleaseChannelProtectionRefParameterArrayOutput) Index(i pulumi.IntInput
 }
 
 type ReleaseChannelProtectionRefParameterSecretValue struct {
+	// Name of the secret.
 	Key string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version string `pulumi:"version"`
 }
 
@@ -3132,8 +3236,9 @@ type ReleaseChannelProtectionRefParameterSecretValueInput interface {
 }
 
 type ReleaseChannelProtectionRefParameterSecretValueArgs struct {
+	// Name of the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -3214,11 +3319,12 @@ func (o ReleaseChannelProtectionRefParameterSecretValueOutput) ToReleaseChannelP
 	}).(ReleaseChannelProtectionRefParameterSecretValuePtrOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3247,6 +3353,7 @@ func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Elem() Release
 	}).(ReleaseChannelProtectionRefParameterSecretValueOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -3256,7 +3363,7 @@ func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Key() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -3649,6 +3756,7 @@ func (o ReleaseChannelServiceInstanceProtectionArrayOutput) Index(i pulumi.IntIn
 }
 
 type ReleaseChannelServiceInstanceProtectionDeployment struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -3664,6 +3772,7 @@ type ReleaseChannelServiceInstanceProtectionDeploymentInput interface {
 }
 
 type ReleaseChannelServiceInstanceProtectionDeploymentArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -3744,6 +3853,7 @@ func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) ToReleaseChanne
 	}).(ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -3772,6 +3882,7 @@ func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Elem() Relea
 	}).(ReleaseChannelServiceInstanceProtectionDeploymentOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionDeployment) *bool {
 		if v == nil {
@@ -3782,6 +3893,7 @@ func (o ReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Enabled() pu
 }
 
 type ReleaseChannelServiceInstanceProtectionPostApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -3797,6 +3909,7 @@ type ReleaseChannelServiceInstanceProtectionPostApprovalInput interface {
 }
 
 type ReleaseChannelServiceInstanceProtectionPostApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -3877,6 +3990,7 @@ func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToReleaseChan
 	}).(ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionPostApprovalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -3905,6 +4019,7 @@ func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Elem() Rel
 	}).(ReleaseChannelServiceInstanceProtectionPostApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostApproval) *bool {
 		if v == nil {
@@ -3915,9 +4030,12 @@ func (o ReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Enabled() 
 }
 
 type ReleaseChannelServiceInstanceProtectionPostDeployment struct {
-	CheckDuration      *string `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration *string `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
-	Enabled            *bool   `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // ReleaseChannelServiceInstanceProtectionPostDeploymentInput is an input type that accepts ReleaseChannelServiceInstanceProtectionPostDeploymentArgs and ReleaseChannelServiceInstanceProtectionPostDeploymentOutput values.
@@ -3932,9 +4050,12 @@ type ReleaseChannelServiceInstanceProtectionPostDeploymentInput interface {
 }
 
 type ReleaseChannelServiceInstanceProtectionPostDeploymentArgs struct {
-	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
-	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (ReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ElementType() reflect.Type {
@@ -4014,14 +4135,17 @@ func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToReleaseCh
 	}).(ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionPostDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPostDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -4050,6 +4174,7 @@ func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Elem() R
 	}).(ReleaseChannelServiceInstanceProtectionPostDeploymentOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) *string {
 		if v == nil {
@@ -4059,6 +4184,7 @@ func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) CheckDur
 	}).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) *string {
 		if v == nil {
@@ -4068,6 +4194,7 @@ func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) DelayChe
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPostDeployment) *bool {
 		if v == nil {
@@ -4078,6 +4205,7 @@ func (o ReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Enabled(
 }
 
 type ReleaseChannelServiceInstanceProtectionPreApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -4093,6 +4221,7 @@ type ReleaseChannelServiceInstanceProtectionPreApprovalInput interface {
 }
 
 type ReleaseChannelServiceInstanceProtectionPreApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -4173,6 +4302,7 @@ func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToReleaseChann
 	}).(ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionPreApprovalOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionPreApproval) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -4201,6 +4331,7 @@ func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Elem() Rele
 	}).(ReleaseChannelServiceInstanceProtectionPreApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionPreApproval) *bool {
 		if v == nil {
@@ -4211,8 +4342,9 @@ func (o ReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Enabled() p
 }
 
 type ReleaseChannelServiceInstanceProtectionRef struct {
-	// Release Channel name
-	Name       string                                                `pulumi:"name"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters []ReleaseChannelServiceInstanceProtectionRefParameter `pulumi:"parameters"`
 }
 
@@ -4228,8 +4360,9 @@ type ReleaseChannelServiceInstanceProtectionRefInput interface {
 }
 
 type ReleaseChannelServiceInstanceProtectionRefArgs struct {
-	// Release Channel name
-	Name       pulumi.StringInput                                            `pulumi:"name"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters ReleaseChannelServiceInstanceProtectionRefParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -4259,11 +4392,12 @@ func (o ReleaseChannelServiceInstanceProtectionRefOutput) ToReleaseChannelServic
 	return o
 }
 
-// Release Channel name
+// name of the constant
 func (o ReleaseChannelServiceInstanceProtectionRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameters to pass to the protection
 func (o ReleaseChannelServiceInstanceProtectionRefOutput) Parameters() ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRef) []ReleaseChannelServiceInstanceProtectionRefParameter {
 		return v.Parameters
@@ -4271,12 +4405,16 @@ func (o ReleaseChannelServiceInstanceProtectionRefOutput) Parameters() ReleaseCh
 }
 
 type ReleaseChannelServiceInstanceProtectionRefParameter struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
-	IntValue            *int    `pulumi:"intValue"`
-	// Release Channel name
-	Name        string                                                          `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue *int `pulumi:"intValue"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue `pulumi:"secretValue"`
-	StringValue *string                                                         `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue *string `pulumi:"stringValue"`
 }
 
 // ReleaseChannelServiceInstanceProtectionRefParameterInput is an input type that accepts ReleaseChannelServiceInstanceProtectionRefParameterArgs and ReleaseChannelServiceInstanceProtectionRefParameterOutput values.
@@ -4291,12 +4429,16 @@ type ReleaseChannelServiceInstanceProtectionRefParameterInput interface {
 }
 
 type ReleaseChannelServiceInstanceProtectionRefParameterArgs struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
-	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
-	// Release Channel name
-	Name        pulumi.StringInput                                                     `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue pulumi.IntPtrInput `pulumi:"intValue"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
-	StringValue pulumi.StringPtrInput                                                  `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
 
 func (ReleaseChannelServiceInstanceProtectionRefParameterArgs) ElementType() reflect.Type {
@@ -4350,25 +4492,29 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) ToReleaseChan
 	return o
 }
 
+// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
 }
 
+// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
 }
 
-// Release Channel name
+// name of the constant
 func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) SecretValue() ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
 		return v.SecretValue
 	}).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// string value of the constant
 func (o ReleaseChannelServiceInstanceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
 }
@@ -4394,8 +4540,9 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) Index(i 
 }
 
 type ReleaseChannelServiceInstanceProtectionRefParameterSecretValue struct {
+	// Name of the secret.
 	Key string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version string `pulumi:"version"`
 }
 
@@ -4411,8 +4558,9 @@ type ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput interfa
 }
 
 type ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs struct {
+	// Name of the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -4493,11 +4641,12 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) To
 	}).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -4526,6 +4675,7 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 	}).(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
 }
 
+// Name of the secret.
 func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -4535,7 +4685,7 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -4543,6 +4693,103 @@ func (o ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 		}
 		return &v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelSharedManualApprovalPrecondition struct {
+	// name of the manual approval
+	Name *string `pulumi:"name"`
+}
+
+// ReleaseChannelSharedManualApprovalPreconditionInput is an input type that accepts ReleaseChannelSharedManualApprovalPreconditionArgs and ReleaseChannelSharedManualApprovalPreconditionOutput values.
+// You can construct a concrete instance of `ReleaseChannelSharedManualApprovalPreconditionInput` via:
+//
+//	ReleaseChannelSharedManualApprovalPreconditionArgs{...}
+type ReleaseChannelSharedManualApprovalPreconditionInput interface {
+	pulumi.Input
+
+	ToReleaseChannelSharedManualApprovalPreconditionOutput() ReleaseChannelSharedManualApprovalPreconditionOutput
+	ToReleaseChannelSharedManualApprovalPreconditionOutputWithContext(context.Context) ReleaseChannelSharedManualApprovalPreconditionOutput
+}
+
+type ReleaseChannelSharedManualApprovalPreconditionArgs struct {
+	// name of the manual approval
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ReleaseChannelSharedManualApprovalPreconditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i ReleaseChannelSharedManualApprovalPreconditionArgs) ToReleaseChannelSharedManualApprovalPreconditionOutput() ReleaseChannelSharedManualApprovalPreconditionOutput {
+	return i.ToReleaseChannelSharedManualApprovalPreconditionOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelSharedManualApprovalPreconditionArgs) ToReleaseChannelSharedManualApprovalPreconditionOutputWithContext(ctx context.Context) ReleaseChannelSharedManualApprovalPreconditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelSharedManualApprovalPreconditionOutput)
+}
+
+// ReleaseChannelSharedManualApprovalPreconditionArrayInput is an input type that accepts ReleaseChannelSharedManualApprovalPreconditionArray and ReleaseChannelSharedManualApprovalPreconditionArrayOutput values.
+// You can construct a concrete instance of `ReleaseChannelSharedManualApprovalPreconditionArrayInput` via:
+//
+//	ReleaseChannelSharedManualApprovalPreconditionArray{ ReleaseChannelSharedManualApprovalPreconditionArgs{...} }
+type ReleaseChannelSharedManualApprovalPreconditionArrayInput interface {
+	pulumi.Input
+
+	ToReleaseChannelSharedManualApprovalPreconditionArrayOutput() ReleaseChannelSharedManualApprovalPreconditionArrayOutput
+	ToReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(context.Context) ReleaseChannelSharedManualApprovalPreconditionArrayOutput
+}
+
+type ReleaseChannelSharedManualApprovalPreconditionArray []ReleaseChannelSharedManualApprovalPreconditionInput
+
+func (ReleaseChannelSharedManualApprovalPreconditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i ReleaseChannelSharedManualApprovalPreconditionArray) ToReleaseChannelSharedManualApprovalPreconditionArrayOutput() ReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return i.ToReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(context.Background())
+}
+
+func (i ReleaseChannelSharedManualApprovalPreconditionArray) ToReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) ReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleaseChannelSharedManualApprovalPreconditionArrayOutput)
+}
+
+type ReleaseChannelSharedManualApprovalPreconditionOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelSharedManualApprovalPreconditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o ReleaseChannelSharedManualApprovalPreconditionOutput) ToReleaseChannelSharedManualApprovalPreconditionOutput() ReleaseChannelSharedManualApprovalPreconditionOutput {
+	return o
+}
+
+func (o ReleaseChannelSharedManualApprovalPreconditionOutput) ToReleaseChannelSharedManualApprovalPreconditionOutputWithContext(ctx context.Context) ReleaseChannelSharedManualApprovalPreconditionOutput {
+	return o
+}
+
+// name of the manual approval
+func (o ReleaseChannelSharedManualApprovalPreconditionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseChannelSharedManualApprovalPrecondition) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ReleaseChannelSharedManualApprovalPreconditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelSharedManualApprovalPreconditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o ReleaseChannelSharedManualApprovalPreconditionArrayOutput) ToReleaseChannelSharedManualApprovalPreconditionArrayOutput() ReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelSharedManualApprovalPreconditionArrayOutput) ToReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) ReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelSharedManualApprovalPreconditionArrayOutput) Index(i pulumi.IntInput) ReleaseChannelSharedManualApprovalPreconditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelSharedManualApprovalPrecondition {
+		return vs[0].([]ReleaseChannelSharedManualApprovalPrecondition)[vs[1].(int)]
+	}).(ReleaseChannelSharedManualApprovalPreconditionOutput)
 }
 
 type GetK8sRuntimeLabel struct {
@@ -4908,6 +5155,7 @@ func (o GetReleaseChannelConvergenceProtectionArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetReleaseChannelConvergenceProtectionDeployment struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -4923,6 +5171,7 @@ type GetReleaseChannelConvergenceProtectionDeploymentInput interface {
 }
 
 type GetReleaseChannelConvergenceProtectionDeploymentArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -5003,6 +5252,7 @@ func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) ToGetReleaseChan
 	}).(GetReleaseChannelConvergenceProtectionDeploymentPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionDeploymentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -5031,6 +5281,7 @@ func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) Elem() GetRel
 	}).(GetReleaseChannelConvergenceProtectionDeploymentOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionDeployment) *bool {
 		if v == nil {
@@ -5041,6 +5292,7 @@ func (o GetReleaseChannelConvergenceProtectionDeploymentPtrOutput) Enabled() pul
 }
 
 type GetReleaseChannelConvergenceProtectionPostApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -5056,6 +5308,7 @@ type GetReleaseChannelConvergenceProtectionPostApprovalInput interface {
 }
 
 type GetReleaseChannelConvergenceProtectionPostApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -5136,6 +5389,7 @@ func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) ToGetReleaseCh
 	}).(GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionPostApprovalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -5164,6 +5418,7 @@ func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Elem() GetR
 	}).(GetReleaseChannelConvergenceProtectionPostApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostApproval) *bool {
 		if v == nil {
@@ -5174,9 +5429,12 @@ func (o GetReleaseChannelConvergenceProtectionPostApprovalPtrOutput) Enabled() p
 }
 
 type GetReleaseChannelConvergenceProtectionPostDeployment struct {
-	CheckDuration      *string `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration *string `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
-	Enabled            bool    `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled bool `pulumi:"enabled"`
 }
 
 // GetReleaseChannelConvergenceProtectionPostDeploymentInput is an input type that accepts GetReleaseChannelConvergenceProtectionPostDeploymentArgs and GetReleaseChannelConvergenceProtectionPostDeploymentOutput values.
@@ -5191,9 +5449,12 @@ type GetReleaseChannelConvergenceProtectionPostDeploymentInput interface {
 }
 
 type GetReleaseChannelConvergenceProtectionPostDeploymentArgs struct {
-	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
-	Enabled            pulumi.BoolInput      `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (GetReleaseChannelConvergenceProtectionPostDeploymentArgs) ElementType() reflect.Type {
@@ -5273,14 +5534,17 @@ func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) ToGetRelease
 	}).(GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionPostDeploymentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPostDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -5309,6 +5573,7 @@ func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Elem() Ge
 	}).(GetReleaseChannelConvergenceProtectionPostDeploymentOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) *string {
 		if v == nil {
@@ -5318,6 +5583,7 @@ func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) CheckDura
 	}).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) *string {
 		if v == nil {
@@ -5327,6 +5593,7 @@ func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) DelayChec
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPostDeployment) *bool {
 		if v == nil {
@@ -5337,6 +5604,7 @@ func (o GetReleaseChannelConvergenceProtectionPostDeploymentPtrOutput) Enabled()
 }
 
 type GetReleaseChannelConvergenceProtectionPreApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -5352,6 +5620,7 @@ type GetReleaseChannelConvergenceProtectionPreApprovalInput interface {
 }
 
 type GetReleaseChannelConvergenceProtectionPreApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -5432,6 +5701,7 @@ func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) ToGetReleaseCha
 	}).(GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionPreApprovalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionPreApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -5460,6 +5730,7 @@ func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Elem() GetRe
 	}).(GetReleaseChannelConvergenceProtectionPreApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionPreApproval) *bool {
 		if v == nil {
@@ -5470,8 +5741,9 @@ func (o GetReleaseChannelConvergenceProtectionPreApprovalPtrOutput) Enabled() pu
 }
 
 type GetReleaseChannelConvergenceProtectionRef struct {
-	// Release Channel name
-	Name       string                                               `pulumi:"name"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters []GetReleaseChannelConvergenceProtectionRefParameter `pulumi:"parameters"`
 }
 
@@ -5487,8 +5759,9 @@ type GetReleaseChannelConvergenceProtectionRefInput interface {
 }
 
 type GetReleaseChannelConvergenceProtectionRefArgs struct {
-	// Release Channel name
-	Name       pulumi.StringInput                                           `pulumi:"name"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters GetReleaseChannelConvergenceProtectionRefParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -5518,11 +5791,12 @@ func (o GetReleaseChannelConvergenceProtectionRefOutput) ToGetReleaseChannelConv
 	return o
 }
 
-// Release Channel name
+// name of the constant
 func (o GetReleaseChannelConvergenceProtectionRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameters to pass to the protection
 func (o GetReleaseChannelConvergenceProtectionRefOutput) Parameters() GetReleaseChannelConvergenceProtectionRefParameterArrayOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRef) []GetReleaseChannelConvergenceProtectionRefParameter {
 		return v.Parameters
@@ -5530,12 +5804,16 @@ func (o GetReleaseChannelConvergenceProtectionRefOutput) Parameters() GetRelease
 }
 
 type GetReleaseChannelConvergenceProtectionRefParameter struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
-	IntValue            *int    `pulumi:"intValue"`
-	// Release Channel name
-	Name        string                                                         `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue *int `pulumi:"intValue"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue *GetReleaseChannelConvergenceProtectionRefParameterSecretValue `pulumi:"secretValue"`
-	StringValue *string                                                        `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue *string `pulumi:"stringValue"`
 }
 
 // GetReleaseChannelConvergenceProtectionRefParameterInput is an input type that accepts GetReleaseChannelConvergenceProtectionRefParameterArgs and GetReleaseChannelConvergenceProtectionRefParameterOutput values.
@@ -5550,12 +5828,16 @@ type GetReleaseChannelConvergenceProtectionRefParameterInput interface {
 }
 
 type GetReleaseChannelConvergenceProtectionRefParameterArgs struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
-	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
-	// Release Channel name
-	Name        pulumi.StringInput                                                    `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue pulumi.IntPtrInput `pulumi:"intValue"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
-	StringValue pulumi.StringPtrInput                                                 `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
 
 func (GetReleaseChannelConvergenceProtectionRefParameterArgs) ElementType() reflect.Type {
@@ -5609,25 +5891,29 @@ func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) ToGetReleaseCh
 	return o
 }
 
+// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
 }
 
+// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
 }
 
-// Release Channel name
+// name of the constant
 func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) SecretValue() GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
 		return v.SecretValue
 	}).(GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// string value of the constant
 func (o GetReleaseChannelConvergenceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
 }
@@ -5653,8 +5939,9 @@ func (o GetReleaseChannelConvergenceProtectionRefParameterArrayOutput) Index(i p
 }
 
 type GetReleaseChannelConvergenceProtectionRefParameterSecretValue struct {
+	// Name of the secret.
 	Key string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version string `pulumi:"version"`
 }
 
@@ -5670,8 +5957,9 @@ type GetReleaseChannelConvergenceProtectionRefParameterSecretValueInput interfac
 }
 
 type GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs struct {
+	// Name of the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -5752,11 +6040,12 @@ func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) ToG
 	}).(GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelConvergenceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -5785,6 +6074,7 @@ func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) 
 	}).(GetReleaseChannelConvergenceProtectionRefParameterSecretValueOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -5794,7 +6084,7 @@ func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelConvergenceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelConvergenceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -6057,9 +6347,12 @@ func (o GetReleaseChannelPolicyPtrOutput) DefaultEnv() GetReleaseChannelPolicyDe
 }
 
 type GetReleaseChannelPolicyDefaultEnv struct {
+	// Reference to a secret value stored in Kubernetes.
 	KubernetesSecret *GetReleaseChannelPolicyDefaultEnvKubernetesSecret `pulumi:"kubernetesSecret"`
-	Secret           *GetReleaseChannelPolicyDefaultEnvSecret           `pulumi:"secret"`
-	Value            *string                                            `pulumi:"value"`
+	// Reference to a secret value stored in Prodvana.
+	Secret *GetReleaseChannelPolicyDefaultEnvSecret `pulumi:"secret"`
+	// Non-sensitive environment variable value
+	Value *string `pulumi:"value"`
 }
 
 // GetReleaseChannelPolicyDefaultEnvInput is an input type that accepts GetReleaseChannelPolicyDefaultEnvArgs and GetReleaseChannelPolicyDefaultEnvOutput values.
@@ -6074,9 +6367,12 @@ type GetReleaseChannelPolicyDefaultEnvInput interface {
 }
 
 type GetReleaseChannelPolicyDefaultEnvArgs struct {
+	// Reference to a secret value stored in Kubernetes.
 	KubernetesSecret GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrInput `pulumi:"kubernetesSecret"`
-	Secret           GetReleaseChannelPolicyDefaultEnvSecretPtrInput           `pulumi:"secret"`
-	Value            pulumi.StringPtrInput                                     `pulumi:"value"`
+	// Reference to a secret value stored in Prodvana.
+	Secret GetReleaseChannelPolicyDefaultEnvSecretPtrInput `pulumi:"secret"`
+	// Non-sensitive environment variable value
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetReleaseChannelPolicyDefaultEnvArgs) ElementType() reflect.Type {
@@ -6130,16 +6426,19 @@ func (o GetReleaseChannelPolicyDefaultEnvOutput) ToGetReleaseChannelPolicyDefaul
 	return o
 }
 
+// Reference to a secret value stored in Kubernetes.
 func (o GetReleaseChannelPolicyDefaultEnvOutput) KubernetesSecret() GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnv) *GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
 		return v.KubernetesSecret
 	}).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
 }
 
+// Reference to a secret value stored in Prodvana.
 func (o GetReleaseChannelPolicyDefaultEnvOutput) Secret() GetReleaseChannelPolicyDefaultEnvSecretPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnv) *GetReleaseChannelPolicyDefaultEnvSecret { return v.Secret }).(GetReleaseChannelPolicyDefaultEnvSecretPtrOutput)
 }
 
+// Non-sensitive environment variable value
 func (o GetReleaseChannelPolicyDefaultEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6165,7 +6464,9 @@ func (o GetReleaseChannelPolicyDefaultEnvMapOutput) MapIndex(k pulumi.StringInpu
 }
 
 type GetReleaseChannelPolicyDefaultEnvKubernetesSecret struct {
-	Key        *string `pulumi:"key"`
+	// Name of the secret.
+	Key *string `pulumi:"key"`
+	// Name of the secret object
 	SecretName *string `pulumi:"secretName"`
 }
 
@@ -6181,7 +6482,9 @@ type GetReleaseChannelPolicyDefaultEnvKubernetesSecretInput interface {
 }
 
 type GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs struct {
-	Key        pulumi.StringPtrInput `pulumi:"key"`
+	// Name of the secret.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Name of the secret object
 	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
 }
 
@@ -6262,10 +6565,12 @@ func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) ToGetReleaseCha
 	}).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Name of the secret object
 func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string { return v.SecretName }).(pulumi.StringPtrOutput)
 }
@@ -6294,6 +6599,7 @@ func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Elem() GetRe
 	}).(GetReleaseChannelPolicyDefaultEnvKubernetesSecretOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
 		if v == nil {
@@ -6303,6 +6609,7 @@ func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) Key() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the secret object
 func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) SecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvKubernetesSecret) *string {
 		if v == nil {
@@ -6313,8 +6620,9 @@ func (o GetReleaseChannelPolicyDefaultEnvKubernetesSecretPtrOutput) SecretName()
 }
 
 type GetReleaseChannelPolicyDefaultEnvSecret struct {
+	// Name of the secret.
 	Key *string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version *string `pulumi:"version"`
 }
 
@@ -6330,8 +6638,9 @@ type GetReleaseChannelPolicyDefaultEnvSecretInput interface {
 }
 
 type GetReleaseChannelPolicyDefaultEnvSecretArgs struct {
+	// Name of the secret.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -6412,11 +6721,12 @@ func (o GetReleaseChannelPolicyDefaultEnvSecretOutput) ToGetReleaseChannelPolicy
 	}).(GetReleaseChannelPolicyDefaultEnvSecretPtrOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelPolicyDefaultEnvSecretOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnvSecret) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelPolicyDefaultEnvSecretOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelPolicyDefaultEnvSecret) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -6445,6 +6755,7 @@ func (o GetReleaseChannelPolicyDefaultEnvSecretPtrOutput) Elem() GetReleaseChann
 	}).(GetReleaseChannelPolicyDefaultEnvSecretOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelPolicyDefaultEnvSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvSecret) *string {
 		if v == nil {
@@ -6454,7 +6765,7 @@ func (o GetReleaseChannelPolicyDefaultEnvSecretPtrOutput) Key() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelPolicyDefaultEnvSecretPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelPolicyDefaultEnvSecret) *string {
 		if v == nil {
@@ -6609,6 +6920,7 @@ func (o GetReleaseChannelProtectionArrayOutput) Index(i pulumi.IntInput) GetRele
 }
 
 type GetReleaseChannelProtectionDeployment struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -6624,6 +6936,7 @@ type GetReleaseChannelProtectionDeploymentInput interface {
 }
 
 type GetReleaseChannelProtectionDeploymentArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -6704,6 +7017,7 @@ func (o GetReleaseChannelProtectionDeploymentOutput) ToGetReleaseChannelProtecti
 	}).(GetReleaseChannelProtectionDeploymentPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionDeploymentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -6732,6 +7046,7 @@ func (o GetReleaseChannelProtectionDeploymentPtrOutput) Elem() GetReleaseChannel
 	}).(GetReleaseChannelProtectionDeploymentOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionDeployment) *bool {
 		if v == nil {
@@ -6742,6 +7057,7 @@ func (o GetReleaseChannelProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtr
 }
 
 type GetReleaseChannelProtectionPostApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -6757,6 +7073,7 @@ type GetReleaseChannelProtectionPostApprovalInput interface {
 }
 
 type GetReleaseChannelProtectionPostApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -6837,6 +7154,7 @@ func (o GetReleaseChannelProtectionPostApprovalOutput) ToGetReleaseChannelProtec
 	}).(GetReleaseChannelProtectionPostApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionPostApprovalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionPostApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -6865,6 +7183,7 @@ func (o GetReleaseChannelProtectionPostApprovalPtrOutput) Elem() GetReleaseChann
 	}).(GetReleaseChannelProtectionPostApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionPostApproval) *bool {
 		if v == nil {
@@ -6875,9 +7194,12 @@ func (o GetReleaseChannelProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolP
 }
 
 type GetReleaseChannelProtectionPostDeployment struct {
-	CheckDuration      *string `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration *string `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
-	Enabled            bool    `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled bool `pulumi:"enabled"`
 }
 
 // GetReleaseChannelProtectionPostDeploymentInput is an input type that accepts GetReleaseChannelProtectionPostDeploymentArgs and GetReleaseChannelProtectionPostDeploymentOutput values.
@@ -6892,9 +7214,12 @@ type GetReleaseChannelProtectionPostDeploymentInput interface {
 }
 
 type GetReleaseChannelProtectionPostDeploymentArgs struct {
-	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
-	Enabled            pulumi.BoolInput      `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (GetReleaseChannelProtectionPostDeploymentArgs) ElementType() reflect.Type {
@@ -6974,14 +7299,17 @@ func (o GetReleaseChannelProtectionPostDeploymentOutput) ToGetReleaseChannelProt
 	}).(GetReleaseChannelProtectionPostDeploymentPtrOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionPostDeploymentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionPostDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -7010,6 +7338,7 @@ func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) Elem() GetReleaseCha
 	}).(GetReleaseChannelProtectionPostDeploymentOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) *string {
 		if v == nil {
@@ -7019,6 +7348,7 @@ func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) CheckDuration() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) *string {
 		if v == nil {
@@ -7028,6 +7358,7 @@ func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) DelayCheckDuration()
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionPostDeployment) *bool {
 		if v == nil {
@@ -7038,6 +7369,7 @@ func (o GetReleaseChannelProtectionPostDeploymentPtrOutput) Enabled() pulumi.Boo
 }
 
 type GetReleaseChannelProtectionPreApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -7053,6 +7385,7 @@ type GetReleaseChannelProtectionPreApprovalInput interface {
 }
 
 type GetReleaseChannelProtectionPreApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -7133,6 +7466,7 @@ func (o GetReleaseChannelProtectionPreApprovalOutput) ToGetReleaseChannelProtect
 	}).(GetReleaseChannelProtectionPreApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionPreApprovalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionPreApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -7161,6 +7495,7 @@ func (o GetReleaseChannelProtectionPreApprovalPtrOutput) Elem() GetReleaseChanne
 	}).(GetReleaseChannelProtectionPreApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionPreApproval) *bool {
 		if v == nil {
@@ -7171,8 +7506,9 @@ func (o GetReleaseChannelProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPt
 }
 
 type GetReleaseChannelProtectionRef struct {
-	// Release Channel name
-	Name       string                                    `pulumi:"name"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters []GetReleaseChannelProtectionRefParameter `pulumi:"parameters"`
 }
 
@@ -7188,8 +7524,9 @@ type GetReleaseChannelProtectionRefInput interface {
 }
 
 type GetReleaseChannelProtectionRefArgs struct {
-	// Release Channel name
-	Name       pulumi.StringInput                                `pulumi:"name"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters GetReleaseChannelProtectionRefParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -7219,22 +7556,27 @@ func (o GetReleaseChannelProtectionRefOutput) ToGetReleaseChannelProtectionRefOu
 	return o
 }
 
-// Release Channel name
+// name of the constant
 func (o GetReleaseChannelProtectionRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRef) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameters to pass to the protection
 func (o GetReleaseChannelProtectionRefOutput) Parameters() GetReleaseChannelProtectionRefParameterArrayOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRef) []GetReleaseChannelProtectionRefParameter { return v.Parameters }).(GetReleaseChannelProtectionRefParameterArrayOutput)
 }
 
 type GetReleaseChannelProtectionRefParameter struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
-	IntValue            *int    `pulumi:"intValue"`
-	// Release Channel name
-	Name        string                                              `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue *int `pulumi:"intValue"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue *GetReleaseChannelProtectionRefParameterSecretValue `pulumi:"secretValue"`
-	StringValue *string                                             `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue *string `pulumi:"stringValue"`
 }
 
 // GetReleaseChannelProtectionRefParameterInput is an input type that accepts GetReleaseChannelProtectionRefParameterArgs and GetReleaseChannelProtectionRefParameterOutput values.
@@ -7249,12 +7591,16 @@ type GetReleaseChannelProtectionRefParameterInput interface {
 }
 
 type GetReleaseChannelProtectionRefParameterArgs struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
-	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
-	// Release Channel name
-	Name        pulumi.StringInput                                         `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue pulumi.IntPtrInput `pulumi:"intValue"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue GetReleaseChannelProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
-	StringValue pulumi.StringPtrInput                                      `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
 
 func (GetReleaseChannelProtectionRefParameterArgs) ElementType() reflect.Type {
@@ -7308,25 +7654,29 @@ func (o GetReleaseChannelProtectionRefParameterOutput) ToGetReleaseChannelProtec
 	return o
 }
 
+// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
 }
 
+// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
 }
 
-// Release Channel name
+// name of the constant
 func (o GetReleaseChannelProtectionRefParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelProtectionRefParameterOutput) SecretValue() GetReleaseChannelProtectionRefParameterSecretValuePtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *GetReleaseChannelProtectionRefParameterSecretValue {
 		return v.SecretValue
 	}).(GetReleaseChannelProtectionRefParameterSecretValuePtrOutput)
 }
 
+// string value of the constant
 func (o GetReleaseChannelProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
 }
@@ -7352,8 +7702,9 @@ func (o GetReleaseChannelProtectionRefParameterArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetReleaseChannelProtectionRefParameterSecretValue struct {
+	// Name of the secret.
 	Key string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version string `pulumi:"version"`
 }
 
@@ -7369,8 +7720,9 @@ type GetReleaseChannelProtectionRefParameterSecretValueInput interface {
 }
 
 type GetReleaseChannelProtectionRefParameterSecretValueArgs struct {
+	// Name of the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -7451,11 +7803,12 @@ func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) ToGetReleaseCh
 	}).(GetReleaseChannelProtectionRefParameterSecretValuePtrOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -7484,6 +7837,7 @@ func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Elem() GetR
 	}).(GetReleaseChannelProtectionRefParameterSecretValueOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -7493,7 +7847,7 @@ func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Key() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -7886,6 +8240,7 @@ func (o GetReleaseChannelServiceInstanceProtectionArrayOutput) Index(i pulumi.In
 }
 
 type GetReleaseChannelServiceInstanceProtectionDeployment struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -7901,6 +8256,7 @@ type GetReleaseChannelServiceInstanceProtectionDeploymentInput interface {
 }
 
 type GetReleaseChannelServiceInstanceProtectionDeploymentArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -7981,6 +8337,7 @@ func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) ToGetRelease
 	}).(GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionDeploymentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -8009,6 +8366,7 @@ func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Elem() Ge
 	}).(GetReleaseChannelServiceInstanceProtectionDeploymentOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionDeployment) *bool {
 		if v == nil {
@@ -8019,6 +8377,7 @@ func (o GetReleaseChannelServiceInstanceProtectionDeploymentPtrOutput) Enabled()
 }
 
 type GetReleaseChannelServiceInstanceProtectionPostApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -8034,6 +8393,7 @@ type GetReleaseChannelServiceInstanceProtectionPostApprovalInput interface {
 }
 
 type GetReleaseChannelServiceInstanceProtectionPostApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -8114,6 +8474,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) ToGetRelea
 	}).(GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionPostApprovalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -8142,6 +8503,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Elem() 
 	}).(GetReleaseChannelServiceInstanceProtectionPostApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostApproval) *bool {
 		if v == nil {
@@ -8152,9 +8514,12 @@ func (o GetReleaseChannelServiceInstanceProtectionPostApprovalPtrOutput) Enabled
 }
 
 type GetReleaseChannelServiceInstanceProtectionPostDeployment struct {
-	CheckDuration      *string `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration *string `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration *string `pulumi:"delayCheckDuration"`
-	Enabled            bool    `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled bool `pulumi:"enabled"`
 }
 
 // GetReleaseChannelServiceInstanceProtectionPostDeploymentInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs and GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput values.
@@ -8169,9 +8534,12 @@ type GetReleaseChannelServiceInstanceProtectionPostDeploymentInput interface {
 }
 
 type GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs struct {
-	CheckDuration      pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+	CheckDuration pulumi.StringPtrInput `pulumi:"checkDuration"`
+	// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 	DelayCheckDuration pulumi.StringPtrInput `pulumi:"delayCheckDuration"`
-	Enabled            pulumi.BoolInput      `pulumi:"enabled"`
+	// whether to enable deployment lifecycle options
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs) ElementType() reflect.Type {
@@ -8251,14 +8619,17 @@ func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) ToGetRel
 	}).(GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.CheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostDeployment) *string { return v.DelayCheckDuration }).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPostDeployment) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -8287,6 +8658,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Elem(
 	}).(GetReleaseChannelServiceInstanceProtectionPostDeploymentOutput)
 }
 
+// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) CheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) *string {
 		if v == nil {
@@ -8296,6 +8668,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Check
 	}).(pulumi.StringPtrOutput)
 }
 
+// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
 func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) DelayCheckDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) *string {
 		if v == nil {
@@ -8305,6 +8678,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Delay
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPostDeployment) *bool {
 		if v == nil {
@@ -8315,6 +8689,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPostDeploymentPtrOutput) Enabl
 }
 
 type GetReleaseChannelServiceInstanceProtectionPreApproval struct {
+	// whether to enable deployment lifecycle options
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -8330,6 +8705,7 @@ type GetReleaseChannelServiceInstanceProtectionPreApprovalInput interface {
 }
 
 type GetReleaseChannelServiceInstanceProtectionPreApprovalArgs struct {
+	// whether to enable deployment lifecycle options
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -8410,6 +8786,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) ToGetReleas
 	}).(GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionPreApprovalOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionPreApproval) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -8438,6 +8815,7 @@ func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Elem() G
 	}).(GetReleaseChannelServiceInstanceProtectionPreApprovalOutput)
 }
 
+// whether to enable deployment lifecycle options
 func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionPreApproval) *bool {
 		if v == nil {
@@ -8448,8 +8826,9 @@ func (o GetReleaseChannelServiceInstanceProtectionPreApprovalPtrOutput) Enabled(
 }
 
 type GetReleaseChannelServiceInstanceProtectionRef struct {
-	// Release Channel name
-	Name       string                                                   `pulumi:"name"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters []GetReleaseChannelServiceInstanceProtectionRefParameter `pulumi:"parameters"`
 }
 
@@ -8465,8 +8844,9 @@ type GetReleaseChannelServiceInstanceProtectionRefInput interface {
 }
 
 type GetReleaseChannelServiceInstanceProtectionRefArgs struct {
-	// Release Channel name
-	Name       pulumi.StringInput                                               `pulumi:"name"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameters to pass to the protection
 	Parameters GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -8496,11 +8876,12 @@ func (o GetReleaseChannelServiceInstanceProtectionRefOutput) ToGetReleaseChannel
 	return o
 }
 
-// Release Channel name
+// name of the constant
 func (o GetReleaseChannelServiceInstanceProtectionRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRef) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameters to pass to the protection
 func (o GetReleaseChannelServiceInstanceProtectionRefOutput) Parameters() GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRef) []GetReleaseChannelServiceInstanceProtectionRefParameter {
 		return v.Parameters
@@ -8508,12 +8889,16 @@ func (o GetReleaseChannelServiceInstanceProtectionRefOutput) Parameters() GetRel
 }
 
 type GetReleaseChannelServiceInstanceProtectionRefParameter struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue *string `pulumi:"dockerImageTagValue"`
-	IntValue            *int    `pulumi:"intValue"`
-	// Release Channel name
-	Name        string                                                             `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue *int `pulumi:"intValue"`
+	// name of the constant
+	Name string `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue `pulumi:"secretValue"`
-	StringValue *string                                                            `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue *string `pulumi:"stringValue"`
 }
 
 // GetReleaseChannelServiceInstanceProtectionRefParameterInput is an input type that accepts GetReleaseChannelServiceInstanceProtectionRefParameterArgs and GetReleaseChannelServiceInstanceProtectionRefParameterOutput values.
@@ -8528,12 +8913,16 @@ type GetReleaseChannelServiceInstanceProtectionRefParameterInput interface {
 }
 
 type GetReleaseChannelServiceInstanceProtectionRefParameterArgs struct {
+	// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	DockerImageTagValue pulumi.StringPtrInput `pulumi:"dockerImageTagValue"`
-	IntValue            pulumi.IntPtrInput    `pulumi:"intValue"`
-	// Release Channel name
-	Name        pulumi.StringInput                                                        `pulumi:"name"`
+	// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+	IntValue pulumi.IntPtrInput `pulumi:"intValue"`
+	// name of the constant
+	Name pulumi.StringInput `pulumi:"name"`
+	// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 	SecretValue GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput `pulumi:"secretValue"`
-	StringValue pulumi.StringPtrInput                                                     `pulumi:"stringValue"`
+	// string value of the constant
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
 
 func (GetReleaseChannelServiceInstanceProtectionRefParameterArgs) ElementType() reflect.Type {
@@ -8587,25 +8976,29 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) ToGetRelea
 	return o
 }
 
+// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) DockerImageTagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.DockerImageTagValue }).(pulumi.StringPtrOutput)
 }
 
+// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) IntValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *int { return v.IntValue }).(pulumi.IntPtrOutput)
 }
 
-// Release Channel name
+// name of the constant
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) SecretValue() GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
 		return v.SecretValue
 	}).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// string value of the constant
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
 }
@@ -8631,8 +9024,9 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput) Index
 }
 
 type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue struct {
+	// Name of the secret.
 	Key string `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version string `pulumi:"version"`
 }
 
@@ -8648,8 +9042,9 @@ type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput inte
 }
 
 type GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs struct {
+	// Name of the secret.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Current application version
+	// Version of the secret
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -8730,11 +9125,12 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
 	}).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -8763,6 +9159,7 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutp
 	}).(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput)
 }
 
+// Name of the secret.
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -8772,7 +9169,7 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Current application version
+// Version of the secret
 func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue) *string {
 		if v == nil {
@@ -8780,6 +9177,103 @@ func (o GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutp
 		}
 		return &v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetReleaseChannelSharedManualApprovalPrecondition struct {
+	// name of the manual approval
+	Name string `pulumi:"name"`
+}
+
+// GetReleaseChannelSharedManualApprovalPreconditionInput is an input type that accepts GetReleaseChannelSharedManualApprovalPreconditionArgs and GetReleaseChannelSharedManualApprovalPreconditionOutput values.
+// You can construct a concrete instance of `GetReleaseChannelSharedManualApprovalPreconditionInput` via:
+//
+//	GetReleaseChannelSharedManualApprovalPreconditionArgs{...}
+type GetReleaseChannelSharedManualApprovalPreconditionInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelSharedManualApprovalPreconditionOutput() GetReleaseChannelSharedManualApprovalPreconditionOutput
+	ToGetReleaseChannelSharedManualApprovalPreconditionOutputWithContext(context.Context) GetReleaseChannelSharedManualApprovalPreconditionOutput
+}
+
+type GetReleaseChannelSharedManualApprovalPreconditionArgs struct {
+	// name of the manual approval
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetReleaseChannelSharedManualApprovalPreconditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i GetReleaseChannelSharedManualApprovalPreconditionArgs) ToGetReleaseChannelSharedManualApprovalPreconditionOutput() GetReleaseChannelSharedManualApprovalPreconditionOutput {
+	return i.ToGetReleaseChannelSharedManualApprovalPreconditionOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelSharedManualApprovalPreconditionArgs) ToGetReleaseChannelSharedManualApprovalPreconditionOutputWithContext(ctx context.Context) GetReleaseChannelSharedManualApprovalPreconditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelSharedManualApprovalPreconditionOutput)
+}
+
+// GetReleaseChannelSharedManualApprovalPreconditionArrayInput is an input type that accepts GetReleaseChannelSharedManualApprovalPreconditionArray and GetReleaseChannelSharedManualApprovalPreconditionArrayOutput values.
+// You can construct a concrete instance of `GetReleaseChannelSharedManualApprovalPreconditionArrayInput` via:
+//
+//	GetReleaseChannelSharedManualApprovalPreconditionArray{ GetReleaseChannelSharedManualApprovalPreconditionArgs{...} }
+type GetReleaseChannelSharedManualApprovalPreconditionArrayInput interface {
+	pulumi.Input
+
+	ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutput() GetReleaseChannelSharedManualApprovalPreconditionArrayOutput
+	ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(context.Context) GetReleaseChannelSharedManualApprovalPreconditionArrayOutput
+}
+
+type GetReleaseChannelSharedManualApprovalPreconditionArray []GetReleaseChannelSharedManualApprovalPreconditionInput
+
+func (GetReleaseChannelSharedManualApprovalPreconditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (i GetReleaseChannelSharedManualApprovalPreconditionArray) ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutput() GetReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return i.ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleaseChannelSharedManualApprovalPreconditionArray) ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) GetReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleaseChannelSharedManualApprovalPreconditionArrayOutput)
+}
+
+type GetReleaseChannelSharedManualApprovalPreconditionOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelSharedManualApprovalPreconditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o GetReleaseChannelSharedManualApprovalPreconditionOutput) ToGetReleaseChannelSharedManualApprovalPreconditionOutput() GetReleaseChannelSharedManualApprovalPreconditionOutput {
+	return o
+}
+
+func (o GetReleaseChannelSharedManualApprovalPreconditionOutput) ToGetReleaseChannelSharedManualApprovalPreconditionOutputWithContext(ctx context.Context) GetReleaseChannelSharedManualApprovalPreconditionOutput {
+	return o
+}
+
+// name of the manual approval
+func (o GetReleaseChannelSharedManualApprovalPreconditionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleaseChannelSharedManualApprovalPrecondition) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetReleaseChannelSharedManualApprovalPreconditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleaseChannelSharedManualApprovalPreconditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleaseChannelSharedManualApprovalPrecondition)(nil)).Elem()
+}
+
+func (o GetReleaseChannelSharedManualApprovalPreconditionArrayOutput) ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutput() GetReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelSharedManualApprovalPreconditionArrayOutput) ToGetReleaseChannelSharedManualApprovalPreconditionArrayOutputWithContext(ctx context.Context) GetReleaseChannelSharedManualApprovalPreconditionArrayOutput {
+	return o
+}
+
+func (o GetReleaseChannelSharedManualApprovalPreconditionArrayOutput) Index(i pulumi.IntInput) GetReleaseChannelSharedManualApprovalPreconditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleaseChannelSharedManualApprovalPrecondition {
+		return vs[0].([]GetReleaseChannelSharedManualApprovalPrecondition)[vs[1].(int)]
+	}).(GetReleaseChannelSharedManualApprovalPreconditionOutput)
 }
 
 func init() {
@@ -8850,6 +9344,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), ReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelSharedManualApprovalPreconditionInput)(nil)).Elem(), ReleaseChannelSharedManualApprovalPreconditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelSharedManualApprovalPreconditionArrayInput)(nil)).Elem(), ReleaseChannelSharedManualApprovalPreconditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sRuntimeLabelInput)(nil)).Elem(), GetK8sRuntimeLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetK8sRuntimeLabelArrayInput)(nil)).Elem(), GetK8sRuntimeLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelConstantInput)(nil)).Elem(), GetReleaseChannelConstantArgs{})
@@ -8913,6 +9409,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterArrayInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrInput)(nil)).Elem(), GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelSharedManualApprovalPreconditionInput)(nil)).Elem(), GetReleaseChannelSharedManualApprovalPreconditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleaseChannelSharedManualApprovalPreconditionArrayInput)(nil)).Elem(), GetReleaseChannelSharedManualApprovalPreconditionArray{})
 	pulumi.RegisterOutputType(K8sRuntimeLabelOutput{})
 	pulumi.RegisterOutputType(K8sRuntimeLabelArrayOutput{})
 	pulumi.RegisterOutputType(ManagedK8sRuntimeExecOutput{})
@@ -8980,6 +9478,8 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelSharedManualApprovalPreconditionOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelSharedManualApprovalPreconditionArrayOutput{})
 	pulumi.RegisterOutputType(GetK8sRuntimeLabelOutput{})
 	pulumi.RegisterOutputType(GetK8sRuntimeLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelConstantOutput{})
@@ -9043,4 +9543,6 @@ func init() {
 	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueOutput{})
 	pulumi.RegisterOutputType(GetReleaseChannelServiceInstanceProtectionRefParameterSecretValuePtrOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelSharedManualApprovalPreconditionOutput{})
+	pulumi.RegisterOutputType(GetReleaseChannelSharedManualApprovalPreconditionArrayOutput{})
 }

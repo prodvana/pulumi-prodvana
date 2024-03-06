@@ -12,6 +12,9 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelConvergenceProtectionPreApprovalInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// whether to enable deployment lifecycle options
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

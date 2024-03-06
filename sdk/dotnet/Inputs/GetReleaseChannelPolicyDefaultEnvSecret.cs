@@ -12,11 +12,14 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelPolicyDefaultEnvSecretArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Name of the secret.
+        /// </summary>
         [Input("key")]
         public string? Key { get; set; }
 
         /// <summary>
-        /// Current application version
+        /// Version of the secret
         /// </summary>
         [Input("version")]
         public string? Version { get; set; }

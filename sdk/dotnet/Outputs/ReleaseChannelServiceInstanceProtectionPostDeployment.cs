@@ -13,8 +13,17 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class ReleaseChannelServiceInstanceProtectionPostDeployment
     {
+        /// <summary>
+        /// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        /// </summary>
         public readonly string? CheckDuration;
+        /// <summary>
+        /// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        /// </summary>
         public readonly string? DelayCheckDuration;
+        /// <summary>
+        /// whether to enable deployment lifecycle options
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

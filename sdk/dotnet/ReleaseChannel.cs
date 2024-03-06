@@ -52,7 +52,7 @@ namespace Pulumi.Prodvana
         public Output<ImmutableArray<Outputs.ReleaseChannelManualApprovalPrecondition>> ManualApprovalPreconditions { get; private set; } = null!;
 
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -88,7 +88,13 @@ namespace Pulumi.Prodvana
         public Output<ImmutableArray<Outputs.ReleaseChannelServiceInstanceProtection>> ServiceInstanceProtections { get; private set; } = null!;
 
         /// <summary>
-        /// Current application version
+        /// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        /// </summary>
+        [Output("sharedManualApprovalPreconditions")]
+        public Output<ImmutableArray<Outputs.ReleaseChannelSharedManualApprovalPrecondition>> SharedManualApprovalPreconditions { get; private set; } = null!;
+
+        /// <summary>
+        /// Version of the secret
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -189,7 +195,7 @@ namespace Pulumi.Prodvana
         }
 
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -246,6 +252,18 @@ namespace Pulumi.Prodvana
         {
             get => _serviceInstanceProtections ?? (_serviceInstanceProtections = new InputList<Inputs.ReleaseChannelServiceInstanceProtectionArgs>());
             set => _serviceInstanceProtections = value;
+        }
+
+        [Input("sharedManualApprovalPreconditions")]
+        private InputList<Inputs.ReleaseChannelSharedManualApprovalPreconditionArgs>? _sharedManualApprovalPreconditions;
+
+        /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelSharedManualApprovalPreconditionArgs> SharedManualApprovalPreconditions
+        {
+            get => _sharedManualApprovalPreconditions ?? (_sharedManualApprovalPreconditions = new InputList<Inputs.ReleaseChannelSharedManualApprovalPreconditionArgs>());
+            set => _sharedManualApprovalPreconditions = value;
         }
 
         public ReleaseChannelArgs()
@@ -305,7 +323,7 @@ namespace Pulumi.Prodvana
         }
 
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -364,8 +382,20 @@ namespace Pulumi.Prodvana
             set => _serviceInstanceProtections = value;
         }
 
+        [Input("sharedManualApprovalPreconditions")]
+        private InputList<Inputs.ReleaseChannelSharedManualApprovalPreconditionGetArgs>? _sharedManualApprovalPreconditions;
+
         /// <summary>
-        /// Current application version
+        /// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        /// </summary>
+        public InputList<Inputs.ReleaseChannelSharedManualApprovalPreconditionGetArgs> SharedManualApprovalPreconditions
+        {
+            get => _sharedManualApprovalPreconditions ?? (_sharedManualApprovalPreconditions = new InputList<Inputs.ReleaseChannelSharedManualApprovalPreconditionGetArgs>());
+            set => _sharedManualApprovalPreconditions = value;
+        }
+
+        /// <summary>
+        /// Version of the secret
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

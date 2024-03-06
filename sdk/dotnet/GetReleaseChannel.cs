@@ -122,7 +122,7 @@ namespace Pulumi.Prodvana
         }
 
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -167,6 +167,18 @@ namespace Pulumi.Prodvana
         {
             get => _serviceInstanceProtections ?? (_serviceInstanceProtections = new List<Inputs.GetReleaseChannelServiceInstanceProtectionArgs>());
             set => _serviceInstanceProtections = value;
+        }
+
+        [Input("sharedManualApprovalPreconditions")]
+        private List<Inputs.GetReleaseChannelSharedManualApprovalPreconditionArgs>? _sharedManualApprovalPreconditions;
+
+        /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        /// </summary>
+        public List<Inputs.GetReleaseChannelSharedManualApprovalPreconditionArgs> SharedManualApprovalPreconditions
+        {
+            get => _sharedManualApprovalPreconditions ?? (_sharedManualApprovalPreconditions = new List<Inputs.GetReleaseChannelSharedManualApprovalPreconditionArgs>());
+            set => _sharedManualApprovalPreconditions = value;
         }
 
         public GetReleaseChannelArgs()
@@ -226,7 +238,7 @@ namespace Pulumi.Prodvana
         }
 
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -271,6 +283,18 @@ namespace Pulumi.Prodvana
         {
             get => _serviceInstanceProtections ?? (_serviceInstanceProtections = new InputList<Inputs.GetReleaseChannelServiceInstanceProtectionInputArgs>());
             set => _serviceInstanceProtections = value;
+        }
+
+        [Input("sharedManualApprovalPreconditions")]
+        private InputList<Inputs.GetReleaseChannelSharedManualApprovalPreconditionInputArgs>? _sharedManualApprovalPreconditions;
+
+        /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        /// </summary>
+        public InputList<Inputs.GetReleaseChannelSharedManualApprovalPreconditionInputArgs> SharedManualApprovalPreconditions
+        {
+            get => _sharedManualApprovalPreconditions ?? (_sharedManualApprovalPreconditions = new InputList<Inputs.GetReleaseChannelSharedManualApprovalPreconditionInputArgs>());
+            set => _sharedManualApprovalPreconditions = value;
         }
 
         public GetReleaseChannelInvokeArgs()
@@ -332,6 +356,10 @@ namespace Pulumi.Prodvana
         /// </summary>
         public readonly ImmutableArray<Outputs.GetReleaseChannelServiceInstanceProtectionResult> ServiceInstanceProtections;
         /// <summary>
+        /// Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetReleaseChannelSharedManualApprovalPreconditionResult> SharedManualApprovalPreconditions;
+        /// <summary>
         /// Current application version
         /// </summary>
         public readonly string Version;
@@ -362,6 +390,8 @@ namespace Pulumi.Prodvana
 
             ImmutableArray<Outputs.GetReleaseChannelServiceInstanceProtectionResult> serviceInstanceProtections,
 
+            ImmutableArray<Outputs.GetReleaseChannelSharedManualApprovalPreconditionResult> sharedManualApprovalPreconditions,
+
             string version)
         {
             Application = application;
@@ -376,6 +406,7 @@ namespace Pulumi.Prodvana
             ReleaseChannelStablePreconditions = releaseChannelStablePreconditions;
             Runtimes = runtimes;
             ServiceInstanceProtections = serviceInstanceProtections;
+            SharedManualApprovalPreconditions = sharedManualApprovalPreconditions;
             Version = version;
         }
     }

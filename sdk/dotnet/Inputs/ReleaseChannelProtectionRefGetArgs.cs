@@ -13,13 +13,17 @@ namespace Pulumi.Prodvana.Inputs
     public sealed class ReleaseChannelProtectionRefGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("parameters")]
         private InputList<Inputs.ReleaseChannelProtectionRefParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// parameters to pass to the protection
+        /// </summary>
         public InputList<Inputs.ReleaseChannelProtectionRefParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ReleaseChannelProtectionRefParameterGetArgs>());

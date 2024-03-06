@@ -13,13 +13,25 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class GetReleaseChannelProtectionRefParameterResult
     {
+        /// <summary>
+        /// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+        /// </summary>
         public readonly string? DockerImageTagValue;
+        /// <summary>
+        /// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+        /// </summary>
         public readonly int? IntValue;
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+        /// </summary>
         public readonly Outputs.GetReleaseChannelProtectionRefParameterSecretValueResult? SecretValue;
+        /// <summary>
+        /// string value of the constant
+        /// </summary>
         public readonly string? StringValue;
 
         [OutputConstructor]

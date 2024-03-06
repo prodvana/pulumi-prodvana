@@ -14,9 +14,12 @@ namespace Pulumi.Prodvana.Outputs
     public sealed class ReleaseChannelProtectionRef
     {
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// parameters to pass to the protection
+        /// </summary>
         public readonly ImmutableArray<Outputs.ReleaseChannelProtectionRefParameter> Parameters;
 
         [OutputConstructor]
