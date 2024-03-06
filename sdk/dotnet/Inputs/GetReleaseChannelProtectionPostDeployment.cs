@@ -12,12 +12,21 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelProtectionPostDeploymentArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        /// </summary>
         [Input("checkDuration")]
         public string? CheckDuration { get; set; }
 
+        /// <summary>
+        /// delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+        /// </summary>
         [Input("delayCheckDuration")]
         public string? DelayCheckDuration { get; set; }
 
+        /// <summary>
+        /// whether to enable deployment lifecycle options
+        /// </summary>
         [Input("enabled", required: true)]
         public bool Enabled { get; set; }
 

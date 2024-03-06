@@ -20,19 +20,20 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
-            }
+            },
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/prodvana/pulumi-prodvana/sdk/go/prodvana",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/prodvana/pulumi-prodvana/sdk/go/prodvana"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageName": "@prodvana/pulumi-prodvana",
+            "packageDescription": "A Pulumi package for creating and managing Prodvana cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-prodvana` repo](https://github.com/prodvana/pulumi-prodvana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-prodvana` repo](https://github.com/prodvana/terraform-provider-prodvana/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -40,20 +41,16 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Prodvana cloud resources.",
-            "packageName": "@prodvana/pulumi-prodvana",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-prodvana` repo](https://github.com/prodvana/pulumi-prodvana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-prodvana` repo](https://github.com/prodvana/terraform-provider-prodvana/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-prodvana` repo](https://github.com/prodvana/pulumi-prodvana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-prodvana` repo](https://github.com/prodvana/terraform-provider-prodvana/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/prodvana/terraform-provider-prodvana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-prodvana` repo](https://github.com/prodvana/pulumi-prodvana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-prodvana` repo](https://github.com/prodvana/terraform-provider-prodvana/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -205,7 +202,8 @@
         "prodvana:index/ReleaseChannelConvergenceProtectionDeployment:ReleaseChannelConvergenceProtectionDeployment": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -220,7 +218,8 @@
         "prodvana:index/ReleaseChannelConvergenceProtectionPostApproval:ReleaseChannelConvergenceProtectionPostApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -235,13 +234,16 @@
         "prodvana:index/ReleaseChannelConvergenceProtectionPostDeployment:ReleaseChannelConvergenceProtectionPostDeployment": {
             "properties": {
                 "checkDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "delayCheckDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -256,7 +258,8 @@
         "prodvana:index/ReleaseChannelConvergenceProtectionPreApproval:ReleaseChannelConvergenceProtectionPreApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -272,13 +275,14 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionRefParameter:ReleaseChannelConvergenceProtectionRefParameter"
-                    }
+                    },
+                    "description": "parameters to pass to the protection\n"
                 }
             },
             "type": "object",
@@ -289,20 +293,24 @@
         "prodvana:index/ReleaseChannelConvergenceProtectionRefParameter:ReleaseChannelConvergenceProtectionRefParameter": {
             "properties": {
                 "dockerImageTagValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "intValue": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "secretValue": {
-                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionRefParameterSecretValue:ReleaseChannelConvergenceProtectionRefParameterSecretValue"
+                    "$ref": "#/types/prodvana:index/ReleaseChannelConvergenceProtectionRefParameterSecretValue:ReleaseChannelConvergenceProtectionRefParameterSecretValue",
+                    "description": "parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "stringValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "string value of the constant\n"
                 }
             },
             "type": "object",
@@ -313,11 +321,12 @@
         "prodvana:index/ReleaseChannelConvergenceProtectionRefParameterSecretValue:ReleaseChannelConvergenceProtectionRefParameterSecretValue": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object",
@@ -366,13 +375,16 @@
         "prodvana:index/ReleaseChannelPolicyDefaultEnv:ReleaseChannelPolicyDefaultEnv": {
             "properties": {
                 "kubernetesSecret": {
-                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvKubernetesSecret:ReleaseChannelPolicyDefaultEnvKubernetesSecret"
+                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvKubernetesSecret:ReleaseChannelPolicyDefaultEnvKubernetesSecret",
+                    "description": "Reference to a secret value stored in Kubernetes.\n"
                 },
                 "secret": {
-                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvSecret:ReleaseChannelPolicyDefaultEnvSecret"
+                    "$ref": "#/types/prodvana:index/ReleaseChannelPolicyDefaultEnvSecret:ReleaseChannelPolicyDefaultEnvSecret",
+                    "description": "Reference to a secret value stored in Prodvana.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Non-sensitive environment variable value\n"
                 }
             },
             "type": "object"
@@ -380,10 +392,12 @@
         "prodvana:index/ReleaseChannelPolicyDefaultEnvKubernetesSecret:ReleaseChannelPolicyDefaultEnvKubernetesSecret": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "secretName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret object\n"
                 }
             },
             "type": "object"
@@ -391,11 +405,12 @@
         "prodvana:index/ReleaseChannelPolicyDefaultEnvSecret:ReleaseChannelPolicyDefaultEnvSecret": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object"
@@ -443,7 +458,8 @@
         "prodvana:index/ReleaseChannelProtectionDeployment:ReleaseChannelProtectionDeployment": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -458,7 +474,8 @@
         "prodvana:index/ReleaseChannelProtectionPostApproval:ReleaseChannelProtectionPostApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -473,13 +490,16 @@
         "prodvana:index/ReleaseChannelProtectionPostDeployment:ReleaseChannelProtectionPostDeployment": {
             "properties": {
                 "checkDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "delayCheckDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -494,7 +514,8 @@
         "prodvana:index/ReleaseChannelProtectionPreApproval:ReleaseChannelProtectionPreApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -510,13 +531,14 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/ReleaseChannelProtectionRefParameter:ReleaseChannelProtectionRefParameter"
-                    }
+                    },
+                    "description": "parameters to pass to the protection\n"
                 }
             },
             "type": "object",
@@ -527,20 +549,24 @@
         "prodvana:index/ReleaseChannelProtectionRefParameter:ReleaseChannelProtectionRefParameter": {
             "properties": {
                 "dockerImageTagValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "intValue": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "secretValue": {
-                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionRefParameterSecretValue:ReleaseChannelProtectionRefParameterSecretValue"
+                    "$ref": "#/types/prodvana:index/ReleaseChannelProtectionRefParameterSecretValue:ReleaseChannelProtectionRefParameterSecretValue",
+                    "description": "parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "stringValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "string value of the constant\n"
                 }
             },
             "type": "object",
@@ -551,11 +577,12 @@
         "prodvana:index/ReleaseChannelProtectionRefParameterSecretValue:ReleaseChannelProtectionRefParameterSecretValue": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object",
@@ -654,7 +681,8 @@
         "prodvana:index/ReleaseChannelServiceInstanceProtectionDeployment:ReleaseChannelServiceInstanceProtectionDeployment": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -669,7 +697,8 @@
         "prodvana:index/ReleaseChannelServiceInstanceProtectionPostApproval:ReleaseChannelServiceInstanceProtectionPostApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -684,13 +713,16 @@
         "prodvana:index/ReleaseChannelServiceInstanceProtectionPostDeployment:ReleaseChannelServiceInstanceProtectionPostDeployment": {
             "properties": {
                 "checkDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "delayCheckDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -705,7 +737,8 @@
         "prodvana:index/ReleaseChannelServiceInstanceProtectionPreApproval:ReleaseChannelServiceInstanceProtectionPreApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -721,13 +754,14 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameter:ReleaseChannelServiceInstanceProtectionRefParameter"
-                    }
+                    },
+                    "description": "parameters to pass to the protection\n"
                 }
             },
             "type": "object",
@@ -738,20 +772,24 @@
         "prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameter:ReleaseChannelServiceInstanceProtectionRefParameter": {
             "properties": {
                 "dockerImageTagValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "intValue": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "secretValue": {
-                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameterSecretValue:ReleaseChannelServiceInstanceProtectionRefParameterSecretValue"
+                    "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameterSecretValue:ReleaseChannelServiceInstanceProtectionRefParameterSecretValue",
+                    "description": "parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "stringValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "string value of the constant\n"
                 }
             },
             "type": "object",
@@ -762,11 +800,12 @@
         "prodvana:index/ReleaseChannelServiceInstanceProtectionRefParameterSecretValue:ReleaseChannelServiceInstanceProtectionRefParameterSecretValue": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object",
@@ -774,6 +813,22 @@
                 "key",
                 "version"
             ]
+        },
+        "prodvana:index/ReleaseChannelSharedManualApprovalPrecondition:ReleaseChannelSharedManualApprovalPrecondition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the manual approval\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name"
+                    ]
+                }
+            }
         },
         "prodvana:index/getK8sRuntimeLabel:getK8sRuntimeLabel": {
             "properties": {
@@ -852,7 +907,8 @@
         "prodvana:index/getReleaseChannelConvergenceProtectionDeployment:getReleaseChannelConvergenceProtectionDeployment": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -868,7 +924,8 @@
         "prodvana:index/getReleaseChannelConvergenceProtectionPostApproval:getReleaseChannelConvergenceProtectionPostApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -884,13 +941,16 @@
         "prodvana:index/getReleaseChannelConvergenceProtectionPostDeployment:getReleaseChannelConvergenceProtectionPostDeployment": {
             "properties": {
                 "checkDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "delayCheckDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -906,7 +966,8 @@
         "prodvana:index/getReleaseChannelConvergenceProtectionPreApproval:getReleaseChannelConvergenceProtectionPreApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -923,13 +984,14 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionRefParameter:getReleaseChannelConvergenceProtectionRefParameter"
-                    }
+                    },
+                    "description": "parameters to pass to the protection\n"
                 }
             },
             "type": "object",
@@ -940,20 +1002,24 @@
         "prodvana:index/getReleaseChannelConvergenceProtectionRefParameter:getReleaseChannelConvergenceProtectionRefParameter": {
             "properties": {
                 "dockerImageTagValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "intValue": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "secretValue": {
-                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionRefParameterSecretValue:getReleaseChannelConvergenceProtectionRefParameterSecretValue"
+                    "$ref": "#/types/prodvana:index/getReleaseChannelConvergenceProtectionRefParameterSecretValue:getReleaseChannelConvergenceProtectionRefParameterSecretValue",
+                    "description": "parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "stringValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "string value of the constant\n"
                 }
             },
             "type": "object",
@@ -964,11 +1030,12 @@
         "prodvana:index/getReleaseChannelConvergenceProtectionRefParameterSecretValue:getReleaseChannelConvergenceProtectionRefParameterSecretValue": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object",
@@ -1020,13 +1087,16 @@
         "prodvana:index/getReleaseChannelPolicyDefaultEnv:getReleaseChannelPolicyDefaultEnv": {
             "properties": {
                 "kubernetesSecret": {
-                    "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvKubernetesSecret:getReleaseChannelPolicyDefaultEnvKubernetesSecret"
+                    "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvKubernetesSecret:getReleaseChannelPolicyDefaultEnvKubernetesSecret",
+                    "description": "Reference to a secret value stored in Kubernetes.\n"
                 },
                 "secret": {
-                    "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvSecret:getReleaseChannelPolicyDefaultEnvSecret"
+                    "$ref": "#/types/prodvana:index/getReleaseChannelPolicyDefaultEnvSecret:getReleaseChannelPolicyDefaultEnvSecret",
+                    "description": "Reference to a secret value stored in Prodvana.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Non-sensitive environment variable value\n"
                 }
             },
             "type": "object"
@@ -1034,10 +1104,12 @@
         "prodvana:index/getReleaseChannelPolicyDefaultEnvKubernetesSecret:getReleaseChannelPolicyDefaultEnvKubernetesSecret": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "secretName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret object\n"
                 }
             },
             "type": "object"
@@ -1045,11 +1117,12 @@
         "prodvana:index/getReleaseChannelPolicyDefaultEnvSecret:getReleaseChannelPolicyDefaultEnvSecret": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object"
@@ -1097,7 +1170,8 @@
         "prodvana:index/getReleaseChannelProtectionDeployment:getReleaseChannelProtectionDeployment": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1113,7 +1187,8 @@
         "prodvana:index/getReleaseChannelProtectionPostApproval:getReleaseChannelProtectionPostApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1129,13 +1204,16 @@
         "prodvana:index/getReleaseChannelProtectionPostDeployment:getReleaseChannelProtectionPostDeployment": {
             "properties": {
                 "checkDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "delayCheckDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1151,7 +1229,8 @@
         "prodvana:index/getReleaseChannelProtectionPreApproval:getReleaseChannelProtectionPreApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1168,13 +1247,14 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/getReleaseChannelProtectionRefParameter:getReleaseChannelProtectionRefParameter"
-                    }
+                    },
+                    "description": "parameters to pass to the protection\n"
                 }
             },
             "type": "object",
@@ -1185,20 +1265,24 @@
         "prodvana:index/getReleaseChannelProtectionRefParameter:getReleaseChannelProtectionRefParameter": {
             "properties": {
                 "dockerImageTagValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "intValue": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "secretValue": {
-                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionRefParameterSecretValue:getReleaseChannelProtectionRefParameterSecretValue"
+                    "$ref": "#/types/prodvana:index/getReleaseChannelProtectionRefParameterSecretValue:getReleaseChannelProtectionRefParameterSecretValue",
+                    "description": "parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "stringValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "string value of the constant\n"
                 }
             },
             "type": "object",
@@ -1209,11 +1293,12 @@
         "prodvana:index/getReleaseChannelProtectionRefParameterSecretValue:getReleaseChannelProtectionRefParameterSecretValue": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object",
@@ -1313,7 +1398,8 @@
         "prodvana:index/getReleaseChannelServiceInstanceProtectionDeployment:getReleaseChannelServiceInstanceProtectionDeployment": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1329,7 +1415,8 @@
         "prodvana:index/getReleaseChannelServiceInstanceProtectionPostApproval:getReleaseChannelServiceInstanceProtectionPostApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1345,13 +1432,16 @@
         "prodvana:index/getReleaseChannelServiceInstanceProtectionPostDeployment:getReleaseChannelServiceInstanceProtectionPostDeployment": {
             "properties": {
                 "checkDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "delayCheckDuration": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1367,7 +1457,8 @@
         "prodvana:index/getReleaseChannelServiceInstanceProtectionPreApproval:getReleaseChannelServiceInstanceProtectionPreApproval": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether to enable deployment lifecycle options\n"
                 }
             },
             "type": "object",
@@ -1384,13 +1475,14 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameter:getReleaseChannelServiceInstanceProtectionRefParameter"
-                    }
+                    },
+                    "description": "parameters to pass to the protection\n"
                 }
             },
             "type": "object",
@@ -1401,20 +1493,24 @@
         "prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameter:getReleaseChannelServiceInstanceProtectionRefParameter": {
             "properties": {
                 "dockerImageTagValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "intValue": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "secretValue": {
-                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameterSecretValue:getReleaseChannelServiceInstanceProtectionRefParameterSecretValue"
+                    "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameterSecretValue:getReleaseChannelServiceInstanceProtectionRefParameterSecretValue",
+                    "description": "parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set\n"
                 },
                 "stringValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "string value of the constant\n"
                 }
             },
             "type": "object",
@@ -1425,11 +1521,12 @@
         "prodvana:index/getReleaseChannelServiceInstanceProtectionRefParameterSecretValue:getReleaseChannelServiceInstanceProtectionRefParameterSecretValue": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the secret.\n"
                 },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "type": "object",
@@ -1437,6 +1534,23 @@
                 "key",
                 "version"
             ]
+        },
+        "prodvana:index/getReleaseChannelSharedManualApprovalPrecondition:getReleaseChannelSharedManualApprovalPrecondition": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the manual approval\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -1960,7 +2074,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "policy": {
                     "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
@@ -1994,9 +2108,16 @@
                     },
                     "description": "Protections applied to service instances in this release channel\n"
                 },
+                "sharedManualApprovalPreconditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelSharedManualApprovalPrecondition:ReleaseChannelSharedManualApprovalPrecondition"
+                    },
+                    "description": "Preconditions requiring manual approval before this release channel can be deployed, shared across release channels\n"
+                },
                 "version": {
                     "type": "string",
-                    "description": "Current application version\n"
+                    "description": "Version of the secret\n"
                 }
             },
             "required": [
@@ -2038,7 +2159,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Release Channel name\n"
+                    "description": "name of the constant\n"
                 },
                 "policy": {
                     "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
@@ -2071,6 +2192,13 @@
                         "$ref": "#/types/prodvana:index/ReleaseChannelServiceInstanceProtection:ReleaseChannelServiceInstanceProtection"
                     },
                     "description": "Protections applied to service instances in this release channel\n"
+                },
+                "sharedManualApprovalPreconditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/prodvana:index/ReleaseChannelSharedManualApprovalPrecondition:ReleaseChannelSharedManualApprovalPrecondition"
+                    },
+                    "description": "Preconditions requiring manual approval before this release channel can be deployed, shared across release channels\n"
                 }
             },
             "requiredInputs": [
@@ -2111,7 +2239,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Release Channel name\n"
+                        "description": "name of the constant\n"
                     },
                     "policy": {
                         "$ref": "#/types/prodvana:index/ReleaseChannelPolicy:ReleaseChannelPolicy",
@@ -2145,9 +2273,16 @@
                         },
                         "description": "Protections applied to service instances in this release channel\n"
                     },
+                    "sharedManualApprovalPreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/ReleaseChannelSharedManualApprovalPrecondition:ReleaseChannelSharedManualApprovalPrecondition"
+                        },
+                        "description": "Preconditions requiring manual approval before this release channel can be deployed, shared across release channels\n"
+                    },
                     "version": {
                         "type": "string",
-                        "description": "Current application version\n"
+                        "description": "Version of the secret\n"
                     }
                 },
                 "type": "object"
@@ -2326,7 +2461,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Release Channel name\n"
+                        "description": "name of the constant\n"
                     },
                     "policy": {
                         "$ref": "#/types/prodvana:index/getReleaseChannelPolicy:getReleaseChannelPolicy",
@@ -2352,6 +2487,13 @@
                             "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtection:getReleaseChannelServiceInstanceProtection"
                         },
                         "description": "Protections applied to service instances in this release channel\n"
+                    },
+                    "sharedManualApprovalPreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelSharedManualApprovalPrecondition:getReleaseChannelSharedManualApprovalPrecondition"
+                        },
+                        "description": "Preconditions requiring manual approval before this release channel can be deployed, shared across release channels\n"
                     }
                 },
                 "type": "object",
@@ -2431,6 +2573,13 @@
                             "$ref": "#/types/prodvana:index/getReleaseChannelServiceInstanceProtection:getReleaseChannelServiceInstanceProtection"
                         },
                         "description": "Protections applied to service instances in this release channel\n"
+                    },
+                    "sharedManualApprovalPreconditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/prodvana:index/getReleaseChannelSharedManualApprovalPrecondition:getReleaseChannelSharedManualApprovalPrecondition"
+                        },
+                        "description": "Preconditions requiring manual approval before this release channel can be deployed, shared across release channels\n"
                     },
                     "version": {
                         "type": "string",

@@ -13,8 +13,17 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class ReleaseChannelPolicyDefaultEnv
     {
+        /// <summary>
+        /// Reference to a secret value stored in Kubernetes.
+        /// </summary>
         public readonly Outputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret? KubernetesSecret;
+        /// <summary>
+        /// Reference to a secret value stored in Prodvana.
+        /// </summary>
         public readonly Outputs.ReleaseChannelPolicyDefaultEnvSecret? Secret;
+        /// <summary>
+        /// Non-sensitive environment variable value
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

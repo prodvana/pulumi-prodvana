@@ -13,6 +13,9 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class ReleaseChannelConvergenceProtectionDeployment
     {
+        /// <summary>
+        /// whether to enable deployment lifecycle options
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

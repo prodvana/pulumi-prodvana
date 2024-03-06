@@ -35,6 +35,7 @@ export function getReleaseChannel(args: GetReleaseChannelArgs, opts?: pulumi.Inv
         "protections": args.protections,
         "releaseChannelStablePreconditions": args.releaseChannelStablePreconditions,
         "serviceInstanceProtections": args.serviceInstanceProtections,
+        "sharedManualApprovalPreconditions": args.sharedManualApprovalPreconditions,
     }, opts);
 }
 
@@ -63,7 +64,7 @@ export interface GetReleaseChannelArgs {
      */
     manualApprovalPreconditions?: inputs.GetReleaseChannelManualApprovalPrecondition[];
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
     /**
@@ -82,6 +83,10 @@ export interface GetReleaseChannelArgs {
      * Protections applied to service instances in this release channel
      */
     serviceInstanceProtections?: inputs.GetReleaseChannelServiceInstanceProtection[];
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+     */
+    sharedManualApprovalPreconditions?: inputs.GetReleaseChannelSharedManualApprovalPrecondition[];
 }
 
 /**
@@ -137,6 +142,10 @@ export interface GetReleaseChannelResult {
      */
     readonly serviceInstanceProtections?: outputs.GetReleaseChannelServiceInstanceProtection[];
     /**
+     * Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+     */
+    readonly sharedManualApprovalPreconditions?: outputs.GetReleaseChannelSharedManualApprovalPrecondition[];
+    /**
      * Current application version
      */
     readonly version: string;
@@ -185,7 +194,7 @@ export interface GetReleaseChannelOutputArgs {
      */
     manualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelManualApprovalPreconditionArgs>[]>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
     /**
@@ -204,4 +213,8 @@ export interface GetReleaseChannelOutputArgs {
      * Protections applied to service instances in this release channel
      */
     serviceInstanceProtections?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelServiceInstanceProtectionArgs>[]>;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+     */
+    sharedManualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelSharedManualApprovalPreconditionArgs>[]>;
 }

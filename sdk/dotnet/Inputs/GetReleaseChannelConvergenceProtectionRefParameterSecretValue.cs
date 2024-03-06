@@ -12,11 +12,14 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Name of the secret.
+        /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
         /// <summary>
-        /// Current application version
+        /// Version of the secret
         /// </summary>
         [Input("version", required: true)]
         public string Version { get; set; } = null!;

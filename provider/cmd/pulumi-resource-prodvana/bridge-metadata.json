@@ -22,11 +22,9 @@
                         "maxItemsOne": false
                     },
                     "exec": {
-                        "elem": {
-                            "fields": {
-                                "args": {
-                                    "maxItemsOne": false
-                                }
+                        "fields": {
+                            "args": {
+                                "maxItemsOne": false
                             }
                         }
                     },
@@ -44,15 +42,11 @@
                     "convergence_protections": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ref": {
-                                        "elem": {
-                                            "fields": {
-                                                "parameters": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
+                            "fields": {
+                                "ref": {
+                                    "fields": {
+                                        "parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -65,15 +59,11 @@
                     "protections": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ref": {
-                                        "elem": {
-                                            "fields": {
-                                                "parameters": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
+                            "fields": {
+                                "ref": {
+                                    "fields": {
+                                        "parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -89,30 +79,24 @@
                     "service_instance_protections": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ref": {
-                                        "elem": {
-                                            "fields": {
-                                                "parameters": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
+                            "fields": {
+                                "ref": {
+                                    "fields": {
+                                        "parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
                             }
                         }
+                    },
+                    "shared_manual_approval_preconditions": {
+                        "maxItemsOne": false
                     }
                 }
             },
             "prodvana_runtime_link": {
-                "current": "prodvana:index/runtimeLink:RuntimeLink",
-                "fields": {
-                    "labels": {
-                        "maxItemsOne": false
-                    }
-                }
+                "current": "prodvana:index/runtimeLink:RuntimeLink"
             }
         },
         "datasources": {
@@ -136,15 +120,11 @@
                     "convergence_protections": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ref": {
-                                        "elem": {
-                                            "fields": {
-                                                "parameters": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
+                            "fields": {
+                                "ref": {
+                                    "fields": {
+                                        "parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -157,15 +137,11 @@
                     "protections": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ref": {
-                                        "elem": {
-                                            "fields": {
-                                                "parameters": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
+                            "fields": {
+                                "ref": {
+                                    "fields": {
+                                        "parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -181,25 +157,25 @@
                     "service_instance_protections": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "ref": {
-                                        "elem": {
-                                            "fields": {
-                                                "parameters": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
+                            "fields": {
+                                "ref": {
+                                    "fields": {
+                                        "parameters": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
                             }
                         }
+                    },
+                    "shared_manual_approval_preconditions": {
+                        "maxItemsOne": false
                     }
                 }
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "prodvana:index/application:Application": "prodvana_application",
@@ -292,7 +268,8 @@
                 "disableAllProtections": "disable_all_protections",
                 "manualApprovalPreconditions": "manual_approval_preconditions",
                 "releaseChannelStablePreconditions": "release_channel_stable_preconditions",
-                "serviceInstanceProtections": "service_instance_protections"
+                "serviceInstanceProtections": "service_instance_protections",
+                "sharedManualApprovalPreconditions": "shared_manual_approval_preconditions"
             },
             "prodvana:index/getReleaseChannelConstant:getReleaseChannelConstant": {
                 "stringValue": "string_value"
@@ -387,7 +364,8 @@
                 "disableAllProtections": "disable_all_protections",
                 "manualApprovalPreconditions": "manual_approval_preconditions",
                 "releaseChannelStablePreconditions": "release_channel_stable_preconditions",
-                "serviceInstanceProtections": "service_instance_protections"
+                "serviceInstanceProtections": "service_instance_protections",
+                "sharedManualApprovalPreconditions": "shared_manual_approval_preconditions"
             },
             "prodvana:index:Provider": {
                 "apiToken": "api_token",

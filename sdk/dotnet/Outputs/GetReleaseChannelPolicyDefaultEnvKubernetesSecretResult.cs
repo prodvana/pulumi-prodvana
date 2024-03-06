@@ -13,7 +13,13 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class GetReleaseChannelPolicyDefaultEnvKubernetesSecretResult
     {
+        /// <summary>
+        /// Name of the secret.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Name of the secret object
+        /// </summary>
         public readonly string? SecretName;
 
         [OutputConstructor]

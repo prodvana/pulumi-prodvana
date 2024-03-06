@@ -12,12 +12,21 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelPolicyDefaultEnvArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Reference to a secret value stored in Kubernetes.
+        /// </summary>
         [Input("kubernetesSecret")]
         public Inputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs? KubernetesSecret { get; set; }
 
+        /// <summary>
+        /// Reference to a secret value stored in Prodvana.
+        /// </summary>
         [Input("secret")]
         public Inputs.GetReleaseChannelPolicyDefaultEnvSecretArgs? Secret { get; set; }
 
+        /// <summary>
+        /// Non-sensitive environment variable value
+        /// </summary>
         [Input("value")]
         public string? Value { get; set; }
 

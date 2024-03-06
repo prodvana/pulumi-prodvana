@@ -13,9 +13,12 @@ namespace Pulumi.Prodvana.Outputs
     [OutputType]
     public sealed class ReleaseChannelServiceInstanceProtectionRefParameterSecretValue
     {
+        /// <summary>
+        /// Name of the secret.
+        /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Current application version
+        /// Version of the secret
         /// </summary>
         public readonly string Version;
 

@@ -12,9 +12,15 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Name of the secret.
+        /// </summary>
         [Input("key")]
         public string? Key { get; set; }
 
+        /// <summary>
+        /// Name of the secret object
+        /// </summary>
         [Input("secretName")]
         public string? SecretName { get; set; }
 

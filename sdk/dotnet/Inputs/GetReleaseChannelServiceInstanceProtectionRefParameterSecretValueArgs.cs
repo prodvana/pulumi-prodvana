@@ -12,11 +12,14 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the secret.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Current application version
+        /// Version of the secret
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

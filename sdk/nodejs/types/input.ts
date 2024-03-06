@@ -104,91 +104,163 @@ export interface GetReleaseChannelConvergenceProtectionArgs {
 }
 
 export interface GetReleaseChannelConvergenceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionDeploymentArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPostApprovalArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPostDeploymentArgs {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: pulumi.Input<string>;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: pulumi.Input<string>;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPreApprovalArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: inputs.GetReleaseChannelConvergenceProtectionRefParameter[];
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefArgs {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelConvergenceProtectionRefParameterArgs>[]>;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: inputs.GetReleaseChannelConvergenceProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefParameterArgs {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: pulumi.Input<string>;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: pulumi.Input<number>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: pulumi.Input<inputs.GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs>;
+    /**
+     * string value of the constant
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefParameterSecretValueArgs {
+    /**
+     * Name of the secret.
+     */
     key: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: pulumi.Input<string>;
 }
@@ -238,39 +310,75 @@ export interface GetReleaseChannelPolicyArgs {
 }
 
 export interface GetReleaseChannelPolicyDefaultEnv {
+    /**
+     * Reference to a secret value stored in Kubernetes.
+     */
     kubernetesSecret?: inputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecret;
+    /**
+     * Reference to a secret value stored in Prodvana.
+     */
     secret?: inputs.GetReleaseChannelPolicyDefaultEnvSecret;
+    /**
+     * Non-sensitive environment variable value
+     */
     value?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvArgs {
+    /**
+     * Reference to a secret value stored in Kubernetes.
+     */
     kubernetesSecret?: pulumi.Input<inputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs>;
+    /**
+     * Reference to a secret value stored in Prodvana.
+     */
     secret?: pulumi.Input<inputs.GetReleaseChannelPolicyDefaultEnvSecretArgs>;
+    /**
+     * Non-sensitive environment variable value
+     */
     value?: pulumi.Input<string>;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    /**
+     * Name of the secret.
+     */
     key?: string;
+    /**
+     * Name of the secret object
+     */
     secretName?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvKubernetesSecretArgs {
+    /**
+     * Name of the secret.
+     */
     key?: pulumi.Input<string>;
+    /**
+     * Name of the secret object
+     */
     secretName?: pulumi.Input<string>;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvSecret {
+    /**
+     * Name of the secret.
+     */
     key?: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvSecretArgs {
+    /**
+     * Name of the secret.
+     */
     key?: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version?: pulumi.Input<string>;
 }
@@ -330,91 +438,163 @@ export interface GetReleaseChannelProtectionArgs {
 }
 
 export interface GetReleaseChannelProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelProtectionDeploymentArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelProtectionPostApprovalArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelProtectionPostDeploymentArgs {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: pulumi.Input<string>;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: pulumi.Input<string>;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelProtectionPreApprovalArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: inputs.GetReleaseChannelProtectionRefParameter[];
 }
 
 export interface GetReleaseChannelProtectionRefArgs {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelProtectionRefParameterArgs>[]>;
 }
 
 export interface GetReleaseChannelProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: inputs.GetReleaseChannelProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface GetReleaseChannelProtectionRefParameterArgs {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: pulumi.Input<string>;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: pulumi.Input<number>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: pulumi.Input<inputs.GetReleaseChannelProtectionRefParameterSecretValueArgs>;
+    /**
+     * string value of the constant
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface GetReleaseChannelProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
 
 export interface GetReleaseChannelProtectionRefParameterSecretValueArgs {
+    /**
+     * Name of the secret.
+     */
     key: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: pulumi.Input<string>;
 }
@@ -488,93 +668,179 @@ export interface GetReleaseChannelServiceInstanceProtectionArgs {
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionDeploymentArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPostApprovalArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPostDeploymentArgs {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: pulumi.Input<string>;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: pulumi.Input<string>;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPreApprovalArgs {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: inputs.GetReleaseChannelServiceInstanceProtectionRefParameter[];
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefArgs {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.GetReleaseChannelServiceInstanceProtectionRefParameterArgs>[]>;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: inputs.GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefParameterArgs {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: pulumi.Input<string>;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: pulumi.Input<number>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: pulumi.Input<inputs.GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs>;
+    /**
+     * string value of the constant
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefParameterSecretValueArgs {
+    /**
+     * Name of the secret.
+     */
     key: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: pulumi.Input<string>;
+}
+
+export interface GetReleaseChannelSharedManualApprovalPrecondition {
+    /**
+     * name of the manual approval
+     */
+    name?: string;
+}
+
+export interface GetReleaseChannelSharedManualApprovalPreconditionArgs {
+    /**
+     * name of the manual approval
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface K8sRuntimeLabel {
@@ -657,46 +923,82 @@ export interface ReleaseChannelConvergenceProtection {
 }
 
 export interface ReleaseChannelConvergenceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelConvergenceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelConvergenceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: pulumi.Input<string>;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: pulumi.Input<string>;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelConvergenceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelConvergenceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelConvergenceProtectionRefParameter>[]>;
 }
 
 export interface ReleaseChannelConvergenceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: pulumi.Input<string>;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: pulumi.Input<number>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: pulumi.Input<inputs.ReleaseChannelConvergenceProtectionRefParameterSecretValue>;
+    /**
+     * string value of the constant
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelConvergenceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: pulumi.Input<string>;
 }
@@ -721,20 +1023,38 @@ export interface ReleaseChannelPolicy {
 }
 
 export interface ReleaseChannelPolicyDefaultEnv {
+    /**
+     * Reference to a secret value stored in Kubernetes.
+     */
     kubernetesSecret?: pulumi.Input<inputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret>;
+    /**
+     * Reference to a secret value stored in Prodvana.
+     */
     secret?: pulumi.Input<inputs.ReleaseChannelPolicyDefaultEnvSecret>;
+    /**
+     * Non-sensitive environment variable value
+     */
     value?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    /**
+     * Name of the secret.
+     */
     key?: pulumi.Input<string>;
+    /**
+     * Name of the secret object
+     */
     secretName?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelPolicyDefaultEnvSecret {
+    /**
+     * Name of the secret.
+     */
     key?: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version?: pulumi.Input<string>;
 }
@@ -767,46 +1087,82 @@ export interface ReleaseChannelProtection {
 }
 
 export interface ReleaseChannelProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: pulumi.Input<string>;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: pulumi.Input<string>;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelProtectionRefParameter>[]>;
 }
 
 export interface ReleaseChannelProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: pulumi.Input<string>;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: pulumi.Input<number>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: pulumi.Input<inputs.ReleaseChannelProtectionRefParameterSecretValue>;
+    /**
+     * string value of the constant
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: pulumi.Input<string>;
 }
@@ -869,46 +1225,89 @@ export interface ReleaseChannelServiceInstanceProtection {
 }
 
 export interface ReleaseChannelServiceInstanceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: pulumi.Input<string>;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: pulumi.Input<string>;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelServiceInstanceProtectionRefParameter>[]>;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: pulumi.Input<string>;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: pulumi.Input<number>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: pulumi.Input<string>;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: pulumi.Input<inputs.ReleaseChannelServiceInstanceProtectionRefParameterSecretValue>;
+    /**
+     * string value of the constant
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: pulumi.Input<string>;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: pulumi.Input<string>;
+}
+
+export interface ReleaseChannelSharedManualApprovalPrecondition {
+    /**
+     * name of the manual approval
+     */
+    name?: pulumi.Input<string>;
 }

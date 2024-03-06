@@ -55,46 +55,82 @@ export interface GetReleaseChannelConvergenceProtection {
 }
 
 export interface GetReleaseChannelConvergenceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: outputs.GetReleaseChannelConvergenceProtectionRefParameter[];
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: outputs.GetReleaseChannelConvergenceProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface GetReleaseChannelConvergenceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
@@ -122,20 +158,38 @@ export interface GetReleaseChannelPolicy {
 }
 
 export interface GetReleaseChannelPolicyDefaultEnv {
+    /**
+     * Reference to a secret value stored in Kubernetes.
+     */
     kubernetesSecret?: outputs.GetReleaseChannelPolicyDefaultEnvKubernetesSecret;
+    /**
+     * Reference to a secret value stored in Prodvana.
+     */
     secret?: outputs.GetReleaseChannelPolicyDefaultEnvSecret;
+    /**
+     * Non-sensitive environment variable value
+     */
     value?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    /**
+     * Name of the secret.
+     */
     key?: string;
+    /**
+     * Name of the secret object
+     */
     secretName?: string;
 }
 
 export interface GetReleaseChannelPolicyDefaultEnvSecret {
+    /**
+     * Name of the secret.
+     */
     key?: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version?: string;
 }
@@ -168,46 +222,82 @@ export interface GetReleaseChannelProtection {
 }
 
 export interface GetReleaseChannelProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: outputs.GetReleaseChannelProtectionRefParameter[];
 }
 
 export interface GetReleaseChannelProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: outputs.GetReleaseChannelProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface GetReleaseChannelProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
@@ -270,48 +360,91 @@ export interface GetReleaseChannelServiceInstanceProtection {
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: outputs.GetReleaseChannelServiceInstanceProtectionRefParameter[];
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: outputs.GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface GetReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
+}
+
+export interface GetReleaseChannelSharedManualApprovalPrecondition {
+    /**
+     * name of the manual approval
+     */
+    name: string;
 }
 
 export interface K8sRuntimeLabel {
@@ -394,46 +527,82 @@ export interface ReleaseChannelConvergenceProtection {
 }
 
 export interface ReleaseChannelConvergenceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelConvergenceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelConvergenceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelConvergenceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelConvergenceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: outputs.ReleaseChannelConvergenceProtectionRefParameter[];
 }
 
 export interface ReleaseChannelConvergenceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: outputs.ReleaseChannelConvergenceProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface ReleaseChannelConvergenceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
@@ -458,20 +627,38 @@ export interface ReleaseChannelPolicy {
 }
 
 export interface ReleaseChannelPolicyDefaultEnv {
+    /**
+     * Reference to a secret value stored in Kubernetes.
+     */
     kubernetesSecret?: outputs.ReleaseChannelPolicyDefaultEnvKubernetesSecret;
+    /**
+     * Reference to a secret value stored in Prodvana.
+     */
     secret?: outputs.ReleaseChannelPolicyDefaultEnvSecret;
+    /**
+     * Non-sensitive environment variable value
+     */
     value?: string;
 }
 
 export interface ReleaseChannelPolicyDefaultEnvKubernetesSecret {
+    /**
+     * Name of the secret.
+     */
     key?: string;
+    /**
+     * Name of the secret object
+     */
     secretName?: string;
 }
 
 export interface ReleaseChannelPolicyDefaultEnvSecret {
+    /**
+     * Name of the secret.
+     */
     key?: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version?: string;
 }
@@ -504,46 +691,82 @@ export interface ReleaseChannelProtection {
 }
 
 export interface ReleaseChannelProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: outputs.ReleaseChannelProtectionRefParameter[];
 }
 
 export interface ReleaseChannelProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: outputs.ReleaseChannelProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface ReleaseChannelProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
 }
@@ -606,47 +829,90 @@ export interface ReleaseChannelServiceInstanceProtection {
 }
 
 export interface ReleaseChannelServiceInstanceProtectionDeployment {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionPostApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionPostDeployment {
+    /**
+     * how long to keep checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     checkDuration?: string;
+    /**
+     * delay between the deployment completing and when this protection starts checking. A valid Go duration string, e.g. `10m` or `1h`. Defaults to `10m`
+     */
     delayCheckDuration?: string;
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionPreApproval {
+    /**
+     * whether to enable deployment lifecycle options
+     */
     enabled: boolean;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionRef {
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameters to pass to the protection
+     */
     parameters?: outputs.ReleaseChannelServiceInstanceProtectionRefParameter[];
 }
 
 export interface ReleaseChannelServiceInstanceProtectionRefParameter {
+    /**
+     * parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     dockerImageTagValue?: string;
+    /**
+     * parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     intValue?: number;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name: string;
+    /**
+     * parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+     */
     secretValue?: outputs.ReleaseChannelServiceInstanceProtectionRefParameterSecretValue;
+    /**
+     * string value of the constant
+     */
     stringValue?: string;
 }
 
 export interface ReleaseChannelServiceInstanceProtectionRefParameterSecretValue {
+    /**
+     * Name of the secret.
+     */
     key: string;
     /**
-     * Current application version
+     * Version of the secret
      */
     version: string;
+}
+
+export interface ReleaseChannelSharedManualApprovalPrecondition {
+    /**
+     * name of the manual approval
+     */
+    name: string;
 }
 

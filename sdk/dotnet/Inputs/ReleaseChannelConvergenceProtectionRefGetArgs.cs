@@ -13,13 +13,17 @@ namespace Pulumi.Prodvana.Inputs
     public sealed class ReleaseChannelConvergenceProtectionRefGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("parameters")]
         private InputList<Inputs.ReleaseChannelConvergenceProtectionRefParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// parameters to pass to the protection
+        /// </summary>
         public InputList<Inputs.ReleaseChannelConvergenceProtectionRefParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.ReleaseChannelConvergenceProtectionRefParameterGetArgs>());

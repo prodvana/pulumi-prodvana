@@ -12,21 +12,33 @@ namespace Pulumi.Prodvana.Inputs
 
     public sealed class GetReleaseChannelProtectionRefParameterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// parameter docker image tag value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+        /// </summary>
         [Input("dockerImageTagValue")]
         public string? DockerImageTagValue { get; set; }
 
+        /// <summary>
+        /// parameter int value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+        /// </summary>
         [Input("intValue")]
         public int? IntValue { get; set; }
 
         /// <summary>
-        /// Release Channel name
+        /// name of the constant
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// parameter secret value, only one of (string*value, int*value, docker*image*tag*value, secret*value) can be set
+        /// </summary>
         [Input("secretValue")]
         public Inputs.GetReleaseChannelProtectionRefParameterSecretValueArgs? SecretValue { get; set; }
 
+        /// <summary>
+        /// string value of the constant
+        /// </summary>
         [Input("stringValue")]
         public string? StringValue { get; set; }
 

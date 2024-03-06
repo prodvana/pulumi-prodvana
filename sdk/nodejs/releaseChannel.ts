@@ -64,7 +64,7 @@ export class ReleaseChannel extends pulumi.CustomResource {
      */
     public readonly manualApprovalPreconditions!: pulumi.Output<outputs.ReleaseChannelManualApprovalPrecondition[] | undefined>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -88,7 +88,11 @@ export class ReleaseChannel extends pulumi.CustomResource {
      */
     public readonly serviceInstanceProtections!: pulumi.Output<outputs.ReleaseChannelServiceInstanceProtection[] | undefined>;
     /**
-     * Current application version
+     * Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+     */
+    public readonly sharedManualApprovalPreconditions!: pulumi.Output<outputs.ReleaseChannelSharedManualApprovalPrecondition[] | undefined>;
+    /**
+     * Version of the secret
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
 
@@ -116,6 +120,7 @@ export class ReleaseChannel extends pulumi.CustomResource {
             resourceInputs["releaseChannelStablePreconditions"] = state ? state.releaseChannelStablePreconditions : undefined;
             resourceInputs["runtimes"] = state ? state.runtimes : undefined;
             resourceInputs["serviceInstanceProtections"] = state ? state.serviceInstanceProtections : undefined;
+            resourceInputs["sharedManualApprovalPreconditions"] = state ? state.sharedManualApprovalPreconditions : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ReleaseChannelArgs | undefined;
@@ -136,6 +141,7 @@ export class ReleaseChannel extends pulumi.CustomResource {
             resourceInputs["releaseChannelStablePreconditions"] = args ? args.releaseChannelStablePreconditions : undefined;
             resourceInputs["runtimes"] = args ? args.runtimes : undefined;
             resourceInputs["serviceInstanceProtections"] = args ? args.serviceInstanceProtections : undefined;
+            resourceInputs["sharedManualApprovalPreconditions"] = args ? args.sharedManualApprovalPreconditions : undefined;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -168,7 +174,7 @@ export interface ReleaseChannelState {
      */
     manualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelManualApprovalPrecondition>[]>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name?: pulumi.Input<string>;
     /**
@@ -192,7 +198,11 @@ export interface ReleaseChannelState {
      */
     serviceInstanceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelServiceInstanceProtection>[]>;
     /**
-     * Current application version
+     * Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+     */
+    sharedManualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelSharedManualApprovalPrecondition>[]>;
+    /**
+     * Version of the secret
      */
     version?: pulumi.Input<string>;
 }
@@ -222,7 +232,7 @@ export interface ReleaseChannelArgs {
      */
     manualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelManualApprovalPrecondition>[]>;
     /**
-     * Release Channel name
+     * name of the constant
      */
     name?: pulumi.Input<string>;
     /**
@@ -245,4 +255,8 @@ export interface ReleaseChannelArgs {
      * Protections applied to service instances in this release channel
      */
     serviceInstanceProtections?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelServiceInstanceProtection>[]>;
+    /**
+     * Preconditions requiring manual approval before this release channel can be deployed, shared across release channels
+     */
+    sharedManualApprovalPreconditions?: pulumi.Input<pulumi.Input<inputs.ReleaseChannelSharedManualApprovalPrecondition>[]>;
 }
