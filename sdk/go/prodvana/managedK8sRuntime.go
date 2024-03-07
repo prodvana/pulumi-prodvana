@@ -16,6 +16,8 @@ type ManagedK8sRuntime struct {
 
 	// Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
 	AgentEnv pulumi.StringMapOutput `pulumi:"agentEnv"`
+	// If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+	AgentExternallyManaged pulumi.BoolOutput `pulumi:"agentExternallyManaged"`
 	// The namespace of the agent
 	AgentNamespace pulumi.StringOutput `pulumi:"agentNamespace"`
 	// The runtime identifier of the agent
@@ -92,6 +94,8 @@ func GetManagedK8sRuntime(ctx *pulumi.Context,
 type managedK8sRuntimeState struct {
 	// Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
 	AgentEnv map[string]string `pulumi:"agentEnv"`
+	// If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+	AgentExternallyManaged *bool `pulumi:"agentExternallyManaged"`
 	// The namespace of the agent
 	AgentNamespace *string `pulumi:"agentNamespace"`
 	// The runtime identifier of the agent
@@ -139,6 +143,8 @@ type managedK8sRuntimeState struct {
 type ManagedK8sRuntimeState struct {
 	// Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
 	AgentEnv pulumi.StringMapInput
+	// If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+	AgentExternallyManaged pulumi.BoolPtrInput
 	// The namespace of the agent
 	AgentNamespace pulumi.StringPtrInput
 	// The runtime identifier of the agent
@@ -364,6 +370,11 @@ func (o ManagedK8sRuntimeOutput) ToManagedK8sRuntimeOutputWithContext(ctx contex
 // Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
 func (o ManagedK8sRuntimeOutput) AgentEnv() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedK8sRuntime) pulumi.StringMapOutput { return v.AgentEnv }).(pulumi.StringMapOutput)
+}
+
+// If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+func (o ManagedK8sRuntimeOutput) AgentExternallyManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ManagedK8sRuntime) pulumi.BoolOutput { return v.AgentExternallyManaged }).(pulumi.BoolOutput)
 }
 
 // The namespace of the agent

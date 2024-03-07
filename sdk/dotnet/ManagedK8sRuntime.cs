@@ -19,6 +19,12 @@ namespace Pulumi.Prodvana
         public Output<ImmutableDictionary<string, string>> AgentEnv { get; private set; } = null!;
 
         /// <summary>
+        /// If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+        /// </summary>
+        [Output("agentExternallyManaged")]
+        public Output<bool> AgentExternallyManaged { get; private set; } = null!;
+
+        /// <summary>
         /// The namespace of the agent
         /// </summary>
         [Output("agentNamespace")]
@@ -348,6 +354,12 @@ namespace Pulumi.Prodvana
             get => _agentEnv ?? (_agentEnv = new InputMap<string>());
             set => _agentEnv = value;
         }
+
+        /// <summary>
+        /// If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+        /// </summary>
+        [Input("agentExternallyManaged")]
+        public Input<bool>? AgentExternallyManaged { get; set; }
 
         /// <summary>
         /// The namespace of the agent

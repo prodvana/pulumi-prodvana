@@ -1653,8 +1653,8 @@ github.com/pquerna/cachecontrol v0.0.0-20171018203845-0dec1b30a021/go.mod h1:prY
 github.com/prashantv/gostub v1.1.0/go.mod h1:A5zLQHz7ieHGG7is6LLXLz7I8+3LZzsrV0P1IAHhP5U=
 github.com/prodvana/prodvana-public/go/prodvana-sdk v0.3.9 h1:MJLEJ9JOQpn/O0MTvATURvIJMwOslG4KKMsRfAsRw9M=
 github.com/prodvana/prodvana-public/go/prodvana-sdk v0.3.9/go.mod h1:akKYnhWn4eXFdE01XtseyD19KYyIfdd3+G8wGDbV+og=
-github.com/prodvana/terraform-provider-prodvana v0.1.18 h1:teUzPMdh3IflVHrYzaIMq34b3STYR6YJzFVN01819MA=
-github.com/prodvana/terraform-provider-prodvana v0.1.18/go.mod h1:SZBEuf1lXW+xmz4qxTtGxghSjl+YhGFhWJU7yXFjeDk=
+github.com/prodvana/terraform-provider-prodvana v0.1.19 h1:PmJRQYI2/ZMReYJvQ01VBj9bC01VpF5GSIx6kfrBvQg=
+github.com/prodvana/terraform-provider-prodvana v0.1.19/go.mod h1:SZBEuf1lXW+xmz4qxTtGxghSjl+YhGFhWJU7yXFjeDk=
 github.com/prometheus/alertmanager v0.24.0/go.mod h1:r6fy/D7FRuZh5YbnX6J3MBY0eI4Pb5yPYS7/bPSXXqI=
 github.com/prometheus/client_golang v0.0.0-20180209125602-c332b6f63c06/go.mod h1:7SWBe2y4D6OKWSNQJUaRYU/AaXPKyh/dDVn+NZz0KFw=
 github.com/prometheus/client_golang v0.9.1/go.mod h1:7SWBe2y4D6OKWSNQJUaRYU/AaXPKyh/dDVn+NZz0KFw=
