@@ -345,6 +345,7 @@ class ManagedK8sRuntimeArgs:
 class _ManagedK8sRuntimeState:
     def __init__(__self__, *,
                  agent_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 agent_externally_managed: Optional[pulumi.Input[bool]] = None,
                  agent_namespace: Optional[pulumi.Input[str]] = None,
                  agent_runtime_id: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
@@ -369,6 +370,7 @@ class _ManagedK8sRuntimeState:
         """
         Input properties used for looking up and filtering ManagedK8sRuntime resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] agent_env: Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
+        :param pulumi.Input[bool] agent_externally_managed: If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
         :param pulumi.Input[str] agent_namespace: The namespace of the agent
         :param pulumi.Input[str] agent_runtime_id: The runtime identifier of the agent
         :param pulumi.Input[str] client_certificate: PEM-encoded client certificate for TLS authentication.
@@ -393,6 +395,8 @@ class _ManagedK8sRuntimeState:
         """
         if agent_env is not None:
             pulumi.set(__self__, "agent_env", agent_env)
+        if agent_externally_managed is not None:
+            pulumi.set(__self__, "agent_externally_managed", agent_externally_managed)
         if agent_namespace is not None:
             pulumi.set(__self__, "agent_namespace", agent_namespace)
         if agent_runtime_id is not None:
@@ -447,6 +451,18 @@ class _ManagedK8sRuntimeState:
     @agent_env.setter
     def agent_env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "agent_env", value)
+
+    @property
+    @pulumi.getter(name="agentExternallyManaged")
+    def agent_externally_managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+        """
+        return pulumi.get(self, "agent_externally_managed")
+
+    @agent_externally_managed.setter
+    def agent_externally_managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent_externally_managed", value)
 
     @property
     @pulumi.getter(name="agentNamespace")
@@ -824,6 +840,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
             __props__.__dict__["tls_server_name"] = tls_server_name
             __props__.__dict__["token"] = token
             __props__.__dict__["username"] = username
+            __props__.__dict__["agent_externally_managed"] = None
             __props__.__dict__["agent_namespace"] = None
             __props__.__dict__["agent_runtime_id"] = None
         super(ManagedK8sRuntime, __self__).__init__(
@@ -837,6 +854,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            agent_externally_managed: Optional[pulumi.Input[bool]] = None,
             agent_namespace: Optional[pulumi.Input[str]] = None,
             agent_runtime_id: Optional[pulumi.Input[str]] = None,
             client_certificate: Optional[pulumi.Input[str]] = None,
@@ -866,6 +884,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] agent_env: Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
+        :param pulumi.Input[bool] agent_externally_managed: If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
         :param pulumi.Input[str] agent_namespace: The namespace of the agent
         :param pulumi.Input[str] agent_runtime_id: The runtime identifier of the agent
         :param pulumi.Input[str] client_certificate: PEM-encoded client certificate for TLS authentication.
@@ -893,6 +912,7 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         __props__ = _ManagedK8sRuntimeState.__new__(_ManagedK8sRuntimeState)
 
         __props__.__dict__["agent_env"] = agent_env
+        __props__.__dict__["agent_externally_managed"] = agent_externally_managed
         __props__.__dict__["agent_namespace"] = agent_namespace
         __props__.__dict__["agent_runtime_id"] = agent_runtime_id
         __props__.__dict__["client_certificate"] = client_certificate
@@ -923,6 +943,14 @@ class ManagedK8sRuntime(pulumi.CustomResource):
         Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
         """
         return pulumi.get(self, "agent_env")
+
+    @property
+    @pulumi.getter(name="agentExternallyManaged")
+    def agent_externally_managed(self) -> pulumi.Output[bool]:
+        """
+        If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+        """
+        return pulumi.get(self, "agent_externally_managed")
 
     @property
     @pulumi.getter(name="agentNamespace")

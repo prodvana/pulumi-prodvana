@@ -1731,6 +1731,10 @@
                     },
                     "description": "Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.\n"
                 },
+                "agentExternallyManaged": {
+                    "type": "boolean",
+                    "description": "If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment\n"
+                },
                 "agentNamespace": {
                     "type": "string",
                     "description": "The namespace of the agent\n"
@@ -1824,6 +1828,7 @@
             },
             "required": [
                 "agentEnv",
+                "agentExternallyManaged",
                 "agentNamespace",
                 "agentRuntimeId",
                 "clientCertificate",
@@ -1945,6 +1950,10 @@
                             "type": "string"
                         },
                         "description": "Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.\n"
+                    },
+                    "agentExternallyManaged": {
+                        "type": "boolean",
+                        "description": "If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment\n"
                     },
                     "agentNamespace": {
                         "type": "string",

@@ -346,6 +346,7 @@
             },
             "prodvana:index/managedK8sRuntime:ManagedK8sRuntime": {
                 "agentEnv": "agent_env",
+                "agentExternallyManaged": "agent_externally_managed",
                 "agentNamespace": "agent_namespace",
                 "agentRuntimeId": "agent_runtime_id",
                 "clientCertificate": "client_certificate",

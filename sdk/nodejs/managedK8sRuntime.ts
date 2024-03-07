@@ -39,6 +39,10 @@ export class ManagedK8sRuntime extends pulumi.CustomResource {
      */
     public readonly agentEnv!: pulumi.Output<{[key: string]: string}>;
     /**
+     * If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+     */
+    public /*out*/ readonly agentExternallyManaged!: pulumi.Output<boolean>;
+    /**
      * The namespace of the agent
      */
     public /*out*/ readonly agentNamespace!: pulumi.Output<string>;
@@ -137,6 +141,7 @@ export class ManagedK8sRuntime extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ManagedK8sRuntimeState | undefined;
             resourceInputs["agentEnv"] = state ? state.agentEnv : undefined;
+            resourceInputs["agentExternallyManaged"] = state ? state.agentExternallyManaged : undefined;
             resourceInputs["agentNamespace"] = state ? state.agentNamespace : undefined;
             resourceInputs["agentRuntimeId"] = state ? state.agentRuntimeId : undefined;
             resourceInputs["clientCertificate"] = state ? state.clientCertificate : undefined;
@@ -180,6 +185,7 @@ export class ManagedK8sRuntime extends pulumi.CustomResource {
             resourceInputs["tlsServerName"] = args ? args.tlsServerName : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["agentExternallyManaged"] = undefined /*out*/;
             resourceInputs["agentNamespace"] = undefined /*out*/;
             resourceInputs["agentRuntimeId"] = undefined /*out*/;
         }
@@ -196,6 +202,10 @@ export interface ManagedK8sRuntimeState {
      * Environment variables to pass to the agent. Useful for cases like passing proxy configuration to the agent if needed.
      */
     agentEnv?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If the agent has been set to be externally managed. This should be false since this is the managed*k8s*runtime resource -- this is used to detect out of band changes to the agent deployment
+     */
+    agentExternallyManaged?: pulumi.Input<boolean>;
     /**
      * The namespace of the agent
      */
